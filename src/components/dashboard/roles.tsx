@@ -140,92 +140,76 @@ export function Roles() {
             </div>
             <Button variant="outline">Export</Button>
           </div>
-          <div className="overflow-hidden rounded-md border border-[#3d5245] bg-[#1a231e]">
-            <div className="overflow-x-auto font-code">
-              <Table>
-                <TableHeader className="bg-[#1c2620]">
-                  <TableRow>
-                    <TableHead className="p-4 text-sm font-medium text-white">
-                      Date
-                    </TableHead>
-                    <TableHead className="p-4 text-sm font-medium text-white">
-                      User
-                    </TableHead>
-                    <TableHead className="p-4 text-sm font-medium text-white">
-                      Action
-                    </TableHead>
-                    <TableHead className="p-4 text-sm font-medium text-white">
-                      Details
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody className="divide-y divide-[#3d5245]">
-                  <TableRow className="hover:bg-[#1f2a24] transition-colors">
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      Oct 26, 2023, 3:45 PM
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-white font-medium">
-                      John Doe
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      <Badge className="inline-flex items-center rounded-md bg-green-900/50 px-2 py-1 text-xs font-medium text-green-300 ring-1 ring-inset ring-green-700/50">
-                        ROLE UPDATED
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      Changed 'Viewer' role permissions: Added 'Export Data'
-                    </TableCell>
-                  </TableRow>
-                  <TableRow className="hover:bg-[#1f2a24] transition-colors">
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      Oct 25, 2023, 10:12 AM
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-white font-medium">
-                      Jane Smith
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      <Badge className="inline-flex items-center rounded-md bg-blue-900/50 px-2 py-1 text-xs font-medium text-blue-300 ring-1 ring-inset ring-blue-700/50">
-                        ROLE CREATED
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      Created new role: 'Accountant'
-                    </TableCell>
-                  </TableRow>
-                  <TableRow className="hover:bg-[#1f2a24] transition-colors">
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      Oct 24, 2023, 5:20 PM
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-white font-medium">
-                      John Doe
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      <Badge className="inline-flex items-center rounded-md bg-red-900/50 px-2 py-1 text-xs font-medium text-red-300 ring-1 ring-inset ring-red-700/50">
-                        ROLE DELETED
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      Deleted role: 'Temporary Staff'
-                    </TableCell>
-                  </TableRow>
-                  <TableRow className="hover:bg-[#1f2a24] transition-colors">
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      Oct 23, 2023, 9:00 AM
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-white font-medium">
-                      Admin
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      <Badge className="inline-flex items-center rounded-md bg-green-900/50 px-2 py-1 text-xs font-medium text-green-300 ring-1 ring-inset ring-green-700/50">
-                        PERMISSION ADDED
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      Added 'Manage Users' permission to 'Manager' role
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
+          <div className="space-y-4 font-code">
+            <div className="flex flex-col gap-4 rounded-md border border-[#3d5245] bg-[#1a231e] p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <span className="text-sm text-white font-medium">
+                    John Doe
+                  </span>
+                  <Badge className="inline-flex items-center rounded-md bg-green-900/50 px-2 py-1 text-xs font-medium text-green-300 ring-1 ring-inset ring-green-700/50">
+                    ROLE UPDATED
+                  </Badge>
+                </div>
+                <span className="text-sm text-[#9eb7a8]">
+                  Oct 26, 2023, 3:45 PM
+                </span>
+              </div>
+              <p className="text-sm text-[#9eb7a8]">
+                Changed 'Viewer' role permissions: Added 'Export Data'
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 rounded-md border border-[#3d5245] bg-[#1a231e] p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <span className="text-sm text-white font-medium">
+                    Jane Smith
+                  </span>
+                  <Badge className="inline-flex items-center rounded-md bg-blue-900/50 px-2 py-1 text-xs font-medium text-blue-300 ring-1 ring-inset ring-blue-700/50">
+                    ROLE CREATED
+                  </Badge>
+                </div>
+                <span className="text-sm text-[#9eb7a8]">
+                  Oct 25, 2023, 10:12 AM
+                </span>
+              </div>
+              <p className="text-sm text-[#9eb7a8]">
+                Created new role: 'Accountant'
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 rounded-md border border-[#3d5245] bg-[#1a231e] p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <span className="text-sm text-white font-medium">
+                    John Doe
+                  </span>
+                  <Badge className="inline-flex items-center rounded-md bg-red-900/50 px-2 py-1 text-xs font-medium text-red-300 ring-1 ring-inset ring-red-700/50">
+                    ROLE DELETED
+                  </Badge>
+                </div>
+                <span className="text-sm text-[#9eb7a8]">
+                  Oct 24, 2023, 5:20 PM
+                </span>
+              </div>
+              <p className="text-sm text-[#9eb7a8]">
+                Deleted role: 'Temporary Staff'
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 rounded-md border border-[#3d5245] bg-[#1a231e] p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <span className="text-sm text-white font-medium">Admin</span>
+                  <Badge className="inline-flex items-center rounded-md bg-green-900/50 px-2 py-1 text-xs font-medium text-green-300 ring-1 ring-inset ring-green-700/50">
+                    PERMISSION ADDED
+                  </Badge>
+                </div>
+                <span className="text-sm text-[#9eb7a8]">
+                  Oct 23, 2023, 9:00 AM
+                </span>
+              </div>
+              <p className="text-sm text-[#9eb7a8]">
+                Added 'Manage Users' permission to 'Manager' role
+              </p>
             </div>
           </div>
         </div>
