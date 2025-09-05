@@ -10,56 +10,38 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import {
-  Search,
-  UserPlus,
-  MoreHorizontal,
-  Pencil,
-  Trash2,
-} from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Search, UserPlus, Pencil, Trash2 } from 'lucide-react';
 
 const users = [
   {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
+    name: 'Ethan Harper',
+    email: 'ethan.harper@example.com',
     role: 'Admin',
     status: 'Active',
-    avatar: 'https://picsum.photos/40/40?random=1',
   },
   {
-    name: 'Jane Smith',
-    email: 'jane.smith@example.com',
-    role: 'Editor',
+    name: 'Olivia Bennett',
+    email: 'olivia.bennett@example.com',
+    role: 'Manager',
     status: 'Active',
-    avatar: 'https://picsum.photos/40/40?random=2',
   },
   {
-    name: 'Sam Wilson',
-    email: 'sam.wilson@example.com',
-    role: 'Viewer',
+    name: 'Noah Carter',
+    email: 'noah.carter@example.com',
+    role: 'User',
     status: 'Inactive',
-    avatar: 'https://picsum.photos/40/40?random=3',
   },
   {
-    name: 'Alice Johnson',
-    email: 'alice.johnson@example.com',
-    role: 'Editor',
+    name: 'Ava Morgan',
+    email: 'ava.morgan@example.com',
+    role: 'User',
     status: 'Active',
-    avatar: 'https://picsum.photos/40/40?random=4',
   },
   {
-    name: 'Bob Brown',
-    email: 'bob.brown@example.com',
-    role: 'Admin',
+    name: 'Liam Foster',
+    email: 'liam.foster@example.com',
+    role: 'Manager',
     status: 'Active',
-    avatar: 'https://picsum.photos/40/40?random=5',
   },
 ];
 
@@ -67,13 +49,15 @@ const getStatusBadge = (status: string) => {
   switch (status) {
     case 'Active':
       return (
-        <Badge className="border-transparent bg-green-900/50 text-green-400 hover:bg-green-900/60">
+        <Badge className="inline-flex items-center gap-1.5 border-transparent bg-green-900 text-green-300 hover:bg-green-900/80">
+          <span className="size-1.5 rounded-full bg-green-500"></span>
           Active
         </Badge>
       );
     case 'Inactive':
       return (
-        <Badge className="border-transparent bg-slate-700 text-slate-400 hover:bg-slate-700/80">
+        <Badge className="inline-flex items-center gap-1.5 border-transparent bg-red-900 text-red-300 hover:bg-red-900/80">
+          <span className="size-1.5 rounded-full bg-red-500"></span>
           Inactive
         </Badge>
       );
@@ -82,105 +66,91 @@ const getStatusBadge = (status: string) => {
   }
 };
 
+const getRoleBadge = (role: string) => {
+  switch (role) {
+    case 'Admin':
+      return (
+        <Badge className="border-transparent bg-blue-900 text-blue-300 hover:bg-blue-900/80">
+          Admin
+        </Badge>
+      );
+    case 'Manager':
+      return (
+        <Badge className="border-transparent bg-purple-900 text-purple-300 hover:bg-purple-900/80">
+          Manager
+        </Badge>
+      );
+    case 'User':
+      return (
+        <Badge className="border-transparent bg-slate-700 text-slate-300 hover:bg-slate-700/80">
+          User
+        </Badge>
+      );
+    default:
+      return <Badge variant="secondary">{role}</Badge>;
+  }
+};
+
 export function UserManagement() {
   return (
-    <main className="flex-1 px-10 py-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold text-white">User Management</h1>
-            <p className="text-muted-foreground">
-              Manage all users in your system.
-            </p>
-          </div>
-          <Button>
-            <UserPlus className="mr-2 h-4 w-4" />
-            Add User
-          </Button>
+    <main className="flex-1 p-6">
+      <div className="mb-6 flex items-center justify-between">
+        <h1 className="text-3xl font-bold text-white">Users</h1>
+        <Button>
+          <UserPlus className="mr-2" />
+          Add User
+        </Button>
+      </div>
+      <div className="mb-6">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            className="w-full rounded-md border-border bg-card pl-10 text-white placeholder:text-muted-foreground"
+            placeholder="Search users"
+            type="text"
+          />
         </div>
-
-        <div className="mb-6">
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              className="h-12 rounded-full bg-card pl-12"
-              placeholder="Search users by name, email, or role..."
-            />
-          </div>
-        </div>
-
-        <div className="mt-4 overflow-hidden rounded-2xl border border-border bg-card">
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader className="bg-white/5">
-                <TableRow>
-                  <TableHead className="uppercase">User</TableHead>
-                  <TableHead className="uppercase">Role</TableHead>
-                  <TableHead className="uppercase">Status</TableHead>
-                  <TableHead className="uppercase text-right">
-                    Actions
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {users.map((user, index) => (
-                  <TableRow key={index}>
-                    <TableCell className="flex items-center gap-4">
-                      <Avatar>
-                        <AvatarImage src={user.avatar} alt={user.name} data-ai-hint="person face" />
-                        <AvatarFallback>
-                          {user.name.charAt(0)}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <p className="font-medium text-white">{user.name}</p>
-                        <p className="text-sm text-muted-foreground">
-                          {user.email}
-                        </p>
-                      </div>
-                    </TableCell>
-                    <TableCell>{user.role}</TableCell>
-                    <TableCell>{getStatusBadge(user.status)}</TableCell>
-                    <TableCell className="text-right">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon">
-                            <MoreHorizontal className="h-4 w-4" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                          <DropdownMenuItem>
-                            <Pencil className="mr-2 h-4 w-4" />
-                            Edit
-                          </DropdownMenuItem>
-                          <DropdownMenuItem className="text-red-400">
-                            <Trash2 className="mr-2 h-4 w-4" />
-                            Delete
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </div>
-
-        <div className="mt-6 flex items-center justify-between text-sm text-muted-foreground">
-          <p>Showing 1 to 5 of {users.length} entries</p>
-          <div className="flex items-center gap-1">
-            <Button variant="outline" size="sm" disabled>
-              Previous
-            </Button>
-            <Button variant="default" size="sm">
-              1
-            </Button>
-            <Button variant="outline" size="sm">
-              Next
-            </Button>
-          </div>
-        </div>
+      </div>
+      <div className="overflow-x-auto rounded-md border border-border bg-card">
+        <Table>
+          <TableHeader className="bg-muted/30 text-xs uppercase tracking-wider">
+            <TableRow>
+              <TableHead className="px-6 py-3">Name</TableHead>
+              <TableHead className="px-6 py-3">Email</TableHead>
+              <TableHead className="px-6 py-3">Role</TableHead>
+              <TableHead className="px-6 py-3">Status</TableHead>
+              <TableHead className="px-6 py-3 text-right">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody className="divide-y divide-border">
+            {users.map((user, index) => (
+              <TableRow key={index} className="hover:bg-muted/30">
+                <TableCell className="whitespace-nowrap px-6 py-4 font-medium text-white">
+                  {user.name}
+                </TableCell>
+                <TableCell className="px-6 py-4 text-muted-foreground">
+                  {user.email}
+                </TableCell>
+                <TableCell className="px-6 py-4">
+                  {getRoleBadge(user.role)}
+                </TableCell>
+                <TableCell className="px-6 py-4">
+                  {getStatusBadge(user.status)}
+                </TableCell>
+                <TableCell className="px-6 py-4 text-right">
+                  <div className="flex justify-end gap-4">
+                    <Button variant="ghost" size="icon" className="h-auto w-auto p-0 text-muted-foreground hover:text-white">
+                      <Pencil className="size-4" />
+                    </Button>
+                    <Button variant="ghost" size="icon" className="h-auto w-auto p-0 text-muted-foreground hover:text-red-500">
+                      <Trash2 className="size-4" />
+                    </Button>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
     </main>
   );
