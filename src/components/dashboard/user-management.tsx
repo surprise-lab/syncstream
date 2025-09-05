@@ -87,6 +87,33 @@ const activityLogs = [
   },
 ];
 
+const auditLogs = [
+    {
+      timestamp: '2023-10-27 11:05:17',
+      user: 'Ethan Harper',
+      action: 'Setting Changed',
+      details: 'Enabled "New user added" alert',
+    },
+    {
+      timestamp: '2023-10-26 18:05:20',
+      user: 'Liam Foster',
+      action: 'Setting Changed',
+      details: 'Disabled "In-App Notifications"',
+    },
+    {
+      timestamp: '2023-10-26 14:22:01',
+      user: 'Ethan Harper',
+      action: 'Setting Changed',
+      details: 'Changed Admin Email Address to "admin@newdomain.com"',
+    },
+    {
+      timestamp: '2023-10-25 09:12:45',
+      user: 'Olivia Bennett',
+      action: 'Setting Changed',
+      details: 'Enabled "Permission changes" alert',
+    },
+  ];
+
 const getStatusBadge = (status: string) => {
   switch (status) {
     case 'Active':
@@ -149,6 +176,15 @@ const getActionBadge = (action: string) => {
       return <Badge variant="secondary">{action}</Badge>
   }
 }
+
+const getAuditActionBadge = (action: string) => {
+    switch (action) {
+      case 'Setting Changed':
+        return <Badge className="bg-indigo-900 px-2 py-1 text-xs font-medium text-indigo-300">{action}</Badge>
+      default:
+        return <Badge variant="secondary">{action}</Badge>
+    }
+  }
 
 export function UserManagement() {
   return (
@@ -261,6 +297,40 @@ export function UserManagement() {
                     Save Settings
                 </Button>
             </div>
+        </div>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-white text-2xl font-bold mb-4">Notification Settings Audit Trail</h2>
+        <div className="overflow-x-auto rounded-md border border-border bg-card">
+          <Table>
+            <TableHeader className="bg-muted/30 text-xs uppercase tracking-wider">
+              <TableRow>
+                <TableHead className="px-6 py-3">Timestamp</TableHead>
+                <TableHead className="px-6 py-3">User</TableHead>
+                <TableHead className="px-6 py-3">Action</TableHead>
+                <TableHead className="px-6 py-3">Change Details</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody className="divide-y divide-border">
+              {auditLogs.map((log, index) => (
+                <TableRow key={index} className="hover:bg-muted/30">
+                  <TableCell className="whitespace-nowrap px-6 py-4 text-muted-foreground">
+                    {log.timestamp}
+                  </TableCell>
+                  <TableCell className="px-6 py-4 font-medium text-white whitespace-nowrap">
+                    {log.user}
+                  </TableCell>
+                  <TableCell className="px-6 py-4">
+                    {getAuditActionBadge(log.action)}
+                  </TableCell>
+                  <TableCell className="px-6 py-4 text-muted-foreground">
+                    {log.details}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </div>
       </div>
 
