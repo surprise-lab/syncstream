@@ -89,14 +89,14 @@ const getStatusBadge = (status: string) => {
   switch (status) {
     case 'Active':
       return (
-        <Badge className="inline-flex items-center gap-1.5 border-transparent bg-green-900 text-green-300 hover:bg-green-900/80">
+        <Badge className="inline-flex items-center gap-1.5 border-transparent bg-green-900 px-2 py-1 text-xs font-medium text-green-300">
           <span className="size-1.5 rounded-full bg-green-500"></span>
           Active
         </Badge>
       );
     case 'Inactive':
       return (
-        <Badge className="inline-flex items-center gap-1.5 border-transparent bg-red-900 text-red-300 hover:bg-red-900/80">
+        <Badge className="inline-flex items-center gap-1.5 border-transparent bg-red-900 px-2 py-1 text-xs font-medium text-red-300">
           <span className="size-1.5 rounded-full bg-red-500"></span>
           Inactive
         </Badge>
@@ -110,19 +110,19 @@ const getRoleBadge = (role: string) => {
   switch (role) {
     case 'Admin':
       return (
-        <Badge className="border-transparent bg-blue-900 text-blue-300 hover:bg-blue-900/80">
+        <Badge className="border-transparent bg-blue-900 px-2 py-1 text-xs font-medium text-blue-300">
           Admin
         </Badge>
       );
     case 'Manager':
       return (
-        <Badge className="border-transparent bg-purple-900 text-purple-300 hover:bg-purple-900/80">
+        <Badge className="border-transparent bg-purple-900 px-2 py-1 text-xs font-medium text-purple-300">
           Manager
         </Badge>
       );
     case 'User':
       return (
-        <Badge className="border-transparent bg-slate-700 text-slate-300 hover:bg-slate-700/80">
+        <Badge className="border-transparent bg-slate-700 px-2 py-1 text-xs font-medium text-gray-300">
           User
         </Badge>
       );
@@ -134,15 +134,15 @@ const getRoleBadge = (role: string) => {
 const getActionBadge = (action: string) => {
   switch (action) {
     case 'User Login':
-      return <Badge className="bg-green-900 text-green-300">{action}</Badge>
+      return <Badge className="bg-green-900 px-2 py-1 text-xs font-medium text-green-300">{action}</Badge>
     case 'Product Updated':
-        return <Badge className="bg-yellow-900 text-yellow-300">{action}</Badge>
+        return <Badge className="bg-yellow-900 px-2 py-1 text-xs font-medium text-yellow-300">{action}</Badge>
     case 'Order Created':
-        return <Badge className="bg-blue-900 text-blue-300">{action}</Badge>
+        return <Badge className="bg-blue-900 px-2 py-1 text-xs font-medium text-blue-300">{action}</Badge>
     case 'Settings Changed':
-        return <Badge className="bg-purple-900/80 text-purple-300">{action}</Badge>
+        return <Badge className="bg-purple-900/80 px-2 py-1 text-xs font-medium text-purple-300">{action}</Badge>
     case 'User Logout':
-        return <Badge className="bg-red-900 text-red-300">{action}</Badge>
+        return <Badge className="bg-red-900 px-2 py-1 text-xs font-medium text-red-300">{action}</Badge>
     default:
       return <Badge variant="secondary">{action}</Badge>
   }

@@ -81,15 +81,15 @@ const getStatusBadge = (status: string) => {
   switch (status) {
     case 'Success':
       return (
-        <Badge className="border-transparent bg-green-900/50 text-green-400 hover:bg-green-900/60">
-          <CheckCircle2 className="mr-2" />
+        <Badge className="inline-flex items-center gap-2 rounded-full bg-green-500/20 px-3 py-1 text-xs font-medium text-green-400">
+          <CheckCircle2 className="text-base" />
           Success
         </Badge>
       );
     case 'Failure':
       return (
-        <Badge className="border-transparent bg-red-900/50 text-red-400 hover:bg-red-900/60">
-          <XCircle className="mr-2" />
+        <Badge className="inline-flex items-center gap-2 rounded-full bg-red-500/20 px-3 py-1 text-xs font-medium text-red-400">
+          <XCircle className="text-base" />
           Failure
         </Badge>
       );
@@ -101,7 +101,7 @@ const getStatusBadge = (status: string) => {
 export function Logs() {
   return (
     <main className="flex-1 px-10 py-8">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-6xl">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold text-white">
@@ -121,35 +121,35 @@ export function Logs() {
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <Input
-              className="h-12 rounded-full bg-card pl-12"
+              className="h-12 rounded-full bg-[#29382f] px-12"
               placeholder="Search logs by ID, status, or keyword..."
             />
           </div>
         </div>
 
-        <div className="mt-4 overflow-hidden rounded-2xl border border-border bg-card">
+        <div className="mt-4 overflow-hidden rounded-xl border border-border bg-card">
           <div className="overflow-x-auto">
             <Table>
-              <TableHeader className="bg-white/5">
-                <TableRow>
-                  <TableHead className="uppercase">Timestamp</TableHead>
-                  <TableHead className="uppercase">Status</TableHead>
-                  <TableHead className="uppercase">Records Transferred</TableHead>
-                  <TableHead className="uppercase text-right">Actions</TableHead>
+              <TableHeader>
+                <TableRow className="border-b border-border">
+                  <TableHead className="px-6 py-4 text-left text-sm font-semibold text-white">Timestamp</TableHead>
+                  <TableHead className="px-6 py-4 text-left text-sm font-semibold text-white">Status</TableHead>
+                  <TableHead className="px-6 py-4 text-left text-sm font-semibold text-white">Records Transferred</TableHead>
+                  <TableHead className="px-6 py-4 text-left text-sm font-semibold text-white">Details</TableHead>
                 </TableRow>
               </TableHeader>
-              <TableBody>
+              <TableBody className="divide-y divide-border text-muted-foreground">
                 {logs.map((log, index) => (
                   <TableRow key={index}>
-                    <TableCell className="whitespace-nowrap text-muted-foreground">
+                    <TableCell className="whitespace-nowrap px-6 py-4">
                       {log.timestamp}
                     </TableCell>
                     <TableCell>{getStatusBadge(log.status)}</TableCell>
-                    <TableCell className="whitespace-nowrap">
+                    <TableCell className="whitespace-nowrap px-6 py-4">
                       {log.records}
                     </TableCell>
-                    <TableCell className="text-right">
-                      <Button variant="link" className="text-primary">
+                    <TableCell className="px-6 py-4">
+                      <Button variant="link" className="font-semibold text-primary hover:underline">
                         View Details
                       </Button>
                     </TableCell>
