@@ -199,43 +199,19 @@ export function Roles() {
               </DropdownMenu>
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-gray-700 bg-gray-800/50">
-            <div className="overflow-x-auto">
-              <Table className="w-full min-w-[600px] text-left">
-                <TableHeader className="bg-gray-700/50">
-                  <TableRow>
-                    <TableHead className="p-4 text-sm font-bold text-gray-300">
-                      Timestamp
-                    </TableHead>
-                    <TableHead className="p-4 text-sm font-bold text-gray-300">
-                      User
-                    </TableHead>
-                    <TableHead className="p-4 text-sm font-bold text-gray-300">
-                      Action
-                    </TableHead>
-                    <TableHead className="p-4 text-sm font-bold text-gray-300">
-                      Details
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody className="divide-y divide-gray-700">
-                  {filteredAuditLogs.map((log, index) => (
-                    <TableRow key={index} className="hover:bg-gray-700/40 transition-colors">
-                      <TableCell className="p-4 text-sm text-gray-400">
-                        {log.timestamp}
-                      </TableCell>
-                      <TableCell className="p-4 text-sm text-gray-200 font-medium">
-                        {log.user}
-                      </TableCell>
-                       <TableCell className="p-4 text-sm text-gray-300">
-                        {log.action}
-                      </TableCell>
-                      <TableCell className="p-4 text-sm text-gray-400" dangerouslySetInnerHTML={{ __html: log.details.replace(/'(.*?)'/g, '<span class="font-semibold text-gray-200">\'$1\'</span>') }} />
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {filteredAuditLogs.map((log, index) => (
+              <div key={index} className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 hover:border-primary transition-colors">
+                <div className="flex justify-between items-start">
+                  <div className="flex flex-col gap-1">
+                    <p className="font-semibold text-white">{log.action}</p>
+                    <p className="text-sm text-gray-400">{log.user}</p>
+                    <p className="text-xs text-gray-500">{log.timestamp}</p>
+                  </div>
+                </div>
+                <div className="mt-4 text-sm text-gray-300" dangerouslySetInnerHTML={{ __html: log.details.replace(/'(.*?)'/g, '<span class="font-semibold text-gray-100">\'$1\'</span>') }} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
