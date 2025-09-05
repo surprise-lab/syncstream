@@ -16,7 +16,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Plus, Edit, Filter, FileDown, Search } from 'lucide-react';
+import { Plus, Edit, Filter, FileDown, Search, RotateCcw } from 'lucide-react';
 import * as React from 'react';
 import { Input } from '../ui/input';
 
@@ -208,6 +208,10 @@ export function Roles() {
                     <p className="text-sm text-gray-400">{log.user}</p>
                     <p className="text-xs text-gray-500">{log.timestamp}</p>
                   </div>
+                  <Button variant="ghost" size="sm" className="text-gray-300 hover:bg-gray-700 hover:text-white">
+                    <RotateCcw className="mr-2 h-4 w-4" />
+                    Revert
+                  </Button>
                 </div>
                 <div className="mt-4 text-sm text-gray-300" dangerouslySetInnerHTML={{ __html: log.details.replace(/'(.*?)'/g, '<span class="font-semibold text-gray-100">\'$1\'</span>') }} />
               </div>
