@@ -1,131 +1,210 @@
-
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Check, X, Shield, PlusCircle } from 'lucide-react';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-
-const roles = [
-  {
-    name: 'Admin',
-    description: 'Full access to all features and settings.',
-    permissions: {
-      'Manage Users & Roles': true,
-      'Configure Settings': true,
-      'View & Manage All Orders': true,
-      'Full API Access': true,
-    },
-  },
-  {
-    name: 'Manager',
-    description: 'Can manage products and orders.',
-    permissions: {
-      'Manage Users & Roles': false,
-      'Configure Settings': false,
-      'View & Manage All Orders': true,
-      'View & Manage Products': true,
-    },
-  },
-  {
-    name: 'User',
-    description: 'Can view orders and products.',
-    permissions: {
-      'Manage Users & Roles': false,
-      'Configure Settings': false,
-      'View Own Orders': true,
-      'View Products': true,
-    },
-  },
-];
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { Plus, Edit, History } from 'lucide-react';
 
 export function Roles() {
   return (
-    <main className="flex-1 p-6 bg-gray-900 text-white">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Roles & Permissions</h1>
-        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
-          <PlusCircle className="mr-2 h-4 w-4" />
-          Create New Role
-        </Button>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {roles.map((role) => (
-          <Card key={role.name} className="bg-gray-800 border-gray-700">
-            <CardHeader>
-              <div className="flex items-center gap-4">
-                <div className="bg-primary/20 p-3 rounded-full">
-                  <Shield className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle className="text-xl text-white">{role.name}</CardTitle>
-                  <CardDescription className="text-gray-400">{role.description}</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-3 pt-2">
-              <h4 className="font-semibold text-gray-300">Permissions:</h4>
-              <ul className="space-y-2 text-sm">
-                {Object.entries(role.permissions).map(([permission, granted]) => (
-                  <li key={permission} className="flex items-center gap-2">
-                    {granted ? (
-                      <Check className="h-4 w-4 text-green-400" />
-                    ) : (
-                      <X className="h-4 w-4 text-red-400" />
-                    )}
-                    <span className="text-gray-300">{permission}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="flex justify-end pt-4">
-                <Button variant="link" className="text-primary hover:text-primary/80">Edit Role</Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-
-        <Card className="bg-gray-800 border-gray-700 border-dashed">
-            <CardHeader>
-                <CardTitle className="text-xl text-white">Create a New Role</CardTitle>
-                <CardDescription className="text-gray-400">Define a new role and set its permissions.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-                <div>
-                    <Label htmlFor="role-name" className="text-gray-300">Role Name</Label>
-                    <Input id="role-name" placeholder="e.g. Accountant" className="mt-2 bg-gray-900 border-gray-600 focus:ring-primary" />
-                </div>
-                 <div>
-                    <Label htmlFor="role-desc" className="text-gray-300">Description</Label>
-                    <Input id="role-desc" placeholder="Briefly describe this role" className="mt-2 bg-gray-900 border-gray-600 focus:ring-primary" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-300 mb-3">Set Permissions:</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                        <Label htmlFor="perm-users" className="text-gray-300">Manage Users & Roles</Label>
-                        <Switch id="perm-users" />
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <Label htmlFor="perm-settings" className="text-gray-300">Configure Settings</Label>
-                        <Switch id="perm-settings" />
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <Label htmlFor="perm-orders" className="text-gray-300">View & Manage All Orders</Label>
-                        <Switch id="perm-orders" />
-                    </div>
-                     <div className="flex items-center justify-between">
-                        <Label htmlFor="perm-api" className="text-gray-300">Full API Access</Label>
-                        <Switch id="perm-api" />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-end pt-2">
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">Save Role</Button>
-                </div>
-            </CardContent>
-        </Card>
-
+    <main className="flex-1 px-10 py-8">
+      <div className="mx-auto max-w-5xl">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+          <div className="flex flex-col gap-1">
+            <h1 className="text-white text-3xl font-bold">User Roles</h1>
+            <p className="text-[#9eb7a8] text-base">
+              Manage roles and permissions for users within the application.
+            </p>
+          </div>
+          <Button className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-bold text-white bg-primary hover:bg-primary-600 transition-colors">
+            <Plus className="mr-2" />
+            Create New Role
+          </Button>
+        </div>
+        <div className="overflow-hidden rounded-md border border-[#3d5245] bg-[#1a231e] mb-8">
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader className="bg-[#1c2620]">
+                <TableRow>
+                  <TableHead className="p-4 text-sm font-medium text-white">
+                    Role Name
+                  </TableHead>
+                  <TableHead className="p-4 text-sm font-medium text-white">
+                    Permissions
+                  </TableHead>
+                  <TableHead className="p-4 text-sm font-medium text-white text-center">
+                    Users
+                  </TableHead>
+                  <TableHead className="p-4 text-sm font-medium text-white"></TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody className="divide-y divide-[#3d5245]">
+                <TableRow className="hover:bg-[#1f2a24] transition-colors">
+                  <TableCell className="p-4 text-sm text-white font-medium">
+                    Administrator
+                  </TableCell>
+                  <TableCell className="p-4 text-sm text-[#9eb7a8] max-w-xs truncate">
+                    Full access to all features and settings
+                  </TableCell>
+                  <TableCell className="p-4 text-sm text-[#9eb7a8] text-center">
+                    5
+                  </TableCell>
+                  <TableCell className="p-4 text-right">
+                    <Button
+                      variant="ghost"
+                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
+                    >
+                      <Edit className="text-lg mr-1" />
+                      Edit
+                    </Button>
+                  </TableCell>
+                </TableRow>
+                <TableRow className="hover:bg-[#1f2a24] transition-colors">
+                  <TableCell className="p-4 text-sm text-white font-medium">
+                    Manager
+                  </TableCell>
+                  <TableCell className="p-4 text-sm text-[#9eb7a8] max-w-xs truncate">
+                    Access to orders, products, and accounting
+                  </TableCell>
+                  <TableCell className="p-4 text-sm text-[#9eb7a8] text-center">
+                    10
+                  </TableCell>
+                  <TableCell className="p-4 text-right">
+                    <Button
+                      variant="ghost"
+                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
+                    >
+                      <Edit className="text-lg mr-1" />
+                      Edit
+                    </Button>
+                  </TableCell>
+                </TableRow>
+                <TableRow className="hover:bg-[#1f2a24] transition-colors">
+                  <TableCell className="p-4 text-sm text-white font-medium">
+                    Viewer
+                  </TableCell>
+                  <TableCell className="p-4 text-sm text-[#9eb7a8] max-w-xs truncate">
+                    Read-only access to orders and products
+                  </TableCell>
+                  <TableCell className="p-4 text-sm text-[#9eb7a8] text-center">
+                    20
+                  </TableCell>
+                  <TableCell className="p-4 text-right">
+                    <Button
+                      variant="ghost"
+                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
+                    >
+                      <Edit className="text-lg mr-1" />
+                      Edit
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-4">
+            <h2 className="text-white text-2xl font-bold">Audit Trail</h2>
+            <Badge className="inline-flex items-center gap-2 rounded-full bg-[#1a231e] px-3 py-1 text-sm font-medium text-[#9eb7a8] border border-[#3d5245]">
+              <History className="text-base" />
+              Last 30 days
+            </Badge>
+          </div>
+          <div className="overflow-hidden rounded-md border border-[#3d5245] bg-[#1a231e]">
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader className="bg-[#1c2620]">
+                  <TableRow>
+                    <TableHead className="p-4 text-sm font-medium text-white">
+                      Date
+                    </TableHead>
+                    <TableHead className="p-4 text-sm font-medium text-white">
+                      User
+                    </TableHead>
+                    <TableHead className="p-4 text-sm font-medium text-white">
+                      Action
+                    </TableHead>
+                    <TableHead className="p-4 text-sm font-medium text-white">
+                      Details
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody className="divide-y divide-[#3d5245]">
+                  <TableRow className="hover:bg-[#1f2a24] transition-colors">
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      Oct 26, 2023, 3:45 PM
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-white font-medium">
+                      John Doe
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      <Badge className="inline-flex items-center rounded-md bg-primary-900/50 px-2 py-1 text-xs font-medium text-primary-300 ring-1 ring-inset ring-primary-700/50">
+                        ROLE UPDATED
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      Changed 'Viewer' role permissions: Added 'Export Data'
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="hover:bg-[#1f2a24] transition-colors">
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      Oct 25, 2023, 10:12 AM
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-white font-medium">
+                      Jane Smith
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      <Badge className="inline-flex items-center rounded-md bg-blue-900/50 px-2 py-1 text-xs font-medium text-blue-300 ring-1 ring-inset ring-blue-700/50">
+                        ROLE CREATED
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      Created new role: 'Accountant'
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="hover:bg-[#1f2a24] transition-colors">
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      Oct 24, 2023, 5:20 PM
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-white font-medium">
+                      John Doe
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      <Badge className="inline-flex items-center rounded-md bg-red-900/50 px-2 py-1 text-xs font-medium text-red-300 ring-1 ring-inset ring-red-700/50">
+                        ROLE DELETED
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      Deleted role: 'Temporary Staff'
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="hover:bg-[#1f2a24] transition-colors">
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      Oct 23, 2023, 9:00 AM
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-white font-medium">
+                      Admin
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      <Badge className="inline-flex items-center rounded-md bg-primary-900/50 px-2 py-1 text-xs font-medium text-primary-300 ring-1 ring-inset ring-primary-700/50">
+                        PERMISSION ADDED
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="p-4 text-sm text-[#9eb7a8]">
+                      Added 'Manage Users' permission to 'Manager' role
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
