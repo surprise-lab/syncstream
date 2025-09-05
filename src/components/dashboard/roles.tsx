@@ -165,7 +165,7 @@ export function Roles() {
                       John Doe
                     </TableCell>
                     <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      <Badge className="inline-flex items-center rounded-md bg-primary-900/50 px-2 py-1 text-xs font-medium text-primary-300 ring-1 ring-inset ring-primary-700/50">
+                      <Badge className="inline-flex items-center rounded-md bg-green-900/50 px-2 py-1 text-xs font-medium text-green-300 ring-1 ring-inset ring-green-700/50">
                         ROLE UPDATED
                       </Badge>
                     </TableCell>
@@ -213,7 +213,7 @@ export function Roles() {
                       Admin
                     </TableCell>
                     <TableCell className="p-4 text-sm text-[#9eb7a8]">
-                      <Badge className="inline-flex items-center rounded-md bg-primary-900/50 px-2 py-1 text-xs font-medium text-primary-300 ring-1 ring-inset ring-primary-700/50">
+                      <Badge className="inline-flex items-center rounded-md bg-green-900/50 px-2 py-1 text-xs font-medium text-green-300 ring-1 ring-inset ring-green-700/50">
                         PERMISSION ADDED
                       </Badge>
                     </TableCell>
