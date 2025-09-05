@@ -10,141 +10,45 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Search, UserPlus, Pencil, Trash2, Download, Save, ShieldCheck, ShieldOff, LogOut } from 'lucide-react';
-import { Label } from '../ui/label';
-import { Switch } from '../ui/switch';
+import { Search, UserPlus, Pencil, Trash2, Check, X, MoreVert } from 'lucide-react';
 
 const users = [
   {
     name: 'Ethan Harper',
     email: 'ethan.harper@example.com',
     role: 'Admin',
+    lastLogin: '2023-10-27 10:15:32',
     status: 'Active',
-    mfa: 'Enabled',
   },
   {
     name: 'Olivia Bennett',
     email: 'olivia.bennett@example.com',
     role: 'Manager',
+    lastLogin: '2023-10-27 09:45:11',
     status: 'Active',
-    mfa: 'Enabled',
   },
   {
     name: 'Noah Carter',
     email: 'noah.carter@example.com',
     role: 'User',
-    status: 'Inactive',
-    mfa: 'Disabled',
+    lastLogin: '2023-10-25 14:22:01',
+    status: 'Pending',
   },
   {
     name: 'Ava Morgan',
     email: 'ava.morgan@example.com',
     role: 'User',
+    lastLogin: '2023-10-27 09:30:05',
     status: 'Active',
-    mfa: 'Disabled',
   },
   {
     name: 'Liam Foster',
     email: 'liam.foster@example.com',
     role: 'Manager',
-    status: 'Active',
-    mfa: 'Enabled',
+    lastLogin: '2023-10-26 18:05:20',
+    status: 'Suspended',
   },
-];
-
-const activityLogs = [
-  {
-    timestamp: '2023-10-27 10:15:32',
-    user: 'Ethan Harper',
-    action: 'User Login',
-    details: 'Logged in from IP 192.168.1.1',
-  },
-  {
-    timestamp: '2023-10-27 09:45:11',
-    user: 'Olivia Bennett',
-    action: 'Product Updated',
-    details: 'Updated product SKU #12345',
-  },
-  {
-    timestamp: '2023-10-27 09:30:05',
-    user: 'Ava Morgan',
-    action: 'Order Created',
-    details: 'Created new order #9876',
-  },
-  {
-    timestamp: '2023-10-26 18:05:20',
-    user: 'Liam Foster',
-    action: 'Settings Changed',
-    details: 'Updated Xero integration settings',
-  },
-  {
-    timestamp: '2023-10-26 17:50:45',
-    user: 'Ethan Harper',
-    action: 'User Logout',
-    details: 'Logged out',
-  },
-];
-
-const auditLogs = [
-    {
-      timestamp: '2023-10-27 11:05:17',
-      user: 'Ethan Harper',
-      action: 'Setting Changed',
-      details: 'Enabled "New user added" alert',
-    },
-    {
-      timestamp: '2023-10-26 18:05:20',
-      user: 'Liam Foster',
-      action: 'Setting Changed',
-      details: 'Disabled "In-App Notifications"',
-    },
-    {
-      timestamp: '2023-10-26 14:22:01',
-      user: 'Ethan Harper',
-      action: 'Setting Changed',
-      details: 'Changed Admin Email Address to "admin@newdomain.com"',
-    },
-    {
-      timestamp: '2023-10-25 09:12:45',
-      user: 'Olivia Bennett',
-      action: 'Setting Changed',
-      details: 'Enabled "Permission changes" alert',
-    },
-  ];
-
-const activeSessions = [
-  {
-    user: 'Ethan Harper',
-    ipAddress: '198.51.100.1',
-    lastSeen: '2 minutes ago',
-    device: 'Chrome on macOS',
-  },
-  {
-    user: 'Olivia Bennett',
-    ipAddress: '203.0.113.25',
-    lastSeen: '1 hour ago',
-    device: 'Firefox on Windows',
-  },
-  {
-    user: 'Ava Morgan',
-    ipAddress: '192.0.2.8',
-    lastSeen: '5 hours ago',
-    device: 'Safari on iPhone',
-  },
-  {
-    user: 'Liam Foster',
-    ipAddress: '198.51.100.10',
-    lastSeen: '1 day ago',
-    device: 'Chrome on macOS',
-  }
 ];
 
 const getStatusBadge = (status: string) => {
@@ -156,13 +60,20 @@ const getStatusBadge = (status: string) => {
           Active
         </Badge>
       );
-    case 'Inactive':
-      return (
-        <Badge className="inline-flex items-center gap-1.5 border-transparent bg-red-900 px-2 py-1 text-xs font-medium text-red-300">
-          <span className="size-1.5 rounded-full bg-red-500"></span>
-          Inactive
-        </Badge>
-      );
+    case 'Pending':
+        return (
+            <Badge className="inline-flex items-center gap-1.5 border-transparent bg-yellow-900 px-2 py-1 text-xs font-medium text-yellow-300">
+                <span className="size-1.5 rounded-full bg-yellow-500"></span>
+                Pending
+            </Badge>
+        );
+    case 'Suspended':
+        return (
+            <Badge className="inline-flex items-center gap-1.5 border-transparent bg-red-900 px-2 py-1 text-xs font-medium text-red-300">
+                <span className="size-1.5 rounded-full bg-red-500"></span>
+                Suspended
+            </Badge>
+        );
     default:
       return <Badge variant="secondary">{status}</Badge>;
   }
@@ -193,88 +104,42 @@ const getRoleBadge = (role: string) => {
   }
 };
 
-const getMfaBadge = (status: string) => {
-    switch (status) {
-      case 'Enabled':
-        return (
-          <Badge className="inline-flex items-center gap-1.5 border-transparent bg-green-900 px-2 py-1 text-xs font-medium text-green-300">
-            <ShieldCheck className="size-3" />
-            Enabled
-          </Badge>
-        );
-      case 'Disabled':
-        return (
-          <Badge className="inline-flex items-center gap-1.5 border-transparent bg-red-900 px-2 py-1 text-xs font-medium text-red-300">
-            <ShieldOff className="size-3" />
-            Disabled
-          </Badge>
-        );
-      default:
-        return <Badge variant="secondary">{status}</Badge>;
-    }
-  };
-
-const getActionBadge = (action: string) => {
-  switch (action) {
-    case 'User Login':
-      return <Badge className="bg-green-900 px-2 py-1 text-xs font-medium text-green-300">{action}</Badge>
-    case 'Product Updated':
-        return <Badge className="bg-yellow-900 px-2 py-1 text-xs font-medium text-yellow-300">{action}</Badge>
-    case 'Order Created':
-        return <Badge className="bg-blue-900 px-2 py-1 text-xs font-medium text-blue-300">{action}</Badge>
-    case 'Settings Changed':
-        return <Badge className="bg-purple-900/80 px-2 py-1 text-xs font-medium text-purple-300">{action}</Badge>
-    case 'User Logout':
-        return <Badge className="bg-red-900 px-2 py-1 text-xs font-medium text-red-300">{action}</Badge>
-    default:
-      return <Badge variant="secondary">{action}</Badge>
-  }
-}
-
-const getAuditActionBadge = (action: string) => {
-    switch (action) {
-      case 'Setting Changed':
-        return <Badge className="bg-indigo-900 px-2 py-1 text-xs font-medium text-indigo-300">{action}</Badge>
-      default:
-        return <Badge variant="secondary">{action}</Badge>
-    }
-  }
 
 export function UserManagement() {
   return (
     <main className="flex-1 p-6 bg-gray-900">
-      <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-white">Users</h1>
-        <Button>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-white text-3xl font-bold">User Management</h1>
+        <Button className="bg-green-500 text-gray-900 hover:bg-green-600">
           <UserPlus className="mr-2" />
           Add User
         </Button>
       </div>
       <div className="mb-6">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
           <Input
-            className="w-full rounded-md border-gray-700 bg-gray-800 pl-10 text-white placeholder:text-muted-foreground"
-            placeholder="Search users"
+            className="w-full rounded-md border-gray-700 bg-gray-800 pl-10 text-white placeholder:text-gray-400 focus:ring-green-500 focus:border-green-500"
+            placeholder="Search users by name or email"
             type="text"
           />
         </div>
       </div>
-      <div className="overflow-x-auto rounded-md border border-gray-800 bg-transparent">
+      <div className="overflow-x-auto rounded-lg border border-gray-800">
         <Table>
           <TableHeader className="bg-gray-800 text-xs uppercase tracking-wider">
             <TableRow className="border-gray-800">
               <TableHead className="px-6 py-3">Name</TableHead>
               <TableHead className="px-6 py-3">Email</TableHead>
               <TableHead className="px-6 py-3">Role</TableHead>
-              <TableHead className="px-6 py-3">Status</TableHead>
-              <TableHead className="px-6 py-3">MFA</TableHead>
+              <TableHead className="px-6 py-3">Last Login</TableHead>
+              <TableHead className="px-6 py-3 text-center">Status</TableHead>
               <TableHead className="px-6 py-3 text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody className="divide-y divide-gray-800">
+          <TableBody className="divide-y divide-gray-800 bg-gray-800/50">
             {users.map((user, index) => (
-              <TableRow key={index} className="hover:bg-gray-800 transition-colors border-gray-800">
+              <TableRow key={index} className="hover:bg-gray-800 transition-colors">
                 <TableCell className="whitespace-nowrap px-6 py-4 font-medium text-white">
                   {user.name}
                 </TableCell>
@@ -284,11 +149,11 @@ export function UserManagement() {
                 <TableCell className="px-6 py-4">
                   {getRoleBadge(user.role)}
                 </TableCell>
-                <TableCell className="px-6 py-4">
-                  {getStatusBadge(user.status)}
+                <TableCell className="px-6 py-4 text-muted-foreground">
+                    {user.lastLogin}
                 </TableCell>
-                <TableCell className="px-6 py-4">
-                    {getMfaBadge(user.mfa)}
+                <TableCell className="px-6 py-4 text-center">
+                  {getStatusBadge(user.status)}
                 </TableCell>
                 <TableCell className="px-6 py-4 text-right">
                   <div className="flex justify-end gap-4">
@@ -305,238 +170,85 @@ export function UserManagement() {
           </TableBody>
         </Table>
       </div>
-
-      <div className="mt-8">
-        <h2 className="text-white text-2xl font-bold mb-4">Session Management</h2>
-        <div className="overflow-x-auto rounded-md border border-gray-800 bg-transparent">
-          <Table>
-            <TableHeader className="bg-gray-800 text-xs uppercase tracking-wider">
-              <TableRow className="border-gray-800">
-                <TableHead className="px-6 py-3">User</TableHead>
-                <TableHead className="px-6 py-3">IP Address</TableHead>
-                <TableHead className="px-6 py-3">Last Seen</TableHead>
-                <TableHead className="px-6 py-3">Device</TableHead>
-                <TableHead className="px-6 py-3 text-right">Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody className="divide-y divide-gray-800">
-              {activeSessions.map((session, index) => (
-                <TableRow key={index} className="hover:bg-gray-800 border-gray-800">
-                  <TableCell className="whitespace-nowrap px-6 py-4 font-medium text-white">
-                    {session.user}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-muted-foreground">
-                    {session.ipAddress}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-muted-foreground">
-                    {session.lastSeen}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-muted-foreground">
-                    {session.device}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-right">
-                    <Button variant="destructive" size="sm">
-                      <LogOut className="mr-2 h-4 w-4" />
-                      Revoke
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+      <div className="mt-4 flex justify-between items-center text-sm text-gray-400">
+        <span>Showing 1 to 5 of 20 users</span>
+        <div className="flex items-center gap-1">
+          <Button variant="outline" size="sm" disabled className="disabled:opacity-50">
+            Previous
+          </Button>
+          <Button variant="default" size="sm" className="bg-green-500/20 text-green-400">
+            1
+          </Button>
+          <Button variant="outline" size="sm">
+            2
+          </Button>
+          <Button variant="outline" size="sm">
+            3
+          </Button>
+          <Button variant="outline" size="sm">
+            4
+          </Button>
+          <Button variant="outline" size="sm">
+            Next
+          </Button>
         </div>
       </div>
-
-      <div className="mt-8">
-        <h2 className="text-white text-2xl font-bold mb-4">Multi-Factor Authentication (MFA) Settings</h2>
-        <div className="p-6 rounded-md border border-gray-800 bg-gray-800">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                <div>
-                    <h3 className="text-lg font-semibold text-white mb-4">MFA Policy</h3>
-                    <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                            <Label htmlFor="mfa-enforce">Enforce MFA for all users</Label>
-                            <Switch id="mfa-enforce" defaultChecked />
-                        </div>
-                        <div className="flex items-center justify-between">
-                            <Label htmlFor="mfa-user-choice">Allow users to enable/disable MFA</Label>
-                            <Switch id="mfa-user-choice" />
-                        </div>
+      <div className="mt-10">
+        <div className="flex items-center justify-between mb-4">
+            <h2 className="text-white text-2xl font-bold">Roles &amp; Permissions</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-lg border border-gray-800 bg-gray-800/50">
+                <div className="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 className="text-lg font-semibold text-white">Admin</h3>
+                        <p className="text-sm text-gray-400">Full access to all features</p>
                     </div>
+                    <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white"><MoreVert /></Button>
                 </div>
-                <div>
-                    <h3 className="text-lg font-semibold text-white mb-4">Allowed MFA Methods</h3>
-                    <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                            <Label htmlFor="mfa-app">Authenticator App (TOTP)</Label>
-                            <Switch id="mfa-app" defaultChecked />
-                        </div>
-                        <div className="flex items-center justify-between">
-                            <Label htmlFor="mfa-sms">SMS Text Message</Label>
-                            <Switch id="mfa-sms" defaultChecked />
-                        </div>
-                        <div className="flex items-center justify-between">
-                            <Label htmlFor="mfa-email">Email Code</Label>
-                            <Switch id="mfa-email" />
-                        </div>
-                    </div>
+                <div className="space-y-2">
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><Check className="text-green-400 size-4" /> Manage Users &amp; Roles</p>
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><Check className="text-green-400 size-4" /> Configure Settings</p>
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><Check className="text-green-400 size-4" /> View &amp; Manage All Orders</p>
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><Check className="text-green-400 size-4" /> Full API Access</p>
                 </div>
             </div>
-            <div className="mt-8 flex justify-end">
-                <Button>
-                    <Save className="mr-2" />
-                    Save MFA Settings
-                </Button>
+            <div className="p-6 rounded-lg border border-gray-800 bg-gray-800/50">
+                <div className="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 className="text-lg font-semibold text-white">Manager</h3>
+                        <p className="text-sm text-gray-400">Can manage products and orders</p>
+                    </div>
+                    <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white"><MoreVert /></Button>
+                </div>
+                <div className="space-y-2">
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><Check className="text-green-400 size-4" /> View &amp; Manage All Orders</p>
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><Check className="text-green-400 size-4" /> View &amp; Manage Products</p>
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><X className="text-red-400 size-4" /> Manage Users &amp; Roles</p>
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><X className="text-red-400 size-4" /> Configure Settings</p>
+                </div>
+            </div>
+            <div className="p-6 rounded-lg border border-gray-800 bg-gray-800/50">
+                <div className="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 className="text-lg font-semibold text-white">User</h3>
+                        <p className="text-sm text-gray-400">Can view orders and products</p>
+                    </div>
+                    <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white"><MoreVert /></Button>
+                </div>
+                <div className="space-y-2">
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><Check className="text-green-400 size-4" /> View Own Orders</p>
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><Check className="text-green-400 size-4" /> View Products</p>
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><X className="text-red-400 size-4" /> Manage Users &amp; Roles</p>
+                    <p className="text-sm text-gray-300 flex items-center gap-2"><X className="text-red-400 size-4" /> Configure Settings</p>
+                </div>
             </div>
         </div>
-      </div>
-
-      <div className="mt-8">
-        <h2 className="text-white text-2xl font-bold mb-4">Admin Notification Settings</h2>
-        <div className="p-6 rounded-md border border-gray-800 bg-gray-800">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 className="text-lg font-semibold text-white mb-4">Alertable Actions</h3>
-                    <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                            <Label htmlFor="failed-login">Failed login attempts</Label>
-                            <Switch id="failed-login" defaultChecked />
-                        </div>
-                        <div className="flex items-center justify-between">
-                            <Label htmlFor="permission-changes">Permission changes</Label>
-                            <Switch id="permission-changes" defaultChecked />
-                        </div>
-                        <div className="flex items-center justify-between">
-                            <Label htmlFor="user-added">New user added</Label>
-                            <Switch id="user-added" />
-                        </div>
-                        <div className="flex items-center justify-between">
-                            <Label htmlFor="user-removed">User removed</Label>
-                            <Switch id="user-removed" defaultChecked />
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h3 className="text-lg font-semibold text-white mb-4">Notification Methods</h3>
-                    <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                            <Label htmlFor="email-notifications">Email Notifications</Label>
-                            <Switch id="email-notifications" defaultChecked />
-                        </div>
-                        <div className="flex items-center justify-between">
-                            <Label htmlFor="inapp-notifications">In-App Notifications</Label>
-                            <Switch id="inapp-notifications" defaultChecked />
-                        </div>
-                    </div>
-                    <div className="mt-6">
-                        <Label htmlFor="admin-email" className="block text-sm font-medium mb-2">Admin Email Address</Label>
-                        <Input id="admin-email" placeholder="admin@example.com" type="email" className="bg-gray-900" />
-                    </div>
-                </div>
-            </div>
-            <div className="mt-8 flex justify-end">
-                <Button>
-                    <Save />
-                    Save Settings
-                </Button>
-            </div>
-        </div>
-      </div>
-
-      <div className="mt-8">
-        <h2 className="text-white text-2xl font-bold mb-4">Notification Settings Audit Trail</h2>
-        <div className="overflow-x-auto rounded-md border border-gray-800 bg-transparent">
-          <Table>
-            <TableHeader className="bg-gray-800 text-xs uppercase tracking-wider">
-              <TableRow className="border-gray-800">
-                <TableHead className="px-6 py-3">Timestamp</TableHead>
-                <TableHead className="px-6 py-3">User</TableHead>
-                <TableHead className="px-6 py-3">Action</TableHead>
-                <TableHead className="px-6 py-3">Change Details</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody className="divide-y divide-gray-800">
-              {auditLogs.map((log, index) => (
-                <TableRow key={index} className="hover:bg-gray-800 border-gray-800">
-                  <TableCell className="whitespace-nowrap px-6 py-4 text-muted-foreground">
-                    {log.timestamp}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 font-medium text-white whitespace-nowrap">
-                    {log.user}
-                  </TableCell>
-                  <TableCell className="px-6 py-4">
-                    {getAuditActionBadge(log.action)}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-muted-foreground">
-                    {log.details}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-      </div>
-
-      <div className="mt-8">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-            <h2 className="text-white text-2xl font-bold">User Activity Log</h2>
-            <div className="flex flex-col md:flex-row gap-4 mt-4 md:mt-0">
-                <div className="relative flex-grow">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                    <Input
-                        className="w-full md:w-auto rounded-md border-gray-700 bg-gray-800 pl-10 text-white placeholder:text-muted-foreground"
-                        placeholder="Search logs"
-                        type="text"
-                    />
-                </div>
-                <Select>
-                    <SelectTrigger className="w-full md:w-auto rounded-md border-gray-700 bg-gray-800 text-white">
-                        <SelectValue placeholder="Filter by action" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="all">All Actions</SelectItem>
-                        <SelectItem value="login">User Login</SelectItem>
-                        <SelectItem value="logout">User Logout</SelectItem>
-                        <SelectItem value="order-created">Order Created</SelectItem>
-                        <SelectItem value="product-updated">Product Updated</SelectItem>
-                        <SelectItem value="settings-changed">Settings Changed</SelectItem>
-                    </SelectContent>
-                </Select>
-                <Button variant="outline" className="bg-gray-700 border-gray-700">
-                  <Download className="mr-2 h-4 w-4" />
-                  Export
-                </Button>
-            </div>
-        </div>
-        <div className="overflow-x-auto rounded-md border border-gray-800 bg-transparent">
-          <Table>
-            <TableHeader className="bg-gray-800 text-xs uppercase tracking-wider">
-              <TableRow className="border-gray-800">
-                <TableHead className="px-6 py-3">Timestamp</TableHead>
-                <TableHead className="px-6 py-3">User</TableHead>
-                <TableHead className="px-6 py-3">Action</TableHead>
-                <TableHead className="px-6 py-3">Details</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody className="divide-y divide-gray-800">
-              {activityLogs.map((log, index) => (
-                <TableRow key={index} className="hover:bg-gray-800 border-gray-800">
-                  <TableCell className="whitespace-nowrap px-6 py-4 text-muted-foreground">
-                    {log.timestamp}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 font-medium text-white whitespace-nowrap">
-                    {log.user}
-                  </TableCell>
-                  <TableCell className="px-6 py-4">
-                    {getActionBadge(log.action)}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-muted-foreground">
-                    {log.details}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+        <div className="mt-6 flex justify-end">
+            <Button className="bg-gray-700 text-white hover:bg-gray-600">
+                <UserPlus className="mr-2"/>
+                Create New Role
+            </Button>
         </div>
       </div>
     </main>
