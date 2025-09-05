@@ -8,7 +8,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { Plus, Edit, History } from 'lucide-react';
+import { Plus, Edit, History, Copy } from 'lucide-react';
 
 export function Roles() {
   return (
@@ -59,6 +59,13 @@ export function Roles() {
                       variant="ghost"
                       className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
                     >
+                      <Copy className="text-lg mr-1" />
+                      Duplicate
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
+                    >
                       <Edit className="text-lg mr-1" />
                       Edit
                     </Button>
@@ -79,6 +86,13 @@ export function Roles() {
                       variant="ghost"
                       className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
                     >
+                      <Copy className="text-lg mr-1" />
+                      Duplicate
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
+                    >
                       <Edit className="text-lg mr-1" />
                       Edit
                     </Button>
@@ -95,6 +109,13 @@ export function Roles() {
                     20
                   </TableCell>
                   <TableCell className="p-4 text-right">
+                    <Button
+                      variant="ghost"
+                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
+                    >
+                      <Copy className="text-lg mr-1" />
+                      Duplicate
+                    </Button>
                     <Button
                       variant="ghost"
                       className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
