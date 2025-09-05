@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Search, UserPlus, Pencil, Trash2 } from 'lucide-react';
+import { Search, UserPlus, Pencil, Trash2, Download } from 'lucide-react';
 
 const users = [
   {
@@ -140,7 +140,7 @@ const getActionBadge = (action: string) => {
     case 'Order Created':
         return <Badge className="bg-blue-900 text-blue-300">{action}</Badge>
     case 'Settings Changed':
-        return <Badge className="bg-purple-900 text-purple-300">{action}</Badge>
+        return <Badge className="bg-purple-900/80 text-purple-300">{action}</Badge>
     case 'User Logout':
         return <Badge className="bg-red-900 text-red-300">{action}</Badge>
     default:
@@ -211,40 +211,35 @@ export function UserManagement() {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-white text-2xl font-bold mb-4">User Activity Log</h2>
-        <div className="flex flex-col md:flex-row gap-4 mb-4">
-          <div className="relative flex-grow">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              className="w-full rounded-md border-border bg-card pl-10 text-white placeholder:text-muted-foreground"
-              placeholder="Search logs by user or action"
-              type="text"
-            />
-          </div>
-          <div className="flex gap-4">
-            <Select>
-              <SelectTrigger className="w-full md:w-auto rounded-md border-border bg-card text-white">
-                <SelectValue placeholder="Filter by user" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Users</SelectItem>
-                {users.map(user => <SelectItem key={user.email} value={user.name}>{user.name}</SelectItem>)}
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger className="w-full md:w-auto rounded-md border-border bg-card text-white">
-                <SelectValue placeholder="Filter by action" />
-              </SelectTrigger>
-              <SelectContent>
-                 <SelectItem value="all">All Actions</SelectItem>
-                 <SelectItem value="login">User Login</SelectItem>
-                 <SelectItem value="logout">User Logout</SelectItem>
-                 <SelectItem value="order-created">Order Created</SelectItem>
-                 <SelectItem value="product-updated">Product Updated</SelectItem>
-                 <SelectItem value="settings-changed">Settings Changed</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h2 className="text-white text-2xl font-bold">User Activity Log</h2>
+            <div className="flex flex-col md:flex-row gap-4 mt-4 md:mt-0">
+                <div className="relative flex-grow">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                    <Input
+                        className="w-full md:w-auto rounded-md border-border bg-card pl-10 text-white placeholder:text-muted-foreground"
+                        placeholder="Search logs"
+                        type="text"
+                    />
+                </div>
+                <Select>
+                    <SelectTrigger className="w-full md:w-auto rounded-md border-border bg-card text-white">
+                        <SelectValue placeholder="Filter by action" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="all">All Actions</SelectItem>
+                        <SelectItem value="login">User Login</SelectItem>
+                        <SelectItem value="logout">User Logout</SelectItem>
+                        <SelectItem value="order-created">Order Created</SelectItem>
+                        <SelectItem value="product-updated">Product Updated</SelectItem>
+                        <SelectItem value="settings-changed">Settings Changed</SelectItem>
+                    </SelectContent>
+                </Select>
+                <Button variant="outline">
+                  <Download className="mr-2 h-4 w-4" />
+                  Export
+                </Button>
+            </div>
         </div>
         <div className="overflow-x-auto rounded-md border border-border bg-card">
           <Table>
