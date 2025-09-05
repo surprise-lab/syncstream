@@ -1,3 +1,6 @@
+
+'use client';
+
 import { Button } from '@/components/ui/button';
 import {
   Table,
@@ -8,9 +11,21 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { Plus, Edit, History, Copy } from 'lucide-react';
+import { Plus, Edit, History, Copy, Calendar as CalendarIcon, Search } from 'lucide-react';
+import * as React from 'react';
+import { DateRange } from 'react-day-picker';
+import { addDays, format } from 'date-fns';
+import { cn } from '@/lib/utils';
+import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
+import { Input } from '../ui/input';
 
 export function Roles() {
+  const [date, setDate] = React.useState<DateRange | undefined>({
+    from: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
+    to: new Date(),
+  });
+
   return (
     <main className="flex-1 px-10 py-8">
       <div className="mx-auto max-w-5xl">
@@ -131,14 +146,52 @@ export function Roles() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <h2 className="text-white text-2xl font-bold">Audit Trail</h2>
-              <Badge className="inline-flex items-center gap-2 rounded-full bg-[#1a231e] px-3 py-1 text-sm font-medium text-[#9eb7a8] border border-[#3d5245]">
-                <History className="text-base" />
-                Last 30 days
-              </Badge>
+            <h2 className="text-white text-2xl font-bold">Audit Trail</h2>
+            <div className="flex items-center gap-2">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input placeholder="Filter by user..." className="pl-9 bg-card border-border h-9" />
+              </div>
+
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    id="date"
+                    variant={'outline'}
+                    className={cn(
+                      'w-[260px] justify-start text-left font-normal bg-card border-border hover:bg-accent h-9',
+                      !date && 'text-muted-foreground'
+                    )}
+                  >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {date?.from ? (
+                      date.to ? (
+                        <>
+                          {format(date.from, 'LLL dd, y')} -{' '}
+                          {format(date.to, 'LLL dd, y')}
+                        </>
+                      ) : (
+                        format(date.from, 'LLL dd, y')
+                      )
+                    ) : (
+                      <span>Pick a date</span>
+                    )}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="end">
+                  <Calendar
+                    initialFocus
+                    mode="range"
+                    defaultMonth={date?.from}
+                    selected={date}
+                    onSelect={setDate}
+                    numberOfMonths={2}
+                  />
+                </PopoverContent>
+              </Popover>
+
+              <Button variant="outline">Export</Button>
             </div>
-            <Button variant="outline">Export</Button>
           </div>
           <div className="space-y-4 font-code">
             <div className="flex flex-col gap-4 rounded-md border border-[#3d5245] bg-[#1a231e] p-4">
