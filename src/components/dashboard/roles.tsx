@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -10,10 +9,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Plus, Edit, Filter, FileDown } from 'lucide-react';
+import { Plus, Edit, Filter, FileDown, Search } from 'lucide-react';
 import * as React from 'react';
+import { Input } from '../ui/input';
 
-const auditLogs = [
+const auditLogsData = [
   {
     timestamp: '2023-10-26 15:45:12',
     user: 'john.doe@example.com',
@@ -48,6 +48,18 @@ const auditLogs = [
 
 
 export function Roles() {
+  const [searchTerm, setSearchTerm] = React.useState('');
+
+  const filteredAuditLogs = auditLogsData.filter((log) => {
+    const searchTermLower = searchTerm.toLowerCase();
+    return (
+      log.user.toLowerCase().includes(searchTermLower) ||
+      log.action.toLowerCase().includes(searchTermLower) ||
+      log.details.toLowerCase().includes(searchTermLower) ||
+      log.timestamp.toLowerCase().includes(searchTermLower)
+    );
+  });
+  
   return (
     <main className="flex-1 px-10 py-8">
       <div className="mx-auto max-w-5xl">
@@ -149,6 +161,15 @@ export function Roles() {
           <div className="flex items-center justify-between">
             <h2 className="text-white text-2xl font-bold">Audit Trail</h2>
             <div className="flex items-center gap-2">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Input 
+                  placeholder="Search audit trail..."
+                  className="bg-[#2d3748] border-gray-600 pl-9"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
               <Button
                 variant="outline"
                 className="inline-flex items-center justify-center gap-2 rounded-md bg-[#2d3748] px-3 py-1.5 text-sm font-medium text-gray-300 border border-gray-600 hover:bg-gray-600 transition-colors"
@@ -183,7 +204,7 @@ export function Roles() {
                   </TableRow>
                 </TableHeader>
                 <TableBody className="divide-y divide-gray-700">
-                  {auditLogs.map((log, index) => (
+                  {filteredAuditLogs.map((log, index) => (
                     <TableRow key={index} className="hover:bg-gray-700/40 transition-colors">
                       <TableCell className="p-4 text-sm text-gray-400">
                         {log.timestamp}
