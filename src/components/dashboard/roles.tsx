@@ -10,22 +10,44 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
-import { Plus, Edit, History, Copy, Calendar as CalendarIcon, Search } from 'lucide-react';
+import { Plus, Edit, Filter, FileDown } from 'lucide-react';
 import * as React from 'react';
-import { DateRange } from 'react-day-picker';
-import { addDays, format } from 'date-fns';
-import { cn } from '@/lib/utils';
-import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
-import { Calendar } from '@/components/ui/calendar';
-import { Input } from '../ui/input';
+
+const auditLogs = [
+  {
+    timestamp: '2023-10-26 15:45:12',
+    user: 'john.doe@example.com',
+    action: 'Role Update',
+    details: "Role 'Manager' permissions changed from 'Read, Write' to 'Read, Write, Delete'.",
+  },
+  {
+    timestamp: '2023-10-25 10:12:34',
+    user: 'jane.smith@example.com',
+    action: 'Role Creation',
+    details: "New role 'Accountant' created with 'Read-only' access to Accounting.",
+  },
+  {
+    timestamp: '2023-10-24 17:20:05',
+    user: 'john.doe@example.com',
+    action: 'Role Deletion',
+    details: "Role 'Temporary Staff' was deleted.",
+  },
+  {
+    timestamp: '2023-10-23 09:00:51',
+    user: 'admin@example.com',
+    action: 'User Assignment',
+    details: "User 'test@example.com' assigned to role 'Viewer'.",
+  },
+    {
+    timestamp: '2023-10-22 11:30:18',
+    user: 'susan.adams@example.com',
+    action: 'Permission Change',
+    details: "Permission 'Export Data' added to role 'Manager'.",
+  },
+];
+
 
 export function Roles() {
-  const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
-    to: new Date(),
-  });
-
   return (
     <main className="flex-1 px-10 py-8">
       <div className="mx-auto max-w-5xl">
@@ -74,13 +96,6 @@ export function Roles() {
                       variant="ghost"
                       className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
                     >
-                      <Copy className="text-lg mr-1" />
-                      Duplicate
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
-                    >
                       <Edit className="text-lg mr-1" />
                       Edit
                     </Button>
@@ -97,13 +112,6 @@ export function Roles() {
                     10
                   </TableCell>
                   <TableCell className="p-4 text-right">
-                    <Button
-                      variant="ghost"
-                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
-                    >
-                      <Copy className="text-lg mr-1" />
-                      Duplicate
-                    </Button>
                     <Button
                       variant="ghost"
                       className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
@@ -128,13 +136,6 @@ export function Roles() {
                       variant="ghost"
                       className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
                     >
-                      <Copy className="text-lg mr-1" />
-                      Duplicate
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
-                    >
                       <Edit className="text-lg mr-1" />
                       Edit
                     </Button>
@@ -145,124 +146,59 @@ export function Roles() {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center justify-between">
             <h2 className="text-white text-2xl font-bold">Audit Trail</h2>
             <div className="flex items-center gap-2">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="Filter by user..." className="pl-9 bg-card border-border h-9" />
-              </div>
-
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    id="date"
-                    variant={'outline'}
-                    className={cn(
-                      'w-[260px] justify-start text-left font-normal bg-card border-border hover:bg-accent h-9',
-                      !date && 'text-muted-foreground'
-                    )}
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {date?.from ? (
-                      date.to ? (
-                        <>
-                          {format(date.from, 'LLL dd, y')} -{' '}
-                          {format(date.to, 'LLL dd, y')}
-                        </>
-                      ) : (
-                        format(date.from, 'LLL dd, y')
-                      )
-                    ) : (
-                      <span>Pick a date</span>
-                    )}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="end">
-                  <Calendar
-                    initialFocus
-                    mode="range"
-                    defaultMonth={date?.from}
-                    selected={date}
-                    onSelect={setDate}
-                    numberOfMonths={2}
-                  />
-                </PopoverContent>
-              </Popover>
-
-              <Button variant="outline">Export</Button>
+              <Button
+                variant="outline"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#2d3748] px-3 py-1.5 text-sm font-medium text-gray-300 border border-gray-600 hover:bg-gray-600 transition-colors"
+              >
+                <Filter className="text-base" /> Filter
+              </Button>
+              <Button
+                variant="outline"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#2d3748] px-3 py-1.5 text-sm font-medium text-gray-300 border border-gray-600 hover:bg-gray-600 transition-colors"
+              >
+                <FileDown className="text-base" /> Export
+              </Button>
             </div>
           </div>
-          <div className="space-y-4 font-code">
-            <div className="flex flex-col gap-4 rounded-md border border-[#3d5245] bg-[#1a231e] p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <span className="text-sm text-white font-medium">
-                    John Doe
-                  </span>
-                  <Badge className="inline-flex items-center rounded-md bg-gray-700 px-2 py-1 text-xs font-medium text-gray-300 ring-1 ring-inset ring-gray-600/50">
-                    ROLE UPDATED
-                  </Badge>
-                </div>
-                <span className="text-sm text-[#9eb7a8]">
-                  Oct 26, 2023, 3:45 PM
-                </span>
-              </div>
-              <p className="text-sm text-[#9eb7a8]">
-                Changed 'Viewer' role permissions: Added 'Export Data'
-              </p>
-            </div>
-            <div className="flex flex-col gap-4 rounded-md border border-[#3d5245] bg-[#1a231e] p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <span className="text-sm text-white font-medium">
-                    Jane Smith
-                  </span>
-                  <Badge className="inline-flex items-center rounded-md bg-gray-700 px-2 py-1 text-xs font-medium text-gray-300 ring-1 ring-inset ring-gray-600/50">
-                    ROLE CREATED
-                  </Badge>
-                </div>
-                <span className="text-sm text-[#9eb7a8]">
-                  Oct 25, 2023, 10:12 AM
-                </span>
-              </div>
-              <p className="text-sm text-[#9eb7a8]">
-                Created new role: 'Accountant'
-              </p>
-            </div>
-            <div className="flex flex-col gap-4 rounded-md border border-[#3d5245] bg-[#1a231e] p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <span className="text-sm text-white font-medium">
-                    John Doe
-                  </span>
-                  <Badge className="inline-flex items-center rounded-md bg-gray-700 px-2 py-1 text-xs font-medium text-gray-300 ring-1 ring-inset ring-gray-600/50">
-                    ROLE DELETED
-                  </Badge>
-                </div>
-                <span className="text-sm text-[#9eb7a8]">
-                  Oct 24, 2023, 5:20 PM
-                </span>
-              </div>
-              <p className="text-sm text-[#9eb7a8]">
-                Deleted role: 'Temporary Staff'
-              </p>
-            </div>
-            <div className="flex flex-col gap-4 rounded-md border border-[#3d5245] bg-[#1a231e] p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <span className="text-sm text-white font-medium">Admin</span>
-                  <Badge className="inline-flex items-center rounded-md bg-gray-700 px-2 py-1 text-xs font-medium text-gray-300 ring-1 ring-inset ring-gray-600/50">
-                    PERMISSION ADDED
-                  </Badge>
-                </div>
-                <span className="text-sm text-[#9eb7a8]">
-                  Oct 23, 2023, 9:00 AM
-                </span>
-              </div>
-              <p className="text-sm text-[#9eb7a8]">
-                Added 'Manage Users' permission to 'Manager' role
-              </p>
+          <div className="overflow-hidden rounded-lg border border-gray-700 bg-gray-800/50">
+            <div className="overflow-x-auto">
+              <Table className="w-full min-w-[600px] text-left">
+                <TableHeader className="bg-gray-700/50">
+                  <TableRow>
+                    <TableHead className="p-4 text-sm font-bold text-gray-300">
+                      Timestamp
+                    </TableHead>
+                    <TableHead className="p-4 text-sm font-bold text-gray-300">
+                      User
+                    </TableHead>
+                    <TableHead className="p-4 text-sm font-bold text-gray-300">
+                      Action
+                    </TableHead>
+                    <TableHead className="p-4 text-sm font-bold text-gray-300">
+                      Details
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody className="divide-y divide-gray-700">
+                  {auditLogs.map((log, index) => (
+                    <TableRow key={index} className="hover:bg-gray-700/40 transition-colors">
+                      <TableCell className="p-4 text-sm text-gray-400">
+                        {log.timestamp}
+                      </TableCell>
+                      <TableCell className="p-4 text-sm text-gray-200 font-medium">
+                        {log.user}
+                      </TableCell>
+                       <TableCell className="p-4 text-sm text-gray-300">
+                        {log.action}
+                      </TableCell>
+                      <TableCell className="p-4 text-sm text-gray-400" dangerouslySetInnerHTML={{ __html: log.details.replace(/'(.*?)'/g, '<span class="font-semibold text-gray-200">\'$1\'</span>') }} />
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
             </div>
           </div>
         </div>

@@ -12,6 +12,7 @@ import {ConnectrLogo} from '@/components/connectr-logo';
 import Link from 'next/link';
 import {Button} from '@/components/ui/button';
 import {Avatar, AvatarImage, AvatarFallback} from '@/components/ui/avatar';
+import { NavLink } from '@/components/layout/nav-link';
 
 export default function DashboardLayout({
   children,
@@ -40,21 +41,21 @@ export default function DashboardLayout({
             </h2>
           </div>
           <nav className="flex items-center gap-6 text-sm font-medium text-gray-300">
-            <Link className="hover:text-white transition-colors" href="/dashboard">
+            <NavLink href="/dashboard">
               Dashboard
-            </Link>
-            <Link className="hover:text-white transition-colors" href="/dashboard/orders">
+            </NavLink>
+            <NavLink href="/dashboard/orders">
               Orders
-            </Link>
-            <Link className="hover:text-white transition-colors" href="/dashboard/products">
+            </NavLink>
+            <NavLink href="/dashboard/products">
               Products
-            </Link>
-            <Link className="hover:text-white transition-colors" href="/dashboard/roles">
-              Roles
-            </Link>
-            <Link className="text-white" href="/dashboard/settings">
+            </NavLink>
+            <NavLink href="/dashboard/roles">
+              Accounting
+            </NavLink>
+            <NavLink href="/dashboard/settings">
               Settings
-            </Link>
+            </NavLink>
           </nav>
           <div className="flex items-center gap-4">
             <Button
