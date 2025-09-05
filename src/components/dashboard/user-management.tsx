@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Search, UserPlus, Pencil, Trash2, Download, Save } from 'lucide-react';
+import { Search, UserPlus, Pencil, Trash2, Download, Save, ShieldCheck, ShieldOff } from 'lucide-react';
 import { Label } from '../ui/label';
 import { Switch } from '../ui/switch';
 
@@ -27,30 +27,35 @@ const users = [
     email: 'ethan.harper@example.com',
     role: 'Admin',
     status: 'Active',
+    mfa: 'Enabled',
   },
   {
     name: 'Olivia Bennett',
     email: 'olivia.bennett@example.com',
     role: 'Manager',
     status: 'Active',
+    mfa: 'Enabled',
   },
   {
     name: 'Noah Carter',
     email: 'noah.carter@example.com',
     role: 'User',
     status: 'Inactive',
+    mfa: 'Disabled',
   },
   {
     name: 'Ava Morgan',
     email: 'ava.morgan@example.com',
     role: 'User',
     status: 'Active',
+    mfa: 'Disabled',
   },
   {
     name: 'Liam Foster',
     email: 'liam.foster@example.com',
     role: 'Manager',
     status: 'Active',
+    mfa: 'Enabled',
   },
 ];
 
@@ -160,6 +165,27 @@ const getRoleBadge = (role: string) => {
   }
 };
 
+const getMfaBadge = (status: string) => {
+    switch (status) {
+      case 'Enabled':
+        return (
+          <Badge className="inline-flex items-center gap-1.5 border-transparent bg-green-900 px-2 py-1 text-xs font-medium text-green-300">
+            <ShieldCheck className="size-3" />
+            Enabled
+          </Badge>
+        );
+      case 'Disabled':
+        return (
+          <Badge className="inline-flex items-center gap-1.5 border-transparent bg-red-900 px-2 py-1 text-xs font-medium text-red-300">
+            <ShieldOff className="size-3" />
+            Disabled
+          </Badge>
+        );
+      default:
+        return <Badge variant="secondary">{status}</Badge>;
+    }
+  };
+
 const getActionBadge = (action: string) => {
   switch (action) {
     case 'User Login':
@@ -214,6 +240,7 @@ export function UserManagement() {
               <TableHead className="px-6 py-3">Email</TableHead>
               <TableHead className="px-6 py-3">Role</TableHead>
               <TableHead className="px-6 py-3">Status</TableHead>
+              <TableHead className="px-6 py-3">MFA</TableHead>
               <TableHead className="px-6 py-3 text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -232,6 +259,9 @@ export function UserManagement() {
                 <TableCell className="px-6 py-4">
                   {getStatusBadge(user.status)}
                 </TableCell>
+                <TableCell className="px-6 py-4">
+                    {getMfaBadge(user.mfa)}
+                </TableCell>
                 <TableCell className="px-6 py-4 text-right">
                   <div className="flex justify-end gap-4">
                     <Button variant="ghost" size="icon" className="h-auto w-auto p-0 text-muted-foreground hover:text-white">
@@ -246,6 +276,50 @@ export function UserManagement() {
             ))}
           </TableBody>
         </Table>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-white text-2xl font-bold mb-4">Multi-Factor Authentication (MFA) Settings</h2>
+        <div className="p-6 rounded-md border border-gray-800 bg-gray-800">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                <div>
+                    <h3 className="text-lg font-semibold text-white mb-4">MFA Policy</h3>
+                    <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                            <Label htmlFor="mfa-enforce">Enforce MFA for all users</Label>
+                            <Switch id="mfa-enforce" defaultChecked />
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <Label htmlFor="mfa-user-choice">Allow users to enable/disable MFA</Label>
+                            <Switch id="mfa-user-choice" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 className="text-lg font-semibold text-white mb-4">Allowed MFA Methods</h3>
+                    <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                            <Label htmlFor="mfa-app">Authenticator App (TOTP)</Label>
+                            <Switch id="mfa-app" defaultChecked />
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <Label htmlFor="mfa-sms">SMS Text Message</Label>
+                            <Switch id="mfa-sms" defaultChecked />
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <Label htmlFor="mfa-email">Email Code</Label>
+                            <Switch id="mfa-email" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="mt-8 flex justify-end">
+                <Button>
+                    <Save className="mr-2" />
+                    Save MFA Settings
+                </Button>
+            </div>
+        </div>
       </div>
 
       <div className="mt-8">
