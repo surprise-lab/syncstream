@@ -1,35 +1,36 @@
 import Link from 'next/link';
-import { Logo } from '@/components/logo';
+import { ConnectrLogo } from '@/components/connectr-logo';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Bell } from 'lucide-react';
 
 export function Header() {
   return (
-    <header className="flex items-center justify-between whitespace-nowrap border-b border-border px-10 py-3">
+    <header className="flex items-center justify-between whitespace-nowrap border-b border-border px-10 py-4">
       <div className="flex items-center gap-4 text-white">
-        <Logo className="size-8 text-primary" />
-        <h2 className="text-lg font-bold tracking-tight">
-          SyncStream
-        </h2>
+        <ConnectrLogo className="size-6 text-primary" />
+        <h1 className="text-xl font-bold">Connectr</h1>
       </div>
-      <div className="flex flex-1 items-center justify-end gap-2">
-        <nav className="hidden items-center gap-1 md:flex">
-          <Button variant="ghost" asChild className="rounded-full">
-            <Link href="#">Dashboard</Link>
-          </Button>
-          <Button variant="ghost" asChild className="rounded-full">
-            <Link href="#">Settings</Link>
-          </Button>
-          <Button variant="ghost" asChild className="rounded-full">
-            <Link href="#">Support</Link>
-          </Button>
-        </nav>
-        <div className="ml-6">
-          <Avatar>
-            <AvatarImage src="https://picsum.photos/40/40" alt="User avatar" data-ai-hint="person face" />
-            <AvatarFallback>U</AvatarFallback>
-          </Avatar>
-        </div>
+      <nav className="hidden items-center gap-8 md:flex">
+        <Button variant="link" asChild className="text-sm font-medium text-muted-foreground">
+          <Link href="/dashboard">Dashboard</Link>
+        </Button>
+        <Button variant="link" asChild className="text-sm font-medium">
+          <Link href="#">Integrations</Link>
+        </Button>
+        <Button variant="link" asChild className="text-sm font-medium text-muted-foreground">
+          <Link href="#">Support</Link>
+        </Button>
+      </nav>
+      <div className="flex items-center gap-4">
+        <Button variant="ghost" size="icon" className="relative">
+          <Bell className="text-muted-foreground" />
+          <span className="absolute right-2 top-2 block h-2 w-2 rounded-full bg-primary"></span>
+        </Button>
+        <Avatar>
+          <AvatarImage src="https://picsum.photos/40/40" alt="User avatar" data-ai-hint="person face" />
+          <AvatarFallback>U</AvatarFallback>
+        </Avatar>
       </div>
     </header>
   );
