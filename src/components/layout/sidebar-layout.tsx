@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import {
   SidebarProvider,
   Sidebar,
-  SidebarHeader,
   SidebarContent,
   SidebarMenu,
   SidebarMenuItem,
@@ -83,14 +82,8 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
               <NavLink href="/dashboard" label="Dashboard" icon={Home} />
               <NavLink href="/dashboard/mapping" label="Mapping" icon={Plug} />
               <NavLink href="/dashboard/rules" label="Rules" icon={ListBullets} />
-               <a className="flex items-center gap-3 px-4 py-2 text-muted-foreground hover:text-white hover:bg-primary/10 rounded-full transition-colors" href="#">
-                <FileText className="size-5" />
-                <span className="text-sm font-medium">Logs</span>
-              </a>
-               <a className="flex items-center gap-3 px-4 py-2 text-muted-foreground hover:text-white hover:bg-primary/10 rounded-full transition-colors" href="#">
-                <Settings className="size-5" />
-                <span className="text-sm font-medium">Settings</span>
-              </a>
+              <NavLink href="/dashboard/logs" label="Logs" icon={FileText} />
+              <NavLink href="/dashboard/settings" label="Settings" icon={Settings} />
             </nav>
           </SidebarContent>
         </Sidebar>
