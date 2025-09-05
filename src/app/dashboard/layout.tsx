@@ -2,7 +2,7 @@
 import { SyncStreamLogo } from '@/components/syncstream-logo';
 import Link from 'next/link';
 import { NavLink } from '@/components/layout/nav-link';
-import { Bell, LayoutDashboard, History, Users, Settings } from 'lucide-react';
+import { Bell, LayoutDashboard, History, Users, Settings, ShieldCheck } from 'lucide-react';
 import Image from 'next/image';
 
 
@@ -33,9 +33,13 @@ export default function DashboardLayout({
                     <LayoutDashboard />
                     <p className="text-sm font-medium">Products</p>
                 </Link>
-                <Link className="flex items-center gap-3 px-3 py-2 text-white bg-green-500/20 rounded-md" href="/dashboard/users">
-                    <Users className="text-green-400" />
-                    <p className="text-sm font-medium text-green-400">Users</p>
+                <Link className="flex items-center gap-3 px-3 py-2 text-gray-300 hover:bg-gray-700 rounded-md" href="/dashboard/users">
+                    <Users />
+                    <p className="text-sm font-medium">Users</p>
+                </Link>
+                <Link className="flex items-center gap-3 px-3 py-2 text-white bg-green-500/20 rounded-md" href="/dashboard/roles">
+                    <ShieldCheck className="text-green-400" />
+                    <p className="text-sm font-medium text-green-400">Roles</p>
                 </Link>
                 <Link className="flex items-center gap-3 px-3 py-2 text-gray-300 hover:bg-gray-700 rounded-md" href="/dashboard/settings">
                     <Settings />
