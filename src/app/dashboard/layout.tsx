@@ -49,8 +49,8 @@ export default function DashboardLayout({
             <Link className="hover:text-white transition-colors" href="/dashboard/products">
               Products
             </Link>
-            <Link className="hover:text-white transition-colors" href="#">
-              Accounting
+            <Link className="hover:text-white transition-colors" href="/dashboard/roles">
+              Roles
             </Link>
             <Link className="text-white" href="/dashboard/settings">
               Settings
