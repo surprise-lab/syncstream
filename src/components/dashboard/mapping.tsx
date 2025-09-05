@@ -23,7 +23,7 @@ export function Mapping() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="flex flex-col gap-6 p-8 bg-card rounded-2xl border border-border">
+          <div className="flex flex-col gap-6 p-8 bg-[#1c2620] rounded-2xl border border-border">
             <div className="flex items-center gap-4">
               <Image
                 alt="Takealot Logo"
@@ -117,7 +117,7 @@ export function Mapping() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-6 p-8 bg-card rounded-2xl border border-border">
+          <div className="flex flex-col gap-6 p-8 bg-[#1c2620] rounded-2xl border border-border">
             <div className="flex items-center gap-4">
               <Image
                 alt="Xero Logo"

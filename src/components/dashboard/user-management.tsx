@@ -188,7 +188,7 @@ const getAuditActionBadge = (action: string) => {
 
 export function UserManagement() {
   return (
-    <main className="flex-1 p-6">
+    <main className="flex-1 p-6 bg-gray-900">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-3xl font-bold text-white">Users</h1>
         <Button>
@@ -200,16 +200,16 @@ export function UserManagement() {
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <Input
-            className="w-full rounded-md border-border bg-card pl-10 text-white placeholder:text-muted-foreground"
+            className="w-full rounded-md border-gray-700 bg-gray-800 pl-10 text-white placeholder:text-muted-foreground"
             placeholder="Search users"
             type="text"
           />
         </div>
       </div>
-      <div className="overflow-x-auto rounded-md border border-border bg-card">
+      <div className="overflow-x-auto rounded-md border border-gray-800 bg-transparent">
         <Table>
-          <TableHeader className="bg-muted/30 text-xs uppercase tracking-wider">
-            <TableRow>
+          <TableHeader className="bg-gray-800 text-xs uppercase tracking-wider">
+            <TableRow className="border-gray-800">
               <TableHead className="px-6 py-3">Name</TableHead>
               <TableHead className="px-6 py-3">Email</TableHead>
               <TableHead className="px-6 py-3">Role</TableHead>
@@ -217,9 +217,9 @@ export function UserManagement() {
               <TableHead className="px-6 py-3 text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody className="divide-y divide-border">
+          <TableBody className="divide-y divide-gray-800">
             {users.map((user, index) => (
-              <TableRow key={index} className="hover:bg-muted/30">
+              <TableRow key={index} className="hover:bg-gray-800 transition-colors border-gray-800">
                 <TableCell className="whitespace-nowrap px-6 py-4 font-medium text-white">
                   {user.name}
                 </TableCell>
@@ -250,7 +250,7 @@ export function UserManagement() {
 
       <div className="mt-8">
         <h2 className="text-white text-2xl font-bold mb-4">Admin Notification Settings</h2>
-        <div className="p-6 rounded-md border border-border bg-card">
+        <div className="p-6 rounded-md border border-gray-800 bg-gray-800">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-lg font-semibold text-white mb-4">Alertable Actions</h3>
@@ -287,7 +287,7 @@ export function UserManagement() {
                     </div>
                     <div className="mt-6">
                         <Label htmlFor="admin-email" className="block text-sm font-medium mb-2">Admin Email Address</Label>
-                        <Input id="admin-email" placeholder="admin@example.com" type="email" />
+                        <Input id="admin-email" placeholder="admin@example.com" type="email" className="bg-gray-900" />
                     </div>
                 </div>
             </div>
@@ -302,19 +302,19 @@ export function UserManagement() {
 
       <div className="mt-8">
         <h2 className="text-white text-2xl font-bold mb-4">Notification Settings Audit Trail</h2>
-        <div className="overflow-x-auto rounded-md border border-border bg-card">
+        <div className="overflow-x-auto rounded-md border border-gray-800 bg-transparent">
           <Table>
-            <TableHeader className="bg-muted/30 text-xs uppercase tracking-wider">
-              <TableRow>
+            <TableHeader className="bg-gray-800 text-xs uppercase tracking-wider">
+              <TableRow className="border-gray-800">
                 <TableHead className="px-6 py-3">Timestamp</TableHead>
                 <TableHead className="px-6 py-3">User</TableHead>
                 <TableHead className="px-6 py-3">Action</TableHead>
                 <TableHead className="px-6 py-3">Change Details</TableHead>
               </TableRow>
             </TableHeader>
-            <TableBody className="divide-y divide-border">
+            <TableBody className="divide-y divide-gray-800">
               {auditLogs.map((log, index) => (
-                <TableRow key={index} className="hover:bg-muted/30">
+                <TableRow key={index} className="hover:bg-gray-800 border-gray-800">
                   <TableCell className="whitespace-nowrap px-6 py-4 text-muted-foreground">
                     {log.timestamp}
                   </TableCell>
@@ -341,13 +341,13 @@ export function UserManagement() {
                 <div className="relative flex-grow">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                     <Input
-                        className="w-full md:w-auto rounded-md border-border bg-card pl-10 text-white placeholder:text-muted-foreground"
+                        className="w-full md:w-auto rounded-md border-gray-700 bg-gray-800 pl-10 text-white placeholder:text-muted-foreground"
                         placeholder="Search logs"
                         type="text"
                     />
                 </div>
                 <Select>
-                    <SelectTrigger className="w-full md:w-auto rounded-md border-border bg-card text-white">
+                    <SelectTrigger className="w-full md:w-auto rounded-md border-gray-700 bg-gray-800 text-white">
                         <SelectValue placeholder="Filter by action" />
                     </SelectTrigger>
                     <SelectContent>
@@ -359,25 +359,25 @@ export function UserManagement() {
                         <SelectItem value="settings-changed">Settings Changed</SelectItem>
                     </SelectContent>
                 </Select>
-                <Button variant="outline">
+                <Button variant="outline" className="bg-gray-700 border-gray-700">
                   <Download className="mr-2 h-4 w-4" />
                   Export
                 </Button>
             </div>
         </div>
-        <div className="overflow-x-auto rounded-md border border-border bg-card">
+        <div className="overflow-x-auto rounded-md border border-gray-800 bg-transparent">
           <Table>
-            <TableHeader className="bg-muted/30 text-xs uppercase tracking-wider">
-              <TableRow>
+            <TableHeader className="bg-gray-800 text-xs uppercase tracking-wider">
+              <TableRow className="border-gray-800">
                 <TableHead className="px-6 py-3">Timestamp</TableHead>
                 <TableHead className="px-6 py-3">User</TableHead>
                 <TableHead className="px-6 py-3">Action</TableHead>
                 <TableHead className="px-6 py-3">Details</TableHead>
               </TableRow>
             </TableHeader>
-            <TableBody className="divide-y divide-border">
+            <TableBody className="divide-y divide-gray-800">
               {activityLogs.map((log, index) => (
-                <TableRow key={index} className="hover:bg-muted/30">
+                <TableRow key={index} className="hover:bg-gray-800 border-gray-800">
                   <TableCell className="whitespace-nowrap px-6 py-4 text-muted-foreground">
                     {log.timestamp}
                   </TableCell>

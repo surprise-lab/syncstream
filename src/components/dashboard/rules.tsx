@@ -12,7 +12,7 @@ import {
 
 export function Rules() {
   return (
-    <main className="flex-1 p-10 bg-card">
+    <main className="flex-1 p-10 bg-[#141a17]">
       <header className="mb-10">
         <h1 className="text-white text-4xl font-bold">Rules</h1>
         <p className="text-muted-foreground text-base mt-2">
@@ -27,21 +27,22 @@ export function Rules() {
           </h2>
           <form className="space-y-6">
             <div>
-              <Label className="block text-sm font-medium mb-2" htmlFor="rule-name">
+              <Label className="block text-sm text-white font-medium mb-2" htmlFor="rule-name">
                 Rule Name
               </Label>
               <Input
                 id="rule-name"
                 placeholder="e.g., 'Sync High-Value Orders'"
                 type="text"
+                className="bg-[#1c2620] border-[#3d5245] rounded-xl h-12"
               />
             </div>
             <div>
-              <Label className="block text-sm font-medium mb-2" htmlFor="trigger">
+              <Label className="block text-white text-sm font-medium mb-2" htmlFor="trigger">
                 Trigger
               </Label>
               <Select>
-                <SelectTrigger id="trigger">
+                <SelectTrigger id="trigger" className="bg-[#1c2620] border-[#3d5245] rounded-xl h-12">
                   <SelectValue placeholder="New Order Received" />
                 </SelectTrigger>
                 <SelectContent>
@@ -52,11 +53,11 @@ export function Rules() {
               </Select>
             </div>
             <div>
-              <Label className="block text-sm font-medium mb-2" htmlFor="frequency">
+              <Label className="block text-white text-sm font-medium mb-2" htmlFor="frequency">
                 Frequency
               </Label>
               <Select>
-                <SelectTrigger id="frequency">
+                <SelectTrigger id="frequency" className="bg-[#1c2620] border-[#3d5245] rounded-xl h-12">
                   <SelectValue placeholder="Instantly" />
                 </SelectTrigger>
                 <SelectContent>
@@ -68,11 +69,11 @@ export function Rules() {
               </Select>
             </div>
             <div>
-              <Label className="block text-sm font-medium mb-2" htmlFor="conditions">
+              <Label className="block text-white text-sm font-medium mb-2" htmlFor="conditions">
                 Conditions
               </Label>
                <Select>
-                <SelectTrigger id="conditions">
+                <SelectTrigger id="conditions" className="bg-[#1c2620] border-[#3d5245] rounded-xl h-12">
                   <SelectValue placeholder="If Order Total is greater than R1000" />
                 </SelectTrigger>
                 <SelectContent>
@@ -82,7 +83,7 @@ export function Rules() {
                 </SelectContent>
               </Select>
             </div>
-            <Button className="w-full rounded-full" type="submit">
+            <Button className="w-full rounded-full bg-primary text-background hover:bg-primary/90" type="submit">
               Save Rule
             </Button>
           </form>
@@ -92,7 +93,7 @@ export function Rules() {
             Rule Templates
           </h2>
           <div className="space-y-4">
-            <div className="bg-card p-4 rounded-lg flex justify-between items-center">
+            <div className="bg-[#1c2620] p-4 rounded-lg flex justify-between items-center">
               <div>
                 <h3 className="text-white font-semibold">
                   Sync All Orders to Xero
@@ -105,7 +106,7 @@ export function Rules() {
                 Use Template
               </Button>
             </div>
-            <div className="bg-card p-4 rounded-lg flex justify-between items-center">
+            <div className="bg-[#1c2620] p-4 rounded-lg flex justify-between items-center">
               <div>
                 <h3 className="text-white font-semibold">
                   Flag High-Value Orders
@@ -118,7 +119,7 @@ export function Rules() {
                 Use Template
               </Button>
             </div>
-            <div className="bg-card p-4 rounded-lg flex justify-between items-center">
+            <div className="bg-[#1c2620] p-4 rounded-lg flex justify-between items-center">
               <div>
                 <h3 className="text-white font-semibold">
                   Regional Order Sync

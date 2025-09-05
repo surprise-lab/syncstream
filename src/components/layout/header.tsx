@@ -21,7 +21,7 @@ export function Header() {
           <span className="absolute right-2 top-2 block h-2 w-2 rounded-full bg-primary"></span>
         </Button>
         <Avatar>
-          <AvatarImage src="https://picsum.photos/40/40" alt="User avatar" data-ai-hint="person face" />
+          <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3Ov5J2VBIvBhNwSEPtyPWH0HfDK6K-GoPqTXzXFbV8y8ozoX9niNoNd684tgTJVWzhza2h5_HPH7ERTkPsahhXHwWpP89T6fUSlVdmfGyUMdiGUthwATTAmgdLfkSFIG2rf-_AKXx5ZkjzQPP7pIa_mK0NKmlEWawO1-IuVC7gsvakoLcdjX_kpAjZQT_q67r7g_UdFtwWefvPTcjBhp63JHOBt3f4u8NMcqQmF2H7-8SIT53sgYgeVCdCMtrTen6tHIQVmY6dUI" alt="User avatar" data-ai-hint="person face" />
           <AvatarFallback>U</AvatarFallback>
         </Avatar>
       </div>

@@ -15,14 +15,7 @@ import {
   Search,
   CheckCircle2,
   XCircle,
-  MoreHorizontal,
 } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
 
 const logs = [
   {
@@ -127,7 +120,7 @@ export function Logs() {
           </div>
         </div>
 
-        <div className="mt-4 overflow-hidden rounded-xl border border-border bg-card">
+        <div className="mt-4 overflow-hidden rounded-xl border border-border bg-[#1c2620]">
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
