@@ -138,7 +138,7 @@ export function Roles() {
             </Badge>
           </div>
           <div className="overflow-hidden rounded-md border border-[#3d5245] bg-[#1a231e]">
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto font-code">
               <Table>
                 <TableHeader className="bg-[#1c2620]">
                   <TableRow>

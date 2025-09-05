@@ -12,7 +12,7 @@ export default {
       fontFamily: {
         body: ['Public Sans', 'sans-serif'],
         headline: ['Public Sans', 'sans-serif'],
-        code: ['monospace'],
+        code: ['Roboto Mono', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',
