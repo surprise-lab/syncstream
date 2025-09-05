@@ -130,12 +130,15 @@ export function Roles() {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-4">
-            <h2 className="text-white text-2xl font-bold">Audit Trail</h2>
-            <Badge className="inline-flex items-center gap-2 rounded-full bg-[#1a231e] px-3 py-1 text-sm font-medium text-[#9eb7a8] border border-[#3d5245]">
-              <History className="text-base" />
-              Last 30 days
-            </Badge>
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <h2 className="text-white text-2xl font-bold">Audit Trail</h2>
+              <Badge className="inline-flex items-center gap-2 rounded-full bg-[#1a231e] px-3 py-1 text-sm font-medium text-[#9eb7a8] border border-[#3d5245]">
+                <History className="text-base" />
+                Last 30 days
+              </Badge>
+            </div>
+            <Button variant="outline">Export</Button>
           </div>
           <div className="overflow-hidden rounded-md border border-[#3d5245] bg-[#1a231e]">
             <div className="overflow-x-auto font-code">
