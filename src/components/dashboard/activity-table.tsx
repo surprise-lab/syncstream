@@ -7,13 +7,14 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "../ui/button";
+import { Plus } from "lucide-react";
 
 const activities = [
-  { date: "2024-03-15 10:00 AM", activity: "Sales Orders Synced", status: "Success", details: "15 orders synced" },
-  { date: "2024-03-15 09:00 AM", activity: "Inventory Updated", status: "Success", details: "All products updated" },
-  { date: "2024-03-14 05:00 PM", activity: "Payment Records Synced", status: "Success", details: "20 payments synced" },
-  { date: "2024-03-14 01:00 PM", activity: "Customer Data Synced", status: "Warning", details: "10 new customers, 2 duplicates" },
-  { date: "2024-03-13 11:00 AM", activity: "Initial Setup", status: "Error", details: "Connection failed" },
+  { entity: "Sales Invoices", time: "2024-05-21 14:30", status: "Success", records: "42" },
+  { entity: "Product Inventory", time: "2024-05-21 14:00", status: "Success", records: "112" },
+  { entity: "Customer Contacts", time: "2024-05-21 13:30", status: "Warning", records: "5 (2 duplicates found)" },
+  { entity: "Payment Reconciliation", time: "2024-05-21 13:00", status: "Failed", records: "API Timeout" },
 ];
 
 export function ActivityTable() {
@@ -21,35 +22,42 @@ export function ActivityTable() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "Success":
-        return <Badge className="border-transparent bg-green-900/50 text-green-400 hover:bg-green-900/60">Success</Badge>;
+        return <Badge className="inline-flex items-center gap-1.5 rounded-full bg-green-900/50 px-2 py-1 text-xs font-medium text-green-400"><span className="size-1.5 rounded-full bg-green-400"></span>Success</Badge>;
       case "Warning":
-        return <Badge className="border-transparent bg-yellow-900/50 text-yellow-400 hover:bg-yellow-900/60">Warning</Badge>;
-      case "Error":
-        return <Badge className="border-transparent bg-red-900/50 text-red-400 hover:bg-red-900/60">Error</Badge>;
+        return <Badge className="inline-flex items-center gap-1.5 rounded-full bg-yellow-900/50 px-2 py-1 text-xs font-medium text-yellow-400"><span className="size-1.5 rounded-full bg-yellow-400"></span>Warning</Badge>;
+      case "Failed":
+        return <Badge className="inline-flex items-center gap-1.5 rounded-full bg-red-900/50 px-2 py-1 text-xs font-medium text-red-400"><span className="size-1.5 rounded-full bg-red-400"></span>Failed</Badge>;
       default:
         return <Badge variant="secondary">{status}</Badge>;
     }
   };
 
   return (
-    <div className="mt-4 overflow-hidden rounded-2xl border border-border bg-card">
+    <div className="bg-gray-950 border border-gray-800 rounded-xl">
+      <div className="p-6 flex justify-between items-center">
+        <h3 className="text-lg font-semibold text-white">Recent Synchronization Activities</h3>
+        <Button className="bg-primary-600 hover:bg-primary-700 text-white shadow-sm">
+            <Plus className="mr-2 h-4 w-4" />
+            Manual Sync
+        </Button>
+      </div>
       <div className="overflow-x-auto">
         <Table>
-          <TableHeader className="bg-white/5">
-            <TableRow>
-              <TableHead className="uppercase">Date</TableHead>
-              <TableHead className="uppercase">Activity</TableHead>
-              <TableHead className="uppercase">Status</TableHead>
-              <TableHead className="uppercase">Details</TableHead>
+          <TableHeader>
+            <TableRow className="border-b border-gray-800">
+              <TableHead className="text-left text-xs font-medium uppercase tracking-wider text-gray-400">Entity</TableHead>
+              <TableHead className="text-left text-xs font-medium uppercase tracking-wider text-gray-400">Sync Time</TableHead>
+              <TableHead className="text-left text-xs font-medium uppercase tracking-wider text-gray-400">Status</TableHead>
+              <TableHead className="text-left text-xs font-medium uppercase tracking-wider text-gray-400">Records Affected</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody className="divide-y divide-gray-800">
             {activities.map((item, index) => (
               <TableRow key={index}>
-                <TableCell className="whitespace-nowrap text-muted-foreground">{item.date}</TableCell>
-                <TableCell className="whitespace-nowrap">{item.activity}</TableCell>
-                <TableCell className="whitespace-nowrap">{getStatusBadge(item.status)}</TableCell>
-                <TableCell className="whitespace-nowrap text-muted-foreground">{item.details}</TableCell>
+                <TableCell className="whitespace-nowrap text-sm text-gray-300">{item.entity}</TableCell>
+                <TableCell className="whitespace-nowrap text-sm text-gray-300">{item.time}</TableCell>
+                <TableCell className="whitespace-nowrap text-sm">{getStatusBadge(item.status)}</TableCell>
+                <TableCell className={`whitespace-nowrap text-sm ${item.status === 'Failed' ? 'text-red-400 hover:underline cursor-pointer' : 'text-gray-300'}`}>{item.records}</TableCell>
               </TableRow>
             ))}
           </TableBody>

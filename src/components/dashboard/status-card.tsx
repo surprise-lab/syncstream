@@ -1,24 +1,23 @@
 import type { ReactNode } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 interface StatusCardProps {
   icon: ReactNode;
   title: string;
   value: string;
+  bgColor?: string;
 }
 
-export function StatusCard({ icon, title, value }: StatusCardProps) {
+export function StatusCard({ icon, title, value, bgColor }: StatusCardProps) {
   return (
-    <Card className="rounded-2xl bg-card p-6">
-      <CardContent className="flex items-center gap-4 p-0">
-        <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
-          <div className="text-2xl">{icon}</div>
-        </div>
-        <div>
-          <p className="text-sm text-muted-foreground">{title}</p>
-          <p className="text-2xl font-bold text-white">{value}</p>
-        </div>
-      </CardContent>
-    </Card>
+    <div className="bg-gray-950 border border-gray-800 rounded-xl p-6 flex items-center gap-4">
+      <div className={cn("p-3 rounded-full", bgColor)}>
+        <div className="text-3xl">{icon}</div>
+      </div>
+      <div>
+        <p className="text-gray-400 text-sm">{title}</p>
+        <p className="text-white text-xl font-bold">{value}</p>
+      </div>
+    </div>
   );
 }

@@ -1,27 +1,20 @@
-
-
-import Link from 'next/link';
-import { ConnectrLogo } from '@/components/connectr-logo';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Bell } from 'lucide-react';
-import { NavLink } from './nav-link';
 
 export function Header() {
   return (
-    <header className="flex items-center justify-between whitespace-nowrap border-b border-border px-10 py-4">
-      <div className="flex items-center gap-4 text-white md:hidden">
-        <ConnectrLogo className="size-6 text-primary" />
-        <h1 className="text-xl font-bold">Connectr</h1>
+    <header className="flex items-center justify-between p-6 border-b border-gray-800">
+      <div>
+        <h2 className="text-2xl font-bold text-white">Dashboard</h2>
+        <p className="text-gray-400">Welcome back, User!</p>
       </div>
-      <div className="hidden md:flex"></div>
       <div className="flex items-center gap-4">
-        <Button variant="ghost" size="icon" className="relative">
-          <Bell className="text-muted-foreground" />
-          <span className="absolute right-2 top-2 block h-2 w-2 rounded-full bg-primary"></span>
+        <Button variant="ghost" size="icon" className="text-gray-400 hover:bg-gray-800 h-10 w-10">
+          <Bell />
         </Button>
         <Avatar>
-          <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3Ov5J2VBIvBhNwSEPtyPWH0HfDK6K-GoPqTXzXFbV8y8ozoX9niNoNd684tgTJVWzhza2h5_HPH7ERTkPsahhXHwWpP89T6fUSlVdmfGyUMdiGUthwATTAmgdLfkSFIG2rf-_AKXx5ZkjzQPP7pIa_mK0NKmlEWawO1-IuVC7gsvakoLcdjX_kpAjZQT_q67r7g_UdFtwWefvPTcjBhp63JHOBt3f4u8NMcqQmF2H7-8SIT53sgYgeVCdCMtrTen6tHIQVmY6dUI" alt="User avatar" data-ai-hint="person face" />
+          <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0x08xrTMBzIxZunaKJy1YzfNtb4NSs41DpLPnYye01wVs2fY2a0ZZos2D8WNDNJlYDWcJDSJ1LbJ1n-_ZeRjxBXvlUOdN9u-0C2A1nn3b7AV4p1Kj_MjPcPvsgiytTJY5q-F4MiygITlo01_rsyZbUHwfKi0H-IfUD3K8VowHzfFOd5kaLUrcF2yf8_FasBuVrV1HkWMabpKbxXvqoqp79IaYJ2Wbd-Lca67ZHYfR9QPjEUIMXZCamUY138vZvSXM7FC_H6aUKNc" alt="User avatar" data-ai-hint="person face" />
           <AvatarFallback>U</AvatarFallback>
         </Avatar>
       </div>
