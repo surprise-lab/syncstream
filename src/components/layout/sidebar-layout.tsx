@@ -21,7 +21,6 @@ const navItems = [
   { href: '/dashboard/rules', label: 'Rules', icon: ListOrdered },
   { href: '/dashboard/logs', label: 'Logs', icon: FileText },
   { href: '/dashboard/users', label: 'Users', icon: Users },
-  { href: '/dashboard/settings', label: 'Settings', icon: Settings },
 ];
 
 function NavLink({
