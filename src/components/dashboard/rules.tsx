@@ -12,7 +12,7 @@ import {
 
 export function Rules() {
   return (
-    <main className="flex-1 p-10 bg-[#141a17]">
+    <main className="flex-1 p-10 bg-background">
       <header className="mb-10">
         <h1 className="text-white text-4xl font-bold">Rules</h1>
         <p className="text-muted-foreground text-base mt-2">
@@ -21,7 +21,7 @@ export function Rules() {
         </p>
       </header>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        <div className="bg-background p-8 rounded-2xl">
+        <div className="bg-card p-8 rounded-2xl border border-border">
           <h2 className="text-white text-2xl font-bold mb-6">
             Create New Rule
           </h2>
@@ -34,7 +34,7 @@ export function Rules() {
                 id="rule-name"
                 placeholder="e.g., 'Sync High-Value Orders'"
                 type="text"
-                className="bg-[#1c2620] border-[#3d5245] rounded-xl h-12"
+                className="bg-background border-border rounded-xl h-12"
               />
             </div>
             <div>
@@ -42,7 +42,7 @@ export function Rules() {
                 Trigger
               </Label>
               <Select>
-                <SelectTrigger id="trigger" className="bg-[#1c2620] border-[#3d5245] rounded-xl h-12">
+                <SelectTrigger id="trigger" className="bg-background border-border rounded-xl h-12">
                   <SelectValue placeholder="New Order Received" />
                 </SelectTrigger>
                 <SelectContent>
@@ -57,7 +57,7 @@ export function Rules() {
                 Frequency
               </Label>
               <Select>
-                <SelectTrigger id="frequency" className="bg-[#1c2620] border-[#3d5245] rounded-xl h-12">
+                <SelectTrigger id="frequency" className="bg-background border-border rounded-xl h-12">
                   <SelectValue placeholder="Instantly" />
                 </SelectTrigger>
                 <SelectContent>
@@ -73,7 +73,7 @@ export function Rules() {
                 Conditions
               </Label>
                <Select>
-                <SelectTrigger id="conditions" className="bg-[#1c2620] border-[#3d5245] rounded-xl h-12">
+                <SelectTrigger id="conditions" className="bg-background border-border rounded-xl h-12">
                   <SelectValue placeholder="If Order Total is greater than R1000" />
                 </SelectTrigger>
                 <SelectContent>
@@ -83,17 +83,17 @@ export function Rules() {
                 </SelectContent>
               </Select>
             </div>
-            <Button className="w-full rounded-full bg-primary text-background hover:bg-primary/90" type="submit">
+            <Button className="w-full rounded-full bg-primary text-background font-bold py-3 hover:bg-primary/90 transition-colors" type="submit">
               Save Rule
             </Button>
           </form>
         </div>
-        <div className="bg-background p-8 rounded-2xl">
+        <div className="bg-card p-8 rounded-2xl border border-border">
           <h2 className="text-white text-2xl font-bold mb-6">
             Rule Templates
           </h2>
           <div className="space-y-4">
-            <div className="bg-[#1c2620] p-4 rounded-lg flex justify-between items-center">
+            <div className="bg-background p-4 rounded-lg flex justify-between items-center border border-border">
               <div>
                 <h3 className="text-white font-semibold">
                   Sync All Orders to Xero
@@ -102,11 +102,11 @@ export function Rules() {
                   A simple template to get all your orders synced.
                 </p>
               </div>
-              <Button variant="link" className="text-primary">
+              <Button variant="link" className="text-primary hover:text-white font-bold">
                 Use Template
               </Button>
             </div>
-            <div className="bg-[#1c2620] p-4 rounded-lg flex justify-between items-center">
+            <div className="bg-background p-4 rounded-lg flex justify-between items-center border border-border">
               <div>
                 <h3 className="text-white font-semibold">
                   Flag High-Value Orders
@@ -115,11 +115,11 @@ export function Rules() {
                   Automatically tag orders over a certain value.
                 </p>
               </div>
-              <Button variant="link" className="text-primary">
+              <Button variant="link" className="text-primary hover:text-white font-bold">
                 Use Template
               </Button>
             </div>
-            <div className="bg-[#1c2620] p-4 rounded-lg flex justify-between items-center">
+            <div className="bg-background p-4 rounded-lg flex justify-between items-center border border-border">
               <div>
                 <h3 className="text-white font-semibold">
                   Regional Order Sync
@@ -128,7 +128,7 @@ export function Rules() {
                   Sync orders based on customer location.
                 </p>
               </div>
-              <Button variant="link" className="text-primary">
+              <Button variant="link" className="text-primary hover:text-white font-bold">
                 Use Template
               </Button>
             </div>
