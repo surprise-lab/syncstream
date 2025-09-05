@@ -316,7 +316,7 @@ export function UserManagement() {
                     <h3 className="text-lg font-semibold text-white mb-4">Alertable Actions</h3>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <Label htmlFor="failed-login" className="text-gray-300">Failed login attempts</label>
+                        <Label htmlFor="failed-login" className="text-gray-300">Failed login attempts</Label>
                         <Switch id="failed-login" defaultChecked />
                       </div>
                       <div className="flex items-center justify-between">
@@ -324,7 +324,7 @@ export function UserManagement() {
                         <Switch id="permission-changes" defaultChecked />
                       </div>
                       <div className="flex items-center justify-between">
-                        <Label htmlFor="user-added" className="text-gray-300">New user added</label>
+                        <Label htmlFor="user-added" className="text-gray-300">New user added</Label>
                         <Switch id="user-added" />
                       </div>
                       <div className="flex items-center justify-between">
