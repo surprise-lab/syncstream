@@ -200,7 +200,7 @@ export function Roles() {
                   <span className="text-sm text-white font-medium">
                     John Doe
                   </span>
-                  <Badge className="inline-flex items-center rounded-md bg-green-900/50 px-2 py-1 text-xs font-medium text-green-300 ring-1 ring-inset ring-green-700/50">
+                  <Badge className="inline-flex items-center rounded-md bg-gray-700 px-2 py-1 text-xs font-medium text-gray-300 ring-1 ring-inset ring-gray-600/50">
                     ROLE UPDATED
                   </Badge>
                 </div>
@@ -218,7 +218,7 @@ export function Roles() {
                   <span className="text-sm text-white font-medium">
                     Jane Smith
                   </span>
-                  <Badge className="inline-flex items-center rounded-md bg-blue-900/50 px-2 py-1 text-xs font-medium text-blue-300 ring-1 ring-inset ring-blue-700/50">
+                  <Badge className="inline-flex items-center rounded-md bg-gray-700 px-2 py-1 text-xs font-medium text-gray-300 ring-1 ring-inset ring-gray-600/50">
                     ROLE CREATED
                   </Badge>
                 </div>
@@ -236,7 +236,7 @@ export function Roles() {
                   <span className="text-sm text-white font-medium">
                     John Doe
                   </span>
-                  <Badge className="inline-flex items-center rounded-md bg-red-900/50 px-2 py-1 text-xs font-medium text-red-300 ring-1 ring-inset ring-red-700/50">
+                  <Badge className="inline-flex items-center rounded-md bg-gray-700 px-2 py-1 text-xs font-medium text-gray-300 ring-1 ring-inset ring-gray-600/50">
                     ROLE DELETED
                   </Badge>
                 </div>
@@ -252,7 +252,7 @@ export function Roles() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <span className="text-sm text-white font-medium">Admin</span>
-                  <Badge className="inline-flex items-center rounded-md bg-green-900/50 px-2 py-1 text-xs font-medium text-green-300 ring-1 ring-inset ring-green-700/50">
+                  <Badge className="inline-flex items-center rounded-md bg-gray-700 px-2 py-1 text-xs font-medium text-gray-300 ring-1 ring-inset ring-gray-600/50">
                     PERMISSION ADDED
                   </Badge>
                 </div>
