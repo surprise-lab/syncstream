@@ -1,4 +1,5 @@
 
+
 import Link from 'next/link';
 import { ConnectrLogo } from '@/components/connectr-logo';
 import { Button } from '@/components/ui/button';
@@ -9,16 +10,11 @@ import { NavLink } from './nav-link';
 export function Header() {
   return (
     <header className="flex items-center justify-between whitespace-nowrap border-b border-border px-10 py-4">
-      <div className="flex items-center gap-4 text-white">
+      <div className="flex items-center gap-4 text-white md:hidden">
         <ConnectrLogo className="size-6 text-primary" />
         <h1 className="text-xl font-bold">Connectr</h1>
       </div>
-      <nav className="hidden items-center gap-8 md:flex">
-        <NavLink href="/dashboard">Dashboard</NavLink>
-        <NavLink href="/dashboard/mapping">Mapping</NavLink>
-        <NavLink href="#">Integrations</NavLink>
-        <NavLink href="#">Support</NavLink>
-      </nav>
+      <div className="hidden md:flex"></div>
       <div className="flex items-center gap-4">
         <Button variant="ghost" size="icon" className="relative">
           <Bell className="text-muted-foreground" />
