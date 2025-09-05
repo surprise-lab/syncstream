@@ -1,8 +1,10 @@
+
 import Link from 'next/link';
 import { ConnectrLogo } from '@/components/connectr-logo';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Bell } from 'lucide-react';
+import { NavLink } from './nav-link';
 
 export function Header() {
   return (
@@ -12,15 +14,10 @@ export function Header() {
         <h1 className="text-xl font-bold">Connectr</h1>
       </div>
       <nav className="hidden items-center gap-8 md:flex">
-        <Button variant="link" asChild className="text-sm font-medium text-muted-foreground">
-          <Link href="/dashboard">Dashboard</Link>
-        </Button>
-        <Button variant="link" asChild className="text-sm font-medium">
-          <Link href="#">Integrations</Link>
-        </Button>
-        <Button variant="link" asChild className="text-sm font-medium text-muted-foreground">
-          <Link href="#">Support</Link>
-        </Button>
+        <NavLink href="/dashboard">Dashboard</NavLink>
+        <NavLink href="/dashboard/mapping">Mapping</NavLink>
+        <NavLink href="#">Integrations</NavLink>
+        <NavLink href="#">Support</NavLink>
       </nav>
       <div className="flex items-center gap-4">
         <Button variant="ghost" size="icon" className="relative">
