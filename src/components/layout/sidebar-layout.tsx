@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import {
   Home,
   Settings,
-  ListBullets,
+  ListOrdered,
   FileText,
   Plug,
   Users,
@@ -18,7 +18,7 @@ import { cn } from '@/lib/utils';
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: Home },
   { href: '/dashboard/mapping', label: 'Mapping', icon: Plug },
-  { href: '/dashboard/rules', label: 'Rules', icon: ListBullets },
+  { href: '/dashboard/rules', label: 'Rules', icon: ListOrdered },
   { href: '/dashboard/logs', label: 'Logs', icon: FileText },
   { href: '/dashboard/users', label: 'Users', icon: Users },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
