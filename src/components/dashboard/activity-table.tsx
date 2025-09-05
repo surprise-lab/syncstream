@@ -14,7 +14,7 @@ const activities = [
   { entity: "Sales Invoices", time: "2024-05-21 14:30", status: "Success", records: "42" },
   { entity: "Product Inventory", time: "2024-05-21 14:00", status: "Success", records: "112" },
   { entity: "Customer Contacts", time: "2024-05-21 13:30", status: "Warning", records: "5 (2 duplicates found)" },
-  { entity: "Payment Reconciliation", time: "2024-05-21 13:00", status: "Failed", records: "API Timeout" },
+  { entity: "Payment Reconciliation", time: "2024-05-21 13:00", status: "Success", records: "35" },
 ];
 
 export function ActivityTable() {
