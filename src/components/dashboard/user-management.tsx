@@ -11,7 +11,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { Search, UserPlus, Pencil, Trash2, Check, X, MoreVert } from 'lucide-react';
+import { Search, UserPlus, Pencil, Trash2, Check, X, MoreVertical } from 'lucide-react';
 
 const users = [
   {
@@ -204,7 +204,7 @@ export function UserManagement() {
                         <h3 className="text-lg font-semibold text-white">Admin</h3>
                         <p className="text-sm text-gray-400">Full access to all features</p>
                     </div>
-                    <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white"><MoreVert /></Button>
+                    <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white"><MoreVertical /></Button>
                 </div>
                 <div className="space-y-2">
                     <p className="text-sm text-gray-300 flex items-center gap-2"><Check className="text-green-400 size-4" /> Manage Users &amp; Roles</p>
@@ -219,7 +219,7 @@ export function UserManagement() {
                         <h3 className="text-lg font-semibold text-white">Manager</h3>
                         <p className="text-sm text-gray-400">Can manage products and orders</p>
                     </div>
-                    <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white"><MoreVert /></Button>
+                    <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white"><MoreVertical /></Button>
                 </div>
                 <div className="space-y-2">
                     <p className="text-sm text-gray-300 flex items-center gap-2"><Check className="text-green-400 size-4" /> View &amp; Manage All Orders</p>
@@ -234,7 +234,7 @@ export function UserManagement() {
                         <h3 className="text-lg font-semibold text-white">User</h3>
                         <p className="text-sm text-gray-400">Can view orders and products</p>
                     </div>
-                    <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white"><MoreVert /></Button>
+                    <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white"><MoreVertical /></Button>
                 </div>
                 <div className="space-y-2">
                     <p className="text-sm text-gray-300 flex items-center gap-2"><Check className="text-green-400 size-4" /> View Own Orders</p>
