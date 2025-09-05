@@ -20,13 +20,13 @@ export default function DashboardLayout({
           <div className="flex items-center justify-between h-20 border-b border-solid border-border">
             <div className="flex items-center gap-4">
               <SyncStreamLogo className="h-8 w-8 text-primary" />
-              <h1 className="text-white text-2xl font-bold">SyncStream</h1>
+              <h1 className="text-white text-2xl font-bold">SyncLog</h1>
             </div>
             <nav className="hidden md:flex items-center gap-8">
               <NavLink href="/dashboard">Dashboard</NavLink>
-              <NavLink href="/dashboard/orders">Connections</NavLink>
-              <NavLink href="/dashboard/mapping">Mapping</NavLink>
+              <NavLink href="/dashboard/logs">Sync Logs</NavLink>
               <NavLink href="/dashboard/settings">Settings</NavLink>
+              <NavLink href="#">Help</NavLink>
             </nav>
             <div className="flex items-center gap-4">
               <button className="relative text-white hover:text-primary transition-colors duration-300">
@@ -36,7 +36,7 @@ export default function DashboardLayout({
               <div
                 className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
                 style={{
-                  backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3Ov5J2VBIvBhNwSEPtyPWH0HfDK6K-GoPqTXzXFbV8y8ozoX9niNoNd684tgTJVWzhza2h5_HPH7ERTkPsahhXHwWpP89T6fUSlVdmfGyUMdiGUthwATTAmgdLfkSFIG2rf-_AKXx5ZkjzQPP7pIa_mK0NKmlEWawO1-IuVC7gsvakoLcdjX_kpAjZQT_q67r7g_UdFtwWefvPTcjBhp63JHOBt3f4u8NMcqQmF2H7-8SIT53sgYgeVCdCMtrTen6tHIQVmY6dUI")`,
+                  backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvSffiJiA0dJxQ983slUHX4ETTabUDsNh3ABe9pd2wL-15zLPreM9MKNFVhb8A1qenO3BZpRBgiBfQNA3uYyZzhqFsePHZPK_yz_peZXm0MCBmBoWrP05chHd8iV8Du3f5gmSW9rIzNzsbPvxi7taf4U0CFIDi__ikJNE9DLtug_fOZLQeuJzl8elTDk78LNXDooiMWChN-SZsEDEWw6K0j6gOInBA84-MQrDXA1y-wwp8xNJhSX-1kBMPBZXyHVLkoE4yvdvzwE4")`,
                 }}
               ></div>
             </div>
