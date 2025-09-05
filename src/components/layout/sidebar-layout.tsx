@@ -19,6 +19,7 @@ import {
   ListBullets,
   FileText,
   Plug,
+  Users,
 } from 'lucide-react';
 import { ConnectrLogo } from '@/components/connectr-logo';
 import { Button } from '@/components/ui/button';
@@ -83,6 +84,7 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
               <NavLink href="/dashboard/mapping" label="Mapping" icon={Plug} />
               <NavLink href="/dashboard/rules" label="Rules" icon={ListBullets} />
               <NavLink href="/dashboard/logs" label="Logs" icon={FileText} />
+              <NavLink href="/dashboard/users" label="Users" icon={Users} />
               <NavLink href="/dashboard/settings" label="Settings" icon={Settings} />
             </nav>
           </SidebarContent>
