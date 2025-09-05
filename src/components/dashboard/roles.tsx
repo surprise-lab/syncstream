@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { Plus, Edit, Filter, FileDown, Search } from 'lucide-react';
 import * as React from 'react';
 import { Input } from '../ui/input';
@@ -176,12 +183,20 @@ export function Roles() {
               >
                 <Filter className="text-base" /> Filter
               </Button>
-              <Button
-                variant="outline"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#2d3748] px-3 py-1.5 text-sm font-medium text-gray-300 border border-gray-600 hover:bg-gray-600 transition-colors"
-              >
-                <FileDown className="text-base" /> Export
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="inline-flex items-center justify-center gap-2 rounded-md bg-[#2d3748] px-3 py-1.5 text-sm font-medium text-gray-300 border border-gray-600 hover:bg-gray-600 transition-colors"
+                  >
+                    <FileDown className="text-base" /> Export
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>Export as CSV</DropdownMenuItem>
+                  <DropdownMenuItem>Export as JSON</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
           <div className="overflow-hidden rounded-lg border border-gray-700 bg-gray-800/50">
