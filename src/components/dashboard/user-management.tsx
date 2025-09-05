@@ -1,4 +1,5 @@
 
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -17,7 +18,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Search, UserPlus, Pencil, Trash2, Download, Save, ShieldCheck, ShieldOff } from 'lucide-react';
+import { Search, UserPlus, Pencil, Trash2, Download, Save, ShieldCheck, ShieldOff, LogOut } from 'lucide-react';
 import { Label } from '../ui/label';
 import { Switch } from '../ui/switch';
 
@@ -118,6 +119,33 @@ const auditLogs = [
       details: 'Enabled "Permission changes" alert',
     },
   ];
+
+const activeSessions = [
+  {
+    user: 'Ethan Harper',
+    ipAddress: '198.51.100.1',
+    lastSeen: '2 minutes ago',
+    device: 'Chrome on macOS',
+  },
+  {
+    user: 'Olivia Bennett',
+    ipAddress: '203.0.113.25',
+    lastSeen: '1 hour ago',
+    device: 'Firefox on Windows',
+  },
+  {
+    user: 'Ava Morgan',
+    ipAddress: '192.0.2.8',
+    lastSeen: '5 hours ago',
+    device: 'Safari on iPhone',
+  },
+  {
+    user: 'Liam Foster',
+    ipAddress: '198.51.100.10',
+    lastSeen: '1 day ago',
+    device: 'Chrome on macOS',
+  }
+];
 
 const getStatusBadge = (status: string) => {
   switch (status) {
@@ -276,6 +304,47 @@ export function UserManagement() {
             ))}
           </TableBody>
         </Table>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-white text-2xl font-bold mb-4">Session Management</h2>
+        <div className="overflow-x-auto rounded-md border border-gray-800 bg-transparent">
+          <Table>
+            <TableHeader className="bg-gray-800 text-xs uppercase tracking-wider">
+              <TableRow className="border-gray-800">
+                <TableHead className="px-6 py-3">User</TableHead>
+                <TableHead className="px-6 py-3">IP Address</TableHead>
+                <TableHead className="px-6 py-3">Last Seen</TableHead>
+                <TableHead className="px-6 py-3">Device</TableHead>
+                <TableHead className="px-6 py-3 text-right">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody className="divide-y divide-gray-800">
+              {activeSessions.map((session, index) => (
+                <TableRow key={index} className="hover:bg-gray-800 border-gray-800">
+                  <TableCell className="whitespace-nowrap px-6 py-4 font-medium text-white">
+                    {session.user}
+                  </TableCell>
+                  <TableCell className="px-6 py-4 text-muted-foreground">
+                    {session.ipAddress}
+                  </TableCell>
+                  <TableCell className="px-6 py-4 text-muted-foreground">
+                    {session.lastSeen}
+                  </TableCell>
+                  <TableCell className="px-6 py-4 text-muted-foreground">
+                    {session.device}
+                  </TableCell>
+                  <TableCell className="px-6 py-4 text-right">
+                    <Button variant="destructive" size="sm">
+                      <LogOut className="mr-2 h-4 w-4" />
+                      Revoke
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
 
       <div className="mt-8">
