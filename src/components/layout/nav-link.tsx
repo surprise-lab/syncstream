@@ -20,8 +20,8 @@ export function NavLink({ children, ...props }: NavLinkProps) {
       className={cn(
         'relative flex items-center text-sm font-medium transition-colors',
         isActive
-          ? 'text-primary'
-          : 'text-muted-foreground hover:text-foreground',
+          ? 'text-gray-900'
+          : 'text-gray-600 hover:text-gray-900',
       )}
     >
       {children}
