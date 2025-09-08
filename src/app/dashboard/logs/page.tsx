@@ -10,7 +10,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
 import { useState } from 'react';
 
 const alerts = [
@@ -64,32 +63,35 @@ const alerts = [
   },
 ];
 
-const getSeverityBadge = (severity) => {
+const getSeverityBadge = (severity: string) => {
   switch (severity) {
     case 'High':
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-red-500/10 px-2.5 py-1 text-xs font-medium text-red-400">
-          <span className="h-1.5 w-1.5 rounded-full bg-red-500"></span>High
-        </span>
+        <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-red-500">error</span>
+            <span className="font-medium text-red-400">High</span>
+        </div>
       );
     case 'Medium':
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/10 px-2.5 py-1 text-xs font-medium text-orange-400">
-          <span className="h-1.5 w-1.5 rounded-full bg-orange-500"></span>Medium
-        </span>
+        <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-orange-500">warning</span>
+            <span className="font-medium text-orange-400">Medium</span>
+        </div>
       );
     case 'Low':
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 px-2.5 py-1 text-xs font-medium text-blue-400">
-          <span className="h-1.5 w-1.5 rounded-full bg-blue-500"></span>Low
-        </span>
+        <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-blue-500">info</span>
+            <span className="font-medium text-blue-400">Low</span>
+        </div>
       );
     default:
       return null;
   }
 };
 
-const getStatusBadge = (status) => {
+const getStatusBadge = (status: string) => {
   switch (status) {
     case 'Unresolved':
       return (
@@ -146,22 +148,22 @@ export default function AlertsPage() {
             <div className="flex items-center gap-2">
               <Button
                 onClick={() => setActiveTab('All')}
-                variant={activeTab === 'All' ? 'default' : 'ghost'}
-                className="rounded-md px-4 py-2 text-sm font-medium"
+                className={activeTab === 'All' ? "rounded-md bg-slate-700 px-4 py-2 text-sm font-medium text-white hover:bg-slate-600" : "rounded-md px-4 py-2 text-sm font-medium text-gray-400 hover:bg-slate-700 hover:text-white"}
+                variant="ghost"
               >
                 All
               </Button>
               <Button
                 onClick={() => setActiveTab('Unresolved')}
-                variant={activeTab === 'Unresolved' ? 'default' : 'ghost'}
-                className="rounded-md px-4 py-2 text-sm font-medium"
+                className={activeTab === 'Unresolved' ? "rounded-md bg-slate-700 px-4 py-2 text-sm font-medium text-white hover:bg-slate-600" : "rounded-md px-4 py-2 text-sm font-medium text-gray-400 hover:bg-slate-700 hover:text-white"}
+                variant="ghost"
               >
                 Unresolved
               </Button>
               <Button
                 onClick={() => setActiveTab('Resolved')}
-                variant={activeTab === 'Resolved' ? 'default' : 'ghost'}
-                className="rounded-md px-4 py-2 text-sm font-medium"
+                className={activeTab === 'Resolved' ? "rounded-md bg-slate-700 px-4 py-2 text-sm font-medium text-white hover:bg-slate-600" : "rounded-md px-4 py-2 text-sm font-medium text-gray-400 hover:bg-slate-700 hover:text-white"}
+                variant="ghost"
               >
                 Resolved
               </Button>
@@ -243,7 +245,7 @@ export default function AlertsPage() {
                         {getStatusBadge(alert.status)}
                       </TableCell>
                       <TableCell className="px-4 py-3 text-sm">
-                        <Button variant="outline" size="sm">
+                        <Button variant="outline" size="sm" className="rounded-md bg-slate-700/50 px-3 py-1.5 text-xs font-medium text-gray-300 hover:bg-slate-700">
                           View Details
                         </Button>
                       </TableCell>
@@ -260,7 +262,7 @@ export default function AlertsPage() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="inline-flex h-8 w-8 items-center justify-center"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-slate-700 text-gray-400 hover:bg-slate-700 hover:text-white"
                 >
                   <span className="material-symbols-outlined text-lg">
                     chevron_left
@@ -269,21 +271,21 @@ export default function AlertsPage() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="inline-flex h-8 w-8 items-center justify-center bg-primary text-white"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-slate-700 bg-primary-600 text-white"
                 >
                   1
                 </Button>
                 <Button
                   variant="outline"
                   size="icon"
-                  className="inline-flex h-8 w-8 items-center justify-center"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-slate-700 text-gray-400 hover:bg-slate-700 hover:text-white"
                 >
                   2
                 </Button>
                 <Button
                   variant="outline"
                   size="icon"
-                  className="inline-flex h-8 w-8 items-center justify-center"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-slate-700 text-gray-400 hover:bg-slate-700 hover:text-white"
                 >
                   3
                 </Button>
@@ -291,14 +293,14 @@ export default function AlertsPage() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="inline-flex h-8 w-8 items-center justify-center"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-slate-700 text-gray-400 hover:bg-slate-700 hover:text-white"
                 >
                   8
                 </Button>
                 <Button
                   variant="outline"
                   size="icon"
-                  className="inline-flex h-8 w-8 items-center justify-center"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-slate-700 text-gray-400 hover:bg-slate-700 hover:text-white"
                 >
                   <span className="material-symbols-outlined text-lg">
                     chevron_right
@@ -312,3 +314,5 @@ export default function AlertsPage() {
     </>
   );
 }
+
+    
