@@ -15,6 +15,7 @@ import { Badge } from '@/components/ui/badge';
 import { Search, ChevronDown, ChevronRight } from 'lucide-react';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const historyData = [
   {
@@ -232,7 +233,7 @@ export default function HistoryPage() {
                     <TableCell className={cn("whitespace-nowrap px-6 py-4 text-sm", item.recordsFailed > 0 ? 'text-red-400' : 'text-slate-300')}>{item.recordsFailed}</TableCell>
                     <TableCell className="whitespace-nowrap px-6 py-4 text-sm text-slate-300">{item.duration}</TableCell>
                     <td className="whitespace-nowrap px-6 py-4 text-sm font-medium">
-                        <a className="text-primary-500 hover:text-primary-400" href="#">View Logs</a>
+                        <Link className="text-primary-500 hover:text-primary-400" href="/dashboard/history/details">View Logs</Link>
                     </td>
                   </TableRow>
                   <TableRow className="hidden bg-slate-900 peer-checked:table-row">
