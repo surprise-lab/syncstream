@@ -10,7 +10,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from "@/components/ui/badge"
-import { Plus, Edit, ArrowUpDown } from 'lucide-react';
+import { Plus, Edit, ArrowUpDown, Trash2 } from 'lucide-react';
 import * as React from 'react';
 
 const rolesData = [
@@ -84,11 +84,11 @@ const getActionBadge = (action: string) => {
 type SortableKeys = 'timestamp' | 'user' | 'action' | 'details';
 
 export function Roles() {
-  const [sortedAuditLogs, setSortedAuditLogs] = React.useState(auditLogsData);
+  const [auditLogs, setAuditLogs] = React.useState(auditLogsData);
   const [sortConfig, setSortConfig] = React.useState<{ key: SortableKeys; direction: 'ascending' | 'descending' } | null>({ key: 'timestamp', direction: 'descending' });
 
-  React.useEffect(() => {
-    let sortedData = [...auditLogsData];
+  const sortedAuditLogs = React.useMemo(() => {
+    let sortedData = [...auditLogs];
     if (sortConfig !== null) {
       sortedData.sort((a, b) => {
         if (a[sortConfig.key] < b[sortConfig.key]) {
@@ -100,8 +100,8 @@ export function Roles() {
         return 0;
       });
     }
-    setSortedAuditLogs(sortedData);
-  }, [sortConfig]);
+    return sortedData;
+  }, [auditLogs, sortConfig]);
 
   const requestSort = (key: SortableKeys) => {
     let direction: 'ascending' | 'descending' = 'ascending';
@@ -119,6 +119,10 @@ export function Roles() {
       return <ArrowUpDown className="ml-2 h-4 w-4" />;
     }
     return <ArrowUpDown className="ml-2 h-4 w-4" />;
+  };
+
+  const handleClearAll = () => {
+    setAuditLogs([]);
   };
 
   return (
@@ -162,7 +166,12 @@ export function Roles() {
           </div>
         </div>
         <div className="flex flex-col gap-6" style={{ fontFamily: '"Arial", sans-serif' }}>
-          <h2 className="text-2xl font-bold text-gray-900">Audit Trail</h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-gray-900">Audit Trail</h2>
+            <Button variant="destructive" onClick={handleClearAll} disabled={auditLogs.length === 0}>
+              <Trash2 className="mr-2 h-4 w-4" /> Clear All
+            </Button>
+          </div>
           <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
             <div className="overflow-x-auto">
               <Table>
@@ -187,16 +196,24 @@ export function Roles() {
                   </TableRow>
                 </TableHeader>
                 <TableBody className="divide-y divide-gray-200">
-                  {sortedAuditLogs.map((log, index) => (
-                    <TableRow key={index} className="transition-colors hover:bg-gray-50/50">
-                      <TableCell className="p-4 align-top text-base text-gray-500">{log.timestamp}</TableCell>
-                      <TableCell className="p-4 align-top text-base text-gray-800">{log.user}</TableCell>
-                      <TableCell className="p-4 align-top text-base text-gray-800">
-                        {getActionBadge(log.action)}
+                  {sortedAuditLogs.length > 0 ? (
+                    sortedAuditLogs.map((log, index) => (
+                      <TableRow key={index} className="transition-colors hover:bg-gray-50/50">
+                        <TableCell className="p-4 align-top text-base text-gray-500">{log.timestamp}</TableCell>
+                        <TableCell className="p-4 align-top text-base text-gray-800">{log.user}</TableCell>
+                        <TableCell className="p-4 align-top text-base text-gray-800">
+                          {getActionBadge(log.action)}
+                        </TableCell>
+                        <TableCell className="p-4 text-base text-gray-600">{log.details}</TableCell>
+                      </TableRow>
+                    ))
+                  ) : (
+                    <TableRow>
+                      <TableCell colSpan={4} className="p-4 text-center text-gray-500">
+                        No audit trail entries found.
                       </TableCell>
-                      <TableCell className="p-4 text-base text-gray-600">{log.details}</TableCell>
                     </TableRow>
-                  ))}
+                  )}
                 </TableBody>
               </Table>
             </div>
