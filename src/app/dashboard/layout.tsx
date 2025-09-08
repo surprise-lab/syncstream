@@ -26,6 +26,7 @@ import {
   Book,
   FileClock,
   BookCopy,
+  FolderSync,
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -36,9 +37,9 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/dashboard/orders', label: 'Integrations', icon: Webhook },
-  { href: '/dashboard/history', label: 'Activity', icon: FileClock },
-  { href: '/dashboard/docs', label: 'Docs', icon: BookCopy },
+  { href: '/dashboard/orders', label: 'Integrations', icon: FolderSync },
+  { href: '/dashboard/history', label: 'Activity', icon: History },
+  { href: '/dashboard/docs', label: 'Docs', icon: FileText },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
 ];
 

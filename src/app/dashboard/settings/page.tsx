@@ -12,6 +12,22 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Bell, KeyRound } from 'lucide-react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+
+const auditLogs = [
+    { event: 'Updated profile information', user: 'Alex Johnson', date: '2023-10-27 10:00 AM' },
+    { event: 'Revoked API Key "Read-Only Key"', user: 'Alex Johnson', date: '2023-10-26 03:45 PM' },
+    { event: 'Changed password', user: 'Alex Johnson', date: '2023-10-25 09:12 AM' },
+    { event: 'Enabled email notifications', user: 'System', date: '2023-10-24 02:00 PM' },
+    { event: 'Generated new API Key', user: 'Alex Johnson', date: '2023-10-23 11:30 AM' },
+];
 
 export default function SettingsPage() {
   return (
@@ -37,8 +53,7 @@ export default function SettingsPage() {
         </div>
       </header>
       <div className="flex-1 p-10 overflow-y-auto">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-1">
               <h2 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">
                 Profile
@@ -286,6 +301,38 @@ export default function SettingsPage() {
                   <span className="truncate">Change Password</span>
                 </Button>
               </div>
+            </div>
+          </div>
+          <div className="my-10 border-t border-gray-800"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <div className="lg:col-span-1">
+                <h2 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Audit Log</h2>
+                <p className="text-gray-400 mt-1">View a log of all changes made to your settings.</p>
+            </div>
+            <div className="lg:col-span-2 space-y-4">
+                <div className="overflow-x-auto rounded-md border border-gray-800">
+                    <Table>
+                        <TableHeader>
+                            <TableRow className="bg-[#1a2632]">
+                                <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Event</TableHead>
+                                <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">User</TableHead>
+                                <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Date</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody className="bg-[#111a22] divide-y divide-gray-800">
+                            {auditLogs.map((log, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-white">{log.event}</TableCell>
+                                    <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{log.user}</TableCell>
+                                    <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{log.date}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+                <div className="flex justify-end">
+                    <Button variant="outline" className="bg-transparent border-gray-600 text-gray-300 hover:bg-gray-700">View More</Button>
+                </div>
             </div>
           </div>
         </div>
