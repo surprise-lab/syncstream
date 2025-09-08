@@ -1,4 +1,3 @@
-
 'use client';
 
 import {
@@ -25,6 +24,8 @@ import {
   Webhook,
   Activity,
   Book,
+  FileClock,
+  BookCopy,
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -36,8 +37,8 @@ import { cn } from '@/lib/utils';
 const navLinks = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/dashboard/orders', label: 'Integrations', icon: Webhook },
-  { href: '/dashboard/history', label: 'Activity', icon: Activity },
-  { href: '/dashboard/docs', label: 'Docs', icon: Book },
+  { href: '/dashboard/history', label: 'Activity', icon: FileClock },
+  { href: '/dashboard/docs', label: 'Docs', icon: BookCopy },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
 ];
 

@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Bell } from 'lucide-react';
+import { Bell, KeyRound } from 'lucide-react';
 
 export default function SettingsPage() {
   return (
@@ -92,6 +92,52 @@ export default function SettingsPage() {
               <div className="flex justify-start">
                 <Button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-5 bg-blue-600 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-700 transition-colors">
                   <span className="truncate">Update Profile</span>
+                </Button>
+              </div>
+            </div>
+          </div>
+          <div className="my-10 border-t border-gray-800"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <div className="lg:col-span-1">
+              <h2 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">
+                API Keys
+              </h2>
+              <p className="text-gray-400 mt-1">
+                Manage your API keys for programmatic access.
+              </p>
+            </div>
+            <div className="lg:col-span-2 space-y-6">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-4 bg-[#1a2632] rounded-md">
+                  <div className="flex items-center gap-4">
+                    <KeyRound className="text-gray-400" />
+                    <div>
+                      <p className="text-white font-medium">Main API Key</p>
+                      <p className="text-gray-400 text-sm">ss_live_********************abcd</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button variant="outline" size="sm" className="bg-transparent border-gray-600 text-gray-300 hover:bg-gray-700">View</Button>
+                    <Button variant="outline" size="sm" className="border-red-500/50 text-red-400 hover:bg-red-500/10 hover:text-red-400">Revoke</Button>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between p-4 bg-[#1a2632] rounded-md">
+                  <div className="flex items-center gap-4">
+                    <KeyRound className="text-gray-400" />
+                    <div>
+                      <p className="text-white font-medium">Read-Only Key</p>
+                      <p className="text-gray-400 text-sm">ss_ro_live_********************efgh</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button variant="outline" size="sm" className="bg-transparent border-gray-600 text-gray-300 hover:bg-gray-700">View</Button>
+                    <Button variant="outline" size="sm" className="border-red-500/50 text-red-400 hover:bg-red-500/10 hover:text-red-400">Revoke</Button>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-start">
+                <Button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-5 bg-blue-600 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-700 transition-colors">
+                  <span className="truncate">Generate New Key</span>
                 </Button>
               </div>
             </div>
@@ -245,5 +291,6 @@ export default function SettingsPage() {
         </div>
       </div>
     </div>
-  );
-}
+</main>
+</div>
+</body></html>
