@@ -10,7 +10,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from "@/components/ui/badge"
-import { Plus, Edit, ArrowUpDown, Trash2, Pencil, UserPlus, PlusCircle, UserMinus, ShieldAlert } from 'lucide-react';
+import { Plus, Edit } from 'lucide-react';
 import * as React from 'react';
 
 const rolesData = [
@@ -67,66 +67,24 @@ const auditLogsData = [
 const getActionBadge = (action: string) => {
     switch (action) {
       case 'Role Updated':
-        return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100"><Pencil className="mr-1 h-3 w-3" />Role Updated</Badge>;
+        return <Badge className="bg-blue-900/50 text-blue-300 hover:bg-blue-900/50">Role Updated</Badge>;
       case 'User Assigned to Role':
-        return <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-100"><UserPlus className="mr-1 h-3 w-3" />User Assigned</Badge>;
+        return <Badge className="bg-indigo-900/50 text-indigo-300 hover:bg-indigo-900/50">User Assigned to Role</Badge>;
       case 'Role Created':
-        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100"><PlusCircle className="mr-1 h-3 w-3" />Role Created</Badge>;
+        return <Badge className="bg-green-900/50 text-green-300 hover:bg-green-900/50">Role Created</Badge>;
       case 'Role Deleted':
-        return <Badge className="bg-red-100 text-red-800 hover:bg-red-100"><Trash2 className="mr-1 h-3 w-3" />Role Deleted</Badge>;
+        return <Badge className="bg-red-900/50 text-red-300 hover:bg-red-900/50">Role Deleted</Badge>;
       case 'User Removed from Role':
-        return <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100"><UserMinus className="mr-1 h-3 w-3" />User Removed</Badge>;
+        return <Badge className="bg-purple-900/50 text-purple-300 hover:bg-purple-900/50">User Removed from Role</Badge>;
       default:
-        return <Badge variant="secondary"><ShieldAlert className="mr-1 h-3 w-3" />{action}</Badge>;
+        return <Badge variant="secondary">{action}</Badge>;
     }
 }
 
-type SortableKeys = 'timestamp' | 'user' | 'action' | 'details';
 
-export function Roles() {
-  const [auditLogs, setAuditLogs] = React.useState(auditLogsData);
-  const [sortConfig, setSortConfig] = React.useState<{ key: SortableKeys; direction: 'ascending' | 'descending' } | null>({ key: 'timestamp', direction: 'descending' });
-
-  const sortedAuditLogs = React.useMemo(() => {
-    let sortedData = [...auditLogs];
-    if (sortConfig !== null) {
-      sortedData.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? -1 : 1;
-        }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? 1 : -1;
-        }
-        return 0;
-      });
-    }
-    return sortedData;
-  }, [auditLogs, sortConfig]);
-
-  const requestSort = (key: SortableKeys) => {
-    let direction: 'ascending' | 'descending' = 'ascending';
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
-    }
-    setSortConfig({ key, direction });
-  };
-  
-  const getSortIndicator = (key: SortableKeys) => {
-    if (!sortConfig || sortConfig.key !== key) {
-      return <ArrowUpDown className="ml-2 h-4 w-4 text-gray-400" />;
-    }
-    if (sortConfig.direction === 'ascending') {
-      return <ArrowUpDown className="ml-2 h-4 w-4" />;
-    }
-    return <ArrowUpDown className="ml-2 h-4 w-4" />;
-  };
-
-  const handleClearAll = () => {
-    setAuditLogs([]);
-  };
-
+export default function RolesPage() {
   return (
-    <main className="flex-1 px-10 py-8">
+    <main className="flex-1 px-10 py-8 bg-gray-100">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-col gap-1">
@@ -134,7 +92,7 @@ export function Roles() {
             <p className="text-base text-gray-500">Manage roles and permissions for users within the application.</p>
           </div>
           <Button className="bg-primary-500 hover:bg-primary-600 text-white">
-            <Plus className="mr-2" /> Create New Role
+            <Plus className="mr-2 h-4 w-4" /> Create New Role
           </Button>
         </div>
         <div className="mb-8 overflow-hidden rounded-lg border border-gray-200 bg-white">
@@ -156,7 +114,7 @@ export function Roles() {
                     <TableCell className="p-4 text-center text-sm text-gray-600">{role.users}</TableCell>
                     <TableCell className="p-4 text-right">
                       <Button variant="ghost" className="text-gray-700 hover:bg-gray-100">
-                        <Edit className="mr-1 text-lg" /> Edit
+                        <Edit className="mr-1 h-4 w-4" /> Edit
                       </Button>
                     </TableCell>
                   </TableRow>
@@ -165,55 +123,30 @@ export function Roles() {
             </Table>
           </div>
         </div>
-        <div className="flex flex-col gap-6" style={{ fontFamily: '"Arial", sans-serif' }}>
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900">Audit Trail</h2>
-            <Button variant="destructive" onClick={handleClearAll} disabled={auditLogs.length === 0}>
-              <Trash2 className="mr-2 h-4 w-4" /> Clear All
-            </Button>
-          </div>
-          <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
+        <div className="flex flex-col gap-6">
+          <h2 className="text-2xl font-bold text-white">Audit Trail</h2>
+          <div className="overflow-hidden rounded-lg border border-gray-700 bg-black">
             <div className="overflow-x-auto">
-              <Table>
-                <TableHeader className="bg-gray-50">
+              <Table className="min-w-[800px]">
+                <TableHeader className="border-b border-gray-700 bg-gray-900">
                   <TableRow>
-                    <TableHead className="whitespace-nowrap p-4 text-base font-semibold text-gray-600">
-                      <Button variant="ghost" onClick={() => requestSort('timestamp')} className="p-0 hover:bg-transparent text-base">
-                        Timestamp {getSortIndicator('timestamp')}
-                      </Button>
-                    </TableHead>
-                    <TableHead className="whitespace-nowrap p-4 text-base font-semibold text-gray-600">
-                      <Button variant="ghost" onClick={() => requestSort('user')} className="p-0 hover:bg-transparent text-base">
-                        User {getSortIndicator('user')}
-                      </Button>
-                    </TableHead>
-                    <TableHead className="whitespace-nowrap p-4 text-base font-semibold text-gray-600">
-                      <Button variant="ghost" onClick={() => requestSort('action')} className="p-0 hover:bg-transparent text-base">
-                        Action {getSortIndicator('action')}
-                      </Button>
-                    </TableHead>
-                    <TableHead className="p-4 text-base font-semibold text-gray-600">Details</TableHead>
+                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-300">Timestamp</TableHead>
+                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-300">User</TableHead>
+                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-300">Action</TableHead>
+                    <TableHead className="p-4 text-sm font-semibold text-gray-300">Details</TableHead>
                   </TableRow>
                 </TableHeader>
-                <TableBody className="divide-y divide-gray-200">
-                  {sortedAuditLogs.length > 0 ? (
-                    sortedAuditLogs.map((log, index) => (
-                      <TableRow key={index} className="transition-colors hover:bg-gray-50/50">
-                        <TableCell className="p-4 align-top text-base text-gray-500">{log.timestamp}</TableCell>
-                        <TableCell className="p-4 align-top text-base text-gray-800">{log.user}</TableCell>
-                        <TableCell className="p-4 align-top text-base text-gray-800">
-                          {getActionBadge(log.action)}
-                        </TableCell>
-                        <TableCell className="p-4 text-base text-gray-600">{log.details}</TableCell>
-                      </TableRow>
-                    ))
-                  ) : (
-                    <TableRow>
-                      <TableCell colSpan={4} className="p-4 text-center text-gray-500">
-                        No audit trail entries found.
+                <TableBody className="divide-y divide-gray-800">
+                  {auditLogsData.map((log, index) => (
+                    <TableRow key={index} className="transition-colors hover:bg-gray-900/50">
+                      <TableCell className="p-4 align-top text-sm text-gray-400">{log.timestamp}</TableCell>
+                      <TableCell className="p-4 align-top text-sm text-gray-200">{log.user}</TableCell>
+                      <TableCell className="p-4 align-top text-sm text-gray-200">
+                        {getActionBadge(log.action)}
                       </TableCell>
+                      <TableCell className="p-4 text-sm text-gray-300">{log.details}</TableCell>
                     </TableRow>
-                  )}
+                  ))}
                 </TableBody>
               </Table>
             </div>
