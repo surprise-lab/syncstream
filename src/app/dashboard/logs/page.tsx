@@ -16,47 +16,47 @@ const alerts = [
   {
     id: '#12345',
     timestamp: '2024-01-15 10:00 AM',
-    severity: 'High',
+    severity: 'Critical',
     source: 'System A',
     message: 'Sync failed due to network error',
     status: 'Unresolved',
   },
   {
-    id: '#12346',
-    timestamp: '2024-01-15 11:30 AM',
-    severity: 'Medium',
-    source: 'System B',
-    message: 'Data validation error during sync',
-    status: 'Unresolved',
-  },
-  {
-    id: '#12347',
-    timestamp: '2024-01-15 01:45 PM',
-    severity: 'Low',
-    source: 'System C',
-    message: 'Sync completed with warnings',
-    status: 'Resolved',
-  },
-  {
     id: '#12348',
     timestamp: '2024-01-16 09:15 AM',
-    severity: 'High',
+    severity: 'Critical',
     source: 'System A',
     message: 'Authentication failed',
     status: 'Unresolved',
   },
   {
+    id: '#12346',
+    timestamp: '2024-01-15 11:30 AM',
+    severity: 'Warning',
+    source: 'System B',
+    message: 'Data validation error during sync',
+    status: 'Unresolved',
+  },
+  {
     id: '#12349',
     timestamp: '2024-01-16 12:00 PM',
-    severity: 'Medium',
+    severity: 'Warning',
     source: 'System B',
     message: 'Sync paused due to user action',
     status: 'Unresolved',
   },
   {
+    id: '#12347',
+    timestamp: '2024-01-15 01:45 PM',
+    severity: 'Informational',
+    source: 'System C',
+    message: 'Sync completed with warnings',
+    status: 'Resolved',
+  },
+  {
     id: '#12350',
     timestamp: '2024-01-16 03:30 PM',
-    severity: 'Low',
+    severity: 'Informational',
     source: 'System C',
     message: 'Sync successful',
     status: 'Resolved',
@@ -65,25 +65,25 @@ const alerts = [
 
 const getSeverityBadge = (severity: string) => {
   switch (severity) {
-    case 'High':
+    case 'Critical':
       return (
         <div className="flex items-center gap-2">
             <span className="material-symbols-outlined text-red-500">error</span>
-            <span className="font-medium text-red-400">High</span>
+            <span className="font-medium text-red-400">Critical</span>
         </div>
       );
-    case 'Medium':
+    case 'Warning':
       return (
         <div className="flex items-center gap-2">
             <span className="material-symbols-outlined text-orange-500">warning</span>
-            <span className="font-medium text-orange-400">Medium</span>
+            <span className="font-medium text-orange-400">Warning</span>
         </div>
       );
-    case 'Low':
+    case 'Informational':
       return (
         <div className="flex items-center gap-2">
             <span className="material-symbols-outlined text-blue-500">info</span>
-            <span className="font-medium text-blue-400">Low</span>
+            <span className="font-medium text-blue-400">Informational</span>
         </div>
       );
     default:
@@ -168,16 +168,18 @@ export default function AlertsPage() {
                 Resolved
               </Button>
             </div>
-            <div className="relative w-full max-w-xs">
-              <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                {' '}
-                search{' '}
-              </span>
-              <Input
-                className="w-full rounded-md border-slate-700 bg-slate-800 py-2 pl-10 pr-4 text-white placeholder:text-gray-500 focus:border-primary-500 focus:ring-primary-500"
-                placeholder="Search alerts by ID, source, or message..."
-                type="text"
-              />
+            <div className="flex items-center gap-4">
+                <div className="relative w-full max-w-xs">
+                    <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"> search </span>
+                    <Input className="form-input w-full rounded-md border-slate-700 bg-slate-800 py-2 pl-10 pr-4 text-white placeholder:text-gray-500 focus:border-primary-500 focus:ring-primary-500" placeholder="Search alerts..." type="text"/>
+                </div>
+                <div className="relative">
+                    <Button className="flex items-center gap-2 rounded-md border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700">
+                        <span className="material-symbols-outlined text-base">filter_list</span>
+                        <span>Severity</span>
+                        <span className="material-symbols-outlined text-base">expand_more</span>
+                    </Button>
+                </div>
             </div>
           </div>
           <div className="overflow-hidden rounded-lg border border-slate-800 bg-slate-900/50">
@@ -205,7 +207,7 @@ export default function AlertsPage() {
                       <div className="flex items-center gap-1">
                         Severity
                         <span className="material-symbols-outlined text-base">
-                          unfold_more
+                          arrow_downward
                         </span>
                       </div>
                     </TableHead>
