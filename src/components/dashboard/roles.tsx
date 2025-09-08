@@ -50,11 +50,31 @@ const auditLogsData = [
     action: 'Permission Change',
     details: "Permission 'Export Data' added to role 'Manager'.",
   },
+  {
+    timestamp: '2023-10-21 11:30:18',
+    user: 'susan.adams@example.com',
+    action: 'Permission Change',
+    details: "Permission 'Export Data' added to role 'Manager'.",
+  },
+  {
+    timestamp: '2023-10-20 11:30:18',
+    user: 'susan.adams@example.com',
+    action: 'Permission Change',
+    details: "Permission 'Export Data' added to role 'Manager'.",
+  },
+  {
+    timestamp: '2023-10-19 11:30:18',
+    user: 'susan.adams@example.com',
+    action: 'Permission Change',
+    details: "Permission 'Export Data' added to role 'Manager'.",
+  },
 ];
 
 
 export function Roles() {
   const [searchTerm, setSearchTerm] = React.useState('');
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const logsPerPage = 5;
 
   const filteredAuditLogs = auditLogsData.filter((log) => {
     const searchTermLower = searchTerm.toLowerCase();
@@ -66,6 +86,11 @@ export function Roles() {
     );
   });
   
+  const indexOfLastLog = currentPage * logsPerPage;
+  const indexOfFirstLog = indexOfLastLog - logsPerPage;
+  const currentLogs = filteredAuditLogs.slice(indexOfFirstLog, indexOfLastLog);
+  const totalPages = Math.ceil(filteredAuditLogs.length / logsPerPage);
+
   return (
     <main className="flex-1 px-10 py-8">
       <div className="mx-auto max-w-5xl">
@@ -222,7 +247,7 @@ export function Roles() {
           <div className="relative pl-6">
             <div className="absolute left-6 top-0 h-full w-0.5 bg-border -translate-x-1/2"></div>
             <div className="space-y-8">
-              {filteredAuditLogs.map((log, index) => (
+              {currentLogs.map((log, index) => (
                 <div key={index} className="relative flex items-start gap-6">
                   <div className="absolute left-0 top-1.5 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-card ring-8 ring-background">
                     <GitCommitHorizontal className="text-primary" />
@@ -245,6 +270,41 @@ export function Roles() {
               ))}
             </div>
           </div>
+          {totalPages > 1 && (
+            <div className="mt-6 flex items-center justify-between text-sm text-muted-foreground">
+              <p>
+                Showing {indexOfFirstLog + 1} to {Math.min(indexOfLastLog, filteredAuditLogs.length)} of {filteredAuditLogs.length} entries
+              </p>
+              <div className="flex items-center gap-1">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </Button>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                  <Button
+                    key={page}
+                    variant={currentPage === page ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setCurrentPage(page)}
+                  >
+                    {page}
+                  </Button>
+                ))}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </main>
