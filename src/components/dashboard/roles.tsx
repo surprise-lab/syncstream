@@ -16,7 +16,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Plus, Edit, Filter, FileDown, Search, RotateCcw } from 'lucide-react';
+import { Plus, Edit, Filter, FileDown, Search, RotateCcw, Copy } from 'lucide-react';
 import * as React from 'react';
 import { Input } from '../ui/input';
 
@@ -110,7 +110,14 @@ export function Roles() {
                   <TableCell className="p-4 text-sm text-[#9eb7a8] text-center">
                     5
                   </TableCell>
-                  <TableCell className="p-4 text-right">
+                  <TableCell className="p-4 text-right space-x-2">
+                    <Button
+                      variant="ghost"
+                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
+                    >
+                      <Copy className="text-lg mr-1" />
+                      Duplicate
+                    </Button>
                     <Button
                       variant="ghost"
                       className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
@@ -130,7 +137,14 @@ export function Roles() {
                   <TableCell className="p-4 text-sm text-[#9eb7a8] text-center">
                     10
                   </TableCell>
-                  <TableCell className="p-4 text-right">
+                  <TableCell className="p-4 text-right space-x-2">
+                     <Button
+                      variant="ghost"
+                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
+                    >
+                      <Copy className="text-lg mr-1" />
+                      Duplicate
+                    </Button>
                     <Button
                       variant="ghost"
                       className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
@@ -150,7 +164,14 @@ export function Roles() {
                   <TableCell className="p-4 text-sm text-[#9eb7a8] text-center">
                     20
                   </TableCell>
-                  <TableCell className="p-4 text-right">
+                  <TableCell className="p-4 text-right space-x-2">
+                     <Button
+                      variant="ghost"
+                      className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
+                    >
+                      <Copy className="text-lg mr-1" />
+                      Duplicate
+                    </Button>
                     <Button
                       variant="ghost"
                       className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
@@ -201,7 +222,7 @@ export function Roles() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredAuditLogs.map((log, index) => (
-              <div key={index} className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 hover:border-primary transition-colors">
+              <div key={index} className="bg-gray-800/50 rounded-xl p-4 border-2 border-dashed border-gray-600 hover:border-primary transition-colors">
                 <div className="flex justify-between items-start">
                   <div className="flex flex-col gap-1">
                     <p className="font-semibold text-white">{log.action}</p>
