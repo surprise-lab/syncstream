@@ -291,6 +291,5 @@ export default function SettingsPage() {
         </div>
       </div>
     </div>
-</main>
-</div>
-</body></html>
+  );
+}
