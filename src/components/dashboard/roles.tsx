@@ -231,16 +231,16 @@ export function Roles() {
                   <div className="ml-12 flex-1 rounded-lg border border-border bg-card p-4 shadow-sm hover:shadow-md transition-shadow">
                     <div className="flex justify-between items-start">
                       <div className="flex flex-col gap-1">
-                        <p className="font-semibold text-white">{log.action}</p>
-                        <p className="text-sm text-gray-400">{log.user}</p>
-                        <p className="text-xs text-gray-500">{log.timestamp}</p>
+                        <p className="font-semibold text-foreground">{log.action}</p>
+                        <p className="text-sm text-muted-foreground">{log.user}</p>
+                        <p className="text-xs text-muted-foreground/80">{log.timestamp}</p>
                       </div>
-                      <Button variant="ghost" size="sm" className="text-gray-300 hover:bg-gray-700 hover:text-white">
+                      <Button variant="ghost" size="sm" className="text-muted-foreground hover:bg-gray-700 hover:text-white">
                         <RotateCcw className="mr-2 h-4 w-4" />
                         Revert
                       </Button>
                     </div>
-                    <div className="mt-4 text-sm text-gray-300" dangerouslySetInnerHTML={{ __html: log.details.replace(/'(.*?)'/g, '<span class="font-semibold text-gray-100">\'$1\'</span>') }} />
+                    <div className="mt-4 text-sm text-foreground/90" dangerouslySetInnerHTML={{ __html: log.details.replace(/'(.*?)'/g, '<span class="font-semibold text-foreground">\'$1\'</span>') }} />
                   </div>
                 </div>
               ))}
