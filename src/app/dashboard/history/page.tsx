@@ -121,8 +121,7 @@ const getStatusBadge = (status: string) => {
 
 export default function HistoryPage() {
   return (
-    <main className="flex-1 p-8">
-      <div className="mx-auto max-w-7xl">
+    <div className="mx-auto max-w-7xl">
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-white">Sync History</h2>
           <p className="text-slate-400">View and search the history of all sync activities.</p>
@@ -178,6 +177,5 @@ export default function HistoryPage() {
           </Table>
         </div>
       </div>
-    </main>
   );
 }

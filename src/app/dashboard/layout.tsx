@@ -16,113 +16,87 @@ import {
   Package,
   ListOrdered,
   Users2,
+  GitCommitHorizontal,
+  FileUp,
+  FileDown,
+  Trash2,
+  ArrowUpDown,
+  Filter,
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { NavLink } from '@/components/layout/nav-link';
 import { SyncStreamLogo } from '@/components/syncstream-logo';
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarFooter,
-  SidebarProvider,
-  SidebarInset,
-  SidebarTrigger,
-} from '@/components/ui/sidebar';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
+
+const navLinks = [
+  { href: '/dashboard', label: 'Dashboard', icon: 'dashboard' },
+  { href: '/dashboard/orders', label: 'Connections', icon: 'link' },
+  { href: '/dashboard/products', label: 'Syncs', icon: 'sync' },
+  { href: '/dashboard/history', label: 'History', icon: 'history' },
+  { href: '/dashboard/roles', label: 'Roles', icon: 'people' },
+  { href: '/dashboard/users', label: 'Users', icon: 'group' },
+  { href: '/dashboard/mapping', label: 'Mapping', icon: 'lan' },
+  { href: '/dashboard/rules', label: 'rule' },
+  { href: '/dashboard/logs', label: 'Logs', icon: 'assignment' },
+  { href: '/dashboard/settings', label: 'Settings', icon: 'settings' },
+];
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
   return (
-    <SidebarProvider>
-      <div className="relative flex size-full min-h-screen flex-col group/design-root bg-slate-900">
-        <Sidebar className="flex flex-col bg-slate-950 p-4">
-          <SidebarHeader>
-            <div className="flex items-center gap-2 px-4 py-2">
-              <SyncStreamLogo className="h-6 w-6 text-primary-500" />
-              <h1 className="text-xl font-bold text-white">SyncStream</h1>
+    <div className="flex min-h-screen">
+      <aside className="flex w-64 flex-col bg-slate-950 p-4">
+        <div className="flex items-center gap-2 px-4 py-2">
+          <SyncStreamLogo className="h-6 w-6 text-primary" />
+          <h1 className="text-xl font-bold text-white">SyncStream</h1>
+        </div>
+        <nav className="mt-8 flex flex-col gap-2">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                'flex items-center gap-3 rounded-md px-4 py-2 text-slate-400 hover:bg-slate-800 hover:text-white',
+                pathname === link.href && 'bg-slate-800 font-semibold text-white'
+              )}
+            >
+              <span className="material-symbols-outlined">{link.icon}</span>
+              <span>{link.label}</span>
+            </Link>
+          ))}
+        </nav>
+        <div className="mt-auto">
+          <a
+            className="flex items-center gap-3 rounded-md px-4 py-2 text-slate-400 hover:bg-slate-800 hover:text-white"
+            href="#"
+          >
+            <span className="material-symbols-outlined"> help_outline </span>
+            <span>Support</span>
+          </a>
+          <div className="mt-4 flex items-center gap-3 border-t border-slate-800 pt-4">
+            <Avatar>
+              <AvatarImage
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_Nw1BEjOgPKVYS7N2EOYL_rgQGTY4itzdkKAeKlQT9UgwPvJ4UwPPAkJRxy3PzMXeRFbOIifJxz20S5lAk8qLdZCb9kA5Wgp4DmvXjlX3VTL8QFuBN0DKbauY8josNEBnqIaHUaQznQnLOUyqHEF9l1POMQHQ6TXLcr2CMp9-4xelVAP6kBF2oGxLkNeUYvqJzaxkveu2-3VvT877zW9sTpPsONnaLqzV682KVdWVXVM95FumiBdyUPYnGuLbcmMvIz10BnLr26Kl"
+                alt="User avatar"
+                data-ai-hint="person face"
+              />
+              <AvatarFallback>U</AvatarFallback>
+            </Avatar>
+            <div>
+              <p className="text-sm font-medium text-white">John Doe</p>
+              <p className="text-xs text-slate-400">john.doe@example.com</p>
             </div>
-          </SidebarHeader>
-
-          <SidebarContent className="mt-8">
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href="/dashboard">
-                    <LayoutDashboard />
-                    <span>Dashboard</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href="/dashboard/orders">
-                    <ListOrdered />
-                    <span>Connections</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href="/dashboard/products">
-                    <Power />
-                    <span>Syncs</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href="/dashboard/history">
-                    <History />
-                    <span>History</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarContent>
-
-          <SidebarFooter>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href="#">
-                    <HelpCircle />
-                    <span>Support</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-            <div className="mt-4 flex items-center gap-3 border-t border-slate-800 pt-4">
-              <Avatar>
-                <AvatarImage
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW2ZS6vdHnjcDZetC8BPIoRU3UlQP76J6iwF5zEeQQMfataRNBIG8P9KRfvlNMvsAmKbvWr11SX2AcMTae_bLNrYJzSjk8RExTXFif5CwNFeuMzxibmsp7pa_ULkrq395Kapz-0EUIuqLjwtwaMD70wpm3Zhqw0q6ITGWESvq7PfryDmstC89M60fwYJoVw_zxerHnQ3O90iejzNskUuudk0ciMR0fT0715qfPFT1-oP0iXfactUklEoANWs6afzwclByhtOjwNtw"
-                  alt="User avatar"
-                  data-ai-hint="person face"
-                />
-                <AvatarFallback>U</AvatarFallback>
-              </Avatar>
-              <div>
-                <p className="text-sm font-medium text-white">John Doe</p>
-                <p className="text-xs text-slate-400">john.doe@example.com</p>
-              </div>
-            </div>
-          </SidebarFooter>
-        </Sidebar>
-
-        <main className="flex-1">
-          <header className="flex items-center justify-end whitespace-nowrap p-4 gap-4 md:hidden">
-            <SidebarTrigger />
-          </header>
-          {children}
-        </main>
-      </div>
-    </SidebarProvider>
+          </div>
+        </div>
+      </aside>
+      <main className="flex-1 p-8">{children}</main>
+    </div>
   );
 }
