@@ -222,7 +222,7 @@ export function Roles() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredAuditLogs.map((log, index) => (
-              <div key={index} className="bg-gray-800/50 rounded-xl p-4 border-2 border-dashed border-gray-600 hover:border-primary transition-colors">
+              <div key={index} className="bg-card border border-border rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
                 <div className="flex justify-between items-start">
                   <div className="flex flex-col gap-1">
                     <p className="font-semibold text-white">{log.action}</p>
