@@ -16,7 +16,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Plus, Edit, Filter, FileDown, Search, RotateCcw, Copy } from 'lucide-react';
+import { Plus, Edit, Filter, FileDown, Search, RotateCcw, Copy, GitCommitHorizontal } from 'lucide-react';
 import * as React from 'react';
 import { Input } from '../ui/input';
 
@@ -220,23 +220,31 @@ export function Roles() {
               </DropdownMenu>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {filteredAuditLogs.map((log, index) => (
-              <div key={index} className="bg-card border border-border rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
-                <div className="flex justify-between items-start">
-                  <div className="flex flex-col gap-1">
-                    <p className="font-semibold text-white">{log.action}</p>
-                    <p className="text-sm text-gray-400">{log.user}</p>
-                    <p className="text-xs text-gray-500">{log.timestamp}</p>
+          <div className="relative pl-6">
+            <div className="absolute left-6 top-0 h-full w-0.5 bg-border -translate-x-1/2"></div>
+            <div className="space-y-8">
+              {filteredAuditLogs.map((log, index) => (
+                <div key={index} className="relative flex items-start gap-6">
+                  <div className="absolute left-0 top-1.5 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-card ring-8 ring-background">
+                    <GitCommitHorizontal className="text-primary" />
                   </div>
-                  <Button variant="ghost" size="sm" className="text-gray-300 hover:bg-gray-700 hover:text-white">
-                    <RotateCcw className="mr-2 h-4 w-4" />
-                    Revert
-                  </Button>
+                  <div className="ml-12 flex-1 rounded-lg border border-border bg-card p-4 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex justify-between items-start">
+                      <div className="flex flex-col gap-1">
+                        <p className="font-semibold text-white">{log.action}</p>
+                        <p className="text-sm text-gray-400">{log.user}</p>
+                        <p className="text-xs text-gray-500">{log.timestamp}</p>
+                      </div>
+                      <Button variant="ghost" size="sm" className="text-gray-300 hover:bg-gray-700 hover:text-white">
+                        <RotateCcw className="mr-2 h-4 w-4" />
+                        Revert
+                      </Button>
+                    </div>
+                    <div className="mt-4 text-sm text-gray-300" dangerouslySetInnerHTML={{ __html: log.details.replace(/'(.*?)'/g, '<span class="font-semibold text-gray-100">\'$1\'</span>') }} />
+                  </div>
                 </div>
-                <div className="mt-4 text-sm text-gray-300" dangerouslySetInnerHTML={{ __html: log.details.replace(/'(.*?)'/g, '<span class="font-semibold text-gray-100">\'$1\'</span>') }} />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
