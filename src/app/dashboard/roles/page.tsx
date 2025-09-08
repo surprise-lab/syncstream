@@ -10,7 +10,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from "@/components/ui/badge"
-import { Plus, Edit, ArrowUpDown, Trash2 } from 'lucide-react';
+import { Plus, Edit, ArrowUpDown, Trash2, Pencil, UserPlus, PlusCircle, UserMinus, ShieldAlert } from 'lucide-react';
 import * as React from 'react';
 
 const rolesData = [
@@ -67,17 +67,17 @@ const auditLogsData = [
 const getActionBadge = (action: string) => {
     switch (action) {
       case 'Role Updated':
-        return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100">Role Updated</Badge>;
+        return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100"><Pencil className="mr-1 h-3 w-3" />Role Updated</Badge>;
       case 'User Assigned to Role':
-        return <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-100">User Assigned to Role</Badge>;
+        return <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-100"><UserPlus className="mr-1 h-3 w-3" />User Assigned</Badge>;
       case 'Role Created':
-        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Role Created</Badge>;
+        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100"><PlusCircle className="mr-1 h-3 w-3" />Role Created</Badge>;
       case 'Role Deleted':
-        return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">Role Deleted</Badge>;
+        return <Badge className="bg-red-100 text-red-800 hover:bg-red-100"><Trash2 className="mr-1 h-3 w-3" />Role Deleted</Badge>;
       case 'User Removed from Role':
-        return <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100">User Removed from Role</Badge>;
+        return <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100"><UserMinus className="mr-1 h-3 w-3" />User Removed</Badge>;
       default:
-        return <Badge variant="secondary">{action}</Badge>;
+        return <Badge variant="secondary"><ShieldAlert className="mr-1 h-3 w-3" />{action}</Badge>;
     }
 }
 
