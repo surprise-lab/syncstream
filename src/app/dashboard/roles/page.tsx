@@ -168,33 +168,33 @@ export function Roles() {
               <Table>
                 <TableHeader className="bg-gray-50">
                   <TableRow>
-                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-600">
-                      <Button variant="ghost" onClick={() => requestSort('timestamp')} className="p-0 hover:bg-transparent">
+                    <TableHead className="whitespace-nowrap p-4 text-base font-semibold text-gray-600">
+                      <Button variant="ghost" onClick={() => requestSort('timestamp')} className="p-0 hover:bg-transparent text-base">
                         Timestamp {getSortIndicator('timestamp')}
                       </Button>
                     </TableHead>
-                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-600">
-                      <Button variant="ghost" onClick={() => requestSort('user')} className="p-0 hover:bg-transparent">
+                    <TableHead className="whitespace-nowrap p-4 text-base font-semibold text-gray-600">
+                      <Button variant="ghost" onClick={() => requestSort('user')} className="p-0 hover:bg-transparent text-base">
                         User {getSortIndicator('user')}
                       </Button>
                     </TableHead>
-                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-600">
-                      <Button variant="ghost" onClick={() => requestSort('action')} className="p-0 hover:bg-transparent">
+                    <TableHead className="whitespace-nowrap p-4 text-base font-semibold text-gray-600">
+                      <Button variant="ghost" onClick={() => requestSort('action')} className="p-0 hover:bg-transparent text-base">
                         Action {getSortIndicator('action')}
                       </Button>
                     </TableHead>
-                    <TableHead className="p-4 text-sm font-semibold text-gray-600">Details</TableHead>
+                    <TableHead className="p-4 text-base font-semibold text-gray-600">Details</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody className="divide-y divide-gray-200">
                   {sortedAuditLogs.map((log, index) => (
                     <TableRow key={index} className="transition-colors hover:bg-gray-50/50">
-                      <TableCell className="p-4 align-top text-sm text-gray-500">{log.timestamp}</TableCell>
-                      <TableCell className="p-4 align-top text-sm text-gray-800">{log.user}</TableCell>
-                      <TableCell className="p-4 align-top text-sm text-gray-800">
+                      <TableCell className="p-4 align-top text-base text-gray-500">{log.timestamp}</TableCell>
+                      <TableCell className="p-4 align-top text-base text-gray-800">{log.user}</TableCell>
+                      <TableCell className="p-4 align-top text-base text-gray-800">
                         {getActionBadge(log.action)}
                       </TableCell>
-                      <TableCell className="p-4 text-sm text-gray-600">{log.details}</TableCell>
+                      <TableCell className="p-4 text-base text-gray-600">{log.details}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
