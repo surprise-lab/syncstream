@@ -1,9 +1,11 @@
+
 'use client';
 
 import { Power, AlertTriangle, Clock } from 'lucide-react';
 import { StatusCard } from '@/components/dashboard/status-card';
 import { ActivityTable } from '@/components/dashboard/activity-table';
 import { DataFlow } from '@/components/dashboard/data-flow';
+import Link from 'next/link';
 
 export function Dashboard() {
   return (
@@ -16,12 +18,14 @@ export function Dashboard() {
             title="Integration Status"
             value="Connected"
           />
-          <StatusCard
-            icon={<AlertTriangle className="text-yellow-400" />}
-            bgColor="bg-yellow-900/50"
-            title="Active Alerts"
-            value="3"
-          />
+          <Link href="/dashboard/logs">
+            <StatusCard
+              icon={<AlertTriangle className="text-yellow-400" />}
+              bgColor="bg-yellow-900/50"
+              title="Active Alerts"
+              value="3"
+            />
+          </Link>
           <StatusCard
             icon={<Clock className="text-blue-400" />}
             bgColor="bg-blue-900/50"

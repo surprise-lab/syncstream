@@ -6,6 +6,11 @@ import {
   Receipt,
   Settings,
   Users,
+  FileText,
+  GitBranch,
+  ListOrdered,
+  Users2,
+  ListTodo,
 } from 'lucide-react';
 
 import {ConnectrLogo} from '@/components/connectr-logo';
@@ -42,18 +47,39 @@ export default function DashboardLayout({
           </div>
           <nav className="flex items-center gap-6 text-sm font-medium text-gray-300">
             <NavLink href="/dashboard">
+              <LayoutDashboard className="mr-2 h-4 w-4" />
               Dashboard
             </NavLink>
             <NavLink href="/dashboard/orders">
+              <ListOrdered className="mr-2 h-4 w-4" />
               Orders
             </NavLink>
             <NavLink href="/dashboard/products">
+              <Package className="mr-2 h-4 w-4" />
               Products
             </NavLink>
+            <NavLink href="/dashboard/users">
+              <Users2 className="mr-2 h-4 w-4" />
+              Users
+            </NavLink>
             <NavLink href="/dashboard/roles">
-              Accounting
+              <Users className="mr-2 h-4 w-4" />
+              Roles
+            </NavLink>
+            <NavLink href="/dashboard/mapping">
+              <GitBranch className="mr-2 h-4 w-4" />
+              Mapping
+            </NavLink>
+            <NavLink href="/dashboard/rules">
+              <ListTodo className="mr-2 h-4 w-4" />
+              Rules
+            </NavLink>
+            <NavLink href="/dashboard/logs">
+              <FileText className="mr-2 h-4 w-4" />
+              Logs
             </NavLink>
             <NavLink href="/dashboard/settings">
+              <Settings className="mr-2 h-4 w-4" />
               Settings
             </NavLink>
           </nav>

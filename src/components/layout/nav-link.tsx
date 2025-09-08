@@ -4,11 +4,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
-type NavLinkProps = ComponentProps<typeof Link>;
+type NavLinkProps = ComponentProps<typeof Link> & {
+  children: ReactNode;
+};
 
-export function NavLink(props: NavLinkProps) {
+export function NavLink({ children, ...props }: NavLinkProps) {
   const pathname = usePathname();
   const isActive = pathname === props.href;
 
@@ -16,13 +18,13 @@ export function NavLink(props: NavLinkProps) {
     <Link
       {...props}
       className={cn(
-        'relative text-sm font-medium transition-colors',
+        'relative flex items-center text-sm font-medium transition-colors',
         isActive
           ? 'text-primary'
           : 'text-muted-foreground hover:text-foreground',
       )}
     >
-      {props.children}
+      {children}
       {isActive && (
         <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-primary"></span>
       )}

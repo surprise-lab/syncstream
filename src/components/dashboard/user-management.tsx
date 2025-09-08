@@ -21,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import Link from 'next/link';
 
 
 const users = [
@@ -250,17 +251,17 @@ export function UserManagement() {
           <Button variant="default" size="sm" className="bg-green-500/20 text-green-400">
             1
           </Button>
-          <Button variant="outline" size="sm">
-            2
+          <Button asChild variant="outline" size="sm">
+            <Link href="#">2</Link>
           </Button>
-          <Button variant="outline" size="sm">
-            3
+          <Button asChild variant="outline" size="sm">
+            <Link href="#">3</Link>
           </Button>
-          <Button variant="outline" size="sm">
-            4
+          <Button asChild variant="outline" size="sm">
+            <Link href="#">4</Link>
           </Button>
-          <Button variant="outline" size="sm">
-            Next
+          <Button asChild variant="outline" size="sm">
+            <Link href="#">Next</Link>
           </Button>
         </div>
       </div>
