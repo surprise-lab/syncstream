@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -11,7 +10,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from "@/components/ui/badge"
-import { Plus, Edit } from 'lucide-react';
+import { Plus, Edit, ArrowUpDown } from 'lucide-react';
 import * as React from 'react';
 
 const rolesData = [
@@ -65,7 +64,6 @@ const auditLogsData = [
   },
 ];
 
-
 const getActionBadge = (action: string) => {
     switch (action) {
       case 'Role Updated':
@@ -83,8 +81,46 @@ const getActionBadge = (action: string) => {
     }
 }
 
+type SortableKeys = 'timestamp' | 'user' | 'action' | 'details';
 
 export function Roles() {
+  const [sortedAuditLogs, setSortedAuditLogs] = React.useState(auditLogsData);
+  const [sortConfig, setSortConfig] = React.useState<{ key: SortableKeys; direction: 'ascending' | 'descending' } | null>({ key: 'timestamp', direction: 'descending' });
+
+  React.useEffect(() => {
+    let sortedData = [...auditLogsData];
+    if (sortConfig !== null) {
+      sortedData.sort((a, b) => {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    setSortedAuditLogs(sortedData);
+  }, [sortConfig]);
+
+  const requestSort = (key: SortableKeys) => {
+    let direction: 'ascending' | 'descending' = 'ascending';
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    }
+    setSortConfig({ key, direction });
+  };
+  
+  const getSortIndicator = (key: SortableKeys) => {
+    if (!sortConfig || sortConfig.key !== key) {
+      return <ArrowUpDown className="ml-2 h-4 w-4 text-gray-400" />;
+    }
+    if (sortConfig.direction === 'ascending') {
+      return <ArrowUpDown className="ml-2 h-4 w-4" />;
+    }
+    return <ArrowUpDown className="ml-2 h-4 w-4" />;
+  };
+
   return (
     <main className="flex-1 px-10 py-8">
       <div className="mx-auto max-w-7xl">
@@ -132,14 +168,26 @@ export function Roles() {
               <Table>
                 <TableHeader className="bg-gray-50">
                   <TableRow>
-                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-600">Timestamp</TableHead>
-                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-600">User</TableHead>
-                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-600">Action</TableHead>
+                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-600">
+                      <Button variant="ghost" onClick={() => requestSort('timestamp')} className="p-0 hover:bg-transparent">
+                        Timestamp {getSortIndicator('timestamp')}
+                      </Button>
+                    </TableHead>
+                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-600">
+                      <Button variant="ghost" onClick={() => requestSort('user')} className="p-0 hover:bg-transparent">
+                        User {getSortIndicator('user')}
+                      </Button>
+                    </TableHead>
+                    <TableHead className="whitespace-nowrap p-4 text-sm font-semibold text-gray-600">
+                      <Button variant="ghost" onClick={() => requestSort('action')} className="p-0 hover:bg-transparent">
+                        Action {getSortIndicator('action')}
+                      </Button>
+                    </TableHead>
                     <TableHead className="p-4 text-sm font-semibold text-gray-600">Details</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody className="divide-y divide-gray-200">
-                  {auditLogsData.map((log, index) => (
+                  {sortedAuditLogs.map((log, index) => (
                     <TableRow key={index} className="transition-colors hover:bg-gray-50/50">
                       <TableCell className="p-4 align-top text-sm text-gray-500">{log.timestamp}</TableCell>
                       <TableCell className="p-4 align-top text-sm text-gray-800">{log.user}</TableCell>
