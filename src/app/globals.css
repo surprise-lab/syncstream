@@ -67,6 +67,12 @@
     --warning: #ffc107;
     --danger: #dc3545;
 
+    --primary-500: #1173d4;
+    --neutral-800: #192633;
+    --neutral-700: #233648;
+    --neutral-600: #324d67;
+    --neutral-400: #92adc9;
+
   }
  
   .dark {
@@ -139,5 +145,23 @@
       .rich-text-editor-toolbar button.active {
         color: var(--accent-color);
         background-color: #374151;
+      }
+}
+
+@layer components {
+    .faq-item {
+        @apply flex cursor-pointer items-start gap-4 rounded-lg border border-[var(--neutral-700)] bg-[var(--neutral-800)] p-4 transition-all hover:bg-[var(--neutral-700)];
+      }
+      .faq-item .faq-content {
+        @apply grid grid-rows-[0fr] transition-all duration-300;
+      }
+      .faq-item.open .faq-content {
+        @apply grid-rows-[1fr];
+      }
+       .faq-item .faq-icon {
+        @apply transition-transform duration-300;
+      }
+      .faq-item.open .faq-icon {
+        @apply rotate-45;
       }
 }
