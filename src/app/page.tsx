@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { useState } from 'react';
@@ -138,24 +137,17 @@ export default function SupportPage() {
                 for assistance.
               </p>
             </div>
-            <div className="mb-12">
-              <div className="relative">
-                <span className="material-symbols-outlined pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[var(--neutral-400)]">
-                  {' '}
-                  search{' '}
-                </span>
-                <input
-                  className="form-input w-full rounded-md border-transparent bg-[var(--neutral-700)] py-3 pl-12 pr-4 text-white placeholder:text-[var(--neutral-400)] focus:border-[var(--primary-500)] focus:ring-[var(--primary-500)]"
-                  placeholder="Search FAQs"
-                  type="search"
-                />
-              </div>
-            </div>
             <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
               <section>
                 <h3 className="mb-6 text-2xl font-bold tracking-tight">
                   Frequently Asked Questions
                 </h3>
+                <div class="mb-8">
+                    <div class="relative">
+                        <span class="material-symbols-outlined pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[var(--neutral-400)]"> search </span>
+                        <input class="form-input w-full rounded-md border-transparent bg-[var(--neutral-700)] py-3 pl-12 pr-4 text-white placeholder:text-[var(--neutral-400)] focus:border-[var(--primary-500)] focus:ring-[var(--primary-500)]" placeholder="Search FAQs..." type="search"/>
+                    </div>
+                </div>
                 <div className="space-y-4">
                   {faqs.map((faq, index) => (
                     <FaqItem
@@ -278,4 +270,3 @@ export default function SupportPage() {
     </div>
   );
 }
-
