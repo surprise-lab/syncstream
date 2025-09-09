@@ -149,7 +149,7 @@ export default function AddIntegrationPage() {
             </div>
             <div className="flex justify-end pt-6">
               <Button asChild className="flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary/80">
-                <Link href="#">
+                <Link href="/dashboard/integrations/add/review">
                   <span>Next Step</span>
                   <ArrowRight className="ml-2" />
                 </Link>
@@ -161,3 +161,5 @@ export default function AddIntegrationPage() {
     </div>
   );
 }
+
+    
