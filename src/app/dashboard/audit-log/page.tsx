@@ -94,13 +94,15 @@ export default function AuditLogPage() {
   return (
     <div className="px-10 flex flex-1 justify-center py-8">
       <div className="layout-content-container flex flex-col w-full max-w-7xl">
-        <div className="flex flex-col gap-2 p-4">
-          <h1 className="text-white tracking-tight text-4xl font-bold leading-tight">
-            Audit Log
-          </h1>
-          <p className="text-gray-400 text-base font-normal leading-normal">
-            Track changes made to user permissions and roles.
-          </p>
+        <div className="flex items-center justify-between p-4">
+            <div className="flex flex-col gap-2">
+                <h1 className="text-white tracking-tight text-4xl font-bold leading-tight">Audit Log</h1>
+                <p className="text-gray-400 text-base font-normal leading-normal">Track changes made to user permissions and roles.</p>
+            </div>
+            <Button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-gray-800 px-4 text-white transition-colors hover:bg-gray-700">
+                <span className="material-symbols-outlined text-xl">download</span>
+                <p className="text-sm font-medium leading-normal">Export</p>
+            </Button>
         </div>
         <div className="flex flex-col gap-4 p-4">
           <div className="flex items-center gap-4">
