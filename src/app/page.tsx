@@ -16,19 +16,19 @@ const billingHistory = [
   {
     date: 'November 1, 2024',
     description: 'Subscription Renewal',
-    amount: '$99.00',
+    amount: 'R1800.00',
     status: 'Paid',
   },
   {
     date: 'October 1, 2024',
     description: 'Subscription Renewal',
-    amount: '$99.00',
+    amount: 'R1800.00',
     status: 'Paid',
   },
   {
     date: 'September 1, 2024',
     description: 'Subscription Renewal',
-    amount: '$99.00',
+    amount: 'R1800.00',
     status: 'Paid',
   },
 ];
@@ -263,5 +263,3 @@ export default function BillingPage() {
     </>
   );
 }
-
-    
