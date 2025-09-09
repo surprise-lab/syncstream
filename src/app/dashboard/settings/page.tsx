@@ -37,6 +37,13 @@ export default function SettingsPage() {
                     </div>
                     <form className="md:col-span-2">
                         <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                            <div className="col-span-full">
+                                <Label className="block text-sm font-medium leading-6 text-white" htmlFor="photo">Photo</Label>
+                                <div className="mt-2 flex items-center gap-x-3">
+                                    <img alt="Amelia" className="h-12 w-12 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUYsHfCNpwMlQneICtKxVVO0lbjTiybBZkV9gyXmfiAUdvwppFP9jFGZ3hmLba1gcdE_qojraocig7MNzSbs-_ap6f4dBMHtxQ0XTndLEmasWMm8TtykfwC2KAsHx-SsIehSeUBi_tmdbWUCTQ2LPDD_4nZgwHVgZX5dBpUYMQZWnLco6C7SHPm25KSNEn2FgaDqOsE9h5cNAvnZz5s-RIV0yzJBl7SBfeEGfqXypeSUC5aNpgP5xu0MTNzcjuqRXvbFiFaL87Xvhv"/>
+                                    <button className="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-white/20" type="button">Change</button>
+                                </div>
+                            </div>
                             <div className="sm:col-span-4">
                                 <Label className="block text-sm font-medium leading-6 text-white" htmlFor="name">Name</Label>
                                 <div className="mt-2">
