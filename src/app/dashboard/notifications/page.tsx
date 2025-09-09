@@ -17,45 +17,71 @@ export default function NotificationsPage() {
           <p className="mt-1 text-gray-400">
             Subscribe or unsubscribe from different types of alerts.
           </p>
-          <div className="mt-6 space-y-6">
-            <label className="flex cursor-pointer items-start gap-4">
-              <Checkbox
-                className="mt-1 h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:border-[#324d67] focus:outline-none focus:ring-0 focus:ring-offset-0"
-              />
-              <div>
-                <p className="font-medium text-white">Sync Errors</p>
-                <p className="text-gray-400">
-                  Receive notifications for any errors encountered during data
-                  synchronization.
-                </p>
+          <div className="mt-6 space-y-8">
+            <div className="space-y-4">
+              <h3 className="font-medium text-white">Sync Status</h3>
+              <div className="space-y-4 pl-6 border-l border-gray-700">
+                <label className="flex items-center gap-4 cursor-pointer">
+                  <Checkbox
+                    className="h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:ring-0 focus:ring-offset-0 focus:border-[#324d67] focus:outline-none"
+                  />
+                  <span className="text-gray-300">
+                    Integration Connection Lost
+                  </span>
+                </label>
+                <label className="flex items-center gap-4 cursor-pointer">
+                  <Checkbox
+                    defaultChecked
+                    className="h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:ring-0 focus:ring-offset-0 focus:border-[#324d67] focus:outline-none"
+                  />
+                  <span className="text-gray-300">Sync Job Succeeded</span>
+                </label>
+                <label className="flex items-center gap-4 cursor-pointer">
+                  <Checkbox
+                    defaultChecked
+                    className="h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:ring-0 focus:ring-offset-0 focus:border-[#324d67] focus:outline-none"
+                  />
+                  <span className="text-gray-300">Sync Job Failed</span>
+                </label>
               </div>
-            </label>
-            <label className="flex cursor-pointer items-start gap-4">
-              <Checkbox
-                defaultChecked
-                className="mt-1 h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:border-[#324d67] focus:outline-none focus:ring-0 focus:ring-offset-0"
-              />
-              <div>
-                <p className="font-medium text-white">Security Alerts</p>
-                <p className="text-gray-400">
-                  Get notified about any security-related events or potential
-                  threats.
-                </p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="font-medium text-white">Security</h3>
+              <div className="space-y-4 pl-6 border-l border-gray-700">
+                <label className="flex items-center gap-4 cursor-pointer">
+                  <Checkbox
+                    defaultChecked
+                    className="h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:ring-0 focus:ring-offset-0 focus:border-[#324d67] focus:outline-none"
+                  />
+                  <span className="text-gray-300">New Login Detected</span>
+                </label>
+                <label className="flex items-center gap-4 cursor-pointer">
+                  <Checkbox
+                    defaultChecked
+                    className="h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:ring-0 focus:ring-offset-0 focus:border-[#324d67] focus:outline-none"
+                  />
+                  <span className="text-gray-300">Password Changed</span>
+                </label>
               </div>
-            </label>
-            <label className="flex cursor-pointer items-start gap-4">
-              <Checkbox
-                defaultChecked
-                className="mt-1 h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:border-[#324d67] focus:outline-none focus:ring-0 focus:ring-offset-0"
-              />
-              <div>
-                <p className="font-medium text-white">Product Updates</p>
-                <p className="text-gray-400">
-                  Stay informed about new features, improvements, and important
-                  updates to SyncStream.
-                </p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="font-medium text-white">Product Updates</h3>
+              <div className="space-y-4 pl-6 border-l border-gray-700">
+                <label className="flex items-center gap-4 cursor-pointer">
+                  <Checkbox
+                    defaultChecked
+                    className="h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:ring-0 focus:ring-offset-0 focus:border-[#324d67] focus:outline-none"
+                  />
+                  <span className="text-gray-300">New Feature Available</span>
+                </label>
+                <label className="flex items-center gap-4 cursor-pointer">
+                  <Checkbox
+                    className="h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:ring-0 focus:ring-offset-0 focus:border-[#324d67] focus:outline-none"
+                  />
+                  <span className="text-gray-300">Scheduled Maintenance</span>
+                </label>
               </div>
-            </label>
+            </div>
           </div>
         </div>
         <div>
