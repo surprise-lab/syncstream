@@ -115,7 +115,7 @@ export default function AuditLogPage() {
   return (
     <main className="flex-1 p-8">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold tracking-tight text-white">User Activity</h2>
+        <h2 className="text-2xl font-bold tracking-tight">User Activity</h2>
         <p className="text-gray-400">
           Track all user activities within the SyncStream application.
         </p>
@@ -124,71 +124,69 @@ export default function AuditLogPage() {
         <div className="flex items-center justify-between gap-4 border-b border-gray-800 p-4">
           <div className="relative w-full max-w-sm">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <Search className="h-5 w-5 text-gray-400" />
+              <span className="material-symbols-outlined text-gray-400">search</span>
             </div>
-            <Input
+            <input
               className="w-full rounded-md border-gray-700 bg-gray-800 py-2 pl-10 pr-4 text-white placeholder-gray-500 focus:border-primary-500 focus:ring-primary-500"
               placeholder="Search logs by user, action, or resource..."
               type="text"
             />
           </div>
           <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              className="flex items-center gap-2 rounded-md border-gray-700 bg-gray-800 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
+            <button
+              className="flex items-center gap-2 rounded-md border border-gray-700 bg-gray-800 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
             >
-              <Filter className="h-4 w-4" />
+              <span className="material-symbols-outlined text-base">filter_list</span>
               Filter
-            </Button>
-            <Button
-              variant="outline"
-              className="flex items-center gap-2 rounded-md border-gray-700 bg-gray-800 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
+            </button>
+            <button
+              className="flex items-center gap-2 rounded-md border border-gray-700 bg-gray-800 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
             >
-              <Download className="h-4 w-4" />
+              <span className="material-symbols-outlined text-base">download</span>
               Export
-            </Button>
+            </button>
           </div>
         </div>
         <div className="overflow-x-auto">
-          <Table>
-            <TableHeader className="bg-gray-800/50">
-              <TableRow>
-                <TableHead className="w-1/4 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400">
-                  <Button variant="ghost" className="table-header-sort-button p-0 hover:bg-transparent">
-                    Timestamp <ArrowUp className="h-4 w-4" />
-                  </Button>
-                </TableHead>
-                <TableHead className="w-1/4 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400">
-                  <Button variant="ghost" className="table-header-sort-button p-0 hover:bg-transparent">User</Button>
-                </TableHead>
-                <TableHead className="w-1/4 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400">
-                  <Button variant="ghost" className="table-header-sort-button p-0 hover:bg-transparent">Action</Button>
-                </TableHead>
-                <TableHead className="w-1/4 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400">
-                  <Button variant="ghost" className="table-header-sort-button p-0 hover:bg-transparent">Resource</Button>
-                </TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody className="divide-y divide-gray-800">
+          <table className="min-w-full divide-y divide-gray-800">
+            <thead className="bg-gray-800/50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400 w-1/4" scope="col">
+                  <button className="flex items-center gap-1.5 text-sm font-semibold text-white">
+                    Timestamp <span className="material-symbols-outlined text-base">arrow_upward</span>
+                  </button>
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400 w-1/4" scope="col">
+                  <button className="flex items-center gap-1.5 text-sm font-semibold text-white">User</button>
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400 w-1/4" scope="col">
+                  <button className="flex items-center gap-1.5 text-sm font-semibold text-white">Action</button>
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400 w-1/4" scope="col">
+                  <button className="flex items-center gap-1.5 text-sm font-semibold text-white">Resource</button>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-800">
               {auditLogs.map((log) => (
-                <TableRow key={log.timestamp}>
-                  <TableCell className="px-6 py-4 text-sm text-gray-300">{log.timestamp}</TableCell>
-                  <TableCell className="px-6 py-4 text-sm text-gray-300">
+                <tr key={log.timestamp}>
+                  <td className="px-6 py-4 text-sm text-gray-300">{log.timestamp}</td>
+                  <td className="px-6 py-4 text-sm text-gray-300">
                     <div className="flex items-center gap-3">
-                      <Avatar className="h-8 w-8">
-                        <AvatarFallback className={log.color}>{log.initials}</AvatarFallback>
-                      </Avatar>
+                      <div className={cn("h-8 w-8 rounded-full flex items-center justify-center font-bold", log.color)}>
+                        {log.initials}
+                      </div>
                       <span>{log.user}</span>
                     </div>
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-sm text-gray-300">
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-300">
                     {getActionBadge(log.action)}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-sm text-gray-300">{log.resource}</TableCell>
-                </TableRow>
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-300">{log.resource}</td>
+                </tr>
               ))}
-            </TableBody>
-          </Table>
+            </tbody>
+          </table>
         </div>
         <div className="flex items-center justify-between border-t border-gray-800 px-4 py-3">
           <p className="text-sm text-gray-400">
@@ -197,18 +195,16 @@ export default function AuditLogPage() {
             <span className="font-medium text-white">100</span> results
           </p>
           <div className="inline-flex rounded-md shadow-sm">
-            <Button
-              variant="outline"
-              className="relative inline-flex items-center rounded-l-md border-gray-700 bg-gray-800 px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
+            <button
+              className="relative inline-flex items-center rounded-l-md border border-gray-700 bg-gray-800 px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
             >
               Previous
-            </Button>
-            <Button
-              variant="outline"
-              className="relative -ml-px inline-flex items-center rounded-r-md border-gray-700 bg-gray-800 px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
+            </button>
+            <button
+              className="relative -ml-px inline-flex items-center rounded-r-md border border-gray-700 bg-gray-800 px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
             >
               Next
-            </Button>
+            </button>
           </div>
         </div>
       </div>
