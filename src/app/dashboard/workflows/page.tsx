@@ -18,6 +18,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import Image from 'next/image';
 
 export default function WorkflowsPage() {
   return (
@@ -29,10 +30,101 @@ export default function WorkflowsPage() {
           <span className="truncate">New Workflow</span>
         </Button>
       </div>
+      <div className="bg-[#18232f] p-6 rounded-lg mb-8">
+        <h2 className="text-white text-2xl font-bold mb-6">
+          Start with a Template
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-col bg-[#111a22] p-4 rounded-lg hover:ring-2 hover:ring-blue-500 transition-all cursor-pointer">
+            <div className="flex items-center gap-3 mb-3">
+              <Image
+                alt="Salesforce Logo"
+                className="h-6 w-6 object-contain"
+                height={24}
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKYHvUB35pJUF8KKGMH7XuyiDmPMzROWkPboJ2L1LQhh32O2nx3psHyXjO_YXF4pohSienkeHpwMyzalFnwHYHpBvdRB66sM892W7l0wiWAoKhX4zLDCK4K6SbLu53_9Hre6AKJWS5xg4m0iqmRHvpP1_I1MAgAJidS3FAKqOkTEoFg96-fg-cEeb5seMG_D6NBE9zVO0MSLbLdMXAuTFomIFzQjoCmPqVpgYLuGpYRsL0itmgyg4clXWSVxyE4Vhif5_wAyBws5Zy"
+                width={24}
+              />
+              <span className="material-symbols-outlined text-gray-400">
+                arrow_forward
+              </span>
+              <Image
+                alt="HubSpot Logo"
+                className="h-6 w-6 object-contain"
+                height={24}
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLihRAw8GbChHf3xUdz6nayxsnFWcfVExnJIncVS0G7VcXhX6HS4gMncAl_9X-mGWFPVxpD19ldy7avU-tgHfKOsBlGenG0u7l9S-MF9tyXkHz9r_zHI5Zw1Oq_Xl_pvtdxILVU24uVNoPnuG8vBmYiob1JwZi-eBkrB4YopL6OCp-PWR_BpVS6cd8tsMZ2z4B9C_bwbFeUrUsARpon8JSxzAVtadqXHQXmANHwGfRzId8ubZVxLNIqMXVIAoOAf32uN7itakpRpC4"
+                width={24}
+              />
+            </div>
+            <h3 className="text-white font-semibold mb-2">
+              Sync Salesforce Leads to HubSpot
+            </h3>
+            <p className="text-gray-400 text-sm">
+              Automatically create a new contact in HubSpot when a new lead is
+              created in Salesforce.
+            </p>
+          </div>
+          <div className="flex flex-col bg-[#111a22] p-4 rounded-lg hover:ring-2 hover:ring-blue-500 transition-all cursor-pointer">
+            <div className="flex items-center gap-3 mb-3">
+              <Image
+                alt="Marketing Cloud Logo"
+                className="h-6 w-6 object-contain"
+                height={24}
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8eo8K6gOpapkDTwdKPH5YnqiDNRJpUzBRxljfWQ3MAkFA3Qq-K99rddJJylJjuEC4RwAa8tT9E8fWmGNJ8OqG3RhqqflohuDTL8yMjtDz_UTFsjHEsGXVdt2nnKkgagfCJmJXS77l993a9qTjdpGpEbNzDKrUsZqcA8KCl6-PjhXa8jo5PJb2N4YQ6tFLhM2HFvOFFoGUgyZqbEm8HIlvf4Km6j4AGZnhqWLoeqYrLpDapyWzLd6LoIfVDQ9QrrVAIRBsLb5iOOuH"
+                width={24}
+              />
+              <span className="material-symbols-outlined text-gray-400">
+                arrow_forward
+              </span>
+              <Image
+                alt="Salesforce Logo"
+                className="h-6 w-6 object-contain"
+                height={24}
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkTLS7hRxVfXA7111a8KspQHGxVf0UYRzmzNQI3P1ByQKWBoH8k9qYPfjTskDRNto6sqTUkxFYu4vc6sPCaIBPS7RHbNeTdAz5aKuieTDXmgYZOI3bocLv5e_L0faLFmPxuszCb9lkp7BQXCjrJ0vHMrxBIQ1o9jkmgUxqySbLVjD_QbxKFX73duPQuTy7PsPYrZE5IKnT0OSw_vZR8KofTqed8o14_tU8mjSiicHK-y_DrtKcqd3pe8-7HX6VSfAD0-hX8hxxeR0f"
+                width={24}
+              />
+            </div>
+            <h3 className="text-white font-semibold mb-2">
+              Create Salesforce Tasks from Forms
+            </h3>
+            <p className="text-gray-400 text-sm">
+              Create a task in Salesforce for each new form submission in
+              Marketing Cloud.
+            </p>
+          </div>
+          <div className="flex flex-col bg-[#111a22] p-4 rounded-lg hover:ring-2 hover:ring-blue-500 transition-all cursor-pointer">
+            <div className="flex items-center gap-3 mb-3">
+              <Image
+                alt="Mailchimp Logo"
+                className="h-6 w-6 object-contain"
+                height={24}
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQxiW1RvplPN0jZEsDjLIbYmNbU4iPj7v7XqngrAIx0NE28uvtZNMbg0YQ234dxtN_cO4E6ynhK1gLbuvHct1mjHhFjOi7yumj4OghUNLQKJ6Z_cZKhPDrQz0x6hxaOH0c4CNS19OgXVg-B30cn0syUSDzPft9JfQAa3C4ACWaOerMenMWG-kp3_qaVAPjkUIqzDvgwGmXnCwg6pZJgQSq2Ig0mkQ6e_3hnfIktj45utQJicRr2bIg7a0welvue889mxZdlIT4S49T"
+                width={24}
+              />
+              <span className="material-symbols-outlined text-gray-400">
+                arrow_forward
+              </span>
+              <Image
+                alt="HubSpot Logo"
+                className="h-6 w-6 object-contain"
+                height={24}
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSVy4ve1792U2Vgux80jZF5pFZf4IvmCsZTnc5WjoQ4ICHw9Qnr8zVu1IpWV6f3nq9uV24yfFIEdG557RkbAx1JNzoNZsE-Q_DQyIYCkyvrPDVnmaRa0LBanQ5x19W2lUOKfl88crTuZYBqr2aoLRo2AuMVj7HK5D9_mppTIDZauqfcrinKIDDiC71ySp_V01vdvOGDXvetx95jBDFRVEcDfq3r-rG9VJ1FfLDSeRHzIM78pDYzIMzG2RgWmKOvmi6k_FM02Hyh2yL"
+                width={24}
+              />
+            </div>
+            <h3 className="text-white font-semibold mb-2">
+              Add Mailchimp Subscribers to HubSpot
+            </h3>
+            <p className="text-gray-400 text-sm">
+              When a new subscriber is added in Mailchimp, create or update a
+              contact in HubSpot.
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 bg-[#18232f] p-6 rounded-lg">
           <h2 className="text-white text-2xl font-bold mb-6">
-            Workflow Builder
+            Or Build From Scratch
           </h2>
           <div className="space-y-6">
             <div className="flex flex-col gap-2">
@@ -243,5 +335,7 @@ export default function WorkflowsPage() {
         </div>
       </div>
     </main>
-  );
-}
+</div>
+</div>
+
+</body></html>
