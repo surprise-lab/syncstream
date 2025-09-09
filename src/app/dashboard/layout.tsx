@@ -82,7 +82,7 @@ export default function DashboardLayout({
             href="/dashboard/users"
           >
             <span className="material-symbols-outlined">group</span>
-            <span className="text-sm font-medium">Team</span>
+            <span className="text-sm font-medium">Users</span>
           </Link>
            <Link
             className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"

@@ -4,210 +4,143 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 
-export default function UserManagement() {
-  return (
-    <main className="flex-1 p-8">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-white text-3xl font-bold">
-            Members &amp; Invitations
-          </h1>
-          <p className="text-slate-400">Manage your team's access to SyncStream.</p>
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
-              search
-            </span>
-            <Input
-              className="form-input w-full rounded-md border-slate-700 bg-[#192633] text-white pl-10 pr-4 py-2 focus:border-[#1172d4] focus:ring-[#1172d4]"
-              placeholder="Search..."
-              type="text"
-            />
-          </div>
-          <div className="relative">
-            <Button className="flex items-center gap-2 rounded-md border border-slate-700 bg-[#192633] px-4 py-2 text-sm font-medium text-white hover:bg-[#233648]">
-              <span className="material-symbols-outlined text-base">
-                filter_list
-              </span>
-              <span>Filter</span>
-            </Button>
-          </div>
-        </div>
-      </div>
-      <div className="border-b border-slate-700 mb-6">
-        <nav className="flex gap-8">
-          <a
-            className="pb-3 text-slate-400 hover:text-white border-b-2 border-transparent hover:border-[#1172d4]"
-            href="#"
-          >
-            Members
-          </a>
-          <a className="pb-3 text-white border-b-2 border-[#1172d4]" href="#">
-            Invitations
-          </a>
-        </nav>
-      </div>
-      <div className="bg-[#192633] p-6 rounded-lg mb-8">
-        <div className="flex justify-between items-start mb-4">
-            <div>
-                <h2 className="text-xl font-bold text-white">Send New Invitation</h2>
-                <p className="text-sm text-slate-400">Invite new members to your team.</p>
-            </div>
-            <Button className="flex items-center gap-2 rounded-md border border-slate-700 bg-[#233648] px-4 py-2 text-sm font-medium text-white hover:bg-[#344a62]">
-                <span className="material-symbols-outlined text-base">
-                    group_add
+const members = [
+    {
+        name: 'Sophia Carter',
+        email: 'sophia.carter@example.com',
+        role: 'Member',
+        status: 'Active',
+    },
+    {
+        name: 'Ethan Bennett',
+        email: 'ethan.bennett@example.com',
+        role: 'Member',
+        status: 'Active',
+    },
+    {
+        name: 'Olivia Hayes',
+        email: 'olivia.hayes@example.com',
+        role: 'Member',
+        status: 'Inactive',
+    },
+];
+
+const getStatusBadge = (status: string) => {
+    switch (status) {
+        case 'Active':
+            return (
+                <span className="inline-flex items-center rounded-full bg-green-500/20 px-2.5 py-0.5 text-xs font-medium text-green-400">
+                    <svg className="mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3"></circle>
+                    </svg>
+                    Active
                 </span>
-                <span>Bulk Invite</span>
-            </Button>
-        </div>
-        <form className="grid grid-cols-1 gap-6">
-            <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2" htmlFor="emails">Recipient Emails</label>
-                <Textarea id="emails" placeholder="Enter emails, separated by commas or new lines" rows={4} className="form-textarea w-full rounded-md border-slate-700 bg-[#233648] text-white focus:border-[#1172d4] focus:ring-[#1172d4]" />
-                <p className="text-xs text-slate-500 mt-2">Or, <button type="button" className="text-[#1172d4] hover:underline">upload a CSV file</button>.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-                <div className="col-span-1">
-                    <label className="block text-sm font-medium text-slate-300 mb-1" htmlFor="role">Role</label>
-                    <Select>
-                        <SelectTrigger id="role" className="form-select w-full rounded-md border-slate-700 bg-[#233648] text-white focus:border-[#1172d4] focus:ring-[#1172d4]">
-                            <SelectValue placeholder="Select a role" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="Admin">Admin</SelectItem>
-                            <SelectItem value="Member">Member</SelectItem>
-                            <SelectItem value="Viewer">Viewer</SelectItem>
-                        </SelectContent>
-                    </Select>
-                </div>
-                <div className="col-span-1">
-                    <label className="block text-sm font-medium text-slate-300 mb-1" htmlFor="expiration">Expiration Date</label>
-                    <Select>
-                        <SelectTrigger id="expiration" className="form-select w-full rounded-md border-slate-700 bg-[#233648] text-white focus:border-[#1172d4] focus:ring-[#1172d4]">
-                            <SelectValue placeholder="Never" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="never">Never</SelectItem>
-                            <SelectItem value="1-day">1 Day</SelectItem>
-                            <SelectItem value="7-days">7 Days</SelectItem>
-                            <SelectItem value="30-days">30 Days</SelectItem>
-                        </SelectContent>
-                    </Select>
-                </div>
-                <div className="col-span-1">
-                    <Button className="w-full flex items-center justify-center gap-2 rounded-md bg-[#1172d4] px-4 py-2 text-sm font-bold text-white hover:bg-blue-600 transition-colors" type="submit">
-                        <span className="material-symbols-outlined"> send </span>
-                        <span>Send Invitations</span>
+            );
+        case 'Inactive':
+            return (
+                <span className="inline-flex items-center rounded-full bg-red-500/20 px-2.5 py-0.5 text-xs font-medium text-red-400">
+                    <svg className="mr-1.5 h-2 w-2 text-red-400" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3"></circle>
+                    </svg>
+                    Inactive
+                </span>
+            );
+        default:
+            return null;
+    }
+};
+
+export default function UsersPage() {
+    return (
+        <div className="flex flex-1">
+            <aside className="flex flex-col w-80 bg-[#192633] p-4 border-r border-[#324d67]">
+                <div className="flex items-center justify-between pb-4">
+                    <h1 className="text-2xl font-bold text-white">Groups</h1>
+                    <Button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-9 px-3 bg-[#1172d4] text-white text-sm font-bold leading-normal tracking-[0.015em] gap-2">
+                        <span className="material-symbols-outlined">add</span>
+                        <span className="truncate">New Group</span>
                     </Button>
                 </div>
-            </div>
-        </form>
-    </div>
-      <div>
-        <h2 className="text-xl font-bold text-white mb-4">
-          Pending Invitations
-        </h2>
-        <div className="overflow-x-auto rounded-lg border border-slate-700">
-          <table className="w-full text-left text-sm text-slate-400">
-            <thead className="bg-[#192633] text-xs uppercase text-slate-400">
-              <tr>
-                <th className="px-6 py-3" scope="col">
-                  Email
-                </th>
-                <th className="px-6 py-3" scope="col">
-                  Role
-                </th>
-                <th className="px-6 py-3" scope="col">
-                  Expires In
-                </th>
-                <th className="px-6 py-3" scope="col">
-                  Status
-                </th>
-                <th className="px-6 py-3" scope="col">
-                  <span className="sr-only">Actions</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-slate-700 bg-[#111a22] hover:bg-[#192633]">
-                <td className="px-6 py-4 font-medium text-white">
-                  alice.smith@example.com
-                </td>
-                <td className="px-6 py-4">Admin</td>
-                <td className="px-6 py-4">29 days</td>
-                <td className="px-6 py-4">
-                  <span className="inline-flex items-center rounded-full bg-yellow-900 px-2.5 py-0.5 text-xs font-medium text-yellow-300">
-                    Pending
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-right">
-                  <div className="flex items-center justify-end gap-4">
-                    <button className="font-medium text-[#1172d4] hover:underline">
-                      Resend
-                    </button>
-                    <button className="font-medium text-red-500 hover:underline">
-                      Revoke
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b border-slate-700 bg-[#111a22] hover:bg-[#192633]">
-                <td className="px-6 py-4 font-medium text-white">
-                  bob.johnson@example.com
-                </td>
-                <td className="px-6 py-4">Member</td>
-                <td className="px-6 py-4">6 days</td>
-                <td className="px-6 py-4">
-                  <span className="inline-flex items-center rounded-full bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-300">
-                    Sent
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-right">
-                  <div className="flex items-center justify-end gap-4">
-                    <button className="font-medium text-[#1172d4] hover:underline">
-                      Resend
-                    </button>
-                    <button className="font-medium text-red-500 hover:underline">
-                      Revoke
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr className="bg-[#111a22] hover:bg-[#192633]">
-                <td className="px-6 py-4 font-medium text-white">
-                  carol.williams@example.com
-                </td>
-                <td className="px-6 py-4">Member</td>
-                <td className="px-6 py-4 text-red-400">Expired</td>
-                <td className="px-6 py-4">
-                  <span className="inline-flex items-center rounded-full bg-red-900 px-2.5 py-0.5 text-xs font-medium text-red-300">
-                    Revoked
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-right">
-                  <div className="flex items-center justify-end gap-4">
-                    <button className="font-medium text-[#1172d4] hover:underline">
-                      Resend
-                    </button>
-                    <button className="font-medium text-red-500 hover:underline" disabled>
-                      Revoke
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                <div className="relative mb-4">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <span className="material-symbols-outlined text-[#92adc9]">search</span>
+                    </div>
+                    <Input className="form-input w-full rounded-md border-none bg-[#233648] py-2 pl-10 pr-4 text-white placeholder:text-[#92adc9] focus:outline-none focus:ring-2 focus:ring-[#1172d4]" placeholder="Search groups" type="text" />
+                </div>
+                <nav className="flex-1 space-y-1">
+                    <a className="flex items-center justify-between rounded-md bg-[#233648] px-3 py-2 text-sm font-medium text-white" href="#">
+                        <span>All Groups</span>
+                        <span className="rounded-full bg-[#324d67] px-2 text-xs">12</span>
+                    </a>
+                    <a className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-[#92adc9] hover:bg-[#233648]" href="#">
+                        <span>Marketing</span>
+                        <span className="rounded-full bg-[#324d67] px-2 text-xs">3</span>
+                    </a>
+                    <a className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-[#92adc9] hover:bg-[#233648]" href="#">
+                        <span>Sales</span>
+                        <span className="rounded-full bg-[#324d67] px-2 text-xs">4</span>
+                    </a>
+                    <a className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-[#92adc9] hover:bg-[#233648]" href="#">
+                        <span>Engineering</span>
+                        <span className="rounded-full bg-[#324d67] px-2 text-xs">5</span>
+                    </a>
+                </nav>
+            </aside>
+            <main className="flex-1 p-6">
+                <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-3xl font-bold text-white">Marketing</h2>
+                    <Button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-9 px-3 bg-[#1172d4] text-white text-sm font-bold leading-normal tracking-[0.015em] gap-2">
+                        <span className="material-symbols-outlined">add</span>
+                        <span className="truncate">Add Member</span>
+                    </Button>
+                </div>
+                <div className="border-b border-[#324d67]">
+                    <nav className="-mb-px flex space-x-8">
+                        <a className="whitespace-nowrap border-b-2 border-[#1172d4] px-1 py-4 text-sm font-medium text-white" href="#">Members</a>
+                        <a className="whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-[#92adc9] hover:border-gray-300 hover:text-white" href="#">Permissions</a>
+                    </nav>
+                </div>
+                <div className="mt-6">
+                    <div className="overflow-hidden rounded-md border border-[#324d67] bg-[#192633]">
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead className="px-4 py-3.5 text-left text-sm font-semibold text-white">Name</TableHead>
+                                    <TableHead className="px-3 py-3.5 text-left text-sm font-semibold text-white">Email</TableHead>
+                                    <TableHead className="px-3 py-3.5 text-left text-sm font-semibold text-white">Role</TableHead>
+                                    <TableHead className="px-3 py-3.5 text-left text-sm font-semibold text-white">Status</TableHead>
+                                    <TableHead className="relative py-3.5 pl-3 pr-4">
+                                        <span className="sr-only">Edit</span>
+                                    </TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody className="divide-y divide-[#324d67] bg-[#111a22]">
+                                {members.map((member, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white">{member.name}</TableCell>
+                                        <TableCell className="whitespace-nowrap px-3 py-4 text-sm text-[#92adc9]">{member.email}</TableCell>
+                                        <TableCell className="whitespace-nowrap px-3 py-4 text-sm text-[#92adc9]">{member.role}</TableCell>
+                                        <TableCell className="whitespace-nowrap px-3 py-4 text-sm">{getStatusBadge(member.status)}</TableCell>
+                                        <TableCell className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium">
+                                            <button className="text-[#92adc9] hover:text-white">
+                                                <span className="material-symbols-outlined">more_vert</span>
+                                            </button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </div>
+                </div>
+            </main>
         </div>
-      </div>
-    </main>
-  );
+    );
 }
