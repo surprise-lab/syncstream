@@ -13,7 +13,7 @@ export default function NotificationsPage() {
       </p>
       <div className="mt-8 space-y-12">
         <div>
-          <h2 className="text-2xl font-semibold text-white">Alert Types</h2>
+          <h2 className="text-2xl font-semibold text-white">Email Notifications</h2>
           <p className="mt-1 text-gray-400">
             Subscribe or unsubscribe from different types of alerts.
           </p>
@@ -60,7 +60,7 @@ export default function NotificationsPage() {
         </div>
         <div>
           <h2 className="text-2xl font-semibold text-white">
-            Notification Frequency
+            Notification Delivery
           </h2>
           <p className="mt-1 text-gray-400">
             Configure how often you receive notifications.
@@ -92,6 +92,26 @@ export default function NotificationsPage() {
               <span className="font-medium text-white">Weekly Summary</span>
             </label>
           </div>
+        </div>
+        <div>
+            <h2 className="text-2xl font-semibold text-white">Email Summaries</h2>
+            <p className="mt-1 text-gray-400">Consolidate your notifications into a single daily or weekly email digest.</p>
+            <div className="mt-6 space-y-6">
+                <label className="flex items-start gap-4 cursor-pointer">
+                    <Checkbox className="mt-1 h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:ring-0 focus:ring-offset-0 focus:border-[#324d67] focus:outline-none" />
+                    <div>
+                        <p className="font-medium text-white">Daily Digest</p>
+                        <p className="text-gray-400">Receive a summary of all notifications once a day.</p>
+                    </div>
+                </label>
+                <label className="flex items-start gap-4 cursor-pointer">
+                    <Checkbox className="mt-1 h-5 w-5 shrink-0 rounded border-2 border-[#324d67] bg-transparent text-[#1173d4] checked:border-[#1173d4] checked:bg-[#1173d4] focus:ring-0 focus:ring-offset-0 focus:border-[#324d67] focus:outline-none" />
+                    <div>
+                        <p className="font-medium text-white">Weekly Digest</p>
+                        <p className="text-gray-400">Receive a summary of all notifications once a week.</p>
+                    </div>
+                </label>
+            </div>
         </div>
       </div>
       <div className="mt-12 border-t border-gray-700 pt-6">

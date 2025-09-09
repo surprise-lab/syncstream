@@ -18,14 +18,14 @@ export default function DashboardLayout({
             className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
             href="/dashboard"
           >
-            <span className="material-symbols-outlined">dashboard</span>
+            <span className="material-symbols-outlined">home</span>
             <span className="text-sm font-medium">Home</span>
           </Link>
           <Link
             className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
             href="/dashboard/integrations"
           >
-            <span className="material-symbols-outlined">sync_alt</span>
+            <span className="material-symbols-outlined">extension</span>
             <span className="text-sm font-medium">Integrations</span>
           </Link>
           <Link
@@ -39,7 +39,7 @@ export default function DashboardLayout({
             className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
             href="/dashboard/oauth-clients"
           >
-            <span className="material-symbols-outlined">key</span>
+            <span className="material-symbols-outlined">vpn_key</span>
             <span className="text-sm font-medium">OAuth Clients</span>
           </Link>
           <Link
@@ -61,7 +61,7 @@ export default function DashboardLayout({
             href="/dashboard/export-import"
           >
             <span className="material-symbols-outlined">import_export</span>
-            <span className="text-sm font-medium">Export &amp; Import</span>
+            <span className="text-sm font-medium">Export & Import</span>
           </Link>
           <Link
             className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
@@ -72,10 +72,10 @@ export default function DashboardLayout({
           </Link>
           <Link
             className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/data"
+            href="/dashboard/users"
           >
-            <span className="material-symbols-outlined">database</span>
-            <span className="text-sm font-medium">Data</span>
+            <span className="material-symbols-outlined">group</span>
+            <span className="text-sm font-medium">Team</span>
           </Link>
            <Link
             className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
