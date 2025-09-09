@@ -83,7 +83,12 @@
     --primary-500-hsl: 217 91% 60%;
     --primary-700-hsl: 218 92% 47%;
 
-
+    --primary-color: #1173d4;
+    --background-color: #0f172a;
+    --card-background-color: #1e293b;
+    --text-primary-color: #f8fafc;
+    --text-secondary-color: #94a3b8;
+    --border-color: #334155;
   }
  
   .dark {
@@ -182,6 +187,22 @@
       .method-post { background-color: #4caf50; }
       .method-put { background-color: #ff9800; }
       .method-delete { background-color: #f44336; }
+      .radio-button:checked {
+        border-color: var(--primary-color);
+        background-color: var(--primary-color);
+      }
+      .radio-button:checked::after {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: white;
+      }
+      .form-input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(17, 115, 212, 0.5);
+      }
 }
 
 @layer components {
@@ -213,6 +234,7 @@
         @apply bg-blue-500/20 text-blue-300;
       }
 }
+
 
 
 
