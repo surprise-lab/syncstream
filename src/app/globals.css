@@ -156,6 +156,10 @@
         color: var(--accent-color);
         background-color: #374151;
       }
+      .method-get { background-color: #1173d4; }
+      .method-post { background-color: #4caf50; }
+      .method-put { background-color: #ff9800; }
+      .method-delete { background-color: #f44336; }
 }
 
 @layer components {
@@ -175,3 +179,4 @@
         @apply rotate-45;
       }
 }
+
