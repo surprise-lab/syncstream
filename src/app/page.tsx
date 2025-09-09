@@ -34,12 +34,15 @@ export default function OnboardingPage() {
         <div className="mx-auto w-full max-w-lg">
           <div className="text-center">
             <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Welcome to SyncStream
+              Welcome to SyncStream!
             </h2>
             <p className="mt-4 text-lg text-gray-300">
               Let's get you started by connecting your first integration. This
               will unlock the power of automated workflows.
             </p>
+            <button className="mt-4 text-sm font-medium text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#111A22] focus:ring-primary rounded-md">
+              Skip Onboarding
+            </button>
           </div>
           <div className="mb-8 mt-12">
             <nav aria-label="Progress">
@@ -134,11 +137,6 @@ export default function OnboardingPage() {
             <button className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#111A22]">
               Start Setup
             </button>
-            <div className="mt-6 text-center">
-              <button className="text-sm text-gray-400 transition-colors hover:text-white">
-                Skip for now
-              </button>
-            </div>
           </div>
         </div>
       </main>
