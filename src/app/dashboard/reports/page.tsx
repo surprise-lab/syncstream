@@ -11,6 +11,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 
 export default function ReportsPage() {
   return (
@@ -20,7 +22,7 @@ export default function ReportsPage() {
           <div className="flex flex-col gap-2">
             <h1 className="text-white text-3xl font-bold">Data &amp; Reports</h1>
             <p className="text-[#92adc9] text-sm">
-              Create and manage your custom reports.
+              Create, manage, and schedule your custom reports.
             </p>
           </div>
           <div className="flex gap-2 items-start">
@@ -33,17 +35,17 @@ export default function ReportsPage() {
         <div className="flex flex-1 gap-8 p-4">
           <aside className="flex flex-col gap-6 w-80 rounded-lg border border-[#324d67] bg-[#192633]/50 p-6">
             <div>
-              <h3 className="text-white text-lg font-bold mb-4">
+              <h3 className="text-white text-lg font-bold">
                 Report Builder
               </h3>
             </div>
             <div className="flex flex-col gap-4">
-              <label
+              <Label
                 className="text-sm font-medium text-slate-300"
                 htmlFor="data-source"
               >
                 Data Source
-              </label>
+              </Label>
               <Select>
                 <SelectTrigger
                   id="data-source"
@@ -59,37 +61,37 @@ export default function ReportsPage() {
               </Select>
             </div>
             <div className="flex flex-col gap-4">
-              <label className="text-sm font-medium text-slate-300">
+              <Label className="text-sm font-medium text-slate-300">
                 Metrics
-              </label>
+              </Label>
               <div className="flex flex-col gap-2">
-                <label className="flex items-center gap-2 text-sm text-slate-300">
+                <Label className="flex items-center gap-2 text-sm text-slate-300">
                   <Checkbox
                     defaultChecked
                     className="w-4 h-4 text-primary bg-[#233648] border-[#324d67] focus:ring-2 focus:ring-primary"
                   />
                   <span>Total Sales</span>
-                </label>
-                <label className="flex items-center gap-2 text-sm text-slate-300">
+                </Label>
+                <Label className="flex items-center gap-2 text-sm text-slate-300">
                   <Checkbox className="w-4 h-4 text-primary bg-[#233648] border-[#324d67] focus:ring-2 focus:ring-primary" />
                   <span>New Customers</span>
-                </label>
-                <label className="flex items-center gap-2 text-sm text-slate-300">
+                </Label>
+                <Label className="flex items-center gap-2 text-sm text-slate-300">
                   <Checkbox
                     defaultChecked
                     className="w-4 h-4 text-primary bg-[#233648] border-[#324d67] focus:ring-2 focus:ring-primary"
                   />
                   <span>Conversion Rate</span>
-                </label>
+                </Label>
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <label
+              <Label
                 className="text-sm font-medium text-slate-300"
                 htmlFor="filters"
               >
                 Filters
-              </label>
+              </Label>
               <div className="flex flex-col gap-2">
                 <Input
                   className="w-full bg-[#233648] text-white border border-[#324d67] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary"
@@ -103,12 +105,12 @@ export default function ReportsPage() {
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <label
+              <Label
                 className="text-sm font-medium text-slate-300"
                 htmlFor="visualization"
               >
                 Visualization
-              </label>
+              </Label>
               <Select>
                 <SelectTrigger
                   id="visualization"
@@ -199,6 +201,89 @@ export default function ReportsPage() {
                   className="bg-primary/20 hover:bg-primary/40 transition-colors w-full rounded-t-md"
                   style={{ height: '65%' }}
                 ></div>
+              </div>
+            </div>
+            <div className="border-t border-[#324d67] pt-6 flex flex-col gap-6">
+              <div className="flex justify-between items-center">
+                <h4 className="text-white text-lg font-bold">
+                  Schedule Report
+                </h4>
+                <div className="flex items-center gap-2">
+                  <Label
+                    htmlFor="schedule-toggle"
+                    className="text-sm text-slate-400"
+                  >
+                    Automate report delivery
+                  </Label>
+                  <Switch id="schedule-toggle" />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="flex flex-col gap-2">
+                  <Label
+                    className="text-sm font-medium text-slate-300"
+                    htmlFor="schedule-frequency"
+                  >
+                    Frequency
+                  </Label>
+                  <Select defaultValue="weekly">
+                    <SelectTrigger
+                      id="schedule-frequency"
+                      className="w-full bg-[#233648] text-white border border-[#324d67] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary"
+                    >
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="daily">Daily</SelectItem>
+                      <SelectItem value="weekly">Weekly</SelectItem>
+                      <SelectItem value="monthly">Monthly</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label
+                    className="text-sm font-medium text-slate-300"
+                    htmlFor="schedule-time"
+                  >
+                    Time
+                  </Label>
+                  <Select defaultValue="12:00">
+                    <SelectTrigger
+                      id="schedule-time"
+                      className="w-full bg-[#233648] text-white border border-[#324d67] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary"
+                    >
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="9:00">9:00 AM</SelectItem>
+                      <SelectItem value="12:00">12:00 PM</SelectItem>
+                      <SelectItem value="17:00">5:00 PM</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label
+                  className="text-sm font-medium text-slate-300"
+                  htmlFor="delivery-email"
+                >
+                  Delivery Email
+                </Label>
+                <Input
+                  className="w-full bg-[#233648] text-white border border-[#324d67] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary"
+                  id="delivery-email"
+                  placeholder="Enter recipient email address"
+                  type="email"
+                  defaultValue="team@example.com"
+                />
+              </div>
+              <div className="flex justify-end">
+                <Button className="flex items-center justify-center gap-2 rounded-md h-9 px-3 text-sm font-medium text-white bg-primary hover:bg-blue-600 transition-colors">
+                  <span className="material-symbols-outlined text-lg">
+                    schedule_send
+                  </span>
+                  <span>Save Schedule</span>
+                </Button>
               </div>
             </div>
           </main>
