@@ -109,6 +109,22 @@ export default function UsersPage() {
                     </nav>
                 </div>
                 <div className="mt-6">
+                    <div className="flex items-center justify-between mb-4 gap-4">
+                        <div className="relative w-full max-w-xs">
+                            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <span className="material-symbols-outlined text-[#92adc9]">search</span>
+                            </div>
+                            <Input className="form-input w-full rounded-md border-none bg-[#192633] py-2 pl-10 pr-4 text-white placeholder:text-[#92adc9] focus:outline-none focus:ring-2 focus:ring-[#1172d4]" placeholder="Search members" type="text" />
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <Button className="flex items-center gap-2 rounded-md bg-[#192633] px-4 py-2 text-sm font-medium text-white hover:bg-[#233648]">
+                                <span className="material-symbols-outlined text-[#92adc9]">filter_list</span>
+                                <span>Filter</span>
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="@container">
                     <div className="overflow-hidden rounded-md border border-[#324d67] bg-[#192633]">
                         <Table>
                             <TableHeader>
