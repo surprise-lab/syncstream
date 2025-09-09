@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Bell, KeyRound } from 'lucide-react';
+import { KeyRound } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -321,5 +321,3 @@ export default function SettingsPage() {
     </div>
   );
 }
-
-    
