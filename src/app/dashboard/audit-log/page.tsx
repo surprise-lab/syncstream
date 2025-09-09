@@ -16,7 +16,8 @@ const auditLogs = [
   {
     timestamp: '2024-01-15 14:30',
     user: 'Alex Johnson',
-    integration: 'CRM',
+    source: 'CRM',
+    destination: 'Marketing Automation',
     dataField: 'Customer Name',
     oldValue: 'John Smith',
     newValue: 'Jonathan Smith',
@@ -24,7 +25,8 @@ const auditLogs = [
   {
     timestamp: '2024-01-15 14:35',
     user: 'Alex Johnson',
-    integration: 'CRM',
+    source: 'CRM',
+    destination: 'Marketing Automation',
     dataField: 'Customer Email',
     oldValue: 'john.smith@example.com',
     newValue: 'jonathan.smith@example.com',
@@ -32,7 +34,8 @@ const auditLogs = [
   {
     timestamp: '2024-01-15 15:00',
     user: 'Sarah Lee',
-    integration: 'Marketing Automation',
+    source: 'Marketing Automation',
+    destination: 'CRM',
     dataField: 'Campaign Status',
     oldValue: { value: 'Draft', type: 'warning' },
     newValue: { value: 'Active', type: 'success' },
@@ -40,7 +43,8 @@ const auditLogs = [
   {
     timestamp: '2024-01-15 15:15',
     user: 'Sarah Lee',
-    integration: 'Marketing Automation',
+    source: 'Marketing Automation',
+    destination: 'Finance System',
     dataField: 'Campaign Budget',
     oldValue: '$5000',
     newValue: '$7500',
@@ -48,7 +52,8 @@ const auditLogs = [
   {
     timestamp: '2024-01-16 09:00',
     user: 'David Chen',
-    integration: 'E-commerce',
+    source: 'E-commerce',
+    destination: 'CRM',
     dataField: 'Product Price',
     oldValue: '$29.99',
     newValue: '$34.99',
@@ -56,7 +61,8 @@ const auditLogs = [
   {
     timestamp: '2024-01-16 09:30',
     user: 'David Chen',
-    integration: 'E-commerce',
+    source: 'E-commerce',
+    destination: 'Finance System',
     dataField: 'Product Stock',
     oldValue: '100',
     newValue: '50',
@@ -64,7 +70,8 @@ const auditLogs = [
   {
     timestamp: '2024-01-16 10:00',
     user: 'Emily White',
-    integration: 'Support System',
+    source: 'Support System',
+    destination: 'CRM',
     dataField: 'Ticket Status',
     oldValue: { value: 'Open', type: 'info' },
     newValue: { value: 'Closed', type: 'neutral' },
@@ -72,7 +79,8 @@ const auditLogs = [
   {
     timestamp: '2024-01-16 10:15',
     user: 'Emily White',
-    integration: 'Support System',
+    source: 'Support System',
+    destination: 'CRM',
     dataField: 'Ticket Priority',
     oldValue: { value: 'Low', type: 'neutral' },
     newValue: { value: 'High', type: 'danger' },
@@ -80,7 +88,8 @@ const auditLogs = [
   {
     timestamp: '2024-01-16 11:00',
     user: 'Michael Brown',
-    integration: 'Finance System',
+    source: 'Finance System',
+    destination: 'E-commerce',
     dataField: 'Invoice Amount',
     oldValue: '$150.00',
     newValue: '$175.00',
@@ -88,7 +97,8 @@ const auditLogs = [
   {
     timestamp: '2024-01-16 11:30',
     user: 'Michael Brown',
-    integration: 'Finance System',
+    source: 'Finance System',
+    destination: 'CRM',
     dataField: 'Invoice Due Date',
     oldValue: '2024-01-31',
     newValue: '2024-02-15',
@@ -122,22 +132,26 @@ export default function AuditLogPage() {
         <main className="flex-1 px-10 py-8">
             <div className="mx-auto max-w-7xl">
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-white">Audit Log</h1>
-                    <p className="mt-2 text-base text-gray-400">Track changes to data within integrated systems through SyncStream.</p>
+                    <h1 className="text-3xl font-bold text-white">Data Change Audit Log</h1>
+                    <p className="mt-2 text-base text-gray-400">Track and filter changes to data within integrated systems through SyncStream.</p>
                 </div>
                 <div className="space-y-6">
                     <div className="flex items-center justify-between gap-4">
-                        <div className="flex items-center gap-2">
-                            <div className="relative w-full max-w-sm">
+                        <div className="flex flex-wrap items-center gap-2">
+                            <div className="relative w-full max-w-xs">
                                 <span className="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"> search </span>
-                                <Input className="form-input w-full rounded-md border-none bg-[#233648] py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500" placeholder="Search by user, integration, or data field" type="search" />
+                                <Input className="form-input w-full rounded-md border-none bg-[#233648] py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500" placeholder="Search by user, data field..." type="search" />
                             </div>
                             <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white transition-colors hover:bg-[#2d4257]">
                                 <span>Date Range</span>
                                 <span className="material-symbols-outlined text-base"> expand_more </span>
                             </Button>
                             <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white transition-colors hover:bg-[#2d4257]">
-                                <span>Integration</span>
+                                <span>Source</span>
+                                <span className="material-symbols-outlined text-base"> expand_more </span>
+                            </Button>
+                            <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white transition-colors hover:bg-[#2d4257]">
+                                <span>Destination</span>
                                 <span className="material-symbols-outlined text-base"> expand_more </span>
                             </Button>
                             <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white transition-colors hover:bg-[#2d4257]">
@@ -154,12 +168,13 @@ export default function AuditLogPage() {
                         <Table className="min-w-full divide-y divide-[#324d67]">
                             <TableHeader className="bg-[#192633]">
                                 <TableRow>
-                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">Timestamp</TableHead>
-                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">User</TableHead>
-                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">Integration</TableHead>
-                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">Data Field</TableHead>
-                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">Old Value</TableHead>
-                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">New Value</TableHead>
+                                    <TableHead className="w-[15%] px-4 py-3.5 text-left text-sm font-semibold text-white">Timestamp</TableHead>
+                                    <TableHead className="w-[15%] px-4 py-3.5 text-left text-sm font-semibold text-white">User</TableHead>
+                                    <TableHead className="w-[15%] px-4 py-3.5 text-left text-sm font-semibold text-white">Source</TableHead>
+                                    <TableHead className="w-[15%] px-4 py-3.5 text-left text-sm font-semibold text-white">Destination</TableHead>
+                                    <TableHead className="w-[15%] px-4 py-3.5 text-left text-sm font-semibold text-white">Data Field</TableHead>
+                                    <TableHead className="w-[12.5%] px-4 py-3.5 text-left text-sm font-semibold text-white">Old Value</TableHead>
+                                    <TableHead className="w-[12.5%] px-4 py-3.5 text-left text-sm font-semibold text-white">New Value</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody className="divide-y divide-[#233648]">
@@ -167,7 +182,8 @@ export default function AuditLogPage() {
                                 <TableRow key={index}>
                                     <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{log.timestamp}</TableCell>
                                     <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{log.user}</TableCell>
-                                    <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{log.integration}</TableCell>
+                                    <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{log.source}</TableCell>
+                                    <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{log.destination}</TableCell>
                                     <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{log.dataField}</TableCell>
                                     <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{getChangeBadge(log.oldValue)}</TableCell>
                                     <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{getChangeBadge(log.newValue)}</TableCell>
