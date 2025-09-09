@@ -2,8 +2,192 @@
 'use client';
 
 import * as React from 'react';
+import { cn } from '@/lib/utils';
+
+const userManagementEndpoints = [
+  {
+    id: 'get-users',
+    method: 'GET',
+    path: '/users',
+    description: 'Retrieve a list of all users.',
+    code: {
+      python: `import requests
+url = "https://api.syncstream.com/v1/users"
+headers = {"Authorization": "Bearer YOUR_API_KEY"}
+response = requests.get(url, headers=headers)
+print(response.json())`,
+      javascript: `fetch('https://api.syncstream.com/v1/users', {
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY'
+  }
+})
+.then(response => response.json())
+.then(data => console.log(data));`,
+      ruby: `require 'net/http'
+require 'uri'
+require 'json'
+uri = URI.parse("https://api.syncstream.com/v1/users")
+request = Net::HTTP::Get.new(uri)
+request["Authorization"] = "Bearer YOUR_API_KEY"
+req_options = { use_ssl: uri.scheme == "https" }
+response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+  http.request(request)
+end
+puts JSON.parse(response.body)`,
+    },
+  },
+  {
+    id: 'post-users',
+    method: 'POST',
+    path: '/users',
+    description: 'Create a new user.',
+  },
+  {
+    id: 'get-user-id',
+    method: 'GET',
+    path: '/users/{id}',
+    description: 'Retrieve a specific user by ID.',
+  },
+  {
+    id: 'put-user-id',
+    method: 'PUT',
+    path: '/users/{id}',
+    description: 'Update an existing user.',
+  },
+  {
+    id: 'delete-user-id',
+    method: 'DELETE',
+    path: '/users/{id}',
+    description: 'Delete a user.',
+  },
+];
+
+const projectManagementEndpoints = [
+    {
+        id: 'get-projects',
+        method: 'GET',
+        path: '/projects',
+        description: 'Retrieve a list of all projects.',
+    },
+    {
+        id: 'post-projects',
+        method: 'POST',
+        path: '/projects',
+        description: 'Create a new project.',
+    },
+    {
+        id: 'get-project-id',
+        method: 'GET',
+        path: '/projects/{id}',
+        description: 'Retrieve a specific project by ID.',
+    },
+    {
+        id: 'put-project-id',
+        method: 'PUT',
+        path: '/projects/{id}',
+        description: 'Update an existing project.',
+    },
+    {
+        id: 'delete-project-id',
+        method: 'DELETE',
+        path: '/projects/{id}',
+        description: 'Delete a project.',
+    },
+];
+
+const taskManagementEndpoints = [
+    {
+        id: 'get-tasks',
+        method: 'GET',
+        path: '/tasks',
+        description: 'Retrieve a list of all tasks.',
+    },
+    {
+        id: 'post-tasks',
+        method: 'POST',
+        path: '/tasks',
+        description: 'Create a new task.',
+    },
+    {
+        id: 'get-task-id',
+        method: 'GET',
+        path: '/tasks/{id}',
+        description: 'Retrieve a specific task by ID.',
+    },
+    {
+        id: 'put-task-id',
+        method: 'PUT',
+        path: '/tasks/{id}',
+        description: 'Update an existing task.',
+    },
+    {
+        id: 'delete-task-id',
+        method: 'DELETE',
+        path: '/tasks/{id}',
+        description: 'Delete a task.',
+    },
+];
+
+
+const Endpoint = ({ endpoint, openEndpoint, setOpenEndpoint }) => {
+  const [lang, setLang] = React.useState('python');
+  const isExpanded = openEndpoint === endpoint.id;
+
+  const getMethodClass = (method) => {
+    switch (method) {
+      case 'GET': return 'method-get';
+      case 'POST': return 'method-post';
+      case 'PUT': return 'method-put';
+      case 'DELETE': return 'method-delete';
+      default: return '';
+    }
+  };
+
+  return (
+    <div className="rounded-md bg-[#18232f] overflow-hidden">
+      <div onClick={() => setOpenEndpoint(isExpanded ? null : endpoint.id)} className="flex items-center justify-between p-4 hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
+        <div className="flex items-center gap-4">
+          <span className={cn("text-xs font-bold py-1 px-3 rounded-full uppercase text-white", getMethodClass(endpoint.method))}>{endpoint.method}</span>
+          <p className="text-sm font-mono text-[#e0e0e0]">{endpoint.path}</p>
+        </div>
+        <p className="text-sm text-[#b0c7e2]">{endpoint.description}</p>
+        <span className={cn("material-symbols-outlined text-[#92adc9] transition-transform", { 'rotate-180': isExpanded })}>expand_more</span>
+      </div>
+      {isExpanded && endpoint.code && (
+        <div className="p-4">
+          <div className="flex items-center gap-2 mb-4 border-b border-[#324d67]">
+            <button
+              className={cn("px-4 py-2 text-sm font-medium rounded-t-md transition-colors duration-200", { 'bg-[#233648] text-white': lang === 'python', 'text-[#92adc9] hover:bg-[#233648] hover:text-white': lang !== 'python' })}
+              onClick={() => setLang('python')}
+            >
+              Python
+            </button>
+            <button
+              className={cn("px-4 py-2 text-sm font-medium rounded-t-md transition-colors duration-200", { 'bg-[#233648] text-white': lang === 'javascript', 'text-[#92adc9] hover:bg-[#233648] hover:text-white': lang !== 'javascript' })}
+              onClick={() => setLang('javascript')}
+            >
+              JavaScript
+            </button>
+            <button
+              className={cn("px-4 py-2 text-sm font-medium rounded-t-md transition-colors duration-200", { 'bg-[#233648] text-white': lang === 'ruby', 'text-[#92adc9] hover:bg-[#233648] hover:text-white': lang !== 'ruby' })}
+              onClick={() => setLang('ruby')}
+            >
+              Ruby
+            </button>
+          </div>
+          <div className="bg-[#0d1117] rounded-md p-4">
+            <pre className="text-sm text-[#e0e0e0]"><code className="language-python">{endpoint.code[lang]}</code></pre>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 
 const DocsPage = () => {
+  const [openEndpoint, setOpenEndpoint] = React.useState('get-users');
+
   return (
     <div className="flex flex-1">
       <main className="flex-1 px-10 py-8">
@@ -23,63 +207,9 @@ const DocsPage = () => {
                 User Management
               </h2>
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-get text-white">
-                      GET
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">/users</p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">
-                    Retrieve a list of all users.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-post text-white">
-                      POST
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">/users</p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">Create a new user.</p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-get text-white">
-                      GET
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">
-                      /users/{'{id}'}
-                    </p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">
-                    Retrieve a specific user by ID.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-put text-white">
-                      PUT
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">
-                      /users/{'{id}'}
-                    </p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">
-                    Update an existing user.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-delete text-white">
-                      DELETE
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">
-                      /users/{'{id}'}
-                    </p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">Delete a user.</p>
-                </div>
+                {userManagementEndpoints.map(endpoint => (
+                  <Endpoint key={endpoint.id} endpoint={endpoint} openEndpoint={openEndpoint} setOpenEndpoint={setOpenEndpoint} />
+                ))}
               </div>
             </div>
             <div>
@@ -87,69 +217,9 @@ const DocsPage = () => {
                 Project Management
               </h2>
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-get text-white">
-                      GET
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">
-                      /projects
-                    </p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">
-                    Retrieve a list of all projects.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-post text-white">
-                      POST
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">
-                      /projects
-                    </p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">
-                    Create a new project.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-get text-white">
-                      GET
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">
-                      /projects/{'{id}'}
-                    </p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">
-                    Retrieve a specific project by ID.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-put text-white">
-                      PUT
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">
-                      /projects/{'{id}'}
-                    </p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">
-                    Update an existing project.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-delete text-white">
-                      DELETE
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">
-                      /projects/{'{id}'}
-                    </p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">Delete a project.</p>
-                </div>
+                {projectManagementEndpoints.map(endpoint => (
+                  <Endpoint key={endpoint.id} endpoint={endpoint} openEndpoint={openEndpoint} setOpenEndpoint={setOpenEndpoint} />
+                ))}
               </div>
             </div>
             <div>
@@ -157,63 +227,9 @@ const DocsPage = () => {
                 Task Management
               </h2>
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-get text-white">
-                      GET
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">/tasks</p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">
-                    Retrieve a list of all tasks.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-post text-white">
-                      POST
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">/tasks</p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">Create a new task.</p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-get text-white">
-                      GET
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">
-                      /tasks/{'{id}'}
-                    </p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">
-                    Retrieve a specific task by ID.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-put text-white">
-                      PUT
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">
-                      /tasks/{'{id}'}
-                    </p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">
-                    Update an existing task.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-md bg-[#18232f] hover:bg-[#233648] transition-colors duration-200 cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold py-1 px-3 rounded-full uppercase method-delete text-white">
-                      DELETE
-                    </span>
-                    <p className="text-sm font-mono text-[#e0e0e0]">
-                      /tasks/{'{id}'}
-                    </p>
-                  </div>
-                  <p className="text-sm text-[#b0c7e2]">Delete a task.</p>
-                </div>
+                {taskManagementEndpoints.map(endpoint => (
+                  <Endpoint key={endpoint.id} endpoint={endpoint} openEndpoint={openEndpoint} setOpenEndpoint={setOpenEndpoint} />
+                ))}
               </div>
             </div>
           </section>
