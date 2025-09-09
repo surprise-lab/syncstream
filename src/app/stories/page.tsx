@@ -31,9 +31,32 @@ export default function StoriesPage() {
         </header>
         <main className="px-40 flex flex-1 justify-center py-16">
           <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div className="flex flex-col gap-4 text-center mb-12">
+            <div className="flex flex-col gap-4 text-center mb-8">
               <h1 className="text-white tracking-tight text-5xl font-bold leading-tight">Customer Stories</h1>
               <p className="text-[#92adc9] text-lg font-normal leading-normal max-w-2xl mx-auto">See how businesses are using SyncStream to streamline their workflows and achieve their goals.</p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+              <div className="relative w-full max-w-xs">
+                <select className="w-full appearance-none rounded-lg border border-[#233648] bg-[#182330] px-4 py-2.5 text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary">
+                  <option selected>Filter by Industry</option>
+                  <option>E-commerce</option>
+                  <option>Healthcare</option>
+                  <option>Finance</option>
+                </select>
+                <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-white/50">expand_more</span>
+              </div>
+              <div className="relative w-full max-w-xs">
+                <select className="w-full appearance-none rounded-lg border border-[#233648] bg-[#182330] px-4 py-2.5 text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary">
+                  <option selected>Filter by Integration Type</option>
+                  <option>CRM</option>
+                  <option>Marketing</option>
+                  <option>Support</option>
+                </select>
+                <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-white/50">expand_more</span>
+              </div>
+              <Button variant="outline" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-5 bg-transparent hover:bg-[#182330] transition-colors text-white text-sm font-medium leading-normal border-solid border-[#233648]">
+                <span className="truncate">Reset Filters</span>
+              </Button>
             </div>
             <div className="flex flex-col gap-16">
               <div className="p-4 @container">
@@ -155,5 +178,5 @@ export default function StoriesPage() {
         </footer>
       </div>
     </div>
-  );
-}
+
+</body></html>
