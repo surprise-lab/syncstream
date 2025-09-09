@@ -20,7 +20,7 @@ export default function ResourcesPage() {
               Resource Usage
             </h2>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="flex flex-col gap-4 rounded-md border border-[#233648] bg-[#192633] p-6">
+              <div className="flex flex-col gap-4 rounded-md border border-orange-500/50 bg-orange-950/20 p-6 ring-2 ring-orange-500/30">
                 <div className="flex items-center justify-between">
                   <p className="text-slate-300 text-sm font-medium">
                     CPU Utilization
@@ -131,7 +131,7 @@ export default function ResourcesPage() {
                   Last 24 Hours
                 </p>
               </div>
-              <div className="flex flex-col gap-4 rounded-md border border-[#233648] bg-[#192633] p-6">
+              <div className="flex flex-col gap-4 rounded-md border border-orange-500/50 bg-orange-950/20 p-6 ring-2 ring-orange-500/30">
                 <div className="flex items-center justify-between">
                   <p className="text-slate-300 text-sm font-medium">
                     Database Connections
@@ -145,10 +145,19 @@ export default function ResourcesPage() {
                   </span>
                 </div>
                 <p className="text-white text-4xl font-bold">450/500</p>
-                <div className="h-40 flex flex-col justify-center gap-4">
+                <div className="h-40 flex flex-col justify-center gap-2">
+                  <div className="flex items-center gap-2 text-orange-400">
+                    <span className="material-symbols-outlined text-xl">
+                      {' '}
+                      warning{' '}
+                    </span>
+                    <p className="text-sm font-medium">
+                      High utilization warning
+                    </p>
+                  </div>
                   <div className="w-full bg-[#233648] rounded-full h-3">
                     <div
-                      className="bg-[var(--primary-color)] h-3 rounded-full"
+                      className="bg-orange-500 h-3 rounded-full"
                       style={{ width: '90%' }}
                     ></div>
                   </div>
@@ -158,6 +167,24 @@ export default function ResourcesPage() {
                   </div>
                 </div>
                 <p className="text-slate-400 text-xs text-center">Current</p>
+              </div>
+            </div>
+            <div className="mt-6 rounded-md border border-yellow-500/50 bg-yellow-950/20 p-4">
+              <div className="flex items-start gap-3">
+                <span className="material-symbols-outlined text-yellow-400 text-xl mt-0.5">
+                  {' '}
+                  info{' '}
+                </span>
+                <div>
+                  <h3 className="text-yellow-300 font-bold">
+                    CPU Utilization Approaching Limit
+                  </h3>
+                  <p className="text-yellow-400/80 text-sm mt-1">
+                    CPU usage has reached 75%, which is close to the configured
+                    maximum of 80%. Consider increasing CPU units or optimizing
+                    processes to prevent performance degradation.
+                  </p>
+                </div>
               </div>
             </div>
           </section>
@@ -295,5 +322,6 @@ export default function ResourcesPage() {
         </div>
       </div>
     </main>
-  );
-}
+</div>
+</div>
+</body></html>
