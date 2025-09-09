@@ -33,9 +33,6 @@ export default function OnboardingPage() {
       <main className="flex flex-1 items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-lg">
           <div className="text-center">
-            <span className="text-sm font-semibold uppercase tracking-wider text-gray-400">
-              Step 1 of 4
-            </span>
             <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               Welcome to SyncStream
             </h2>
@@ -44,15 +41,88 @@ export default function OnboardingPage() {
               will unlock the power of automated workflows.
             </p>
           </div>
-          <div className="mt-8">
-            <div className="relative pt-1">
-              <div className="mb-4 flex h-2 overflow-hidden rounded-full bg-[#233648] text-xs">
-                <div
-                  className="flex flex-col justify-center whitespace-nowrap bg-primary text-center text-white shadow-none transition-all duration-500"
-                  style={{ width: '25%' }}
-                ></div>
-              </div>
-            </div>
+          <div className="mb-8 mt-12">
+            <nav aria-label="Progress">
+              <ol className="flex items-center" role="list">
+                <li className="relative pr-8 sm:pr-20">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 flex items-center"
+                  >
+                    <div className="h-0.5 w-full bg-primary"></div>
+                  </div>
+                  <a
+                    className="relative flex h-8 w-8 items-center justify-center rounded-full bg-primary"
+                    href="#"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="h-5 w-5 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        clipRule="evenodd"
+                        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z"
+                        fillRule="evenodd"
+                      ></path>
+                    </svg>
+                    <span className="sr-only">Step 1: Welcome</span>
+                  </a>
+                </li>
+                <li className="relative pr-8 sm:pr-20">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 flex items-center"
+                  >
+                    <div className="h-0.5 w-full bg-[#233648]"></div>
+                  </div>
+                  <a
+                    className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[#233648] hover:bg-[#344a5f]"
+                    href="#"
+                  >
+                    <span className="text-sm font-medium text-gray-300">
+                      02
+                    </span>
+                    <span className="sr-only">Step 2: Connect</span>
+                  </a>
+                </li>
+                <li className="relative pr-8 sm:pr-20">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 flex items-center"
+                  >
+                    <div className="h-0.5 w-full bg-[#233648]"></div>
+                  </div>
+                  <a
+                    className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[#233648] hover:bg-[#344a5f]"
+                    href="#"
+                  >
+                    <span className="text-sm font-medium text-gray-300">
+                      03
+                    </span>
+                    <span className="sr-only">Step 3: Configure</span>
+                  </a>
+                </li>
+                <li className="relative">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 flex items-center"
+                  >
+                    <div className="h-0.5 w-full bg-[#233648]"></div>
+                  </div>
+                  <a
+                    className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[#233648] hover:bg-[#344a5f]"
+                    href="#"
+                  >
+                    <span className="text-sm font-medium text-gray-300">
+                      04
+                    </span>
+                    <span className="sr-only">Step 4: Finalize</span>
+                  </a>
+                </li>
+              </ol>
+            </nav>
           </div>
           <div className="mt-8 rounded-lg bg-[#18232F] p-8 shadow-lg">
             <h3 className="mb-2 text-xl font-bold text-white">
