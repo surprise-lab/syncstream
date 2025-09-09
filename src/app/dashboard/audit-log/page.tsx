@@ -127,24 +127,28 @@ export default function AuditLogPage() {
                 </div>
                 <div className="space-y-6">
                     <div className="flex items-center justify-between gap-4">
-                        <div className="relative w-full max-w-md">
-                            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"> search </span>
-                            <Input className="w-full rounded-md border-none bg-[#233648] py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500" placeholder="Search by user, integration, or data field" type="search" />
-                        </div>
                         <div className="flex items-center gap-2">
-                            <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white hover:bg-[#2d4257] transition-colors">
+                            <div className="relative w-full max-w-sm">
+                                <span className="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"> search </span>
+                                <Input className="form-input w-full rounded-md border-none bg-[#233648] py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500" placeholder="Search by user, integration, or data field" type="search" />
+                            </div>
+                            <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white transition-colors hover:bg-[#2d4257]">
                                 <span>Date Range</span>
                                 <span className="material-symbols-outlined text-base"> expand_more </span>
                             </Button>
-                            <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white hover:bg-[#2d4257] transition-colors">
+                            <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white transition-colors hover:bg-[#2d4257]">
                                 <span>Integration</span>
                                 <span className="material-symbols-outlined text-base"> expand_more </span>
                             </Button>
-                            <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white hover:bg-[#2d4257] transition-colors">
+                            <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white transition-colors hover:bg-[#2d4257]">
                                 <span>User</span>
                                 <span className="material-symbols-outlined text-base"> expand_more </span>
                             </Button>
                         </div>
+                        <Button className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-primary-600 px-4 text-sm font-medium text-white transition-colors hover:bg-primary-700">
+                            <span className="material-symbols-outlined text-base"> download </span>
+                            <span>Export</span>
+                        </Button>
                     </div>
                     <div className="overflow-hidden rounded-lg border border-[#324d67] bg-[#192633]">
                         <Table className="min-w-full divide-y divide-[#324d67]">
