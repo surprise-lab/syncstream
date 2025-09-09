@@ -126,6 +126,7 @@ export default function JobsPage() {
                                         <button className="p-2 rounded-md hover:bg-white/10 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"><span className="material-symbols-outlined text-base">pause</span></button>
                                         <button className="p-2 rounded-md hover:bg-white/10 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"><span className="material-symbols-outlined text-base">play_arrow</span></button>
                                         <button className="p-2 rounded-md hover:bg-white/10 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"><span className="material-symbols-outlined text-base">replay</span></button>
+                                        {job.status === 'Failed' && <button className="p-2 rounded-md hover:bg-white/10 text-red-400 hover:text-red-300"><span className="material-symbols-outlined text-base">sync_problem</span></button>}
                                     </div>
                                 </TableCell>
                             </TableRow>
