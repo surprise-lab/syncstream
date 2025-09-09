@@ -84,10 +84,10 @@ export default function IntegrationsPage() {
             <h2 className="text-3xl font-bold tracking-tight">Integrations Overview</h2>
             <p className="text-gray-400 mt-1">Monitor the health and performance of all your system integrations.</p>
           </div>
-          <Button className="flex items-center gap-2 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700">
-            <span className="material-symbols-outlined text-base"> add </span>
-            New Integration
-          </Button>
+          <button className="flex items-center gap-2 rounded-md bg-[var(--primary-600)] px-4 py-2 text-sm font-medium text-white shadow-lg transition-all hover:bg-[var(--primary-700)] hover:shadow-primary-500/30 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+            <span className="material-symbols-outlined text-base"> add_circle </span>
+            Add New Integration
+          </button>
         </div>
         <section className="mb-8">
           <h3 className="text-xl font-semibold mb-4">Integration Status</h3>
