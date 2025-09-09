@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import Link from 'next/link';
 
 const users = [
   {
@@ -72,10 +73,12 @@ export function UserManagement() {
         <div className="mx-auto max-w-7xl">
             <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
             <h2 className="text-3xl font-bold tracking-tight text-white">User Management</h2>
-            <button className="inline-flex items-center justify-center gap-2 rounded-md bg-brand-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary">
-                <span className="material-symbols-outlined"> add </span>
-                Add New User
-            </button>
+            <Button asChild className="inline-flex items-center justify-center gap-2 rounded-md bg-brand-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary">
+                <Link href="/dashboard/users/add">
+                    <span className="material-symbols-outlined"> add </span>
+                    Add New User
+                </Link>
+            </Button>
             </div>
             <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
             <div className="relative flex-1">

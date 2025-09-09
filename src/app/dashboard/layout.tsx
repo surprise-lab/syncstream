@@ -31,6 +31,7 @@ import {
   Cable,
   Network,
   Search,
+  Sync,
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -40,8 +41,8 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: '/dashboard', label: 'Dashboard', icon: Home },
-  { href: '/dashboard/integrations', label: 'Integrations', icon: LinkIcon },
+  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/dashboard/integrations', label: 'Integrations', icon: Sync },
   { href: '/dashboard/users', label: 'Users', icon: Users },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
 ];
@@ -58,52 +59,41 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
 
+  const isUsersPage = pathname.startsWith('/dashboard/users');
+
   return (
     <div className="flex min-h-screen bg-surface-1">
-      <aside className="flex w-64 flex-col bg-surface-2 border-r border-surface-3">
-        <div className="flex h-16 items-center gap-3 px-6">
-          <SyncStreamLogo className="h-8 w-8 text-brand-primary" />
+      <aside className="flex w-64 flex-col items-center gap-y-6 bg-[#0D1117] p-6">
+        <div className="flex items-center gap-2">
+          <SyncStreamLogo className="h-8 w-8 text-white" />
           <h1 className="text-xl font-bold text-white">SyncStream</h1>
         </div>
-        <nav className="flex-1 space-y-2 px-4 py-4">
+        <nav className="flex flex-col gap-y-2">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-text-2 hover:bg-surface-3 hover:text-white',
-                pathname.startsWith(link.href) && 'bg-brand-primary/10 text-brand-primary font-semibold',
-                pathname === '/dashboard' && link.href === '/dashboard' && 'bg-brand-primary/10 text-brand-primary font-semibold',
-                 pathname !== '/dashboard' && link.href !== '/dashboard' && pathname.startsWith(link.href) && 'bg-brand-primary/10 text-brand-primary font-semibold'
+                'flex items-center gap-3 rounded-md px-3 py-2 text-[#9CA3AF] hover:bg-[#1F2937] hover:text-white',
+                pathname.startsWith(link.href) && link.href !== '/dashboard' && 'bg-[#1F2937] text-white',
+                pathname === link.href && 'bg-[#1F2937] text-white',
+                link.label === 'Users' && isUsersPage && 'bg-[#1F2937] text-white',
               )}
             >
-              <link.icon className="h-5 w-5" />
+              <link.icon className="h-6 w-6" />
               <span>{link.label}</span>
             </Link>
           ))}
         </nav>
+        <div className="mt-auto flex flex-col items-center gap-y-4">
+            <Avatar>
+                <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOrMIGLGq1gHfK6DWQFC2dxhh-gaUuO46i6ij8KYwB_TmDtyZJnr3lHiVpgNMp5bF577b1m_pQDa2rpdTIAnzS-hJyK0OD34CQtp9INeW_YCbV6aTy2RmYzdlca1PkttN3qnYIOdJR-ZIbNL9mo8gc40eaTAaBFc8PicoxEoERcMwHInF6fT18ehieJGu3jJE3DjLbPZvoR41JEknQtrXmJXSY6dmHLRMOV46BpLuYqsHH72JUii-TUnszVBAmAXxcjww42oYwc-8I" />
+                <AvatarFallback>U</AvatarFallback>
+            </Avatar>
+        </div>
       </aside>
       <div className="flex flex-1 flex-col">
-        <header className="sticky top-0 z-10 flex items-center justify-between border-b border-surface-3 bg-surface-2/80 px-6 py-3 backdrop-blur-lg">
-            <div/>
-            <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="flex items-center justify-center rounded-full text-text-2 hover:bg-surface-3 hover:text-white focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 focus:ring-offset-surface-1">
-                <Bell className="h-10 w-10 p-2" />
-            </Button>
-            <div className="relative">
-                <button className="flex items-center gap-2">
-                    <img alt="User avatar" className="size-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyucO3zsI2PVFz-E0bJyk4YkYWtWviVdJZPaaKweSoARrYZkD6bqVh-aj6-mpXPUOSIXZVTJRUwhPQ9E3E5VoyWnP4GE9163As_aitYxKVc01p-sAwYPbYtxhrTedZzzICJMJo-7Uq41RqHUrWEc-uK4JmzcHON_Q7zdDjY3OnzcpsJOo11uHXc6uJQ4pNmCQ8kni6ZNZbjCmbuhzguN33wTWWzVgCcd-2Rl1GLIdqP_h0ERMYQygDQsmCmO5jGyLNqh87fWSHMcqa"/>
-                    <div className="hidden text-left lg:block">
-                        <p className="text-sm font-semibold text-white">Admin User</p>
-                        <p className="text-xs text-text-3">admin@syncstream.io</p>
-                    </div>
-                </button>
-            </div>
-            </div>
-        </header>
-        <main className="flex-1">
-            {children}
-        </main>
+        {children}
       </div>
     </div>
   );
