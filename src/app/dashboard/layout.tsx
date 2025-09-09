@@ -58,6 +58,13 @@ export default function DashboardLayout({
             <span className="material-symbols-outlined">lan</span>
             <span className="text-sm font-medium">Workflows</span>
           </Link>
+          <Link
+            className="flex items-center gap-3 px-3 py-2 rounded-md text-gray-300 hover:bg-white/5 hover:text-white transition-colors duration-200"
+            href="/dashboard/webhooks"
+          >
+            <span className="material-symbols-outlined">webhook</span>
+            <span className="text-sm font-medium">Webhooks</span>
+          </Link>
            <Link
             className="flex items-center gap-3 px-3 py-2 rounded-md text-gray-300 hover:bg-white/5 hover:text-white transition-colors duration-200"
             href="/dashboard/export-import"
