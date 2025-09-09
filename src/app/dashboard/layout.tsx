@@ -35,7 +35,7 @@ export default function DashboardLayout({
           <aside className="sticky top-0 flex h-full min-h-screen w-80 flex-col bg-[#18232f] p-6">
             <div className="flex flex-col gap-8">
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--primary-color)]">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
                   <span className="material-symbols-outlined text-white">
                     sync_alt
                   </span>
@@ -45,8 +45,12 @@ export default function DashboardLayout({
                 </h1>
               </div>
               <div className="flex flex-col gap-2">
+                <div className="relative px-3">
+                    <span className="material-symbols-outlined absolute left-6 top-1/2 -translate-y-1/2 text-[#92adc9] text-xl">search</span>
+                    <input className="form-input w-full rounded-md border-0 bg-[#233648] py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-[#92adc9] focus:ring-2 focus:ring-inset focus:ring-[var(--primary-color)]" placeholder="Search documentation..." type="search"/>
+                </div>
                 <Link
-                  className="flex items-center gap-3 rounded-md px-3 py-2 text-[#b0c7e2] transition-colors duration-200 hover:bg-[#233648] hover:text-white"
+                  className="flex items-center gap-3 px-3 py-2 rounded-md text-[#b0c7e2] hover:bg-[#233648] hover:text-white transition-colors duration-200 mt-4"
                   href="#"
                 >
                   <span className="material-symbols-outlined text-xl">
@@ -55,7 +59,7 @@ export default function DashboardLayout({
                   <span className="text-sm font-medium">Overview</span>
                 </Link>
                 <Link
-                  className="flex items-center gap-3 rounded-md px-3 py-2 text-[#b0c7e2] transition-colors duration-200 hover:bg-[#233648] hover:text-white"
+                  className="flex items-center gap-3 px-3 py-2 rounded-md text-[#b0c7e2] hover:bg-[#233648] hover:text-white transition-colors duration-200"
                   href="#"
                 >
                   <span className="material-symbols-outlined text-xl">
@@ -64,7 +68,7 @@ export default function DashboardLayout({
                   <span className="text-sm font-medium">Authentication</span>
                 </Link>
                 <Link
-                  className="flex items-center gap-3 rounded-md bg-[var(--primary-color)] px-3 py-2 text-white"
+                  className="flex items-center gap-3 px-3 py-2 rounded-md bg-primary text-white"
                   href="#"
                 >
                   <span className="material-symbols-outlined text-xl">
@@ -73,7 +77,7 @@ export default function DashboardLayout({
                   <span className="text-sm font-medium">Endpoints</span>
                 </Link>
                 <Link
-                  className="flex items-center gap-3 rounded-md px-3 py-2 text-[#b0c7e2] transition-colors duration-200 hover:bg-[#233648] hover:text-white"
+                  className="flex items-center gap-3 px-3 py-2 rounded-md text-[#b0c7e2] hover:bg-[#233648] hover:text-white transition-colors duration-200"
                   href="#"
                 >
                   <span className="material-symbols-outlined text-xl">
@@ -82,7 +86,7 @@ export default function DashboardLayout({
                   <span className="text-sm font-medium">Error Codes</span>
                 </Link>
                 <Link
-                  className="flex items-center gap-3 rounded-md px-3 py-2 text-[#b0c7e2] transition-colors duration-200 hover:bg-[#233648] hover:text-white"
+                  className="flex items-center gap-3 px-3 py-2 rounded-md text-[#b0c7e2] hover:bg-[#233648] hover:text-white transition-colors duration-200"
                   href="#"
                 >
                   <span className="material-symbols-outlined text-xl">
@@ -110,7 +114,7 @@ export default function DashboardLayout({
     <div className="relative flex size-full min-h-screen flex-col bg-[#0d1117] text-white">
       <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#233648] px-10 py-3">
         <div className="flex items-center gap-4 text-white">
-          <div className="size-6 text-[var(--primary-color)]">
+          <div className="size-6 text-primary">
             <SyncStreamLogo />
           </div>
           <h2 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">

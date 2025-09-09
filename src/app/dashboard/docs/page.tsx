@@ -17,18 +17,6 @@ const DocsPage = () => {
               endpoints.
             </p>
           </header>
-          <div className="mb-8">
-            <div className="relative">
-              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#92adc9]">
-                search
-              </span>
-              <input
-                className="form-input w-full rounded-md border-0 bg-[#233648] py-3 pl-12 pr-4 text-white placeholder:text-[#92adc9] focus:ring-2 focus:ring-inset focus:ring-[var(--primary-color)]"
-                placeholder="Search endpoints e.g. /users"
-                type="search"
-              />
-            </div>
-          </div>
           <section className="space-y-12">
             <div>
               <h2 className="text-white text-2xl font-bold tracking-tight mb-6 border-b border-b-[#324d67] pb-3">
