@@ -188,6 +188,35 @@ export default function SecurityPage() {
                 </div>
               </div>
               <div>
+                <h2 className="text-white text-3xl font-bold tracking-tight mb-8">Security Timeline</h2>
+                <div className="relative pl-8 border-l border-gray-700">
+                  <div className="absolute -left-4 top-2 h-8 w-8 rounded-full bg-gray-800 flex items-center justify-center ring-8 ring-[#111827]">
+                    <span className="material-symbols-outlined text-white">shield</span>
+                  </div>
+                  <div className="mb-12">
+                    <p className="text-sm font-medium text-gray-400">October 26, 2023</p>
+                    <h3 className="text-xl font-semibold text-white mt-1">Platform Security Update v2.5.1</h3>
+                    <p className="mt-2 text-gray-400">Implemented enhanced encryption protocols for data in transit and at rest. Addressed a minor cross-site scripting (XSS) vulnerability.</p>
+                  </div>
+                  <div className="absolute -left-4 top-[calc(50%-1rem)] h-8 w-8 rounded-full bg-gray-800 flex items-center justify-center ring-8 ring-[#111827]">
+                    <span className="material-symbols-outlined text-white">verified_user</span>
+                  </div>
+                  <div className="mb-12">
+                    <p className="text-sm font-medium text-gray-400">September 15, 2023</p>
+                    <h3 className="text-xl font-semibold text-white mt-1">Quarterly Security Audit Completed</h3>
+                    <p className="mt-2 text-gray-400">Successfully completed our Q3 2023 security audit conducted by an independent third-party. No major vulnerabilities were found. Full report available to enterprise customers upon request.</p>
+                  </div>
+                  <div className="absolute -left-4 bottom-2 h-8 w-8 rounded-full bg-gray-800 flex items-center justify-center ring-8 ring-[#111827]">
+                    <span className="material-symbols-outlined text-white">gpp_good</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-400">August 5, 2023</p>
+                    <h3 className="text-xl font-semibold text-white mt-1">Vulnerability Patch for CVE-2023-4567</h3>
+                    <p className="mt-2 text-gray-400">A patch was deployed to address a critical vulnerability in a third-party library. All systems were updated within 24 hours of the vulnerability disclosure.</p>
+                  </div>
+                </div>
+              </div>
+              <div>
                 <h2 className="mb-8 text-3xl font-bold tracking-tight text-white">
                   Our Security Measures
                 </h2>
@@ -216,3 +245,5 @@ export default function SecurityPage() {
     </div>
   );
 }
+
+    
