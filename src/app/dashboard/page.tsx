@@ -17,11 +17,47 @@ export default function DashboardPage() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <h2 className="text-3xl font-bold tracking-tight text-white">
-            Dashboard
+            Usage Analytics
           </h2>
           <p className="text-gray-400 mt-1">
-            Overview of your application usage and engagement
+            Analyze usage metrics by specific criteria
           </p>
+        </div>
+        <div className="bg-gray-900 rounded-lg p-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-300" htmlFor="user-role">User Role</label>
+              <select className="mt-1 block w-full bg-gray-800 border-gray-700 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm" id="user-role" name="user-role">
+                <option>All Roles</option>
+                <option>Admin</option>
+                <option>Editor</option>
+                <option>Viewer</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-300" htmlFor="date-range">Date Range</label>
+              <select className="mt-1 block w-full bg-gray-800 border-gray-700 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm" id="date-range" name="date-range">
+                <option>Last 30 days</option>
+                <option>Last 90 days</option>
+                <option>Last 6 months</option>
+                <option>Last year</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-300" htmlFor="integration-type">Integration Type</label>
+              <select className="mt-1 block w-full bg-gray-800 border-gray-700 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm" id="integration-type" name="integration-type">
+                <option>All Types</option>
+                <option>CRM</option>
+                <option>Marketing</option>
+                <option>Sales</option>
+              </select>
+            </div>
+            <div className="flex items-end">
+              <button className="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500" type="button">
+                Apply Filters
+              </button>
+            </div>
+          </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <div className="bg-gray-900 p-6 rounded-lg">
@@ -266,4 +302,5 @@ export default function DashboardPage() {
       </div>
     </main>
   );
-}
+
+    
