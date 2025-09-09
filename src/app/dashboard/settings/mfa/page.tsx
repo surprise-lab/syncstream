@@ -113,6 +113,76 @@ export default function MfaSetupPage() {
               />
             </div>
           </div>
+          <div className="border-t border-border-color pt-6">
+            <h3 className="text-lg font-semibold">
+              4. Save your recovery codes
+            </h3>
+            <p className="mt-2 text-sm text-text-secondary-color">
+              If you lose access to your authenticator app, you can use these
+              recovery codes to sign in. Keep them safe and accessible.
+            </p>
+            <div className="mt-4 rounded-md border border-border-color bg-slate-800 p-4">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+                <div className="font-mono text-lg tracking-wider">
+                  a9b8-c7d6-e5f4
+                </div>
+                <div className="font-mono text-lg tracking-wider">
+                  g3h2-i1j0-k9l8
+                </div>
+                <div className="font-mono text-lg tracking-wider">
+                  m7n6-o5p4-q3r2
+                </div>
+                <div className="font-mono text-lg tracking-wider">
+                  s1t0-u9v8-w7x6
+                </div>
+                <div className="font-mono text-lg tracking-wider">
+                  y5z4-a3b2-c1d0
+                </div>
+                <div className="font-mono text-lg tracking-wider">
+                  e9f8-g7h6-i5j4
+                </div>
+                <div className="font-mono text-lg tracking-wider">
+                  k3l2-m1n0-o9p8
+                </div>
+                <div className="font-mono text-lg tracking-wider">
+                  q7r6-s5t4-u3v2
+                </div>
+              </div>
+              <div className="mt-4 flex items-center gap-4">
+                <button className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-text-secondary-color transition-colors hover:bg-slate-700 hover:text-white">
+                  <span className="material-symbols-outlined text-base">
+                    file_download
+                  </span>
+                  Download
+                </button>
+                <button className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-text-secondary-color transition-colors hover:bg-slate-700 hover:text-white">
+                  <span className="material-symbols-outlined text-base">
+                    print
+                  </span>
+                  Print
+                </button>
+                <button className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-text-secondary-color transition-colors hover:bg-slate-700 hover:text-white">
+                  <span className="material-symbols-outlined text-base">
+                    content_copy
+                  </span>
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div className="mt-4 flex items-start gap-3">
+              <input
+                className="mt-1 size-4 shrink-0 rounded border-border-color bg-slate-800 text-primary-color focus:ring-primary-color"
+                id="saved-codes"
+                type="checkbox"
+              />
+              <label
+                className="text-sm text-text-secondary-color"
+                htmlFor="saved-codes"
+              >
+                I have saved my recovery codes in a secure place.
+              </label>
+            </div>
+          </div>
           <div className="flex justify-end border-t border-border-color pt-6">
             <Button className="flex min-w-[120px] cursor-pointer items-center justify-center rounded-md bg-primary-color px-6 py-3 text-base font-bold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
               Enable MFA
