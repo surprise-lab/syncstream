@@ -20,6 +20,41 @@ export default function DataRetentionPage() {
             </div>
             <div className="space-y-12">
                 <section>
+                    <h2 className="text-2xl font-semibold leading-tight text-white">Data Lifecycle Visualizer</h2>
+                    <p className="mt-1 text-sm text-gray-400">This diagram illustrates the lifecycle of your data based on the current retention policies.</p>
+                    <div className="mt-6 rounded-lg border border-gray-800 bg-gray-900 p-8">
+                        <div className="relative flex items-center justify-between">
+                            <div className="absolute left-0 top-1/2 -mt-0.5 h-1 w-full bg-gray-700"></div>
+                            <div className="absolute left-0 top-1/2 -mt-0.5 h-1 w-2/3 bg-primary-500"></div>
+                            <div className="relative flex flex-col items-center">
+                                <div className="flex size-8 items-center justify-center rounded-full bg-primary-500 ring-4 ring-gray-900">
+                                    <span className="material-symbols-outlined text-lg text-white"> play_arrow </span>
+                                </div>
+                                <p className="mt-3 text-sm font-medium text-white">Active</p>
+                                <p className="mt-1 text-xs text-gray-400 text-center">Data is created</p>
+                            </div>
+                            <div className="relative flex flex-col items-center">
+                                <div className="flex size-8 items-center justify-center rounded-full bg-primary-500 ring-4 ring-gray-900">
+                                    <span className="material-symbols-outlined text-lg text-white"> archive </span>
+                                </div>
+                                <p className="mt-3 text-sm font-medium text-white">Archived</p>
+                                <p className="mt-1 text-xs text-gray-400 text-center">After 180 days</p>
+                            </div>
+                            <div className="relative flex flex-col items-center">
+                                <div className="flex size-8 items-center justify-center rounded-full bg-gray-700 ring-4 ring-gray-900">
+                                    <span className="material-symbols-outlined text-lg text-gray-400"> delete </span>
+                                </div>
+                                <p className="mt-3 text-sm font-medium text-gray-400">Purged</p>
+                                <p className="mt-1 text-xs text-gray-400 text-center">After 365 days</p>
+                            </div>
+                        </div>
+                        <div className="mt-6 text-center text-sm text-gray-500">
+                            <p>Visualization based on the 'Audit Trails' policy.</p>
+                        </div>
+                    </div>
+                </section>
+                <div className="border-t border-gray-800"></div>
+                <section>
                     <h2 className="text-2xl font-semibold leading-tight text-white">Current Policies</h2>
                     <div className="mt-4 overflow-hidden rounded-lg border border-gray-800 bg-gray-900">
                         <div className="overflow-x-auto">
