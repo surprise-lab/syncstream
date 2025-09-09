@@ -40,6 +40,13 @@ export default function DashboardLayout({
           </Link>
           <Link
             className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
+            href="/dashboard/monitoring"
+          >
+            <span className="material-symbols-outlined">monitoring</span>
+            <p className="text-sm font-medium leading-normal">Monitoring</p>
+          </Link>
+          <Link
+            className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
             href="/dashboard/tickets"
           >
             <span className="material-symbols-outlined">confirmation_number</span>
