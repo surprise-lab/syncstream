@@ -5,130 +5,84 @@
 
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%; /* slate-950 */
-    --foreground: 210 40% 98%; /* slate-50 */
-
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 217 91% 60%;
     --primary-foreground: 210 40% 98%;
-
-    --secondary: 217.2 32.6% 17.5%; /* slate-800 */
+    --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%; /* slate-400 */
-
-    --accent: 210 89% 60%; /* blue-500 */
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 210 89% 60%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 93.5% 68.4%; /* blue-400 */
-
+    --ring: 212.7 93.5% 68.4%;
     --radius: 0.5rem;
 
-    --sidebar-background: 222.2 84% 4.9%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-border: 217.2 32.6% 17.5%;
-    --sidebar-accent: 217.2 32.6% 17.5%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-ring: 212.7 93.5% 68.4%;
+    --background-primary: hsl(222.2 84% 4.9%);
+    --background-secondary: hsl(217.2 32.6% 17.5%);
+    --background-tertiary: hsl(215 28% 17%);
 
-     /* Custom Colors from request */
-    --primary-color: #3b82f6;
-    --secondary-color: #1e293b;
-    --background-color: #111a22;
-    --accent-color: #3b82f6;
-    --text-primary: #ffffff;
-    --text-secondary: #92adc9;
-    --border-color: #233648;
+    --text-primary: hsl(210 40% 98%);
+    --text-secondary: hsl(215 20.2% 65.1%);
+    --text-tertiary: hsl(215 20.2% 55.1%);
 
-    --brand-hue: 207;
-    --brand-saturation: 84%;
-    --brand-lightness: 51%;
-    --brand-primary: hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
-    --brand-secondary: hsl(var(--brand-hue) 30% 90%);
-    --brand-tertiary: hsl(var(--brand-hue) 30% 96%);
-    --surface-1: hsl(var(--brand-hue) 20% 12%);
-    --surface-2: hsl(var(--brand-hue) 20% 17%);
-    --surface-3: hsl(var(--brand-hue) 20% 22%);
-    --surface-4: hsl(var(--brand-hue) 20% 27%);
-    --text-1: hsl(var(--brand-hue) 15% 85%);
-    --text-2: hsl(var(--brand-hue) 10% 65%);
-    --text-3: hsl(var(--brand-hue) 10% 50%);
-    --success: #28a745;
-    --warning: #ffc107;
-    --danger: #dc3545;
+    --border-color: hsl(217.2 32.6% 25.5%);
 
-    --primary-50: 220 90% 97%;
-    --primary-100: 220 90% 94%;
-    --primary-200: 220 90% 88%;
-    --primary-300: 220 90% 81%;
-    --primary-400: 217 91% 68%;
-    --primary-500: 217 91% 60%;
-    --primary-600: 217 91% 54%;
-    --primary-700: 218 92% 47%;
-    --primary-800: 219 92% 41%;
-    --primary-900: 220 93% 35%;
-    --primary-950: 221 93% 22%;
+    --primary-color: hsl(217 91% 60%);
+    --primary-color-foreground: hsl(210 40% 98%);
 
-    --primary-500-hsl: 217 91% 60%;
-    --primary-700-hsl: 218 92% 47%;
-
-    --primary-color: #1173d4;
-    --background-primary: #111a22;
-    --background-secondary: #192633;
-    --background-tertiary: #233648;
-    --border-color: #324d67;
-    --text-primary: #ffffff;
-    --text-secondary: #92adc9;
-    --text-tertiary: #6789b0;
-    --success-color: #22c55e;
-    --warning-color: #f59e0b;
-    --error-color: #ef4444;
-    --info-color: #3b82f6;
-
-    --card-background-color: #1e293b;
-    --text-primary-color: #f8fafc;
-    --text-secondary-color: #94a3b8;
+    --success-color: hsl(142 71% 45%);
+    --warning-color: hsl(48 96% 53%);
+    --error-color: hsl(0 84% 60%);
+    --info-color: hsl(210 89% 60%);
   }
- 
-  .dark {
-    --background: 222.2 84% 4.9%; /* slate-950 */
-    --foreground: 210 40% 98%; /* slate-50 */
 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 217 91% 60%;
     --primary-foreground: 210 40% 98%;
-
-    --secondary: 217.2 32.6% 17.5%; /* slate-800 */
+    --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%; /* slate-400 */
-
-    --accent: 210 89% 60%; /* blue-500 */
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 210 89% 60%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 93.5% 68.4%; /* blue-400 */
+    --ring: 212.7 93.5% 68.4%;
+
+    --background-primary: hsl(222.2 84% 4.9%);
+    --background-secondary: hsl(217.2 32.6% 17.5%);
+    --background-tertiary: hsl(215 28% 17%);
+
+    --text-primary: hsl(210 40% 98%);
+    --text-secondary: hsl(215 20.2% 65.1%);
+    --text-tertiary: hsl(215 20.2% 55.1%);
+
+    --border-color: hsl(217.2 32.6% 25.5%);
+
+    --primary-color: hsl(217 91% 60%);
+    --primary-color-foreground: hsl(210 40% 98%);
+
+    --success-color: hsl(142 71% 45%);
+    --warning-color: hsl(48 96% 53%);
+    --error-color: hsl(0 84% 60%);
+    --info-color: hsl(210 89% 60%);
   }
 }
 
@@ -140,124 +94,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-@layer components {
-  .form-input {
-      @apply block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary-500 sm:text-sm sm:leading-6;
-    }
-}
-
-@layer utilities {
-  #login-tab:checked~div #login-form,
-  #register-tab:checked~div #register-form {
-    display: block;
-  }
-  #login-tab:checked~div #register-form,
-  #register-tab:checked~div #login-form {
-    display: none;
-  }
-  #login-tab:checked~nav label[for="login-tab"],
-  #register-tab:checked~nav label[for="register-tab"] {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-    border-bottom-width: 2px;
-    border-color: var(--primary-color);
-  }
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: #1e293b;
-    border-radius: 3px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #475569;
-    border-radius: 3px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #64748b;
-  }
-   .status-active {
-        color: #10b981;
-        background-color: rgba(16, 185, 129, 0.1);
-      }
-      .status-inactive {
-        color: #f59e0b;
-        background-color: rgba(245, 158, 11, 0.1);
-      }
-       .status-error {
-        color: #ef4444;
-        background-color: rgba(239, 68, 68, 0.1);
-      }
-      .rich-text-editor-toolbar button.active {
-        color: var(--accent-color);
-        background-color: #374151;
-      }
-      .method-get { background-color: #1173d4; }
-      .method-post { background-color: #4caf50; }
-      .method-put { background-color: #ff9800; }
-      .method-delete { background-color: #f44336; }
-      .radio-button:checked {
-        border-color: var(--primary-color);
-        background-color: var(--primary-color);
-      }
-      .radio-button:checked::after {
-        content: "";
-        display: block;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: white;
-      }
-      .form-input:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 2px rgba(17, 115, 212, 0.5);
-      }
-
-      input:checked ~ .dot {
-        transform: translateX(100%);
-        background-color: #1173d4;
-      }
-      input:checked ~ .block {
-          background-color: #1d4ed8;
-      }
-}
-
-@layer components {
-    .faq-item {
-        @apply flex cursor-pointer items-start gap-4 rounded-lg border border-[var(--neutral-700)] bg-[var(--neutral-800)] p-4 transition-all hover:bg-[var(--neutral-700)];
-      }
-      .faq-item .faq-content {
-        @apply grid grid-rows-[0fr] transition-all duration-300;
-      }
-      .faq-item.open .faq-content {
-        @apply grid-rows-[1fr];
-      }
-       .faq-item .faq-icon {
-        @apply transition-transform duration-300;
-      }
-      .faq-item.open .faq-icon {
-        @apply rotate-45;
-      }
-      .status-pill {
-        @apply flex items-center justify-center gap-2 rounded-full px-3 py-1 text-xs font-medium;
-      }
-      .status-in-review {
-        @apply bg-yellow-500/20 text-yellow-300;
-      }
-      .status-resolved {
-        @apply bg-green-500/20 text-green-300;
-      }
-      .status-acknowledged {
-        @apply bg-blue-500/20 text-blue-300;
-      }
-}
-
-
-
-
-
-
-
-
-
