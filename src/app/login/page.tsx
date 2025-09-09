@@ -4,7 +4,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
-import { ConnectrLogo } from '@/components/connectr-logo';
+import { SyncStreamLogo } from '@/components/syncstream-logo';
 
 export default function LoginPage() {
   return (
@@ -12,7 +12,7 @@ export default function LoginPage() {
       <div className="layout-container flex h-full grow flex-col">
         <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-800 px-10 py-4">
           <div className="flex items-center gap-3 text-white">
-              <ConnectrLogo className="h-8 w-8 text-primary" />
+              <SyncStreamLogo className="h-8 w-8 text-primary" />
             <h1 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">SyncStream</h1>
           </div>
         </header>
