@@ -118,19 +118,110 @@ export default function SettingsPage() {
           </section>
           <section>
             <h2 className="text-xl font-semibold text-white">
-              Security logs
+              Activity Log
             </h2>
             <p className="mt-1 text-slate-400">
-              View a log of security-related events, such as logins, failed
-              login attempts, and configuration changes.
+              A log of security-related events, such as logins and
+              configuration changes.
             </p>
-            <div className="mt-6">
-              <Button
-                variant="secondary"
-                className="min-w-[84px] max-w-[480px] cursor-pointer overflow-hidden rounded-md bg-slate-700 px-5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-slate-600"
-              >
-                <span className="truncate">View security logs</span>
-              </Button>
+            <div className="mt-6 overflow-hidden rounded-lg bg-[#18232F]">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm text-slate-300">
+                  <thead className="bg-[#233648] text-xs uppercase text-slate-400">
+                    <tr>
+                      <th className="px-6 py-3" scope="col">
+                        Event
+                      </th>
+                      <th className="px-6 py-3" scope="col">
+                        User
+                      </th>
+                      <th className="px-6 py-3" scope="col">
+                        IP Address
+                      </th>
+                      <th className="px-6 py-3" scope="col">
+                        Timestamp
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-slate-700/50">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-2">
+                          <span className="inline-flex h-2.5 w-2.5 rounded-full bg-green-500"></span>
+                          <span>Successful login</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">admin@syncstream.com</td>
+                      <td className="px-6 py-4">192.168.1.100</td>
+                      <td className="px-6 py-4">2023-10-27 10:00:00 UTC</td>
+                    </tr>
+                    <tr className="border-b border-slate-700/50">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-2">
+                          <span className="inline-flex h-2.5 w-2.5 rounded-full bg-yellow-500"></span>
+                          <span>Failed login attempt</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">guest@syncstream.com</td>
+                      <td className="px-6 py-4">203.0.113.25</td>
+                      <td className="px-6 py-4">2023-10-27 09:45:12 UTC</td>
+                    </tr>
+                    <tr className="border-b border-slate-700/50">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-2">
+                          <span className="inline-flex h-2.5 w-2.5 rounded-full bg-blue-500"></span>
+                          <span>Password changed</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">user1@syncstream.com</td>
+                      <td className="px-6 py-4">198.51.100.2</td>
+                      <td className="px-6 py-4">2023-10-26 15:30:45 UTC</td>
+                    </tr>
+                    <tr className="border-b border-slate-700/50">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-2">
+                          <span className="inline-flex h-2.5 w-2.5 rounded-full bg-blue-500"></span>
+                          <span>MFA policy enabled</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">admin@syncstream.com</td>
+                      <td className="px-6 py-4">192.168.1.100</td>
+                      <td className="px-6 py-4">2023-10-26 11:05:00 UTC</td>
+                    </tr>
+                    <tr className="border-b border-slate-700/50">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-2">
+                          <span className="inline-flex h-2.5 w-2.5 rounded-full bg-blue-500"></span>
+                          <span>IP whitelist updated</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">admin@syncstream.com</td>
+                      <td className="px-6 py-4">192.168.1.100</td>
+                      <td className="px-6 py-4">2023-10-25 18:20:10 UTC</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="flex items-center justify-between border-t border-slate-700/50 bg-[#111A22] p-4">
+                <span className="text-sm text-slate-400">
+                  Showing 1 to 5 of 20 entries
+                </span>
+                <div className="inline-flex items-center gap-2">
+                  <button
+                    className="flex h-8 w-8 items-center justify-center rounded-md bg-slate-700/50 text-slate-400 transition-colors hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
+                    disabled
+                  >
+                    <span className="material-symbols-outlined text-base">
+                      chevron_left
+                    </span>
+                  </button>
+                  <button className="flex h-8 w-8 items-center justify-center rounded-md bg-slate-700/50 text-slate-400 transition-colors hover:bg-slate-700">
+                    <span className="material-symbols-outlined text-base">
+                      chevron_right
+                    </span>
+                  </button>
+                </div>
+              </div>
             </div>
           </section>
         </div>
