@@ -45,9 +45,69 @@ export default function BackupRestorePage() {
           </div>
         </div>
         <div className="flex flex-col gap-6 rounded-lg border border-[#233648] bg-[#192633] p-6">
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
+                <h2 className="text-white text-xl font-bold leading-tight">Automated Backup Schedule</h2>
+                <p className="text-[#92adc9] text-sm font-normal leading-normal">Configure how often automated backups of your SyncStream configuration and data are performed.</p>
+              </div>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
+                <div className="flex-1">
+                  <label className="block text-white text-sm font-medium mb-2" htmlFor="backup-frequency">Backup Frequency</label>
+                  <Select defaultValue="weekly">
+                    <SelectTrigger className="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-md text-white focus:outline-0 focus:ring-2 focus:ring-[#1172d4] border border-[#324d67] bg-[#192633] focus:border-[#1172d4] h-10 bg-[image:--select-button-svg] placeholder:text-[#92adc9] px-3 py-2 text-sm font-normal leading-normal" id="backup-frequency">
+                      <SelectValue/>
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="daily">Daily</SelectItem>
+                      <SelectItem value="weekly">Weekly</SelectItem>
+                      <SelectItem value="custom">Custom</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex-1">
+                  <label className="block text-white text-sm font-medium mb-2" htmlFor="backup-day">Day of the Week</label>
+                  <Select defaultValue="sunday">
+                    <SelectTrigger className="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-md text-white focus:outline-0 focus:ring-2 focus:ring-[#1172d4] border border-[#324d67] bg-[#192633] focus:border-[#1172d4] h-10 bg-[image:--select-button-svg] placeholder:text-[#92adc9] px-3 py-2 text-sm font-normal leading-normal" id="backup-day">
+                      <SelectValue/>
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="monday">Monday</SelectItem>
+                      <SelectItem value="tuesday">Tuesday</SelectItem>
+                      <SelectItem value="wednesday">Wednesday</SelectItem>
+                      <SelectItem value="thursday">Thursday</SelectItem>
+                      <SelectItem value="friday">Friday</SelectItem>
+                      <SelectItem value="saturday">Saturday</SelectItem>
+                      <SelectItem value="sunday">Sunday</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex-1">
+                  <label className="block text-white text-sm font-medium mb-2" htmlFor="backup-time">Time</label>
+                  <Select defaultValue="02:00">
+                    <SelectTrigger className="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-md text-white focus:outline-0 focus:ring-2 focus:ring-[#1172d4] border border-[#324d67] bg-[#192633] focus:border-[#1172d4] h-10 bg-[image:--select-button-svg] placeholder:text-[#92adc9] px-3 py-2 text-sm font-normal leading-normal" id="backup-time">
+                      <SelectValue/>
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="00:00">00:00</SelectItem>
+                      <SelectItem value="01:00">01:00</SelectItem>
+                      <SelectItem value="02:00">02:00</SelectItem>
+                      <SelectItem value="03:00">03:00</SelectItem>
+                      <SelectItem value="04:00">04:00</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="flex justify-end">
+                <Button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 bg-[#1172d4] hover:bg-[#1172d4]/90 text-white text-sm font-bold leading-normal tracking-[0.015em]">
+                  <span className="truncate">Save Schedule</span>
+                </Button>
+              </div>
+            </div>
+        </div>
+        <div className="flex flex-col gap-6 rounded-lg border border-[#233648] bg-[#192633] p-6">
           <div className="flex flex-col gap-2">
             <h2 className="text-white text-xl font-bold leading-tight">
-              Automated Backups
+              Automated Backup History
             </h2>
             <p className="text-[#92adc9] text-sm font-normal leading-normal">
               View the history of automated backups created by SyncStream. These
