@@ -16,6 +16,63 @@ export default function DashboardPage() {
         Welcome back, Alex! Here's an overview of your integrations.
       </p>
       <section className="mb-12">
+        <h3 className="text-xl font-semibold text-white mb-6">Quick Links</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <a
+            className="bg-[var(--background-secondary)] rounded-lg p-6 flex flex-col justify-between hover:bg-[var(--background-tertiary)] transition-colors duration-200"
+            href="#"
+          >
+            <div>
+              <div className="bg-[var(--info-color)]/20 p-3 rounded-full w-fit mb-4">
+                <span className="material-symbols-outlined text-3xl text-[var(--info-color)]">
+                  history
+                </span>
+              </div>
+              <h4 className="text-white font-semibold text-lg mb-1">
+                Sync History
+              </h4>
+              <p className="text-[var(--text-secondary)] text-sm">
+                View logs of all data synchronizations.
+              </p>
+            </div>
+          </a>
+          <a
+            className="bg-[var(--background-secondary)] rounded-lg p-6 flex flex-col justify-between hover:bg-[var(--background-tertiary)] transition-colors duration-200"
+            href="#"
+          >
+            <div>
+              <div className="bg-[var(--warning-color)]/20 p-3 rounded-full w-fit mb-4">
+                <span className="material-symbols-outlined text-3xl text-[var(--warning-color)]">
+                  notifications_active
+                </span>
+              </div>
+              <h4 className="text-white font-semibold text-lg mb-1">Alerts</h4>
+              <p className="text-[var(--text-secondary)] text-sm">
+                Check notifications and system warnings.
+              </p>
+            </div>
+          </a>
+          <a
+            className="bg-[var(--background-secondary)] rounded-lg p-6 flex flex-col justify-between hover:bg-[var(--background-tertiary)] transition-colors duration-200"
+            href="#"
+          >
+            <div>
+              <div className="bg-[var(--success-color)]/20 p-3 rounded-full w-fit mb-4">
+                <span className="material-symbols-outlined text-3xl text-[var(--success-color)]">
+                  add_circle
+                </span>
+              </div>
+              <h4 className="text-white font-semibold text-lg mb-1">
+                Manage Integrations
+              </h4>
+              <p className="text-[var(--text-secondary)] text-sm">
+                Add, edit, or remove your integrations.
+              </p>
+            </div>
+          </a>
+        </div>
+      </section>
+      <section className="mb-12">
         <h3 className="text-xl font-semibold text-white mb-6">Key Metrics</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-[var(--background-secondary)] rounded-lg p-6 flex items-center gap-6">
