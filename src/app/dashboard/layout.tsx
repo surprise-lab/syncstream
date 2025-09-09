@@ -6,34 +6,11 @@ import {
   HelpCircle,
   Settings,
   Users,
-  Home,
-  Link as LinkIcon,
-  Power,
-  ChevronDown,
-  GitBranch,
-  FileText,
-  Package,
-  ListOrdered,
-  Users2,
-  GitCommitHorizontal,
-  FileUp,
-  FileDown,
-  Trash2,
-  ArrowUpDown,
-  Filter,
   LayoutDashboard,
-  Webhook,
-  Activity,
-  Book,
-  FileClock,
-  BookCopy,
   FolderSync,
-  Cable,
-  Network,
-  Search,
+  Book,
 } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { SyncStreamLogo } from '@/components/syncstream-logo';
 import { usePathname } from 'next/navigation';
@@ -45,11 +22,6 @@ const navLinks = [
   { href: '/dashboard/users', label: 'Users', icon: Users },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
 ];
-
-const bottomNavLinks = [
-    { href: '/dashboard/docs', label: 'Docs', icon: Book },
-    { href: '/dashboard/help', label: 'Help', icon: HelpCircle },
-]
 
 export default function DashboardLayout({
   children,
@@ -74,9 +46,7 @@ export default function DashboardLayout({
               href={link.href}
               className={cn(
                 'flex items-center gap-3 rounded-md px-3 py-2 text-[#9CA3AF] hover:bg-[#1F2937] hover:text-white',
-                pathname.startsWith(link.href) && link.href !== '/dashboard' && 'bg-[#1F2937] text-white',
-                pathname === link.href && 'bg-[#1F2937] text-white',
-                link.label === 'Users' && isUsersPage && 'bg-[#1F2937] text-white',
+                (pathname.startsWith(link.href) && link.href !== '/dashboard' || pathname === link.href) && 'bg-[#1F2937] text-white',
               )}
             >
               <link.icon className="h-6 w-6" />
@@ -85,10 +55,20 @@ export default function DashboardLayout({
           ))}
         </nav>
         <div className="mt-auto flex flex-col items-center gap-y-4">
+          <Link href="#" className="flex items-center gap-3 rounded-md px-4 py-2 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white">
+            <HelpCircle className="h-6 w-6" />
+            <span>Support</span>
+          </Link>
+          <div className="flex items-center gap-3 border-t border-slate-800 pt-4">
             <Avatar>
-                <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOrMIGLGq1gHfK6DWQFC2dxhh-gaUuO46i6ij8KYwB_TmDtyZJnr3lHiVpgNMp5bF577b1m_pQDa2rpdTIAnzS-hJyK0OD34CQtp9INeW_YCbV6aTy2RmYzdlca1PkttN3qnYIOdJR-ZIbNL9mo8gc40eaTAaBFc8PicoxEoERcMwHInF6fT18ehieJGu3jJE3DjLbPZvoR41JEknQtrXmJXSY6dmHLRMOV46BpLuYqsHH72JUii-TUnszVBAmAXxcjww42oYwc-8I" />
+                <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuC--MijKFOJkTHMOI3iAq2_tCn9FnrIzsq7IIRZeRWi7Nqn2jApEZAs3Xt4ovU5x5kRe_afhSIS47peugOhaqpnNQyLn15vCUdN0YDafEMGqTBeVNc5V8PpiKMtEf1F40UicESiGPBN0W205pptOxwhJ1EQ_4Qj0IQF5OloFFGA-T-Ex8TH03Qfdd8Y37Ckus1O6APKW4AtKXkjKOC3dvit9unaOh4kjuyWJhBSwvTeUMxhlOKRC87uqJWKPis5YhZwWtfGPOfdZ5HU" />
                 <AvatarFallback>U</AvatarFallback>
             </Avatar>
+            <div>
+              <p className="text-sm font-medium text-white">Admin User</p>
+              <a className="text-xs text-slate-400 hover:text-primary-color" href="#">Log out</a>
+            </div>
+          </div>
         </div>
       </aside>
       <div className="flex flex-1 flex-col">

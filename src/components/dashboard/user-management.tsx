@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import Link from 'next/link';
+import { Edit, Trash2 } from 'lucide-react';
 
 const users = [
   {
@@ -89,7 +90,7 @@ export function UserManagement() {
                 <div className="flex items-center gap-2">
                 <label className="text-sm font-medium text-text-2" htmlFor="role-filter">Role:</label>
                 <Select defaultValue="All">
-                    <SelectTrigger id="role-filter" className="rounded-md border-0 bg-surface-2 py-1.5 pl-3 pr-8 text-sm text-white focus:ring-2 focus:ring-inset focus:ring-brand-primary w-auto">
+                    <SelectTrigger id="role-filter" className="w-auto rounded-md border-0 bg-surface-2 py-1.5 pl-3 pr-8 text-sm text-white focus:ring-2 focus:ring-inset focus:ring-brand-primary">
                         <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -102,7 +103,7 @@ export function UserManagement() {
                 <div className="flex items-center gap-2">
                 <label className="text-sm font-medium text-text-2" htmlFor="status-filter">Status:</label>
                 <Select defaultValue="All">
-                    <SelectTrigger id="status-filter" className="rounded-md border-0 bg-surface-2 py-1.5 pl-3 pr-8 text-sm text-white focus:ring-2 focus:ring-inset focus:ring-brand-primary w-auto">
+                    <SelectTrigger id="status-filter" className="w-auto rounded-md border-0 bg-surface-2 py-1.5 pl-3 pr-8 text-sm text-white focus:ring-2 focus:ring-inset focus:ring-brand-primary">
                         <SelectValue/>
                     </SelectTrigger>
                     <SelectContent>
@@ -139,15 +140,14 @@ export function UserManagement() {
                             {getStatusBadge(user.status)}
                         </td>
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                            <button className="p-1 text-text-2 transition-colors hover:text-white" title="Reset Password">
-                                <span className="material-symbols-outlined text-base"> lock_reset </span>
-                            </button>
-                            <button className="p-1 text-text-2 transition-colors hover:text-white">
-                                <span className="material-symbols-outlined text-base"> edit </span>
-                            </button>
-                            <button className="p-1 text-text-2 transition-colors hover:text-danger">
-                                <span className="material-symbols-outlined text-base"> delete </span>
-                            </button>
+                            <Button asChild variant="ghost" size="icon" className="p-1 text-text-2 transition-colors hover:text-white">
+                                <Link href="/dashboard/users/edit">
+                                    <Edit className="text-base" />
+                                </Link>
+                            </Button>
+                            <Button variant="ghost" size="icon" className="p-1 text-text-2 transition-colors hover:text-danger">
+                               <Trash2 className="text-base" />
+                            </Button>
                         </td>
                     </tr>
                 ))}
