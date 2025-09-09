@@ -130,7 +130,7 @@ export default function IntegrationsPage() {
                       <TableCell className="whitespace-nowrap text-right text-sm font-medium">
                         <Link
                           className="text-primary hover:text-primary/80"
-                          href="#"
+                          href="/dashboard/integrations/edit"
                         >
                           Edit
                         </Link>
@@ -185,7 +185,7 @@ export default function IntegrationsPage() {
                       <TableCell className="whitespace-nowrap text-right text-sm font-medium">
                         <Link
                           className="text-primary hover:text-primary/80"
-                          href="#"
+                          href="/dashboard/integrations/edit"
                         >
                           Edit
                         </Link>
@@ -201,5 +201,3 @@ export default function IntegrationsPage() {
     </main>
   );
 }
-
-    
