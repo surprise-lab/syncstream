@@ -63,7 +63,9 @@ export default function DashboardLayout({
     <div className="flex min-h-screen bg-neutral-900">
       <aside className="flex w-64 flex-col bg-neutral-950/50">
         <div className="flex h-16 items-center gap-3 px-6">
-          <SyncStreamLogo className="h-8 w-8 text-primary" />
+          <div className="w-8 h-8 flex items-center justify-center text-white bg-primary rounded-md">
+            <Sync className="text-xl" />
+          </div>
           <h1 className="text-xl font-bold text-white">SyncStream</h1>
         </div>
         <nav className="flex-1 space-y-2 px-4 py-4">

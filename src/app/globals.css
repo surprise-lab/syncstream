@@ -14,7 +14,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 209 88% 45%; /* blue-600 */
+    --primary: 142.1 76.2% 36.3%; /* green-500 */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%; /* slate-800 */
@@ -23,7 +23,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%; /* slate-400 */
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 210 89% 60%; /* blue-500 */
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -42,6 +42,14 @@
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-ring: 212.7 93.5% 68.4%;
 
+     /* Custom Colors from request */
+    --primary-color: #22c55e;
+    --secondary-color: #1e293b;
+    --accent-color: #3b82f6;
+    --text-primary: #ffffff;
+    --text-secondary: #a0b3c6;
+    --border-color: #2e4760;
+
   }
  
   .dark {
@@ -54,7 +62,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 209 88% 45%; /* blue-600 */
+    --primary: 142.1 76.2% 36.3%; /* green-500 */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%; /* slate-800 */
@@ -63,7 +71,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%; /* slate-400 */
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 210 89% 60%; /* blue-500 */
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -99,4 +107,16 @@
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #64748b;
   }
+   .status-active {
+        color: #10b981;
+        background-color: rgba(16, 185, 129, 0.1);
+      }
+      .status-inactive {
+        color: #f59e0b;
+        background-color: rgba(245, 158, 11, 0.1);
+      }
+       .status-error {
+        color: #ef4444;
+        background-color: rgba(239, 68, 68, 0.1);
+      }
 }
