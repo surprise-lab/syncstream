@@ -11,7 +11,7 @@ const navLinks = [
     { href: '/dashboard/connections', label: 'Connections', icon: 'power' },
     { href: '/dashboard/workflows', label: 'Workflows', icon: 'swap_horiz' },
     { href: '/dashboard/rules', label: 'Rules', icon: 'rule' },
-    { href: '/dashboard/audit-log', label: 'Logs', icon: 'receipt_long' },
+    { href: '/dashboard/audit-log', label: 'Audit Log', icon: 'receipt_long' },
 ];
 
 export default function DashboardLayout({
@@ -173,6 +173,10 @@ export default function DashboardLayout({
         </div>
       </div>
     );
+  }
+
+  if (pathname.startsWith('/dashboard/connections')) {
+    return <div className="flex flex-1">{children}</div>;
   }
 
   return (
