@@ -1,0 +1,112 @@
+
+'use client';
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
+
+export default function DataRetentionPage() {
+  return (
+    <main className="flex-1 px-10 py-8 lg:px-20 xl:px-40">
+        <div className="mx-auto max-w-5xl">
+            <div className="mb-10">
+                <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Data Retention Policies</h1>
+                <p className="mt-2 text-lg text-gray-400">Manage how long different types of data are stored before being archived or purged.</p>
+            </div>
+            <div className="space-y-12">
+                <section>
+                    <h2 className="text-2xl font-semibold leading-tight text-white">Current Policies</h2>
+                    <div className="mt-4 overflow-hidden rounded-lg border border-gray-800 bg-gray-900">
+                        <div className="overflow-x-auto">
+                            <table className="min-w-full divide-y divide-gray-800">
+                                <thead className="bg-gray-800/50">
+                                    <tr>
+                                        <th className="px-6 py-3.5 text-left text-sm font-semibold text-white" scope="col">Data Type</th>
+                                        <th className="px-6 py-3.5 text-left text-sm font-semibold text-white" scope="col">Retention Period</th>
+                                        <th className="px-6 py-3.5 text-left text-sm font-semibold text-white" scope="col">Last Modified</th>
+                                        <th className="px-6 py-3.5 text-center text-sm font-semibold text-white" scope="col">Status</th>
+                                        <th className="relative py-3.5 pl-3 pr-4 sm:pr-6" scope="col"><span className="sr-only">Edit</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-gray-800">
+                                    <tr>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">Sync Logs</td>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-400">90 days</td>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-400">2024-01-15</td>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-400 text-center">
+                                            <span className="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">Active</span>
+                                        </td>
+                                        <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                            <a className="text-primary-400 hover:text-primary-300" href="#">Edit</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">Audit Trails</td>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-400">180 days</td>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-400">2023-12-20</td>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-400 text-center">
+                                            <span className="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">Active</span>
+                                        </td>
+                                        <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                            <a className="text-primary-400 hover:text-primary-300" href="#">Edit</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">Integration Data</td>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-400">365 days</td>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-400">2023-11-05</td>
+                                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-400 text-center">
+                                            <span className="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">Active</span>
+                                        </td>
+                                        <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                            <a className="text-primary-400 hover:text-primary-300" href="#">Edit</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <div className="border-t border-gray-800"></div>
+                <section>
+                    <h2 className="text-2xl font-semibold leading-tight text-white">Update Policies</h2>
+                    <p className="mt-1 text-sm text-gray-400">Select a data type and set a new retention period.</p>
+                    <form className="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                        <div className="sm:col-span-3">
+                            <label className="block text-sm font-medium leading-6 text-white" htmlFor="data-type">Data Type</label>
+                            <div className="mt-2">
+                                <Select>
+                                    <SelectTrigger id="data-type" name="data-type" className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary-500 sm:text-sm sm:leading-6 [&_option]:text-gray-900">
+                                        <SelectValue placeholder="Select Data Type" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="sync-logs">Sync Logs</SelectItem>
+                                        <SelectItem value="audit-trails">Audit Trails</SelectItem>
+                                        <SelectItem value="integration-data">Integration Data</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        </div>
+                        <div className="sm:col-span-3">
+                            <label className="block text-sm font-medium leading-6 text-white" htmlFor="retention-period">Retention Period (days)</label>
+                            <div className="mt-2">
+                                <Input className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-500 sm:text-sm sm:leading-6" id="retention-period" name="retention-period" placeholder="e.g., 90" type="number"/>
+                            </div>
+                        </div>
+                    </form>
+                    <div className="mt-8 flex justify-end">
+                        <button className="rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600" type="submit">
+                            Apply Changes
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+  );
+}

@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
+import Link from 'next/link';
 
 export default function SettingsPage() {
   return (
@@ -23,9 +24,10 @@ export default function SettingsPage() {
             <div className="mt-8">
                 <div className="border-b border-white/10">
                     <nav aria-label="Tabs" className="-mb-px flex space-x-8">
-                        <a aria-current="page" className="border-primary-500 text-primary-400 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" href="#">Profile</a>
-                        <a className="border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-200 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" href="#">Notifications</a>
-                        <a className="border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-200 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" href="#">Security</a>
+                        <a aria-current="page" className="border-primary-500 text-primary-400 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" href="/dashboard/settings">Profile</a>
+                        <a className="border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-200 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" href="/dashboard/notifications">Notifications</a>
+                        <a className="border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-200 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" href="/dashboard/security">Security</a>
+                        <a className="border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-200 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" href="/dashboard/settings/data-retention">Data Retention</a>
                     </nav>
                 </div>
             </div>
