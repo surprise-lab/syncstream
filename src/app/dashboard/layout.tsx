@@ -14,7 +14,7 @@ const navLinks = [
     label: 'Connections',
     icon: 'sync_alt',
   },
-  { href: '/dashboard/logs', label: 'Logs', icon: 'description' },
+  { href: '/dashboard/audit-log', label: 'Audit Log', icon: 'receipt_long' },
   { href: '/dashboard/reports', label: 'Reports', icon: 'assessment' },
   { href: '/dashboard/devtools', label: 'Developer Tools', icon: 'code' },
   { href: '/dashboard/docs', label: 'Docs', icon: 'code' },
@@ -199,6 +199,9 @@ export default function DashboardLayout({
           </Link>
           <Link href="/dashboard/integrations" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/integrations') ? 'text-white' : '')}>
             Integrations
+          </Link>
+          <Link href="/dashboard/audit-log" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/audit-log') ? 'text-white' : '')}>
+            Audit Log
           </Link>
           <Link href="/dashboard/reports" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/reports') ? 'text-white' : '')}>
             Data & Reports

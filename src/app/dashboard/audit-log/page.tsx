@@ -11,211 +11,169 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { cn } from '@/lib/utils';
 
 const auditLogs = [
   {
-    timestamp: '2024-01-26 14:30:00',
-    user: 'Alice Johnson',
-    initials: 'AJ',
-    action: 'Created Integration',
-    resource: 'Integration A',
-    color: 'bg-blue-400/20 text-blue-300',
+    timestamp: '2024-01-15 14:30',
+    user: 'Alex Johnson',
+    integration: 'CRM',
+    dataField: 'Customer Name',
+    oldValue: 'John Smith',
+    newValue: 'Jonathan Smith',
   },
   {
-    timestamp: '2024-01-26 15:00:00',
-    user: 'Bob Williams',
-    initials: 'BW',
-    action: 'Updated Workflow',
-    resource: 'Workflow X',
-    color: 'bg-indigo-400/20 text-indigo-300',
+    timestamp: '2024-01-15 14:35',
+    user: 'Alex Johnson',
+    integration: 'CRM',
+    dataField: 'Customer Email',
+    oldValue: 'john.smith@example.com',
+    newValue: 'jonathan.smith@example.com',
   },
   {
-    timestamp: '2024-01-26 15:30:00',
-    user: 'Charlie Davis',
-    initials: 'CD',
-    action: 'Deleted Data Mapping',
-    resource: 'Mapping Y',
-    color: 'bg-purple-400/20 text-purple-300',
+    timestamp: '2024-01-15 15:00',
+    user: 'Sarah Lee',
+    integration: 'Marketing Automation',
+    dataField: 'Campaign Status',
+    oldValue: { value: 'Draft', type: 'warning' },
+    newValue: { value: 'Active', type: 'success' },
   },
   {
-    timestamp: '2024-01-26 16:00:00',
-    user: 'Diana Evans',
-    initials: 'DE',
-    action: 'Created Integration',
-    resource: 'Integration B',
-    color: 'bg-pink-400/20 text-pink-300',
+    timestamp: '2024-01-15 15:15',
+    user: 'Sarah Lee',
+    integration: 'Marketing Automation',
+    dataField: 'Campaign Budget',
+    oldValue: '$5000',
+    newValue: '$7500',
   },
   {
-    timestamp: '2024-01-26 16:30:00',
-    user: 'Ethan Foster',
-    initials: 'EF',
-    action: 'Updated Workflow',
-    resource: 'Workflow Z',
-    color: 'bg-teal-400/20 text-teal-300',
+    timestamp: '2024-01-16 09:00',
+    user: 'David Chen',
+    integration: 'E-commerce',
+    dataField: 'Product Price',
+    oldValue: '$29.99',
+    newValue: '$34.99',
   },
   {
-    timestamp: '2024-01-26 17:00:00',
-    user: 'Fiona Green',
-    initials: 'FG',
-    action: 'Deleted Data Mapping',
-    resource: 'Mapping W',
-    color: 'bg-cyan-400/20 text-cyan-300',
+    timestamp: '2024-01-16 09:30',
+    user: 'David Chen',
+    integration: 'E-commerce',
+    dataField: 'Product Stock',
+    oldValue: '100',
+    newValue: '50',
   },
   {
-    timestamp: '2024-01-26 17:30:00',
-    user: 'George Harris',
-    initials: 'GH',
-    action: 'Created Integration',
-    resource: 'Integration C',
-    color: 'bg-orange-400/20 text-orange-300',
+    timestamp: '2024-01-16 10:00',
+    user: 'Emily White',
+    integration: 'Support System',
+    dataField: 'Ticket Status',
+    oldValue: { value: 'Open', type: 'info' },
+    newValue: { value: 'Closed', type: 'neutral' },
   },
   {
-    timestamp: '2024-01-26 18:00:00',
-    user: 'Hannah Clark',
-    initials: 'HC',
-    action: 'Updated Workflow',
-    resource: 'Workflow V',
-    color: 'bg-lime-400/20 text-lime-300',
+    timestamp: '2024-01-16 10:15',
+    user: 'Emily White',
+    integration: 'Support System',
+    dataField: 'Ticket Priority',
+    oldValue: { value: 'Low', type: 'neutral' },
+    newValue: { value: 'High', type: 'danger' },
+  },
+  {
+    timestamp: '2024-01-16 11:00',
+    user: 'Michael Brown',
+    integration: 'Finance System',
+    dataField: 'Invoice Amount',
+    oldValue: '$150.00',
+    newValue: '$175.00',
+  },
+  {
+    timestamp: '2024-01-16 11:30',
+    user: 'Michael Brown',
+    integration: 'Finance System',
+    dataField: 'Invoice Due Date',
+    oldValue: '2024-01-31',
+    newValue: '2024-02-15',
   },
 ];
 
-const getActionBadge = (action: string) => {
-  if (action.startsWith('Created')) {
+const getChangeBadge = (value: string | { value: string; type: string }) => {
+    if (typeof value !== 'object') {
+      return value;
+    }
+  
+    const baseClasses = 'inline-flex items-center rounded-full px-2 py-1 text-xs font-medium';
+    const typeClasses = {
+      success: 'bg-green-900/50 text-green-300',
+      warning: 'bg-yellow-900/50 text-yellow-300',
+      danger: 'bg-red-900/50 text-red-300',
+      info: 'bg-blue-900/50 text-blue-300',
+      neutral: 'bg-gray-700 text-gray-300',
+    };
+  
     return (
-      <span className="inline-flex items-center rounded-full bg-green-500/20 px-2.5 py-0.5 text-xs font-medium text-green-400">
-        {action}
+      <span className={`${baseClasses} ${typeClasses[value.type] || typeClasses.neutral}`}>
+        {value.value}
       </span>
     );
-  }
-  if (action.startsWith('Updated')) {
-    return (
-      <span className="inline-flex items-center rounded-full bg-yellow-500/20 px-2.5 py-0.5 text-xs font-medium text-yellow-400">
-        {action}
-      </span>
-    );
-  }
-  if (action.startsWith('Deleted')) {
-    return (
-      <span className="inline-flex items-center rounded-full bg-red-500/20 px-2.5 py-0.5 text-xs font-medium text-red-400">
-        {action}
-      </span>
-    );
-  }
-  return null;
-};
+  };
+  
 
 export default function AuditLogPage() {
-  return (
-    <main className="flex-1 p-8">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold tracking-tight">User Activity</h2>
-        <p className="text-gray-400">
-          Track all user activities within the SyncStream application.
-        </p>
-      </div>
-      <div className="rounded-lg border border-gray-800 bg-gray-900/50 shadow-md">
-        <div className="flex items-center justify-between gap-4 border-b border-gray-800 p-4">
-          <div className="relative w-full max-w-sm">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <span className="material-symbols-outlined text-gray-400">search</span>
-            </div>
-            <input
-              className="w-full rounded-md border-gray-700 bg-gray-800 py-2 pl-10 pr-4 text-white placeholder-gray-500 focus:border-primary-500 focus:ring-primary-500"
-              placeholder="Search logs by resource..."
-              type="text"
-            />
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="relative">
-              <select className="w-full appearance-none rounded-md border-gray-700 bg-gray-800 py-2 pl-3 pr-10 text-sm text-gray-300 hover:bg-gray-700 focus:border-primary-500 focus:ring-primary-500">
-                <option>Filter by User</option>
-                <option>Alice Johnson</option>
-                <option>Bob Williams</option>
-                <option>Charlie Davis</option>
-                <option>Diana Evans</option>
-              </select>
-              <span className="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-base text-gray-400">expand_more</span>
-            </div>
-            <div className="relative">
-                <select className="w-full appearance-none rounded-md border-gray-700 bg-gray-800 py-2 pl-3 pr-10 text-sm text-gray-300 hover:bg-gray-700 focus:border-primary-500 focus:ring-primary-500">
-                    <option>Filter by Action</option>
-                    <option>Created Integration</option>
-                    <option>Updated Workflow</option>
-                    <option>Deleted Data Mapping</option>
-                </select>
-                <span className="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-base text-gray-400">expand_more</span>
-            </div>
-            <button
-              className="flex items-center gap-2 rounded-md border border-gray-700 bg-gray-800 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
-            >
-              <span className="material-symbols-outlined text-base">download</span>
-              Export
-            </button>
-          </div>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-800">
-            <thead className="bg-gray-800/50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400 w-1/4" scope="col">
-                  <button className="flex items-center gap-1.5 text-sm font-semibold text-white">
-                    Timestamp <span className="material-symbols-outlined text-base">arrow_upward</span>
-                  </button>
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400 w-1/4" scope="col">
-                  <button className="flex items-center gap-1.5 text-sm font-semibold text-white">User</button>
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400 w-1/4" scope="col">
-                  <button className="flex items-center gap-1.5 text-sm font-semibold text-white">Action</button>
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400 w-1/4" scope="col">
-                  <button className="flex items-center gap-1.5 text-sm font-semibold text-white">Resource</button>
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-800">
-              {auditLogs.map((log) => (
-                <tr key={log.timestamp}>
-                  <td className="px-6 py-4 text-sm text-gray-300">{log.timestamp}</td>
-                  <td className="px-6 py-4 text-sm text-gray-300">
-                    <div className="flex items-center gap-3">
-                      <div className={cn("h-8 w-8 rounded-full flex items-center justify-center font-bold", log.color)}>
-                        {log.initials}
-                      </div>
-                      <span>{log.user}</span>
+    return (
+        <main className="flex-1 px-10 py-8">
+            <div className="mx-auto max-w-7xl">
+                <div className="mb-8">
+                    <h1 className="text-3xl font-bold text-white">Audit Log</h1>
+                    <p className="mt-2 text-base text-gray-400">Track changes to data within integrated systems through SyncStream.</p>
+                </div>
+                <div className="space-y-6">
+                    <div className="flex items-center justify-between gap-4">
+                        <div className="relative w-full max-w-md">
+                            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"> search </span>
+                            <Input className="w-full rounded-md border-none bg-[#233648] py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500" placeholder="Search by user, integration, or data field" type="search" />
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white hover:bg-[#2d4257] transition-colors">
+                                <span>Date Range</span>
+                                <span className="material-symbols-outlined text-base"> expand_more </span>
+                            </Button>
+                            <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white hover:bg-[#2d4257] transition-colors">
+                                <span>Integration</span>
+                                <span className="material-symbols-outlined text-base"> expand_more </span>
+                            </Button>
+                            <Button variant="ghost" className="flex h-10 items-center justify-center gap-x-2 rounded-md bg-[#233648] px-4 text-sm font-medium text-white hover:bg-[#2d4257] transition-colors">
+                                <span>User</span>
+                                <span className="material-symbols-outlined text-base"> expand_more </span>
+                            </Button>
+                        </div>
                     </div>
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-300">
-                    {getActionBadge(log.action)}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-300">{log.resource}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="flex items-center justify-between border-t border-gray-800 px-4 py-3">
-          <p className="text-sm text-gray-400">
-            Showing <span className="font-medium text-white">1</span> to{' '}
-            <span className="font-medium text-white">8</span> of{' '}
-            <span className="font-medium text-white">100</span> results
-          </p>
-          <div className="inline-flex rounded-md shadow-sm">
-            <button
-              className="relative inline-flex items-center rounded-l-md border border-gray-700 bg-gray-800 px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
-            >
-              Previous
-            </button>
-            <button
-              className="relative -ml-px inline-flex items-center rounded-r-md border border-gray-700 bg-gray-800 px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
+                    <div className="overflow-hidden rounded-lg border border-[#324d67] bg-[#192633]">
+                        <Table className="min-w-full divide-y divide-[#324d67]">
+                            <TableHeader className="bg-[#192633]">
+                                <TableRow>
+                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">Timestamp</TableHead>
+                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">User</TableHead>
+                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">Integration</TableHead>
+                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">Data Field</TableHead>
+                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">Old Value</TableHead>
+                                    <TableHead className="w-1/6 px-4 py-3.5 text-left text-sm font-semibold text-white">New Value</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody className="divide-y divide-[#233648]">
+                                {auditLogs.map((log, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{log.timestamp}</TableCell>
+                                    <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{log.user}</TableCell>
+                                    <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{log.integration}</TableCell>
+                                    <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{log.dataField}</TableCell>
+                                    <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{getChangeBadge(log.oldValue)}</TableCell>
+                                    <TableCell className="px-4 py-4 text-sm text-[#92adc9]">{getChangeBadge(log.newValue)}</TableCell>
+                                </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    );
 }
