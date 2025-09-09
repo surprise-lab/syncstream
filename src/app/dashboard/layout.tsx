@@ -12,6 +12,7 @@ const navLinks = [
     { href: '/dashboard/workflows', label: 'Workflows', icon: 'swap_horiz' },
     { href: '/dashboard/rules', label: 'Rules', icon: 'rule' },
     { href: '/dashboard/audit-log', label: 'Audit Log', icon: 'receipt_long' },
+    { href: '/dashboard/settings', label: 'Settings', icon: 'settings' },
 ];
 
 export default function DashboardLayout({
