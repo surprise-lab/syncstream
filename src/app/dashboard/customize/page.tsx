@@ -59,9 +59,15 @@ export default function CustomizeDashboardPage() {
                 </div>
             </aside>
             <div className="flex flex-1 flex-col p-8">
-                <div className="mb-6">
-                    <h2 className="text-3xl font-bold text-[var(--text-primary)]">Customize Dashboard</h2>
-                    <p className="text-[var(--text-secondary)] mt-1">Drag and drop widgets to personalize your dashboard view. Select from the library on the left.</p>
+                <div className="mb-6 flex items-start justify-between">
+                    <div>
+                        <h2 className="text-3xl font-bold text-[var(--text-primary)]">Customize Dashboard</h2>
+                        <p className="text-[var(--text-secondary)] mt-1">Drag and drop widgets to personalize your dashboard view. Select from the library on the left.</p>
+                    </div>
+                    <Button variant="outline" className="flex items-center gap-2 rounded-md border border-[var(--border-color)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--border-color)] transition-colors">
+                        <span className="material-symbols-outlined text-base">restart_alt</span>
+                        Reset to Default Layout
+                    </Button>
                 </div>
                 <div className="flex-1 rounded-lg border-2 border-dashed border-[var(--border-color)] p-6">
                     <div className="flex h-full flex-col items-center justify-center text-center">
@@ -74,7 +80,7 @@ export default function CustomizeDashboardPage() {
                 </div>
                 <div className="mt-6 flex justify-end gap-4">
                     <Button variant="outline" className="rounded-md bg-[var(--border-color)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] hover:bg-opacity-80 transition-opacity">
-                        Reset Layout
+                        Cancel
                     </Button>
                     <Button className="rounded-md bg-[var(--primary-color)] px-4 py-2 text-sm font-semibold text-white hover:bg-opacity-90 transition-opacity">
                         Save Changes
