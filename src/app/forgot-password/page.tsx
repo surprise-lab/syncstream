@@ -71,14 +71,54 @@ export default function ForgotPasswordPage() {
                 lock_reset
               </span>
             </div>
-            <h2 className="mb-2 text-3xl font-bold text-[var(--text-primary)]">
+            <h2 className="mb-4 text-3xl font-bold text-[var(--text-primary)]">
               Reset your password
             </h2>
-            <p className="mb-8 text-[var(--text-secondary)]">
-              Enter your email address and we'll send you a link to get back
-              into your account.
-            </p>
-            <form className="flex w-full flex-col gap-6">
+            <div className="w-full space-y-6 text-left text-[var(--text-secondary)]">
+              <div className="flex items-start gap-4">
+                <div className="flex size-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--primary-color)] text-sm font-bold text-white">
+                  1
+                </div>
+                <div>
+                  <h3 className="font-semibold text-[var(--text-primary)]">
+                    Enter Your Email
+                  </h3>
+                  <p className="text-sm">
+                    Enter the email address associated with your SyncStream
+                    account. We'll send a verification code to this email.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="flex size-8 flex-shrink-0 items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--background-color)] text-sm font-bold text-[var(--text-secondary)]">
+                  2
+                </div>
+                <div>
+                  <h3 className="font-semibold text-[var(--text-primary)]">
+                    Verify Your Identity
+                  </h3>
+                  <p className="text-sm">
+                    Check your inbox for an email from us. Enter the
+                    verification code from the email to proceed.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="flex size-8 flex-shrink-0 items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--background-color)] text-sm font-bold text-[var(--text-secondary)]">
+                  3
+                </div>
+                <div>
+                  <h3 className="font-semibold text-[var(--text-primary)]">
+                    Set a New Password
+                  </h3>
+                  <p className="text-sm">
+                    Create a new, strong password for your account. Make sure
+                    it's something you can remember.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <form className="mt-8 flex w-full flex-col gap-6">
               <div className="relative">
                 <span className="material-symbols-outlined pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]">
                   email
