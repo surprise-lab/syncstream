@@ -111,61 +111,70 @@ export default function ConnectionsPage() {
                 Categories
               </h3>
               <div className="space-y-2">
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">All</span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">Marketing</span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">Sales</span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">Support</span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">Productivity</span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">Finance</span>
-                </label>
-              </div>
-            </div>
-            <div>
-              <h3 className="px-2 pb-3 text-base font-semibold leading-tight tracking-[-0.015em]">
-                Data Types
-              </h3>
-              <div className="space-y-2">
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">All</span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">Contacts</span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">Accounts</span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">Products</span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">Orders</span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]">
-                  <Checkbox />
-                  <span className="text-sm font-medium">Invoices</span>
-                </label>
+                <a
+                  href="#"
+                  className="flex cursor-pointer items-center gap-x-3 rounded-md bg-[#233648] p-2"
+                >
+                  <span className="text-sm font-semibold text-white">
+                    All Connectors
+                  </span>
+                </a>
+                <a
+                  href="#"
+                  className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]"
+                >
+                  <span className="text-sm font-medium text-[#92adc9] hover:text-white">
+                    CRM
+                  </span>
+                </a>
+                <a
+                  href="#"
+                  className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]"
+                >
+                  <span className="text-sm font-medium text-[#92adc9] hover:text-white">
+                    Marketing
+                  </span>
+                </a>
+                <a
+                  href="#"
+                  className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]"
+                >
+                  <span className="text-sm font-medium text-[#92adc9] hover:text-white">
+                    Finance
+                  </span>
+                </a>
+                <a
+                  href="#"
+                  className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]"
+                >
+                  <span className="text-sm font-medium text-[#92adc9] hover:text-white">
+                    E-commerce
+                  </span>
+                </a>
+                <a
+                  href="#"
+                  className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]"
+                >
+                  <span className="text-sm font-medium text-[#92adc9] hover:text-white">
+                    Productivity
+                  </span>
+                </a>
+                <a
+                  href="#"
+                  className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]"
+                >
+                  <span className="text-sm font-medium text-[#92adc9] hover:text-white">
+                    Support
+                  </span>
+                </a>
+                <a
+                  href="#"
+                  className="flex cursor-pointer items-center gap-x-3 rounded-md p-2 hover:bg-[#233648]"
+                >
+                  <span className="text-sm font-medium text-[#92adc9] hover:text-white">
+                    Sales
+                  </span>
+                </a>
               </div>
             </div>
           </div>
@@ -211,9 +220,19 @@ export default function ConnectionsPage() {
             </div>
           </section>
           <section>
-            <h2 className="mb-6 text-2xl font-bold tracking-tight">
-              All Connectors
-            </h2>
+            <div className="mb-6 flex items-center justify-between">
+              <h2 className="text-2xl font-bold tracking-tight">
+                All Connectors
+              </h2>
+              <div className="flex items-center gap-x-2">
+                <span className="text-sm text-[#92adc9]">Sort by:</span>
+                <select className="form-select w-40 rounded-md border-none bg-[#233648] py-1.5 text-sm placeholder:text-[#92adc9] focus:outline-none focus:ring-2 focus:ring-[#1173d4]">
+                  <option>Popularity</option>
+                  <option>Newest</option>
+                  <option>Alphabetical</option>
+                </select>
+              </div>
+            </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {allConnectors.map((connector) => (
                 <div
