@@ -79,17 +79,19 @@ export default function FeedbackPage() {
                 <div>
                   <label
                     className="block text-sm font-medium text-gray-300"
-                    htmlFor="feedback-type"
+                    htmlFor="category"
                   >
-                    Feedback Type
+                    Category
                   </label>
                   <select
                     className="mt-2 block w-full rounded-md border-gray-700 bg-gray-800 px-3 py-2 text-white placeholder-gray-500 focus:border-[var(--primary-color)] focus:outline-none focus:ring-[var(--primary-color)] sm:text-sm"
-                    id="feedback-type"
+                    id="category"
                   >
-                    <option>Suggestion</option>
+                    <option>Select a category</option>
                     <option>Bug Report</option>
+                    <option>Feature Request</option>
                     <option>General Feedback</option>
+                    <option>UI/UX Suggestion</option>
                   </select>
                 </div>
                 <div>
@@ -148,7 +150,7 @@ export default function FeedbackPage() {
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-400">
-                    Suggestion submitted on 2023-08-15
+                    Feature Request submitted on 2023-08-15
                   </p>
                 </div>
                 <div className="rounded-lg border border-gray-800 bg-gray-900 p-4 transition-shadow hover:shadow-lg hover:shadow-gray-900/50">
@@ -180,7 +182,7 @@ export default function FeedbackPage() {
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-400">
-                    Feedback submitted on 2023-06-10
+                    General Feedback submitted on 2023-06-10
                   </p>
                 </div>
               </div>
