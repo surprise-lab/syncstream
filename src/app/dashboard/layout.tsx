@@ -80,6 +80,13 @@ export default function DashboardLayout({
             <span className="material-symbols-outlined">security</span>
             <p className="text-sm font-medium leading-normal">Permissions</p>
           </Link>
+           <Link
+            className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
+            href="/dashboard/resources"
+          >
+            <span className="material-symbols-outlined">memory</span>
+            <p className="text-sm font-medium leading-normal">Resources</p>
+          </Link>
           <Link
             className="flex items-center gap-3 px-3 py-2 rounded-md bg-[#233648] text-white"
             href="/dashboard/settings"
