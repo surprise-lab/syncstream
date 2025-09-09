@@ -43,12 +43,13 @@
     --sidebar-ring: 212.7 93.5% 68.4%;
 
      /* Custom Colors from request */
-    --primary-color: #22c55e;
+    --primary-color: #3b82f6;
     --secondary-color: #1e293b;
+    --background-color: #111a22;
     --accent-color: #3b82f6;
     --text-primary: #ffffff;
-    --text-secondary: #a0b3c6;
-    --border-color: #2e4760;
+    --text-secondary: #92adc9;
+    --border-color: #233648;
 
     --brand-hue: 207;
     --brand-saturation: 84%;
@@ -197,6 +198,7 @@
         @apply bg-blue-500/20 text-blue-300;
       }
 }
+
 
 
 
