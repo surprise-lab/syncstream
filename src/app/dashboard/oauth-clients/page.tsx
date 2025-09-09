@@ -10,6 +10,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import * as React from 'react';
 
 const clients = [
@@ -129,27 +135,31 @@ export default function OauthClientsPage() {
                     )}
                   </td>
                   <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                    {client.status === 'Active' ? (
-                      <Button
-                        variant="destructive"
-                        className="flex items-center gap-2 rounded-md bg-red-600/20 px-3 py-1.5 text-sm font-semibold text-red-400 hover:bg-red-600/30"
-                      >
-                        <span className="material-symbols-outlined text-base">
-                          link_off
-                        </span>
-                        Revoke
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="secondary"
-                        className="flex items-center gap-2 rounded-md bg-gray-600/20 px-3 py-1.5 text-sm font-semibold text-gray-300 hover:bg-gray-600/30"
-                      >
-                        <span className="material-symbols-outlined text-base">
-                          settings
-                        </span>
-                        Manage
-                      </Button>
-                    )}
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          className="flex items-center gap-2 rounded-md bg-gray-600/20 px-3 py-1.5 text-sm font-semibold text-gray-300 hover:bg-gray-600/30"
+                        >
+                          Manage
+                          <span className="material-symbols-outlined text-base">expand_more</span>
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-56 bg-[#233648] text-white border-[#344a60]">
+                        <DropdownMenuItem className="hover:bg-[#344a60] hover:text-white">
+                          <span className="material-symbols-outlined text-base mr-3">refresh</span>
+                          Reauthorize
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="hover:bg-[#344a60] hover:text-white">
+                          <span className="material-symbols-outlined text-base mr-3">settings</span>
+                          Reconfigure
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="text-red-400 hover:bg-red-600/30 hover:!text-red-400">
+                          <span className="material-symbols-outlined text-base mr-3">link_off</span>
+                          Revoke
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </td>
                 </tr>
                 {openRow === client.clientId && (
