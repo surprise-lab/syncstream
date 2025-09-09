@@ -31,6 +31,13 @@ export default function DashboardLayout({
             <span className="material-symbols-outlined">extension</span>
             <p className="text-sm font-medium leading-normal">Integrations</p>
           </Link>
+           <Link
+            className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
+            href="/dashboard/jobs"
+          >
+            <span className="material-symbols-outlined">schedule</span>
+            <p className="text-sm font-medium leading-normal">Jobs</p>
+          </Link>
           <Link
             className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
             href="/dashboard/connections"
