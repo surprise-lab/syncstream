@@ -54,7 +54,22 @@ export default function LoginPage() {
                 type="password"
               />
             </div>
-            <div className="flex items-center justify-end">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <input
+                  className="form-checkbox h-4 w-4 rounded border-gray-600 bg-gray-800 text-primary focus:ring-primary"
+                  id="remember-me"
+                  name="remember-me"
+                  type="checkbox"
+                />
+                <label
+                  className="ml-2 block text-sm text-gray-400"
+                  htmlFor="remember-me"
+                >
+                  {' '}
+                  Remember me{' '}
+                </label>
+              </div>
               <div className="text-sm">
                 <Link
                   className="font-medium text-primary hover:text-blue-400"
@@ -112,7 +127,7 @@ export default function LoginPage() {
             >
               {' '}
               Sign up{' '}
-            </A>
+            </Link>
           </p>
         </div>
       </div>
