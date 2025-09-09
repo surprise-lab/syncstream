@@ -147,6 +147,24 @@ export default function BillingPage() {
               </div>
             </section>
             <section>
+              <h2 className="text-white text-2xl font-bold leading-tight tracking-tight mb-6">Upcoming Payment</h2>
+              <div className="bg-[#192633] rounded-lg p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[#92adc9] text-sm">Next payment</p>
+                    <p className="text-white text-3xl font-bold mt-1">R1800.00</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[#92adc9] text-sm">Due on</p>
+                    <p className="text-white text-lg font-medium mt-1">December 1, 2024</p>
+                  </div>
+                </div>
+                <div className="mt-4 pt-4 border-t border-[#324d67]">
+                  <p className="text-[#92adc9] text-sm">Your Pro Plan will renew and be charged to your primary payment method.</p>
+                </div>
+              </div>
+            </section>
+            <section>
               <div className="mb-6 flex items-center justify-between">
                 <h2 className="text-2xl font-bold leading-tight tracking-tight text-white">
                   Billing History
