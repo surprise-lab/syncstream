@@ -10,42 +10,57 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import * as React from 'react';
 
 const clients = [
   {
     name: 'Project Alpha',
     clientId: 'proj_alpha_123',
-    permissions: 'Read-only access to user data',
+    accessLevel: 'Read-only',
+    permissions: [
+        { name: 'View user profile', description: 'Access your name, email, and avatar.' },
+        { name: 'Read connections', description: 'View list of your established connections.' },
+        { name: 'Read data flows', description: 'View list and details of your data flows.' },
+    ],
     status: 'Active',
     icon: 'apps',
   },
   {
     name: 'Integration Beta',
     clientId: 'int_beta_456',
-    permissions: 'Full access to account settings',
+    accessLevel: 'Full access',
+    permissions: [
+        { name: 'Manage account settings', description: 'Modify your profile, notification preferences, and billing information.' },
+        { name: 'Manage connections', description: 'Create, update, and delete connections to third-party services.' },
+        { name: 'Manage data flows', description: 'Create, update, and delete data flows between your connections.' },
+    ],
     status: 'Active',
     icon: 'integration_instructions',
   },
   {
     name: 'Service Gamma',
     clientId: 'svc_gamma_789',
-    permissions: 'Limited access to specific resources',
+    accessLevel: 'Limited access',
+    permissions: [
+        { name: 'Read \'Sales\' data flow', description: 'Access data specifically from the \'Sales\' data flow.' },
+        { name: 'Trigger \'Marketing\' data flow', description: 'Initiate runs of the \'Marketing\' data flow.' },
+    ],
     status: 'Inactive',
     icon: 'miscellaneous_services',
   },
 ];
 
 export default function OauthClientsPage() {
+    const [openRow, setOpenRow] = React.useState<string | null>(null);
   return (
     <main className="flex-1 px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8">
           <h2 className="text-3xl font-bold leading-tight tracking-tight text-white">
-            OAuth Clients
+            Third-Party Access
           </h2>
           <p className="mt-2 text-base text-[#92adc9]">
-            Manage the third-party applications that have been granted access to
-            your SyncStream account.
+            Manage third-party applications with access to your SyncStream account.
           </p>
         </div>
         <div className="overflow-x-auto rounded-md border border-[#233648] bg-[#192633]">
@@ -62,7 +77,7 @@ export default function OauthClientsPage() {
                   className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400"
                   scope="col"
                 >
-                  Permissions
+                  Access Level
                 </th>
                 <th
                   className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400"
@@ -77,7 +92,8 @@ export default function OauthClientsPage() {
             </thead>
             <tbody className="divide-y divide-[#233648]">
               {clients.map((client) => (
-                <tr key={client.clientId}>
+                <React.Fragment key={client.clientId}>
+                <tr>
                   <td className="whitespace-nowrap px-6 py-4">
                     <div className="flex items-center">
                       <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-[#233648]">
@@ -96,7 +112,10 @@ export default function OauthClientsPage() {
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-400">
-                    {client.permissions}
+                    <button onClick={() => setOpenRow(openRow === client.clientId ? null : client.clientId)} className="flex items-center gap-1 text-sm text-primary hover:underline">
+                        <span>{client.accessLevel}</span>
+                        <span className="material-symbols-outlined text-base">{openRow === client.clientId ? 'expand_less' : 'expand_more'}</span>
+                    </button>
                   </td>
                   <td className="whitespace-nowrap px-6 py-4">
                     {client.status === 'Active' ? (
@@ -133,6 +152,21 @@ export default function OauthClientsPage() {
                     )}
                   </td>
                 </tr>
+                {openRow === client.clientId && (
+                    <tr>
+                        <td className="px-6 py-4" colSpan={4}>
+                            <div className="rounded-md bg-[#111a22] p-4">
+                                <h4 className="font-semibold text-white">Permissions Granted:</h4>
+                                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-gray-400">
+                                    {client.permissions.map(permission => (
+                                        <li key={permission.name}><span className="font-medium text-gray-300">{permission.name}:</span> {permission.description}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                )}
+                </React.Fragment>
               ))}
             </tbody>
           </Table>
