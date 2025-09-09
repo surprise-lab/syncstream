@@ -19,7 +19,7 @@ export default function SettingsPage() {
       <div className="mx-auto max-w-4xl">
         <header className="mb-8">
           <h1 className="text-4xl font-bold tracking-tight text-white">
-            Security
+            Security &amp; Access Control
           </h1>
           <p className="mt-2 text-slate-400">
             Manage your organization's security settings and access controls.
@@ -84,35 +84,53 @@ export default function SettingsPage() {
           </section>
           <section>
             <h2 className="text-xl font-semibold text-white">
-              Session management
+              Session Timeouts
             </h2>
             <p className="mt-1 text-slate-400">
-              Configure session timeout settings to automatically log out users
-              after a period of inactivity.
+              Define how long user sessions remain active before requiring re-authentication.
             </p>
-            <div className="mt-6 rounded-lg bg-[#18232F] p-6">
-              <div className="max-w-xs">
-                <Label
-                  className="mb-2 block text-sm font-medium text-white"
-                  htmlFor="session-timeout"
-                >
-                  Session timeout
-                </Label>
-                <Select defaultValue="30">
-                  <SelectTrigger
-                    id="session-timeout"
-                    className="form-select w-full rounded-md border-slate-600 bg-[#192633] text-white focus:border-blue-500 focus:ring-blue-500/50"
-                  >
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="15">15 minutes</SelectItem>
-                    <SelectItem value="30">30 minutes</SelectItem>
-                    <SelectItem value="60">1 hour</SelectItem>
-                    <SelectItem value="480">8 hours</SelectItem>
-                    <SelectItem value="1440">24 hours</SelectItem>
-                  </SelectContent>
-                </Select>
+            <div className="mt-6 space-y-6 rounded-lg bg-[#18232F] p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-medium text-white">
+                    Idle session timeout
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-400">
+                    Automatically log out users after a period of inactivity.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Input
+                    className="form-input w-24 rounded-md border-slate-600 bg-[#192633] text-center text-white focus:border-blue-500 focus:ring-blue-500/50"
+                    id="idle-timeout-value"
+                    min="1"
+                    type="number"
+                    defaultValue="15"
+                  />
+                  <span className="text-slate-400">minutes</span>
+                </div>
+              </div>
+              <div className="border-t border-slate-700/50"></div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-medium text-white">
+                    Maximum session duration
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-400">
+                    Set a maximum time a session can remain active, regardless of
+                    activity.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Input
+                    className="form-input w-24 rounded-md border-slate-600 bg-[#192633] text-center text-white focus:border-blue-500 focus:ring-blue-500/50"
+                    id="max-session-value"
+                    min="1"
+                    type="number"
+                    defaultValue="8"
+                  />
+                  <span className="text-slate-400">hours</span>
+                </div>
               </div>
             </div>
           </section>
