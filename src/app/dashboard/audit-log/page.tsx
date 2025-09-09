@@ -120,6 +120,10 @@ export default function AuditLogPage() {
                 expand_more{' '}
               </span>
             </Button>
+            <Button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md bg-gray-800 px-4 text-sm font-medium text-white hover:bg-gray-700 transition-colors">
+                <span className="material-symbols-outlined text-base"> download </span>
+                <span>Export</span>
+            </Button>
           </div>
         </div>
         <div className="overflow-hidden rounded-lg border border-gray-800 bg-gray-900">
