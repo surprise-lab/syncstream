@@ -16,61 +16,61 @@ const auditLogs = [
   {
     user: 'Alex Bennett',
     date: '2024-07-26 14:30',
-    action: 'Policy Change',
+    action: 'Data Retention',
     details: 'Retention period for logs increased from 30 to 60 days',
   },
   {
     user: 'Jordan Carter',
     date: '2024-07-25 09:15',
-    action: 'Setting Update',
+    action: 'Security',
     details: 'Enabled two-factor authentication for all users',
   },
   {
     user: 'Riley Davis',
     date: '2024-07-24 16:45',
-    action: 'Policy Change',
+    action: 'Data Retention',
     details: 'Data export policy updated to include customer data',
   },
   {
     user: 'Morgan Evans',
     date: '2024-07-23 11:00',
-    action: 'Setting Update',
+    action: 'Security',
     details: 'API access restricted to specific IP addresses',
   },
   {
     user: 'Casey Foster',
     date: '2024-07-22 13:20',
-    action: 'Policy Change',
+    action: 'Data Retention',
     details: 'Retention period for backups increased from 90 to 120 days',
   },
   {
     user: 'Blake Green',
     date: '2024-07-21 10:50',
-    action: 'Setting Update',
+    action: 'Notifications',
     details: 'Email notifications enabled for policy changes',
   },
   {
     user: 'Quinn Hayes',
     date: '2024-07-20 15:05',
-    action: 'Policy Change',
+    action: 'Data Retention',
     details: 'Data anonymization policy updated to exclude certain fields',
   },
   {
     user: 'Avery Ingram',
     date: '2024-07-19 12:30',
-    action: 'Setting Update',
+    action: 'Security',
     details: 'User roles and permissions updated',
   },
   {
     user: 'Jamie Lewis',
     date: '2024-07-18 08:45',
-    action: 'Policy Change',
+    action: 'Data Retention',
     details: 'Retention period for archived data increased from 180 to 365 days',
   },
   {
     user: 'Drew Morgan',
     date: '2024-07-17 17:10',
-    action: 'Setting Update',
+    action: 'Data Retention',
     details: 'Audit log retention policy updated to 365 days',
   },
 ];
@@ -80,10 +80,9 @@ export default function AuditLogPage() {
     <main className="flex-1 px-10 py-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white">Audit Log</h1>
+          <h1 className="text-3xl font-bold text-white">Policy Change Audit Log</h1>
           <p className="mt-2 text-gray-400">
-            Track changes to data retention policies and other critical
-            application settings.
+            Track and filter changes to policies and administrative actions.
           </p>
         </div>
         <div className="mb-6 flex items-center gap-4">
@@ -99,30 +98,37 @@ export default function AuditLogPage() {
             />
           </div>
           <div className="flex items-center gap-2">
+            <div className="relative">
+              <Button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md bg-gray-800 px-4 text-sm font-medium text-white hover:bg-gray-700 transition-colors">
+                <span>Policy Type</span>
+                <span className="material-symbols-outlined text-base">
+                  {' '}
+                  expand_more{' '}
+                </span>
+              </Button>
+            </div>
+            <div className="relative">
+              <Button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md bg-gray-800 px-4 text-sm font-medium text-white hover:bg-gray-700 transition-colors">
+                <span>Administrator</span>
+                <span className="material-symbols-outlined text-base">
+                  {' '}
+                  expand_more{' '}
+                </span>
+              </Button>
+            </div>
             <Button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md bg-gray-800 px-4 text-sm font-medium text-white hover:bg-gray-700 transition-colors">
-              <span>User</span>
+              <span>Date Range</span>
               <span className="material-symbols-outlined text-base">
                 {' '}
-                expand_more{' '}
+                calendar_today{' '}
               </span>
             </Button>
             <Button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md bg-gray-800 px-4 text-sm font-medium text-white hover:bg-gray-700 transition-colors">
-              <span>Date</span>
               <span className="material-symbols-outlined text-base">
                 {' '}
-                expand_more{' '}
+                download{' '}
               </span>
-            </Button>
-            <Button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md bg-gray-800 px-4 text-sm font-medium text-white hover:bg-gray-700 transition-colors">
-              <span>Action</span>
-              <span className="material-symbols-outlined text-base">
-                {' '}
-                expand_more{' '}
-              </span>
-            </Button>
-            <Button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md bg-gray-800 px-4 text-sm font-medium text-white hover:bg-gray-700 transition-colors">
-                <span className="material-symbols-outlined text-base"> download </span>
-                <span>Export</span>
+              <span>Export</span>
             </Button>
           </div>
         </div>
@@ -135,7 +141,7 @@ export default function AuditLogPage() {
                     className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400"
                     scope="col"
                   >
-                    User
+                    Administrator
                   </TableHead>
                   <TableHead
                     className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400"
@@ -147,13 +153,13 @@ export default function AuditLogPage() {
                     className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400"
                     scope="col"
                   >
-                    Action
+                    Policy Type
                   </TableHead>
                   <TableHead
                     className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400"
                     scope="col"
                   >
-                    Details
+                    Change Details
                   </TableHead>
                 </TableRow>
               </TableHeader>
@@ -169,9 +175,11 @@ export default function AuditLogPage() {
                     <TableCell className="whitespace-nowrap px-6 py-4">
                       <span
                         className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                          log.action === 'Policy Change'
+                          log.action === 'Data Retention'
                             ? 'bg-blue-900/50 text-blue-300'
-                            : 'bg-purple-900/50 text-purple-300'
+                            : log.action === 'Security'
+                            ? 'bg-green-900/50 text-green-300'
+                            : 'bg-yellow-900/50 text-yellow-300'
                         }`}
                       >
                         {log.action}
