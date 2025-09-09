@@ -163,20 +163,52 @@ export default function StoriesPage() {
                 </p>
               </div>
             </div>
+            <div className="mt-20 flex flex-col items-center gap-8 rounded-xl bg-[#182330] p-8 sm:p-12">
+              <div className="flex flex-col gap-4 text-center">
+                <h2 className="text-white text-3xl font-bold leading-tight tracking-tight">Share Your Story</h2>
+                <p className="text-[#92adc9] text-lg font-normal leading-relaxed max-w-2xl">
+                  Love SyncStream? We'd love to hear from you. Submit your testimonial or suggest a case study, and you could be featured on our page.
+                </p>
+              </div>
+              <form className="flex w-full max-w-lg flex-col gap-6">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-white text-sm font-medium leading-normal" htmlFor="name">Name</label>
+                    <input className="w-full rounded-lg border border-[#233648] bg-[#111a22] px-4 py-2.5 text-white placeholder:text-white/50 focus:border-[#1172d4] focus:outline-none focus:ring-1 focus:ring-[#1172d4]" id="name" placeholder="Enter your name" type="text" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label className="text-white text-sm font-medium leading-normal" htmlFor="company">Company</label>
+                    <input className="w-full rounded-lg border border-[#233648] bg-[#111a22] px-4 py-2.5 text-white placeholder:text-white/50 focus:border-[#1172d4] focus:outline-none focus:ring-1 focus:ring-[#1172d4]" id="company" placeholder="Enter your company name" type="text" />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-white text-sm font-medium leading-normal" htmlFor="email">Email</label>
+                  <input className="w-full rounded-lg border border-[#233648] bg-[#111a22] px-4 py-2.5 text-white placeholder:text-white/50 focus:border-[#1172d4] focus:outline-none focus:ring-1 focus:ring-[#1172d4]" id="email" placeholder="Enter your email" type="email" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-white text-sm font-medium leading-normal" htmlFor="story">Your Story</label>
+                  <textarea className="min-h-32 w-full rounded-lg border border-[#233648] bg-[#111a22] px-4 py-2.5 text-white placeholder:text-white/50 focus:border-[#1172d4] focus:outline-none focus:ring-1 focus:ring-[#1172d4]" id="story" placeholder="Tell us how SyncStream has helped you..."></textarea>
+                </div>
+                <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-[#1172d4] hover:bg-[#1172d4]/90 transition-colors text-white text-base font-bold leading-normal tracking-[0.015em] w-full mt-4">
+                  <span className="truncate">Submit Your Story</span>
+                </button>
+              </form>
+            </div>
           </div>
         </main>
-        <footer className="flex justify-center border-t border-solid border-t-[#233648]">
-          <div className="flex max-w-[960px] flex-1 flex-col">
-            <footer className="flex flex-col gap-8 px-5 py-12 @container sm:flex-row sm:justify-between sm:items-center">
-              <p className="text-[#92adc9] text-sm font-normal leading-normal text-center sm:text-left">© 2024 SyncStream. All rights reserved.</p>
-              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
-                <a className="text-[#92adc9] hover:text-white transition-colors text-sm font-normal leading-normal" href="#">Privacy Policy</a>
-                <a className="text-[#92adc9] hover:text-white transition-colors text-sm font-normal leading-normal" href="#">Terms of Service</a>
-                <a className="text-[#92adc9] hover:text-white transition-colors text-sm font-normal leading-normal" href="#">Contact Us</a>
+        <footer class="flex justify-center border-t border-solid border-t-[#233648]">
+          <div class="flex max-w-[960px] flex-1 flex-col">
+            <footer class="flex flex-col gap-8 px-5 py-12 @container sm:flex-row sm:justify-between sm:items-center">
+              <p class="text-[#92adc9] text-sm font-normal leading-normal text-center sm:text-left">© 2024 SyncStream. All rights reserved.</p>
+              <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
+                <a class="text-[#92adc9] hover:text-white transition-colors text-sm font-normal leading-normal" href="#">Privacy Policy</a>
+                <a class="text-[#92adc9] hover:text-white transition-colors text-sm font-normal leading-normal" href="#">Terms of Service</a>
+                <a class="text-[#92adc9] hover:text-white transition-colors text-sm font-normal leading-normal" href="#">Contact Us</a>
               </div>
             </footer>
           </div>
         </footer>
       </div>
     </div>
+  
 </body></html>
