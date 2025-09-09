@@ -169,7 +169,7 @@ export default function NotificationsPage() {
           <div
             key={index}
             className={cn(
-              'flex items-start gap-4 rounded-lg bg-[#161B22] p-4 transition-colors hover:bg-[#21262d]',
+              'group flex items-start gap-4 rounded-lg bg-[#161B22] p-4 transition-colors hover:bg-[#21262d]',
               notification.opacity
             )}
           >
@@ -178,9 +178,14 @@ export default function NotificationsPage() {
               <p className="font-medium text-white">{notification.title}</p>
               <p className="text-sm text-gray-400">{notification.date}</p>
             </div>
-            {!notification.read && (
-              <div className="size-3 flex-shrink-0 rounded-full bg-primary"></div>
-            )}
+            <div className="flex items-center gap-2">
+              {!notification.read && (
+                <div className="size-3 flex-shrink-0 rounded-full bg-primary"></div>
+              )}
+              <button className="text-gray-500 opacity-0 transition-opacity group-hover:opacity-100 hover:text-white">
+                <span className="material-symbols-outlined text-xl">close</span>
+              </button>
+            </div>
           </div>
         ))}
       </div>
