@@ -15,6 +15,7 @@ const navLinks = [
     icon: 'sync_alt',
   },
   { href: '/dashboard/logs', label: 'Logs', icon: 'description' },
+  { href: '/dashboard/reports', label: 'Reports', icon: 'assessment' },
   { href: '/dashboard/devtools', label: 'Developer Tools', icon: 'code' },
   { href: '/dashboard/docs', label: 'Docs', icon: 'code' },
   { href: '/dashboard/settings', label: 'Settings', icon: 'settings' },
@@ -185,33 +186,36 @@ export default function DashboardLayout({
     <div className="relative flex size-full min-h-screen flex-col bg-[#0d1117] text-white">
       <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#233648] px-10 py-3">
         <div className="flex items-center gap-4 text-white">
-          <div className="size-6 text-primary">
+          <div className="size-8 text-primary">
             <SyncStreamLogo />
           </div>
-          <h2 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">
+          <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">
             SyncStream
           </h2>
         </div>
-        <div className="flex flex-1 justify-end gap-2">
-          <div className="flex items-center gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-gray-300 hover:text-white text-sm font-medium leading-normal px-4 py-2 rounded-md transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+        <nav className="flex items-center gap-8 text-sm font-medium text-slate-300">
+          <Link href="/dashboard" className={cn("transition-colors hover:text-white", pathname === '/dashboard' ? 'text-white' : '')}>
+            Home
+          </Link>
+          <Link href="/dashboard/integrations" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/integrations') ? 'text-white' : '')}>
+            Integrations
+          </Link>
+          <Link href="/dashboard/reports" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/reports') ? 'text-white' : '')}>
+            Reports
+          </Link>
+          <Link href="/dashboard/settings" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/settings') ? 'text-white' : '')}>
+            Settings
+          </Link>
+        </nav>
+        <div className="flex items-center gap-4">
           <button className="flex h-10 w-10 items-center justify-center rounded-full text-gray-300 hover:bg-[#233648] hover:text-white transition-colors">
-            <span className="material-symbols-outlined text-2xl">help</span>
+            <span className="material-symbols-outlined text-xl">help</span>
           </button>
           <div
             className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
             style={{
               backgroundImage:
-                'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDZoabNJj6kZBSrsTeKoCZUpXseesVu34sDjIye0mTnMYRI2NEEYx-jy6tJ5s0LR3n2vBCeJlB_K82JE8bCwbKA-lr8azD-TLZfR5mpSY7D4DlpoBJr9H_0ZgtioA_QMZvSlqmtDZ2ooZRxPqntGFJYLGY7m_69rmhcsF4j09yBpYNvS1SAKFm-ZfWjFItB0NXFkzr0NCbRENyu1SmnDgpycRoaT6lAjEhdNgRu-e83kjOaz5mg4yzzaZVp_kH8PZ3w8BzF42p3Ocw")',
+                'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMV2VDjep1hUedSjD1oNHZ-l8Jlqc8tlCS6UHw6AYrn7h7CNWBBAaX6UpamQtzLdi1VeOK1KSNvf9uHpUNtkn8nHPGbPZWI_tgwbvI3yBKilLKk6lRj-nX12OqKrtunSgjkYzNisJlER7AeOm8lG5s4k6MJdG-3fipVsIMUUMmHHPsw072NWwl2aGDcKFA0lwU8Ri1knvNDsWBQLtNlWV0iIhridK8sVc9-isD49Ii_JITaa3rxn83cO4oBtBcbsIddMRppn56S3_I")',
             }}
           ></div>
         </div>
