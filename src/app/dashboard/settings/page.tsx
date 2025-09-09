@@ -147,6 +147,89 @@ export default function SettingsPage() {
             </div>
           </div>
         </div>
+        <div className="border-t border-gray-800"></div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="md:col-span-1">
+            <h3 className="text-white text-lg font-semibold">Audit Log</h3>
+            <p className="text-gray-400 text-sm mt-1">
+              History of changes to global parameters.
+            </p>
+          </div>
+          <div className="md:col-span-2">
+            <div className="overflow-x-auto rounded-md border border-[#324d67]">
+              <table className="min-w-full divide-y divide-[#324d67]">
+                <thead className="bg-[#192633]">
+                  <tr>
+                    <th
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+                      scope="col"
+                    >
+                      Date
+                    </th>
+                    <th
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+                      scope="col"
+                    >
+                      User
+                    </th>
+                    <th
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+                      scope="col"
+                    >
+                      Change
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-[#192633] divide-y divide-[#324d67]">
+                  <tr>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                      2023-10-26 14:30 UTC
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                      admin@syncstream.io
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                      Changed System Time Zone to '(UTC-05:00) Eastern Time'.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                      2023-10-26 10:15 UTC
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                      admin@syncstream.io
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                      Enabled "Automatic Logout".
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                      2023-10-25 09:00 UTC
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                      admin@syncstream.io
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                      Changed Default Language to 'English (United States)'.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                      2023-10-24 18:45 UTC
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                      system@syncstream.io
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                      Initial setup of global parameters.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
         <div className="flex justify-end pt-8 border-t border-gray-800">
           <Button className="px-6 py-2 rounded-md bg-[#1173d4] text-white text-sm font-bold hover:bg-[#0f63b6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#111a22] focus:ring-[#1173d4]">
             Save Changes
