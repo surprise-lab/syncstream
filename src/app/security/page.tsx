@@ -217,25 +217,34 @@ export default function SecurityPage() {
                 </div>
               </div>
               <div>
-                <h2 className="mb-8 text-3xl font-bold tracking-tight text-white">
-                  Our Security Measures
-                </h2>
-                <div className="prose prose-invert max-w-none space-y-4 text-gray-400">
+                <h2 className="text-white text-3xl font-bold tracking-tight mb-8">Our Security Measures</h2>
+                <div className="prose prose-invert max-w-none text-gray-400 space-y-4">
                   <p>
-                    SyncStream employs a multi-layered security approach,
-                    including encryption, access controls, and regular audits,
-                    to protect your data from unauthorized access and breaches.
-                    Our infrastructure is designed to provide high availability
-                    and resilience, ensuring continuous operation and data
-                    integrity.
+                    SyncStream employs a multi-layered security approach, including encryption, access controls, and regular audits, to protect your data from unauthorized access
+                    and breaches. Our infrastructure is designed to provide high availability and resilience, ensuring continuous operation and data integrity.
                   </p>
                   <p>
-                    We conduct regular security assessments and penetration
-                    testing to identify and address potential vulnerabilities.
-                    Our security team is dedicated to maintaining the highest
-                    standards of security and compliance, providing you with a
-                    secure and reliable platform for your integration needs.
+                    We conduct regular security assessments and penetration testing to identify and address potential vulnerabilities. Our security team is dedicated to maintaining
+                    the highest standards of security and compliance, providing you with a secure and reliable platform for your integration needs.
                   </p>
+                </div>
+              </div>
+              <div>
+                <h2 className="text-white text-3xl font-bold tracking-tight mb-8">Contact Our Security Team</h2>
+                <div className="rounded-lg bg-gray-800/50 p-6 ring-1 ring-white/10">
+                <p className="text-gray-400 mb-6">
+                  Have a security concern or question? Our team is here to help. You can reach us by email or through our dedicated support form. We take all security-related inquiries seriously and will respond promptly.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                <a className="flex items-center justify-center gap-2 rounded-md h-10 px-4 bg-gray-700/50 text-white text-sm font-medium hover:bg-gray-700 transition-colors flex-1" href="mailto:security@syncstream.com">
+                <span className="material-symbols-outlined text-base"> email </span>
+                <span>Email: security@syncstream.com</span>
+                </a>
+                <a className="flex items-center justify-center gap-2 rounded-md h-10 px-4 bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors flex-1" href="#">
+                <span className="material-symbols-outlined text-base"> description </span>
+                <span>Open Security Support Form</span>
+                </a>
+                </div>
                 </div>
               </div>
             </div>
