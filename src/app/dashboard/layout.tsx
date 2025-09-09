@@ -15,6 +15,7 @@ const navLinks = [
     icon: 'sync_alt',
   },
   { href: '/dashboard/logs', label: 'Logs', icon: 'description' },
+  { href: '/dashboard/devtools', label: 'Developer Tools', icon: 'code' },
   { href: '/dashboard/docs', label: 'Docs', icon: 'code' },
   { href: '/dashboard/settings', label: 'Settings', icon: 'settings' },
 ];
@@ -27,6 +28,76 @@ export default function DashboardLayout({
   const pathname = usePathname();
 
   const isDocsPage = pathname.startsWith('/dashboard/docs');
+  const isDevToolsPage = pathname.startsWith('/dashboard/devtools');
+
+  if (isDevToolsPage) {
+    return (
+      <div className="flex min-h-screen bg-[var(--background-color)] text-white">
+        <aside className="flex w-64 flex-col bg-slate-900 p-4">
+          <div className="flex items-center gap-2 px-2 pb-6">
+            <img
+              className="h-8 w-8"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcDKI_fYmW7uMUuvvDI7FgVhx_mJftIFoapGRu7ijEAoxOMLlWWX2PffLnQYhlLfFUfPtjTCF7JDcwhOdCEgJoz1webqJPKrwrtse5hW7rJvRpMF9MAglWqu6GAk_tBIcmcoJXD0tnQnEM4StWGv0bccoQ-aVbnhzDoH3s-PfzrR2H2GC3OF08gWDWzHkDhiscgwAMCOLV50etKN0HtOTBFlmQYy3RwBngkQ1G7oP7Pzq0o6UKLi9jCMET9Lmr2yXclVyyv5gE7zUg"
+              alt="SyncStream Logo"
+            />
+            <h1 className="text-xl font-bold leading-normal text-[var(--text-color)]">
+              SyncStream
+            </h1>
+          </div>
+          <nav className="flex flex-col gap-2">
+            <Link
+              className="flex items-center gap-3 rounded-md px-3 py-2 text-[var(--text-muted-color)] hover:bg-[var(--secondary-color)] hover:text-[var(--text-color)]"
+              href="#"
+            >
+              <span className="material-symbols-outlined"> dashboard </span>
+              <p className="text-sm font-medium">Overview</p>
+            </Link>
+            <Link
+              className="flex items-center gap-3 rounded-md px-3 py-2 text-[var(--text-muted-color)] hover:bg-[var(--secondary-color)] hover:text-[var(--text-color)]"
+              href="/dashboard/connections"
+            >
+              <span className="material-symbols-outlined">Lan</span>
+              <p className="text-sm font-medium">Connections</p>
+            </Link>
+            <Link
+              className="flex items-center gap-3 rounded-md px-3 py-2 text-[var(--text-muted-color)] hover:bg-[var(--secondary-color)] hover:text-[var(--text-color)]"
+              href="#"
+            >
+              <span className="material-symbols-outlined"> sync_alt </span>
+              <p className="text-sm font-medium">Data Flows</p>
+            </Link>
+            <Link
+              className="flex items-center gap-3 rounded-md bg-primary px-3 py-2 text-[var(--text-color)]"
+              href="/dashboard/devtools"
+            >
+              <span className="material-symbols-outlined"> code </span>
+              <p className="text-sm font-medium">Developer Tools</p>
+            </Link>
+            <Link
+              className="flex items-center gap-3 rounded-md px-3 py-2 text-[var(--text-muted-color)] hover:bg-[var(--secondary-color)] hover:text-[var(--text-color)]"
+              href="/dashboard/settings"
+            >
+              <span className="material-symbols-outlined"> settings </span>
+              <p className="text-sm font-medium">Settings</p>
+            </Link>
+          </nav>
+          <div className="mt-auto flex flex-col gap-4">
+            <button className="flex h-10 w-full cursor-pointer items-center justify-center overflow-hidden rounded-md bg-primary px-4 text-sm font-bold tracking-wide text-white hover:bg-blue-600">
+              <span>New Connection</span>
+            </button>
+            <Link
+              className="flex items-center gap-3 rounded-md px-3 py-2 text-[var(--text-muted-color)] hover:bg-[var(--secondary-color)] hover:text-[var(--text-color)]"
+              href="/dashboard/docs"
+            >
+              <span className="material-symbols-outlined"> help_outline </span>
+              <p className="text-sm font-medium">Help and docs</p>
+            </Link>
+          </div>
+        </aside>
+        <main className="flex-1 p-8">{children}</main>
+      </div>
+    );
+  }
 
   if (isDocsPage) {
     return (
