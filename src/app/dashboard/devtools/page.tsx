@@ -21,8 +21,8 @@ export default function DeveloperToolsPage() {
           issues.
         </p>
       </header>
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div className="flex flex-col gap-6 rounded-md">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="flex flex-col gap-6 lg:col-span-2">
           <section className="flex flex-col gap-4">
             <h2 className="text-xl font-semibold tracking-tight text-[var(--text-color)]">
               API Request Builder
@@ -73,25 +73,88 @@ export default function DeveloperToolsPage() {
               </pre>
             </div>
           </section>
+          <section className="flex flex-col gap-4">
+            <h2 className="text-xl font-semibold tracking-tight text-[var(--text-color)]">
+              Log Console
+            </h2>
+            <div className="flex h-[calc(100%-2.5rem)] flex-col gap-2 rounded-md bg-[var(--secondary-color)] p-4">
+              <div className="font-mono text-xs">
+                <p className="text-green-400">
+                  [<span className="text-gray-500">2023-10-27 10:30:00</span>]
+                  INFO: Request received: GET /api/v1/users
+                </p>
+                <p className="text-blue-400">
+                  [<span className="text-gray-500">2023-10-27 10:30:01</span>]
+                  DEBUG: Authenticating request...
+                </p>
+                <p className="text-green-400">
+                  [<span className="text-gray-500">2023-10-27 10:30:02</span>]
+                  INFO: Request successful.
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold tracking-tight text-[var(--text-color)]">
-            Log Console
+            Request History
           </h2>
-          <div className="flex h-[calc(100%-2.5rem)] flex-col gap-2 rounded-md bg-[var(--secondary-color)] p-4">
-            <div className="font-mono text-xs">
-              <p className="text-green-400">
-                [<span className="text-gray-500">2023-10-27 10:30:00</span>]
-                INFO: Request received: GET /api/v1/users
-              </p>
-              <p className="text-blue-400">
-                [<span className="text-gray-500">2023-10-27 10:30:01</span>]
-                DEBUG: Authenticating request...
-              </p>
-              <p className="text-green-400">
-                [<span className="text-gray-500">2023-10-27 10:30:02</span>]
-                INFO: Request successful.
-              </p>
+          <div className="flex flex-col gap-2">
+            <div className="rounded-md bg-[var(--secondary-color)] p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-green-400">GET</span>
+                  <p className="text-sm text-[var(--text-color)]">
+                    /api/v1/users
+                  </p>
+                </div>
+                <span className="text-xs text-[var(--text-muted-color)]">
+                  2m ago
+                </span>
+              </div>
+              <p className="mt-2 text-xs text-green-400">200 OK</p>
+            </div>
+            <div className="rounded-md bg-[var(--secondary-color)] p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-blue-400">POST</span>
+                  <p className="text-sm text-[var(--text-color)]">
+                    /api/v1/connections
+                  </p>
+                </div>
+                <span className="text-xs text-[var(--text-muted-color)]">
+                  5m ago
+                </span>
+              </div>
+              <p className="mt-2 text-xs text-green-400">201 Created</p>
+            </div>
+            <div className="rounded-md bg-[var(--secondary-color)] p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-orange-400">PUT</span>
+                  <p className="text-sm text-[var(--text-color)]">
+                    /api/v1/dataflows/123
+                  </p>
+                </div>
+                <span className="text-xs text-[var(--text-muted-color)]">
+                  1h ago
+                </span>
+              </div>
+              <p className="mt-2 text-xs text-red-400">404 Not Found</p>
+            </div>
+            <div className="rounded-md bg-[var(--secondary-color)] p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-red-400">DELETE</span>
+                  <p className="text-sm text-[var(--text-color)]">
+                    /api/v1/connections/456
+                  </p>
+                </div>
+                <span className="text-xs text-[var(--text-muted-color)]">
+                  3h ago
+                </span>
+              </div>
+              <p className="mt-2 text-xs text-green-400">204 No Content</p>
             </div>
           </div>
         </div>
