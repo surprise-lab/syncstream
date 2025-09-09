@@ -98,6 +98,25 @@ export default function EditUserPage() {
             </div>
 
             <div className="border-t border-slate-800 pt-6">
+                <h3 className="text-base font-semibold leading-6 text-white">Change Password</h3>
+                <p className="mt-1 text-sm text-slate-400">Enter a new password for the user. They will be notified of the change.</p>
+                <div className="mt-4 space-y-4">
+                    <div>
+                        <Label className="block text-sm font-medium text-slate-300" htmlFor="new-password">New Password</Label>
+                        <div className="mt-2">
+                            <Input className="form-input" id="new-password" name="new-password" type="password"/>
+                        </div>
+                    </div>
+                    <div>
+                        <Label className="block text-sm font-medium text-slate-300" htmlFor="confirm-password">Confirm New Password</Label>
+                        <div className="mt-2">
+                            <Input className="form-input" id="confirm-password" name="confirm-password" type="password"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="border-t border-slate-800 pt-6">
                 <h3 className="text-base font-semibold leading-6 text-white">Account Status</h3>
                 <p className="mt-1 text-sm text-slate-400">Deactivating an account will prevent the user from logging in.</p>
                 <div className="mt-4 flex items-center">
