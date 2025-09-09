@@ -12,12 +12,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import {
-  ArrowUp,
-  Filter,
-  Download,
-  Search,
-} from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const auditLogs = [
   {
@@ -128,17 +123,30 @@ export default function AuditLogPage() {
             </div>
             <input
               className="w-full rounded-md border-gray-700 bg-gray-800 py-2 pl-10 pr-4 text-white placeholder-gray-500 focus:border-primary-500 focus:ring-primary-500"
-              placeholder="Search logs by user, action, or resource..."
+              placeholder="Search logs by resource..."
               type="text"
             />
           </div>
           <div className="flex items-center gap-2">
-            <button
-              className="flex items-center gap-2 rounded-md border border-gray-700 bg-gray-800 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
-            >
-              <span className="material-symbols-outlined text-base">filter_list</span>
-              Filter
-            </button>
+            <div className="relative">
+              <select className="w-full appearance-none rounded-md border-gray-700 bg-gray-800 py-2 pl-3 pr-10 text-sm text-gray-300 hover:bg-gray-700 focus:border-primary-500 focus:ring-primary-500">
+                <option>Filter by User</option>
+                <option>Alice Johnson</option>
+                <option>Bob Williams</option>
+                <option>Charlie Davis</option>
+                <option>Diana Evans</option>
+              </select>
+              <span className="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-base text-gray-400">expand_more</span>
+            </div>
+            <div className="relative">
+                <select className="w-full appearance-none rounded-md border-gray-700 bg-gray-800 py-2 pl-3 pr-10 text-sm text-gray-300 hover:bg-gray-700 focus:border-primary-500 focus:ring-primary-500">
+                    <option>Filter by Action</option>
+                    <option>Created Integration</option>
+                    <option>Updated Workflow</option>
+                    <option>Deleted Data Mapping</option>
+                </select>
+                <span className="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-base text-gray-400">expand_more</span>
+            </div>
             <button
               className="flex items-center gap-2 rounded-md border border-gray-700 bg-gray-800 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
             >
