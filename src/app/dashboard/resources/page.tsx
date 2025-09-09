@@ -20,7 +20,7 @@ export default function ResourcesPage() {
               Resource Usage
             </h2>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="flex flex-col gap-4 rounded-md border border-orange-500/50 bg-orange-950/20 p-6 ring-2 ring-orange-500/30">
+              <div className="flex flex-col gap-4 rounded-md border border-[#233648] bg-[#192633] p-6">
                 <div className="flex items-center justify-between">
                   <p className="text-slate-300 text-sm font-medium">
                     CPU Utilization
@@ -314,14 +314,81 @@ export default function ResourcesPage() {
               </div>
             </div>
           </section>
-          <div className="flex justify-end pt-4">
-            <button className="flex items-center justify-center rounded-md h-10 px-6 bg-[var(--primary-color)] text-white text-sm font-bold hover:bg-blue-600 transition-colors">
-              Apply Changes
-            </button>
-          </div>
-        </div>
-      </div>
-    </main>
+          <section>
+            <h2 className="text-white text-xl font-bold leading-tight tracking-tight mb-6">Scaling History</h2>
+            <div className="rounded-md border border-[#233648] bg-[#192633]">
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-sm text-left">
+                  <thead className="text-xs text-slate-400 uppercase bg-[#233648]">
+                    <tr>
+                      <th className="px-6 py-3 font-medium">Event</th>
+                      <th className="px-6 py-3 font-medium">Details</th>
+                      <th className="px-6 py-3 font-medium">Triggered by</th>
+                      <th className="px-6 py-3 font-medium">Timestamp</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#233648]">
+                    <tr className="text-slate-300 hover:bg-[#233648]/50">
+                      <td className="px-6 py-4 flex items-center gap-2">
+                        <span className="material-symbols-outlined text-green-500 text-xl"> aod_tablet </span>
+                        <span>Auto-scaling: CPU Up</span>
+                      </td>
+                      <td className="px-6 py-4">Increased CPU units from 8 to 10 due to high utilization.</td>
+                      <td className="px-6 py-4 flex items-center gap-2">
+                        <span className="material-symbols-outlined text-base"> smart_toy </span>
+                        <span>System</span>
+                      </td>
+                      <td className="px-6 py-4">2023-10-27 14:30:15</td>
+                    </tr>
+                    <tr className="text-slate-300 hover:bg-[#233648]/50">
+                      <td className="px-6 py-4 flex items-center gap-2">
+                        <span className="material-symbols-outlined text-blue-500 text-xl"> settings </span>
+                        <span>Settings Change</span>
+                      </td>
+                      <td className="px-6 py-4">Updated Max DB Connections from 500 to 1000.</td>
+                      <td className="px-6 py-4 flex items-center gap-2">
+                        <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-6" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCovPWn1TruGghCzbR7hB0DyK_JECkcz4P6iu53R8ikWNLQ_luIPW5I2pMWxTWLsOI9_KfBCUeaZuy3p7MvTTzVIeP-ikhH5g3Vi1BfUmQ4V8nVlqc_ckMZfBbVKrDY5UoTm8A1Y7iIaHA43moJougxQ-B4UdOajxZspJVH9cIe2BbcEZxygOcy79RA5t-uCDcrxCvG0D2c2WGQaUL6AKDwG23LKc1G-zP1NyccDLgluT2aHhxBkxiPc4HTxbkzOtyCKM2iEMfx6leT");'></div>
+                        <span>You</span>
+                      </td>
+                      <td className="px-6 py-4">2023-10-27 10:05:42</td>
+                    </tr>
+                    <tr className="text-slate-300 hover:bg-[#233648]/50">
+                      <td className="px-6 py-4 flex items-center gap-2">
+                        <span className="material-symbols-outlined text-orange-500 text-xl"> back_hand </span>
+                        <span>Manual Adjustment</span>
+                      </td>
+                      <td className="px-6 py-4">Increased Memory from 8GB to 12GB.</td>
+                      <td className="px-6 py-4 flex items-center gap-2">
+                        <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-6" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBI5w35c6DLCqbJ6zfsxkPaVMQ3CtbvJzuJ59QEeEbNDQugNqUJEtwUr8dF2B1MrOTzeOZjU7xIcv6rxTE9EO5HRnD2xyq-WfASw7PBsYZp9pepspIvvXkVPd7fbWTpPpD-2bj8oTo6XRg1HgcqrUBWu66O-F_-rbBc60Q3iNtvogjF8j0Qx-0l-TO6fVPMz5qb6fJEAiORXhGQczdAYXwPfqDhiDC-KANaFt42QZQaYCQGznp6EbofywbdxnBso7nDobN2MRHj3poE");'></div>
+                        <span>Alex Johnson</span>
+                      </td>
+                      <td className="px-6 py-4">2023-10-26 18:15:00</td>
+                    </tr>
+                    <tr className="text-slate-300 hover:bg-[#233648]/50">
+                      <td className="px-6 py-4 flex items-center gap-2">
+                        <span className="material-symbols-outlined text-red-500 text-xl"> aod_tablet </span>
+                        <span>Auto-scaling: DB Down</span>
+                      </td>
+                      <td className="px-6 py-4">Decreased DB connections from 400 to 200 during off-peak hours.</td>
+                      <td className="px-6 py-4 flex items-center gap-2">
+                        <span className="material-symbols-outlined text-base"> smart_toy </span>
+                        <span>System</span>
+                      </td>
+                      <td className="px-6 py-4">2023-10-26 03:00:21</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          <div class="flex justify-end pt-4">
+<button class="flex items-center justify-center rounded-md h-10 px-6 bg-[var(--primary-color)] text-white text-sm font-bold hover:bg-blue-600 transition-colors">
+                  Apply Changes
+                </button>
+</div>
+</div>
+</div>
+</main>
 </div>
 </div>
 </body></html>
