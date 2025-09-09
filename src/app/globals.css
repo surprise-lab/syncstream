@@ -178,5 +178,18 @@
       .faq-item.open .faq-icon {
         @apply rotate-45;
       }
+      .status-pill {
+        @apply flex items-center justify-center gap-2 rounded-full px-3 py-1 text-xs font-medium;
+      }
+      .status-in-review {
+        @apply bg-yellow-500/20 text-yellow-300;
+      }
+      .status-resolved {
+        @apply bg-green-500/20 text-green-300;
+      }
+      .status-acknowledged {
+        @apply bg-blue-500/20 text-blue-300;
+      }
 }
+
 

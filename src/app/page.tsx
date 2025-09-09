@@ -1,373 +1,201 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
-import { cn } from '@/lib/utils';
-
-const faqs = [
-  {
-    question: 'How do I set up a new integration?',
-    answer:
-      'Our platform supports a wide range of integrations. You can easily set up a new integration from your dashboard by following the on-screen instructions. For detailed guides, please refer to our documentation.',
-  },
-  {
-    question: 'What are the best practices for data mapping?',
-    answer:
-      'Data mapping is crucial for successful integrations. We recommend starting with a clear plan, using our transformation tools for complex mappings, and always testing your data flows.',
-  },
-  {
-    question: 'How can I troubleshoot common errors?',
-    answer:
-      'Our monitoring dashboard provides detailed error logs. You can also consult our troubleshooting guide in the documentation or contact support for specific issues.',
-  },
-  {
-    question: 'Where can I find API documentation?',
-    answer:
-      'Our comprehensive API documentation is available in the developers section. It includes endpoints, parameters, and examples to help you build custom integrations.',
-  },
-];
-
-const FaqItem = ({ faq, isOpen, onClick }) => (
-  <div
-    className={cn('faq-item', { open: isOpen })}
-    onClick={onClick}
-  >
-    <span className="material-symbols-outlined faq-icon mt-1 text-[var(--primary-500)]">
-      add_circle
-    </span>
-    <div className="flex-1">
-      <h4 className="font-semibold">{faq.question}</h4>
-      <div className="faq-content">
-        <p className="pt-2 text-[var(--neutral-400)] overflow-hidden">
-            {faq.answer}
-        </p>
-      </div>
-    </div>
-  </div>
-);
-
-export default function SupportPage() {
-  const [openFaq, setOpenFaq] = useState(0);
-
-  useEffect(() => {
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach((item, index) => {
-      item.addEventListener('click', () => {
-        // Close other open items
-        document.querySelectorAll('.faq-item.open').forEach(openItem => {
-          if (openItem !== item) {
-            openItem.classList.remove('open');
-          }
-        });
-        // Toggle the clicked item
-        item.classList.toggle('open');
-        if (item.classList.contains('open')) {
-          setOpenFaq(index);
-        } else if (openFaq === index) {
-          // If the currently open item is clicked to be closed
-          // no item will have the open class, so we can set openFaq to null
-          // or an index that doesn't exist like -1
-          setOpenFaq(-1); 
-        }
-      });
-    });
-  }, []);
-
+export default function FeedbackPage() {
   return (
-    <div
-      className="relative flex size-full min-h-screen flex-col bg-[#111a22] dark group/design-root overflow-x-hidden"
-      style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
-    >
-      <div className="layout-container flex h-full grow flex-col">
-        <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#233648] px-10 py-3">
-          <div className="flex items-center gap-4 text-white">
+    <div className="flex min-h-screen flex-col font-sans text-white">
+      <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-gray-800 bg-[#0D1117]/80 px-6 backdrop-blur-sm">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <svg
-              className="h-8 w-8 text-[#1173d4]"
-              fill="none"
-              viewBox="0 0 48 48"
+              className="h-8 w-8 text-[var(--primary-color)]"
+              fill="currentColor"
+              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g clipPath="url(#clip0_6_535)">
-                <path
-                  clipRule="evenodd"
-                  d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
-                  fill="currentColor"
-                  fillRule="evenodd"
-                ></path>
-              </g>
-              <defs>
-                <clipPath id="clip0_6_535">
-                  <rect fill="white" height="48" width="48"></rect>
-                </clipPath>
-              </defs>
+              <path
+                clipRule="evenodd"
+                d="M12 2L2 7V17L12 22L22 17V7L12 2ZM12 19.5L4 15.5V8.5L12 12.5V19.5ZM20 15.5L14 18.5V12.5L20 9.5V15.5ZM12 4.5L18.5 8L12 11.5L5.5 8L12 4.5Z"
+                fillRule="evenodd"
+              ></path>
             </svg>
-            <h1 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">
-              SyncStream
-            </h1>
+            <h1 className="text-xl font-bold">SyncStream</h1>
           </div>
-          <nav className="flex items-center gap-6">
+          <nav className="hidden items-center gap-6 md:flex">
             <a
-              className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+              className="text-sm font-medium text-gray-400 transition-colors hover:text-white"
               href="#"
             >
-              Dashboard
+              Home
             </a>
             <a
-              className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+              className="text-sm font-medium text-gray-400 transition-colors hover:text-white"
               href="#"
             >
               Integrations
             </a>
             <a
-              className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+              className="text-sm font-medium text-gray-400 transition-colors hover:text-white"
               href="#"
             >
-              Data Flows
+              Workflows
             </a>
-            <a
-              className="text-sm font-medium text-white/80 transition-colors hover:text-white"
-              href="#"
-            >
-              Monitoring
-            </a>
-            <a className="text-sm font-bold text-[var(--primary-500)]" href="#">
-              Support
+            <a className="text-sm font-medium text-white" href="#">
+              Feedback
             </a>
           </nav>
-          <div className="flex items-center gap-4">
-            <button className="flex items-center justify-center rounded-full p-2 text-white/80 transition-colors hover:bg-[var(--neutral-700)] hover:text-white">
-              <span className="material-symbols-outlined">
-                {' '}
-                notifications{' '}
-              </span>
-            </button>
-            <button>
-              <img
-                alt="User avatar"
-                className="size-10 rounded-full object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgYkWh7fA6LN4jt0EGVg-bUnqiKZfi2IIrwjHYs42CiEpyVItTqXcB6FWgjVOiEaTfFEY1DgUJcpzHEltZ2bOJx94OLBSBRokZIzJO6sVViyGULr9CKxhljbwnNeoez11ANmM5uzo3b5OOdwCGLyOOj7QRB_jnWZRLTOnPFXos53R0qmaM50EQaMoah8ysMIBTVIrCl8sdaymGTPDqqelGLClX2knSpZ-a0hAybTEu1uhI1B7YZLfTYwrSYlIsYgV-2zy5F01gvzXE"
-              />
-            </button>
+        </div>
+        <div className="flex items-center gap-4">
+          <button className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-gray-700">
+            <span className="material-symbols-outlined text-xl text-gray-400">
+              {' '}
+              help{' '}
+            </span>
+          </button>
+          <div
+            className="h-9 w-9 rounded-full bg-cover bg-center"
+            style={{
+              backgroundImage:
+                'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZRB07bshECau9A6EXFsYeYn70DEPfdG7NPLWezVevVeKCPLnoqlG33fTCJZ_ySeQWsSYE1xfzSSkfQeYWa6YQzXyNiu9QBwLke5p_zdB3VC6rkruFI3zxIp_nUwFwBuGvBM6PSZ5gX0FuH8paTYDkpmWW-R7GKb-9JJde7NptcJilc2hZlg7kHSY3oRIXbH_wGPRgqUuk9V8qsdqwoJJSumDbOniicQgXyTdWRUnEy42eGC3Jid1jdxGkZrMCmbXVO0TvIqdQQXhy")',
+            }}
+          ></div>
+        </div>
+      </header>
+      <main className="flex-1 px-6 py-8">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-10 text-center">
+            <h2 className="text-4xl font-bold tracking-tight">
+              Feedback &amp; Suggestions
+            </h2>
+            <p className="mt-3 text-lg text-gray-400">
+              Your insights are valuable. Help us make SyncStream better for
+              everyone.
+            </p>
           </div>
-        </header>
-        <main className="flex-1 px-10 py-8 text-white">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-12 text-center">
-              <h2 className="text-4xl font-bold tracking-tighter">
-                How can we help?
-              </h2>
-              <p className="mt-2 text-lg text-[var(--neutral-400)]">
-                Find answers to common questions or contact our support team
-                for assistance.
-              </p>
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+            <div className="rounded-lg border border-gray-800 bg-gray-900 p-8">
+              <h3 className="mb-6 text-xl font-bold">Submit Your Feedback</h3>
+              <form className="space-y-6">
+                <div>
+                  <label
+                    className="block text-sm font-medium text-gray-300"
+                    htmlFor="feedback-type"
+                  >
+                    Feedback Type
+                  </label>
+                  <select
+                    className="mt-2 block w-full rounded-md border-gray-700 bg-gray-800 px-3 py-2 text-white placeholder-gray-500 focus:border-[var(--primary-color)] focus:outline-none focus:ring-[var(--primary-color)] sm:text-sm"
+                    id="feedback-type"
+                  >
+                    <option>Suggestion</option>
+                    <option>Bug Report</option>
+                    <option>General Feedback</option>
+                  </select>
+                </div>
+                <div>
+                  <label
+                    className="block text-sm font-medium text-gray-300"
+                    htmlFor="subject"
+                  >
+                    Subject
+                  </label>
+                  <input
+                    className="mt-2 block w-full rounded-md border-gray-700 bg-gray-800 px-3 py-2 text-white placeholder-gray-500 focus:border-[var(--primary-color)] focus:outline-none focus:ring-[var(--primary-color)] sm:text-sm"
+                    id="subject"
+                    placeholder="e.g., New integration for Service Y"
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label
+                    className="block text-sm font-medium text-gray-300"
+                    htmlFor="description"
+                  >
+                    Description
+                  </label>
+                  <textarea
+                    className="mt-2 block w-full rounded-md border-gray-700 bg-gray-800 px-3 py-2 text-white placeholder-gray-500 focus:border-[var(--primary-color)] focus:outline-none focus:ring-[var(--primary-color)] sm:text-sm"
+                    id="description"
+                    placeholder="Describe your idea or the issue you're facing in detail."
+                    rows={5}
+                  ></textarea>
+                </div>
+                <div className="flex justify-end pt-2">
+                  <button
+                    className="flex items-center justify-center gap-2 rounded-md bg-[var(--primary-color)] px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]"
+                    type="submit"
+                  >
+                    <span className="material-symbols-outlined"> send </span>
+                    Submit Feedback
+                  </button>
+                </div>
+              </form>
             </div>
-            <div className="grid grid-cols-1 gap-16 lg:grid-cols-3">
-              <section className="lg:col-span-2">
-                <h3 className="mb-6 text-2xl font-bold tracking-tight">
-                  Frequently Asked Questions
-                </h3>
-                <div className="mb-8">
-                  <div className="relative">
-                    <span className="material-symbols-outlined pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[var(--neutral-400)]">
-                      {' '}
-                      search{' '}
-                    </span>
-                    <input
-                      className="form-input w-full rounded-md border-transparent bg-[var(--neutral-700)] py-3 pl-12 pr-4 text-white placeholder:text-[var(--neutral-400)] focus:border-[var(--primary-500)] focus:ring-[var(--primary-500)]"
-                      placeholder="Search FAQs..."
-                      type="search"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  {faqs.map((faq, index) => (
-                    <FaqItem
-                      key={index}
-                      faq={faq}
-                      isOpen={openFaq === index}
-                      onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
-                    />
-                  ))}
-                </div>
-                <h3 className="mb-6 mt-12 text-2xl font-bold tracking-tight">
-                  Documentation
-                </h3>
-                <div className="space-y-4">
-                  <a
-                    className="flex items-center gap-4 rounded-lg border border-[var(--neutral-700)] bg-[var(--neutral-800)] p-4 transition-all hover:bg-[var(--neutral-700)]"
-                    href="#"
-                  >
-                    <span className="material-symbols-outlined text-[var(--primary-500)]">
-                      {' '}
-                      description{' '}
-                    </span>
-                    <h4 className="font-semibold">Getting Started Guide</h4>
-                    <span className="material-symbols-outlined ml-auto text-[var(--neutral-400)]">
-                      {' '}
-                      arrow_forward{' '}
-                    </span>
-                  </a>
-                  <a
-                    className="flex items-center gap-4 rounded-lg border border-[var(--neutral-700)] bg-[var(--neutral-800)] p-4 transition-all hover:bg-[var(--neutral-700)]"
-                    href="#"
-                  >
-                    <span className="material-symbols-outlined text-[var(--primary-500)]">
-                      {' '}
-                      integration_instructions{' '}
-                    </span>
-                    <h4 className="font-semibold">Integration Guides</h4>
-                    <span className="material-symbols-outlined ml-auto text-[var(--neutral-400)]">
-                      {' '}
-                      arrow_forward{' '}
-                    </span>
-                  </a>
-                  <a
-                    className="flex items-center gap-4 rounded-lg border border-[var(--neutral-700)] bg-[var(--neutral-800)] p-4 transition-all hover:bg-[var(--neutral-700)]"
-                    href="#"
-                  >
-                    <span className="material-symbols-outlined text-[var(--primary-500)]">
-                      {' '}
-                      code{' '}
-                    </span>
-                    <h4 className="font-semibold">API Reference</h4>
-                    <span className="material-symbols-outlined ml-auto text-[var(--neutral-400)]">
-                      {' '}
-                      arrow_forward{' '}
-                    </span>
-                  </a>
-                </div>
-              </section>
-              <section>
-                <div className="sticky top-8">
-                  <div className="rounded-lg bg-[var(--neutral-800)] p-8">
-                    <h3 className="mb-6 text-2xl font-bold tracking-tight">
-                      Popular Articles
-                    </h3>
-                    <div className="space-y-4">
-                      <a
-                        className="flex items-start gap-4 rounded-lg p-2 transition-colors hover:bg-[var(--neutral-700)]"
-                        href="#"
-                      >
-                        <span className="material-symbols-outlined mt-1 text-[var(--primary-500)]">
-                          {' '}
-                          trending_up{' '}
-                        </span>
-                        <div className="flex-1">
-                          <h4 className="font-semibold">
-                            Connecting to Salesforce
-                          </h4>
-                          <p className="text-sm text-[var(--neutral-400)]">
-                            A step-by-step guide to integrate your Salesforce
-                            account.
-                          </p>
-                        </div>
-                      </a>
-                      <a
-                        className="flex items-start gap-4 rounded-lg p-2 transition-colors hover:bg-[var(--neutral-700)]"
-                        href="#"
-                      >
-                        <span className="material-symbols-outlined mt-1 text-[var(--primary-500)]">
-                          {' '}
-                          trending_up{' '}
-                        </span>
-                        <div className="flex-1">
-                          <h4 className="font-semibold">
-                            Advanced Data Transformations
-                          </h4>
-                          <p className="text-sm text-[var(--neutral-400)]">
-                            Learn how to use custom scripts for complex data
-                            mapping.
-                          </p>
-                        </div>
-                      </a>
-                      <a
-                        className="flex items-start gap-4 rounded-lg p-2 transition-colors hover:bg-[var(--neutral-700)]"
-                        href="#"
-                      >
-                        <span className="material-symbols-outlined mt-1 text-[var(--primary-500)]">
-                          {' '}
-                          trending_up{' '}
-                        </span>
-                        <div className="flex-1">
-                          <h4 className="font-semibold">
-                            Understanding Webhooks
-                          </h4>
-                          <p className="text-sm text-[var(--neutral-400)]">
-                            Configure and troubleshoot real-time data updates.
-                          </p>
-                        </div>
-                      </a>
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold">Your Previous Submissions</h3>
+              <div className="space-y-4">
+                <div className="rounded-lg border border-gray-800 bg-gray-900 p-4 transition-shadow hover:shadow-lg hover:shadow-gray-900/50">
+                  <div className="flex items-start justify-between">
+                    <p className="font-semibold">
+                      Enhance Workflow Automation
+                    </p>
+                    <div className="status-pill status-in-review">
+                      <span className="material-symbols-outlined text-base">
+                        {' '}
+                        hourglass_top{' '}
+                      </span>
+                      <span>In Review</span>
                     </div>
                   </div>
-                  <div className="mt-8 rounded-lg bg-[var(--neutral-800)] p-8">
-                    <h3 className="mb-6 text-2xl font-bold tracking-tight">
-                      Contact Support
-                    </h3>
-                    <form className="space-y-6">
-                      <div>
-                        <label
-                          className="mb-2 block text-sm font-medium text-white/80"
-                          htmlFor="subject"
-                        >
-                          Subject
-                        </label>
-                        <input
-                          className="form-input w-full rounded-md border-transparent bg-[var(--neutral-700)] px-4 py-3 text-white placeholder:text-[var(--neutral-400)] focus:border-[var(--primary-500)] focus:ring-[var(--primary-500)]"
-                          id="subject"
-                          placeholder="Enter the subject of your request"
-                          type="text"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          className="mb-2 block text-sm font-medium text-white/80"
-                          htmlFor="description"
-                        >
-                          Description
-                        </label>
-                        <textarea
-                          className="form-textarea w-full rounded-md border-transparent bg-[var(--neutral-700)] px-4 py-3 text-white placeholder:text-[var(--neutral-400)] focus:border-[var(--primary-500)] focus:ring-[var(--primary-500)]"
-                          id="description"
-                          placeholder="Describe your issue in detail"
-                          rows={4}
-                        ></textarea>
-                      </div>
-                      <button
-                        className="flex w-full items-center justify-center gap-2 rounded-md bg-[var(--primary-500)] px-4 py-3 font-semibold text-white transition-colors hover:bg-blue-600"
-                        type="submit"
-                      >
-                        <span className="material-symbols-outlined">
-                          {' '}
-                          send{' '}
-                        </span>
-                        <span>Submit Ticket</span>
-                      </button>
-                    </form>
-                  </div>
-                  <div className="mt-8 rounded-lg bg-[var(--neutral-800)] p-8">
-                    <h3 className="mb-4 text-2xl font-bold tracking-tight">
-                      Live Chat
-                    </h3>
-                    <p className="mb-6 text-[var(--neutral-400)]">
-                      Chat with a support representative in real-time for
-                      immediate assistance.
-                    </p>
-                    <button className="flex w-full items-center justify-center gap-2 rounded-md border border-[var(--neutral-600)] bg-[var(--neutral-700)] px-4 py-3 font-semibold text-white transition-colors hover:bg-[var(--neutral-600)]">
-                      <span className="material-symbols-outlined">
-                        {' '}
-                        chat{' '}
-                      </span>
-                      <span>Start Chat</span>
-                    </button>
-                  </div>
+                  <p className="mt-2 text-sm text-gray-400">
+                    Suggestion submitted on 2023-08-15
+                  </p>
                 </div>
-              </section>
+                <div className="rounded-lg border border-gray-800 bg-gray-900 p-4 transition-shadow hover:shadow-lg hover:shadow-gray-900/50">
+                  <div className="flex items-start justify-between">
+                    <p className="font-semibold">
+                      Integration Error with System X
+                    </p>
+                    <div className="status-pill status-resolved">
+                      <span className="material-symbols-outlined text-base">
+                        {' '}
+                        task_alt{' '}
+                      </span>
+                      <span>Resolved</span>
+                    </div>
+                  </div>
+                  <p className="mt-2 text-sm text-gray-400">
+                    Bug Report submitted on 2023-07-22
+                  </p>
+                </div>
+                <div className="rounded-lg border border-gray-800 bg-gray-900 p-4 transition-shadow hover:shadow-lg hover:shadow-gray-900/50">
+                  <div className="flex items-start justify-between">
+                    <p className="font-semibold">Overall App Performance</p>
+                    <div className="status-pill status-acknowledged">
+                      <span className="material-symbols-outlined text-base">
+                        {' '}
+                        thumb_up{' '}
+                      </span>
+                      <span>Acknowledged</span>
+                    </div>
+                  </div>
+                  <p className="mt-2 text-sm text-gray-400">
+                    Feedback submitted on 2023-06-10
+                  </p>
+                </div>
+              </div>
+              <div className="text-center">
+                <a
+                  className="text-sm font-medium text-[var(--primary-color)] hover:underline"
+                  href="#"
+                >
+                  View all submissions
+                </a>
+              </div>
             </div>
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   );
 }
-
-    

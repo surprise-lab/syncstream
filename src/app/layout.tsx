@@ -25,10 +25,11 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-sans antialiased bg-gray-900 text-slate-300" style={{fontFamily: 'Inter, "Noto Sans", sans-serif'}} suppressHydrationWarning>
+      <body className="bg-[#0D1117]">
         {children}
         <Toaster />
       </body>
     </html>
   );
 }
+
