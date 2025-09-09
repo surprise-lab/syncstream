@@ -9,7 +9,7 @@ import { SyncStreamLogo } from '@/components/syncstream-logo';
 const navLinks = [
     { href: '/dashboard', label: 'Home', icon: 'home' },
     { href: '/dashboard/connections', label: 'Connections', icon: 'power' },
-    { href: '/dashboard/history', label: 'Syncs', icon: 'sync_alt' },
+    { href: '/dashboard/workflows', label: 'Workflows', icon: 'swap_horiz' },
     { href: '/dashboard/rules', label: 'Rules', icon: 'rule' },
     { href: '/dashboard/audit-log', label: 'Logs', icon: 'receipt_long' },
 ];
