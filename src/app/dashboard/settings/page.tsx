@@ -24,6 +24,20 @@ export default function SettingsPage() {
             Manage application-wide configurations for SyncStream.
           </p>
         </header>
+        <div className="mb-8">
+          <div className="relative">
+            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+              search
+            </span>
+            <Input
+              className="block w-full rounded-md border-0 bg-[#1A2530] py-2.5 pl-10 pr-3 text-white shadow-sm ring-1 ring-inset ring-gray-700 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+              id="search-settings"
+              name="search-settings"
+              placeholder="Search settings..."
+              type="search"
+            />
+          </div>
+        </div>
         <div className="space-y-12">
           <section>
             <h2 className="mb-6 border-b border-gray-700 pb-3 text-xl font-semibold leading-7">
