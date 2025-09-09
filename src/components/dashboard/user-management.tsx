@@ -136,6 +136,9 @@ export function UserManagement() {
                             {getStatusBadge(user.status)}
                         </td>
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                            <button className="p-1 text-text-2 transition-colors hover:text-white" title="Reset Password">
+                                <span className="material-symbols-outlined text-base"> lock_reset </span>
+                            </button>
                             <button className="p-1 text-text-2 transition-colors hover:text-white">
                                 <span className="material-symbols-outlined text-base"> edit </span>
                             </button>
