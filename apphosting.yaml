@@ -4,4 +4,21 @@
 runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
-  maxInstances: 1
+  maxInstances: 10
+  minInstances: 1
+
+# Automatically build and deploy your app on 'git push'.
+# The 'main' branch is built & deployed to your live channel.
+# Other branches are built & deployed to preview channels.
+# You can turn this feature off by deleting this field.
+codebase:
+  # Repository name to link to this backend.
+  repository: ''
+  # Ignore certain files from being included in the build.
+  # Note: The 'firebase-frameworks' CLI will already ignore some files for you.
+  # Path patterns are specified in the .gitignore format.
+  # https://git-scm.com/docs/gitignore
+  ignore:
+    - .gitignore
+    - firebase.json
+    - README.md
