@@ -62,7 +62,7 @@ export default function FeedbackPage() {
         </div>
       </header>
       <main className="flex-1 px-6 py-8">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <div className="mb-10 text-center">
             <h2 className="text-4xl font-bold tracking-tight">
               Feedback &amp; Suggestions
@@ -72,8 +72,8 @@ export default function FeedbackPage() {
               everyone.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-            <div className="rounded-lg border border-gray-800 bg-gray-900 p-8">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
+            <div className="rounded-lg border border-gray-800 bg-gray-900 p-8 lg:col-span-1">
               <h3 className="mb-6 text-xl font-bold">Submit Your Feedback</h3>
               <form className="space-y-6">
                 <div>
@@ -133,57 +133,104 @@ export default function FeedbackPage() {
                 </div>
               </form>
             </div>
-            <div className="space-y-6">
-              <h3 className="text-xl font-bold">Your Previous Submissions</h3>
+            <div className="space-y-6 lg:col-span-2">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-bold">Feature Requests</h3>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-gray-400">Sort by:</span>
+                  <select className="rounded-md border-gray-700 bg-gray-800 px-3 py-1.5 text-sm text-white focus:border-[var(--primary-color)] focus:outline-none focus:ring-[var(--primary-color)]">
+                    <option>Most Voted</option>
+                    <option>Newest</option>
+                    <option>Trending</option>
+                  </select>
+                </div>
+              </div>
               <div className="space-y-4">
                 <div className="rounded-lg border border-gray-800 bg-gray-900 p-4 transition-shadow hover:shadow-lg hover:shadow-gray-900/50">
                   <div className="flex items-start justify-between">
-                    <p className="font-semibold">
-                      Enhance Workflow Automation
-                    </p>
-                    <div className="status-pill status-in-review">
-                      <span className="material-symbols-outlined text-base">
-                        {' '}
-                        hourglass_top{' '}
+                    <div className="flex-1">
+                      <p className="font-semibold">
+                        Native integration with Salesforce
+                      </p>
+                      <p className="mt-2 text-sm text-gray-400">
+                        Allow direct synchronization of data between SyncStream
+                        and Salesforce objects.
+                      </p>
+                    </div>
+                    <div className="ml-4 flex flex-col items-center gap-1">
+                      <button className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-green-400">
+                        <span className="material-symbols-outlined text-xl">
+                          {' '}
+                          thumb_up{' '}
+                        </span>
+                      </button>
+                      <span className="text-sm font-bold text-green-400">
+                        128
                       </span>
-                      <span>In Review</span>
+                      <button className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-red-400">
+                        <span className="material-symbols-outlined text-xl">
+                          {' '}
+                          thumb_down{' '}
+                        </span>
+                      </button>
                     </div>
                   </div>
-                  <p className="mt-2 text-sm text-gray-400">
-                    Feature Request submitted on 2023-08-15
-                  </p>
                 </div>
                 <div className="rounded-lg border border-gray-800 bg-gray-900 p-4 transition-shadow hover:shadow-lg hover:shadow-gray-900/50">
                   <div className="flex items-start justify-between">
-                    <p className="font-semibold">
-                      Integration Error with System X
-                    </p>
-                    <div className="status-pill status-resolved">
-                      <span className="material-symbols-outlined text-base">
-                        {' '}
-                        task_alt{' '}
-                      </span>
-                      <span>Resolved</span>
+                    <div className="flex-1">
+                      <p className="font-semibold">
+                        Conditional logic in workflows
+                      </p>
+                      <p className="mt-2 text-sm text-gray-400">
+                        Add if/then/else branching to create more
+                        sophisticated automation sequences.
+                      </p>
+                    </div>
+                    <div className="ml-4 flex flex-col items-center gap-1">
+                      <button className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-green-400">
+                        <span className="material-symbols-outlined text-xl">
+                          {' '}
+                          thumb_up{' '}
+                        </span>
+                      </button>
+                      <span className="text-sm font-bold">92</span>
+                      <button className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-red-400">
+                        <span className="material-symbols-outlined text-xl">
+                          {' '}
+                          thumb_down{' '}
+                        </span>
+                      </button>
                     </div>
                   </div>
-                  <p className="mt-2 text-sm text-gray-400">
-                    Bug Report submitted on 2023-07-22
-                  </p>
                 </div>
                 <div className="rounded-lg border border-gray-800 bg-gray-900 p-4 transition-shadow hover:shadow-lg hover:shadow-gray-900/50">
                   <div className="flex items-start justify-between">
-                    <p className="font-semibold">Overall App Performance</p>
-                    <div className="status-pill status-acknowledged">
-                      <span className="material-symbols-outlined text-base">
-                        {' '}
-                        thumb_up{' '}
-                      </span>
-                      <span>Acknowledged</span>
+                    <div className="flex-1">
+                      <p className="font-semibold">
+                        Improved dashboard customization
+                      </p>
+                      <p className="mt-2 text-sm text-gray-400">
+                        More widgets and layout options to personalize the main
+                        dashboard view.
+                      </p>
+                    </div>
+                    <div className="ml-4 flex flex-col items-center gap-1">
+                      <button className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-green-400">
+                        <span className="material-symbols-outlined text-xl">
+                          {' '}
+                          thumb_up{' '}
+                        </span>
+                      </button>
+                      <span className="text-sm font-bold">76</span>
+                      <button className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-red-400">
+                        <span className="material-symbols-outlined text-xl">
+                          {' '}
+                          thumb_down{' '}
+                        </span>
+                      </button>
                     </div>
                   </div>
-                  <p className="mt-2 text-sm text-gray-400">
-                    General Feedback submitted on 2023-06-10
-                  </p>
                 </div>
               </div>
               <div className="text-center">
@@ -191,7 +238,7 @@ export default function FeedbackPage() {
                   className="text-sm font-medium text-[var(--primary-color)] hover:underline"
                   href="#"
                 >
-                  View all submissions
+                  View all feature requests
                 </a>
               </div>
             </div>
