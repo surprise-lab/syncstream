@@ -10,78 +10,72 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="flex min-h-screen text-white">
-      <aside className="w-64 bg-gray-900 flex flex-col border-r border-gray-800">
-        <div className="flex items-center gap-3 h-16 px-6 border-b border-gray-800">
-        <div className="size-8 text-primary-500">
-          <SyncStreamLogo />
-          </div>
-          <h1 className="text-xl font-bold">SyncStream</h1>
-        </div>
-        <nav className="flex-1 px-4 py-4 space-y-2">
+      <aside className="hidden lg:flex lg:flex-col lg:w-64 bg-gray-950/95 border-r border-white/5">
+        <div className="flex flex-col flex-grow p-4 space-y-6">
+        <Link className="flex items-center gap-3 px-2" href="/dashboard">
+          <div
+              className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8"
+              style={{
+                backgroundImage:
+                  'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMqnkg9HzK4aAsdzMFUSRiGAGkWXyWxAinXHO-O7JkZvk7L5s9E2RRHyKlGbBYeDVkEftRUFz0lYMdwkKi9sLlyLnLk5MOikuMUwezkxR1nDF029lf40CITas_BCpj2dSSBTqjz5GkhT6qWWTQJtQP1JpRMHOvGa7fMI-aqUQJl_hl-JSPhL1ejLb4czhvtj_7r7qa2WwRvcwWsB8a-UnSNQ5q37-DJYIcJ9NuKCbTFS7kEhNsxbdRP7UBn4AxGtFbeY5pWcoA7UNg")',
+              }}
+            ></div>
+          <h1 className="text-white text-lg font-semibold">SyncStream</h1>
+          </Link>
+        <nav className="flex-1 space-y-1">
           <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white"
+            className="flex items-center gap-3 px-3 py-2 rounded-md text-gray-300 hover:bg-white/5 hover:text-white transition-colors duration-200"
             href="/dashboard"
           >
             <span className="material-symbols-outlined">dashboard</span>
-            Dashboard
+            <span className="text-sm font-medium">Home</span>
           </Link>
           <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white"
+            className="flex items-center gap-3 px-3 py-2 rounded-md text-gray-300 hover:bg-white/5 hover:text-white transition-colors duration-200"
             href="/dashboard/integrations"
           >
             <span className="material-symbols-outlined">sync_alt</span>
-            Integrations
+            <span className="text-sm font-medium">Integrations</span>
           </Link>
           <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white"
+            className="flex items-center gap-3 px-3 py-2 rounded-md text-gray-300 hover:bg-white/5 hover:text-white transition-colors duration-200"
             href="/dashboard/workflows"
           >
             <span className="material-symbols-outlined">lan</span>
-            Workflows
+            <span className="text-sm font-medium">Workflows</span>
           </Link>
           <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white"
+            className="flex items-center gap-3 px-3 py-2 rounded-md text-gray-300 hover:bg-white/5 hover:text-white transition-colors duration-200"
             href="/dashboard/notifications"
           >
             <span className="material-symbols-outlined">notifications</span>
-            Notifications
+            <span className="text-sm font-medium">Notifications</span>
           </Link>
           <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white"
+            className="flex items-center gap-3 px-3 py-2 rounded-md text-gray-300 hover:bg-white/5 hover:text-white transition-colors duration-200"
             href="/dashboard/data"
           >
             <span className="material-symbols-outlined">database</span>
-            Data
+            <span className="text-sm font-medium">Data</span>
           </Link>
            <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white"
+            className="flex items-center gap-3 px-3 py-2 rounded-md text-gray-300 hover:bg-white/5 hover:text-white transition-colors duration-200"
             href="/dashboard/whats-new"
           >
             <span className="material-symbols-outlined">new_releases</span>
-            What's New
+            <span className="text-sm font-medium">What's New</span>
+          </Link>
+           <Link
+            className="flex items-center gap-3 px-3 py-2 rounded-md bg-primary-500/10 text-primary-400"
+            href="/dashboard/settings"
+          >
+            <span className="material-symbols-outlined">settings</span>
+            <span className="text-sm font-medium">Settings</span>
           </Link>
         </nav>
+        </div>
       </aside>
-      <div className="flex-1 flex flex-col">
-        <header className="flex h-16 items-center justify-end px-6 bg-gray-900 border-b border-gray-800">
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="relative rounded-full p-2 text-gray-400 hover:text-white hover:bg-gray-800"
-            >
-              <span className="material-symbols-outlined">notifications</span>
-              <span className="absolute top-2 right-2 block h-2 w-2 rounded-full bg-red-500"></span>
-            </Button>
-            <div
-              className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-              style={{
-                backgroundImage:
-                  'url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-YOcQtaHFVZsGrxllC7bK_pksdmZwZCg_94Fbt8vQaeUcU04aw9xSeUqulG2YLDcqGw7OR7fypK6SINjefQ-VJeDxdzyUU6YA1enc-09xiIiixwKkYCqr3b_1kXhpLwPo29F6J5b7QPH75xVJ8bQDXIJx60u-FVjeX-0zZhsMdV3atbLPkvv1_a-_5whLggqhzuqO0DQNA65fC1XphSmAzmAjL42V2nzP8VI8g5opy9zzLPqkLT2GfPGp5wS0gHoR3laB2PVE35xa")',
-              }}
-            ></div>
-          </div>
-        </header>
+      <div className="flex-1 flex flex-col bg-gray-900">
         {children}
       </div>
     </div>
