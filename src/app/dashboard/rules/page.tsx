@@ -13,6 +13,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Plus, Play, Edit, Trash2 } from 'lucide-react';
 import React from 'react';
+import Link from 'next/link';
 
 const rulesData = [
   {
@@ -75,9 +76,11 @@ export default function RulesPage() {
             synchronization.
           </p>
         </div>
-        <Button className="flex items-center gap-2 min-w-[84px] cursor-pointer justify-center rounded-md h-10 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold leading-normal tracking-wide transition-colors">
-          <Plus className="h-4 w-4" />
-          <span className="truncate">Create Rule</span>
+        <Button asChild className="flex items-center gap-2 min-w-[84px] cursor-pointer justify-center rounded-md h-10 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold leading-normal tracking-wide transition-colors">
+            <Link href="/dashboard/rules/builder">
+                <Plus className="h-4 w-4" />
+                <span className="truncate">Create Rule</span>
+            </Link>
         </Button>
       </div>
       <div className="bg-[#18232F] rounded-lg overflow-hidden border border-gray-700">
