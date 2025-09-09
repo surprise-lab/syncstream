@@ -22,6 +22,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import React from 'react';
 
 const notifications = [
   {
@@ -99,6 +100,15 @@ const getStatusBadge = (status: string) => {
 };
 
 export default function NotificationsPage() {
+  const [activeToolbar, setActiveToolbar] = React.useState({
+    bold: true,
+    italic: false,
+    underline: false,
+    bulletList: false,
+    numberedList: false,
+    link: false,
+  });
+
   return (
     <main className="flex-1 p-8">
       <div className="mx-auto max-w-7xl">
@@ -136,11 +146,33 @@ export default function NotificationsPage() {
                 >
                   Message
                 </Label>
-                <Textarea
-                  className="min-h-32 w-full rounded-md border border-[#374151] bg-[#374151] p-4 text-sm font-normal text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
-                  id="message"
-                  placeholder="Compose your message here"
-                />
+                 <div className="rounded-md border border-[#374151] bg-[#374151] focus-within:ring-2 focus-within:ring-[#3b82f6]">
+                    <div className="rich-text-editor-toolbar flex items-center p-2 border-b border-[#374151]">
+                        <button className={cn("p-2 rounded hover:bg-[#374151]", activeToolbar.bold && "active bg-[#374151] text-accent")} type="button">
+                            <span className="material-symbols-outlined text-base">format_bold</span>
+                        </button>
+                        <button className={cn("p-2 rounded hover:bg-[#374151]", activeToolbar.italic && "active")} type="button">
+                            <span className="material-symbols-outlined text-base">format_italic</span>
+                        </button>
+                        <button className={cn("p-2 rounded hover:bg-[#374151]", activeToolbar.underline && "active")} type="button">
+                            <span className="material-symbols-outlined text-base">format_underlined</span>
+                        </button>
+                        <div className="w-px h-5 bg-[#374151] mx-2"></div>
+                        <button className={cn("p-2 rounded hover:bg-[#374151]", activeToolbar.bulletList && "active")} type="button">
+                            <span className="material-symbols-outlined text-base">format_list_bulleted</span>
+                        </button>
+                        <button className={cn("p-2 rounded hover:bg-[#374151]", activeToolbar.numberedList && "active")} type="button">
+                            <span className="material-symbols-outlined text-base">format_list_numbered</span>
+                        </button>
+                        <div className="w-px h-5 bg-[#374151] mx-2"></div>
+                        <button className={cn("p-2 rounded hover:bg-[#374151]", activeToolbar.link && "active")} type="button">
+                            <span className="material-symbols-outlined text-base">link</span>
+                        </button>
+                    </div>
+                    <div className="w-full min-h-32 p-4 text-sm font-normal text-white focus:outline-none" contentEditable="true" id="message">
+                        <b>Scheduled downtime for server upgrades.</b> We will be performing maintenance on <i>January 20th at 2 AM UTC</i>. The expected downtime is 2 hours.
+                    </div>
+                </div>
               </div>
               <div className="flex flex-col gap-2">
                 <Label
