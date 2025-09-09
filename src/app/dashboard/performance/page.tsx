@@ -22,7 +22,7 @@ const performanceLogs = [
   },
   {
     timestamp: '2024-03-15 10:15:42',
-    eventType: 'Resource Usage Spike',
+    eventType: 'Performance Spike',
     user: 'System',
     description: "CPU usage on server 'web-prod-01' exceeded 90% threshold.",
     impact: 'Critical',
@@ -43,7 +43,7 @@ const performanceLogs = [
   },
   {
     timestamp: '2024-03-14 12:30:55',
-    eventType: 'Resource Usage Spike',
+    eventType: 'Performance Spike',
     user: 'System',
     description: "Memory usage on 'db-prod-01' exceeded 80%.",
     impact: 'High',
@@ -64,7 +64,7 @@ const performanceLogs = [
   },
   {
     timestamp: '2024-03-12 11:15:02',
-    eventType: 'Resource Usage Spike',
+    eventType: 'Performance Spike',
     user: 'System',
     description: "Disk I/O on 'logs-prod-01' exceeded threshold.",
     impact: 'Critical',
@@ -75,7 +75,7 @@ const getEventTypeBadge = (eventType: string) => {
   switch (eventType) {
     case 'Configuration Change':
       return 'bg-blue-900/50 text-blue-300';
-    case 'Resource Usage Spike':
+    case 'Performance Spike':
       return 'bg-red-900/50 text-red-300';
     case 'Deployment':
       return 'bg-indigo-900/50 text-indigo-300';
@@ -124,41 +124,33 @@ export default function PerformancePage() {
                   type="text"
                 />
               </label>
+              <div className="relative">
+                <Button
+                  variant="outline"
+                  className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-gray-800/50 px-4 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white"
+                >
+                  <span>Event Type</span>
+                  <span className="material-symbols-outlined text-base">
+                    expand_more
+                  </span>
+                </Button>
+              </div>
+              <div className="relative">
+                <Button
+                  variant="outline"
+                  className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-gray-800/50 px-4 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white"
+                >
+                  <span>Time Range</span>
+                  <span className="material-symbols-outlined text-base">
+                    expand_more
+                  </span>
+                </Button>
+              </div>
               <Button
                 variant="outline"
-                className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-gray-800/50 px-4 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white"
+                className="h-10 shrink-0 rounded-md border border-gray-700 bg-gray-800/50 px-4 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white"
               >
-                <span>Event Type</span>
-                <span className="material-symbols-outlined text-base">
-                  expand_more
-                </span>
-              </Button>
-              <Button
-                variant="outline"
-                className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-gray-800/50 px-4 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white"
-              >
-                <span>User</span>
-                <span className="material-symbols-outlined text-base">
-                  expand_more
-                </span>
-              </Button>
-              <Button
-                variant="outline"
-                className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-gray-800/50 px-4 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white"
-              >
-                <span>Date Range</span>
-                <span className="material-symbols-outlined text-base">
-                  expand_more
-                </span>
-              </Button>
-              <Button
-                variant="outline"
-                className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-gray-800/50 px-4 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white"
-              >
-                <span>Impact</span>
-                <span className="material-symbols-outlined text-base">
-                  expand_more
-                </span>
+                Clear Filters
               </Button>
             </div>
             <Button
