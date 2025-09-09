@@ -11,9 +11,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import Link from 'next/link';
 
 const jobs = [
     {
+        id: '1',
         name: 'Data Pipeline - ETL Process',
         status: 'Active',
         lastRun: '2024-01-20 10:00 AM',
@@ -21,6 +23,7 @@ const jobs = [
         errors: 'None',
     },
     {
+        id: '2',
         name: 'Nightly Backup - User Data',
         status: 'Paused',
         lastRun: '2024-01-19 09:00 AM',
@@ -28,6 +31,7 @@ const jobs = [
         errors: 'None',
     },
     {
+        id: '3',
         name: 'API Sync - Salesforce',
         status: 'Active',
         lastRun: '2024-01-20 02:00 PM',
@@ -35,6 +39,7 @@ const jobs = [
         errors: 'None',
     },
     {
+        id: '4',
         name: 'Database Indexing',
         status: 'Failed',
         lastRun: '2024-01-20 08:00 AM',
@@ -42,6 +47,7 @@ const jobs = [
         errors: 'Error: Connection lost',
     },
     {
+        id: '5',
         name: 'Log Rotation',
         status: 'Active',
         lastRun: '2024-01-20 04:00 PM',
@@ -104,8 +110,8 @@ export default function JobsPage() {
                     </TableHeader>
                     <TableBody className="divide-y divide-white/5">
                         {jobs.map((job, index) => (
-                            <TableRow key={index}>
-                                <TableCell className="p-4 text-sm font-medium text-[var(--text-primary)]">{job.name}</TableCell>
+                            <TableRow key={index} className="hover:bg-white/5">
+                                <TableCell className="p-4 text-sm font-medium text-[var(--text-primary)]"> <Link href={`/dashboard/jobs/${job.id}`}>{job.name}</Link></TableCell>
                                 <TableCell className="p-4 text-sm">
                                     <div className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${getStatusClass(job.status)}`}>
                                         <span className="w-2 h-2 rounded-full bg-current"></span>
