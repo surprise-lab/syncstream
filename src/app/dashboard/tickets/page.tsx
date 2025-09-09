@@ -1,6 +1,7 @@
 
 'use client';
 
+import Link from 'next/link';
 import {
   Table,
   TableBody,
@@ -60,8 +61,10 @@ export default function TicketsPage() {
                                 </TableHeader>
                                 <TableBody className="divide-y divide-gray-800 bg-[#111a22]">
                                     {tickets.map((ticket) => (
-                                    <TableRow key={ticket.id}>
-                                        <TableCell className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-6">{ticket.id}</TableCell>
+                                    <TableRow key={ticket.id} className="hover:bg-gray-800/50">
+                                        <TableCell className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-6">
+                                            <Link href="/dashboard/tickets/details" className="hover:underline">{ticket.id}</Link>
+                                        </TableCell>
                                         <TableCell className="whitespace-nowrap px-3 py-4 text-sm text-gray-400">{ticket.subject}</TableCell>
                                         <TableCell className="whitespace-nowrap px-3 py-4 text-sm">
                                             <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-sm font-medium ${
