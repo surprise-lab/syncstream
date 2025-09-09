@@ -164,6 +164,10 @@ export default function AuditLogPage() {
                   Date Range
                 </p>
               </Button>
+              <Button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-gray-800 hover:bg-gray-700 px-4 transition-colors">
+                <span className="material-symbols-outlined text-gray-300 !text-xl"> download </span>
+                <p className="text-white text-sm font-medium leading-normal">Export</p>
+              </Button>
             </div>
           </div>
           <div className="overflow-x-auto">
