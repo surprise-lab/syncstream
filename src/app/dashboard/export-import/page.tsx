@@ -28,7 +28,7 @@ export default function ExportImportPage() {
                 Export Data
               </h2>
               <p className="text-slate-400 mb-6">
-                Manually export data from SyncStream.
+                Manually export or schedule recurring data exports.
               </p>
               <div className="space-y-4">
                 <label className="block">
@@ -51,12 +51,57 @@ export default function ExportImportPage() {
                     <option>XML</option>
                   </select>
                 </label>
-                <Button className="w-full flex items-center justify-center gap-2 rounded-md bg-[#1172d4] hover:bg-blue-600 text-white font-semibold py-2.5 px-4 mt-2">
-                  <span className="material-symbols-outlined text-base">
-                    file_upload
-                  </span>
-                  <span>Export Data</span>
-                </Button>
+                <div className="border-t border-slate-700 my-6"></div>
+                <div className="space-y-4">
+                  <h3 className="text-lg font-bold text-white">
+                    Schedule Export
+                  </h3>
+                  <label className="block">
+                    <span className="text-slate-300 text-sm font-medium">
+                      Frequency
+                    </span>
+                    <select className="form-select mt-1 block w-full rounded-md bg-[#111A22] border-slate-700 text-white focus:ring-blue-500 focus:border-blue-500">
+                      <option>Daily</option>
+                      <option>Weekly</option>
+                      <option>Monthly</option>
+                    </select>
+                  </label>
+                  <div className="grid grid-cols-2 gap-4">
+                    <label className="block">
+                      <span className="text-slate-300 text-sm font-medium">
+                        Time
+                      </span>
+                      <input
+                        className="form-input mt-1 block w-full rounded-md bg-[#111A22] border-slate-700 text-white focus:ring-blue-500 focus:border-blue-500"
+                        type="time"
+                        defaultValue="09:00"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-slate-300 text-sm font-medium">
+                        Day
+                      </span>
+                      <select className="form-select mt-1 block w-full rounded-md bg-[#111A22] border-slate-700 text-white focus:ring-blue-500 focus:border-blue-500">
+                        <option>Monday</option>
+                        <option>1st of Month</option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 pt-2">
+                  <Button className="w-full flex items-center justify-center gap-2 rounded-md bg-[#1172d4] hover:bg-blue-600 text-white font-semibold py-2.5 px-4">
+                    <span className="material-symbols-outlined text-base">
+                      file_upload
+                    </span>
+                    <span>Export Now</span>
+                  </Button>
+                  <Button className="w-full flex items-center justify-center gap-2 rounded-md bg-slate-600 hover:bg-slate-500 text-white font-semibold py-2.5 px-4">
+                    <span className="material-symbols-outlined text-base">
+                      schedule
+                    </span>
+                    <span>Schedule Export</span>
+                  </Button>
+                </div>
               </div>
             </div>
             <div className="bg-[#192633] p-6 rounded-lg border border-slate-800">
@@ -129,7 +174,23 @@ export default function ExportImportPage() {
           </div>
           <div className="lg:col-span-3">
             <div className="bg-[#192633] p-6 rounded-lg border border-slate-800 h-full">
-              <h2 className="text-xl font-bold text-white mb-4">History</h2>
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold text-white">History</h2>
+                <div className="flex items-center gap-2">
+                  <Button className="flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md bg-[#111A22] text-slate-300 hover:bg-slate-700">
+                    <span className="material-symbols-outlined text-base">
+                      filter_list
+                    </span>
+                    <span>Filter</span>
+                  </Button>
+                  <Button className="flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md bg-[#111A22] text-slate-300 hover:bg-slate-700">
+                    <span className="material-symbols-outlined text-base">
+                      history
+                    </span>
+                    <span>Scheduled Exports</span>
+                  </Button>
+                </div>
+              </div>
               <div className="overflow-x-auto">
                 <Table>
                   <TableHeader>
@@ -195,6 +256,34 @@ export default function ExportImportPage() {
                       </TableCell>
                       <TableCell className="text-sm text-slate-400">
                         Invalid file format
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="text-sm text-slate-300">
+                        <div className="flex items-center gap-2">
+                          <span className="material-symbols-outlined text-base text-blue-400">
+                            schedule
+                          </span>
+                          <span>Scheduled Export</span>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-900/70 text-cyan-300">
+                          <svg
+                            className="-ml-0.5 mr-1.5 h-2 w-2 text-cyan-400"
+                            fill="currentColor"
+                            viewBox="0 0 8 8"
+                          >
+                            <circle cx="4" cy="4" r="3"></circle>
+                          </svg>
+                          Active
+                        </span>
+                      </TableCell>
+                      <TableCell className="text-sm text-slate-400">
+                        Daily at 09:00 AM
+                      </TableCell>
+                      <TableCell className="text-sm text-slate-400">
+                        Customers
                       </TableCell>
                     </TableRow>
                     <TableRow>
@@ -375,5 +464,3 @@ export default function ExportImportPage() {
     </div>
   );
 }
-
-    
