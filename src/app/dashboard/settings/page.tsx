@@ -23,6 +23,18 @@ export default function SettingsPage() {
           Configure global parameters for SyncStream.
         </p>
       </header>
+      <div className="mb-8">
+        <div className="relative">
+          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+            search
+          </span>
+          <Input
+            className="form-input w-full rounded-md border border-[#324d67] bg-[#192633] text-white pl-10 pr-4 py-2 focus:ring-2 focus:ring-[#1173d4] focus:border-[#1173d4] placeholder:text-gray-400"
+            placeholder="Search settings..."
+            type="text"
+          />
+        </div>
+      </div>
       <div className="space-y-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="md:col-span-1">
