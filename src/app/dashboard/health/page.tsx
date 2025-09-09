@@ -1,23 +1,16 @@
 
 'use client';
 
-import {
-  ArrowUpward,
-  ArrowDownward,
-  Memory,
-  DeveloperBoard,
-  SwapHoriz,
-  Save,
-} from '@mui/icons-material';
-
 const StatCard = ({ title, value, change, changeType, icon: Icon }) => (
-    <div className="bg-[#161B22] p-6 rounded-lg border border-[#30363D]">
+    <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)] group">
         <div className="flex items-center justify-between mb-2">
-            <p className="text-base font-medium text-[#8B949E]">{title}</p>
-            <span className="material-symbols-outlined text-[#8B949E]">{Icon}</span>
+            <p className="text-base font-medium text-[var(--text-secondary)]">{title}</p>
+            <button className="opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="material-symbols-outlined text-[var(--text-secondary)]">drag_indicator</span>
+            </button>
         </div>
         <p className="text-3xl font-bold">{value}</p>
-        <p className={`text-sm font-medium ${changeType === 'increase' ? 'text-[#34D399]' : 'text-[#F87171]'} flex items-center gap-1 mt-1`}>
+        <p className={`text-sm font-medium ${changeType === 'increase' ? 'text-[var(--success)]' : 'text-[var(--danger)]'} flex items-center gap-1 mt-1`}>
             <span className="material-symbols-outlined text-base">{changeType === 'increase' ? 'arrow_upward' : 'arrow_downward'}</span>
             {change}
         </p>
@@ -25,15 +18,20 @@ const StatCard = ({ title, value, change, changeType, icon: Icon }) => (
 );
 
 const Chart = ({ title, subtitle, change, changeType, gradientId, pathData, lineColor }) => (
-    <div className="bg-[#161B22] p-6 rounded-lg border border-[#30363D]">
+    <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)] group">
         <div className="flex justify-between items-start mb-4">
             <div>
-                <p className="text-base font-medium text-[#8B949E]">{title}</p>
-                <p className="text-sm text-[#8B949E]">{subtitle}</p>
+                <p className="text-base font-medium text-[var(--text-secondary)]">{title}</p>
+                <p className="text-sm text-[var(--text-secondary)]">{subtitle}</p>
             </div>
-            <div className={`flex items-center gap-1 text-sm font-medium ${changeType === 'increase' ? 'text-[#34D399]' : 'text-[#F87171]'}`}>
-                <span className="material-symbols-outlined text-base">{changeType === 'increase' ? 'arrow_upward' : 'arrow_downward'}</span>
-                {change}
+            <div className="flex items-center gap-2">
+                <div className={`flex items-center gap-1 text-sm font-medium ${changeType === 'increase' ? 'text-[var(--success)]' : 'text-[var(--danger)]'}`}>
+                    <span className="material-symbols-outlined text-base">{changeType === 'increase' ? 'arrow_upward' : 'arrow_downward'}</span>
+                    {change}
+                </div>
+                <button className="opacity-0 group-hover_opacity-100 transition-opacity">
+                    <span className="material-symbols-outlined text-[var(--text-secondary)]">drag_indicator</span>
+                </button>
             </div>
         </div>
         <div className="h-60 relative">
@@ -48,7 +46,7 @@ const Chart = ({ title, subtitle, change, changeType, gradientId, pathData, line
                 <path d={pathData.split('V149H0V')[0]} stroke={lineColor} strokeLinecap="round" strokeWidth="2.5"></path>
             </svg>
         </div>
-        <div className="flex justify-between text-xs text-[#8B949E] mt-2">
+        <div className="flex justify-between text-xs text-[var(--text-secondary)] mt-2">
             <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span>
         </div>
     </div>
@@ -88,4 +86,3 @@ export default function HealthPage() {
         </div>
     );
 }
-
