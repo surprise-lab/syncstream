@@ -78,6 +78,75 @@ export default function IntegrationsHealthPage() {
                 </div>
             </div>
             <div className="mt-10">
+                <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-xl font-bold text-white">Recent Synchronization Activities</h2>
+                    <a className="text-sm font-medium text-[var(--primary-color)] hover:text-opacity-80" href="#">View all</a>
+                </div>
+                <div className="overflow-x-auto rounded-lg border border-gray-700">
+                    <table className="min-w-full divide-y divide-gray-700">
+                        <thead className="bg-[#192633]">
+                            <tr>
+                                <th className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6" scope="col">Status</th>
+                                <th className="px-3 py-3.5 text-left text-sm font-semibold text-white" scope="col">Timestamp</th>
+                                <th className="px-3 py-3.5 text-left text-sm font-semibold text-white" scope="col">Records Affected</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-800 bg-[#111a22]">
+                            <tr>
+                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-300 sm:pl-6">
+                                    <span className="inline-flex items-center gap-2 rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">
+                                        <span className="material-symbols-outlined text-base">check_circle</span>
+                                        Success
+                                    </span>
+                                </td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">2024-01-20 10:00 AM</td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">1,234</td>
+                            </tr>
+                            <tr>
+                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-300 sm:pl-6">
+                                    <span className="inline-flex items-center gap-2 rounded-md bg-red-500/10 px-2 py-1 text-xs font-medium text-red-400 ring-1 ring-inset ring-red-500/20">
+                                        <span className="material-symbols-outlined text-base">cancel</span>
+                                        Failed
+                                    </span>
+                                </td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">2024-01-19 10:00 AM</td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">0</td>
+                            </tr>
+                            <tr>
+                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-300 sm:pl-6">
+                                    <span className="inline-flex items-center gap-2 rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">
+                                        <span className="material-symbols-outlined text-base">check_circle</span>
+                                        Success
+                                    </span>
+                                </td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">2024-01-18 10:00 AM</td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">987</td>
+                            </tr>
+                            <tr>
+                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-300 sm:pl-6">
+                                    <span className="inline-flex items-center gap-2 rounded-md bg-yellow-500/10 px-2 py-1 text-xs font-medium text-yellow-400 ring-1 ring-inset ring-yellow-500/20">
+                                        <span className="material-symbols-outlined text-base">warning</span>
+                                        In Progress
+                                    </span>
+                                </td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">2024-01-17 10:00 AM</td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">543</td>
+                            </tr>
+                             <tr>
+                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-300 sm:pl-6">
+                                    <span className="inline-flex items-center gap-2 rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">
+                                        <span className="material-symbols-outlined text-base">check_circle</span>
+                                        Success
+                                    </span>
+                                </td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">2024-01-16 10:00 AM</td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">1,500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div className="mt-10">
                 <h2 className="text-xl font-bold text-white mb-4">Metrics</h2>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div className="bg-[#192633] rounded-lg p-6">
@@ -119,50 +188,8 @@ export default function IntegrationsHealthPage() {
                     </div>
                 </div>
             </div>
-            <div className="mt-10">
-                <h2 className="text-xl font-bold text-white mb-4">Recent Logs</h2>
-                <div className="overflow-x-auto rounded-lg border border-gray-700">
-                    <table className="min-w-full divide-y divide-gray-700">
-                        <thead className="bg-[#192633]">
-                            <tr>
-                                <th className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6" scope="col">Timestamp</th>
-                                <th className="px-3 py-3.5 text-left text-sm font-semibold text-white" scope="col">Level</th>
-                                <th className="px-3 py-3.5 text-left text-sm font-semibold text-white" scope="col">Message</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-800 bg-[#111a22]">
-                            <tr>
-                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-300 sm:pl-6">2024-01-20 10:00 AM</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><span className="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">Info</span></td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Successfully synced 100 records</td>
-                            </tr>
-                            <tr>
-                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-300 sm:pl-6">2024-01-20 09:55 AM</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><span className="inline-flex items-center rounded-md bg-yellow-500/10 px-2 py-1 text-xs font-medium text-yellow-400 ring-1 ring-inset ring-yellow-500/20">Warning</span></td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">API rate limit approaching</td>
-                            </tr>
-                            <tr>
-                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-300 sm:pl-6">2024-01-20 09:50 AM</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><span className="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">Info</span></td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Starting sync process</td>
-                            </tr>
-                            <tr>
-                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-300 sm:pl-6">2024-01-19 10:00 AM</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><span className="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">Info</span></td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Successfully synced 150 records</td>
-                            </tr>
-                            <tr>
-                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-300 sm:pl-6">2024-01-19 09:55 AM</td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><span className="inline-flex items-center rounded-md bg-red-500/10 px-2 py-1 text-xs font-medium text-red-400 ring-1 ring-inset ring-red-500/20">Error</span></td>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Failed to connect to HubSpot API</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </main>
   );
-}
 
-  
+    
