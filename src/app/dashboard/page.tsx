@@ -15,13 +15,28 @@ export default function DashboardPage() {
   return (
     <main className="flex-1 p-8 bg-gray-950">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold tracking-tight text-white">
-            Usage Analytics
-          </h2>
-          <p className="text-gray-400 mt-1">
-            Analyze usage metrics by specific criteria
-          </p>
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight text-white">
+              Usage Analytics
+            </h2>
+            <p className="text-gray-400 mt-1">
+              Analyze usage metrics by specific criteria
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <Button className="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium bg-gray-800 text-white hover:bg-gray-700">
+                <span className="material-symbols-outlined">space_dashboard</span>
+                <span>My Dashboard</span>
+                <span className="material-symbols-outlined">expand_more</span>
+              </Button>
+            </div>
+            <Button className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+              <span className="material-symbols-outlined mr-2 -ml-1">add</span>
+              Create Dashboard
+            </Button>
+          </div>
         </div>
         <div className="bg-gray-900 rounded-lg p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -302,5 +317,4 @@ export default function DashboardPage() {
       </div>
     </main>
   );
-
-    
+}
