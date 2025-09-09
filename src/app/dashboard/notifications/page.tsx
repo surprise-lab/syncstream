@@ -118,9 +118,9 @@ export default function NotificationsPage() {
         <div className="flex items-center gap-4">
           <Button
             variant="secondary"
-            className="flex items-center gap-2 rounded-md bg-[#21262D] px-4 py-2 text-sm font-medium text-white"
+            className="flex items-center gap-2 rounded-md bg-[#21262D] px-4 py-2 text-sm font-medium text-white hover:bg-[#30363D]"
           >
-            <span className="material-symbols-outlined"> done_all </span>
+            <span className="material-symbols-outlined text-base"> done_all </span>
             Mark all as read
           </Button>
           <div className="relative">
