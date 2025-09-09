@@ -20,6 +20,7 @@ const navLinks = [
   { href: '/dashboard', label: 'Home', icon: 'home' },
   { href: '/dashboard/integrations', label: 'Integrations', icon: 'sync_alt' },
   { href: '#', label: 'Workflows', icon: 'lan' },
+  { href: '/dashboard/notifications', label: 'Notifications', icon: 'notifications' },
   { href: '#', label: 'Data Mapping', icon: 'map' },
   { href: '/dashboard/audit-log', label: 'Audit Log', icon: 'receipt_long' },
 ];
