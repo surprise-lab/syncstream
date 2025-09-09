@@ -1,128 +1,256 @@
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { ArrowRight, Key, Lock, CheckCircle, KeyRound, Bell } from 'lucide-react';
-import { ConnectrLogo } from '@/components/connectr-logo';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { Plus, Edit, Trash2 } from 'lucide-react';
+import Link from 'next/link';
 
-export default function ConnectPage() {
+const billingHistory = [
+  {
+    date: 'November 1, 2024',
+    description: 'Subscription Renewal',
+    amount: '$99.00',
+    status: 'Paid',
+  },
+  {
+    date: 'October 1, 2024',
+    description: 'Subscription Renewal',
+    amount: '$99.00',
+    status: 'Paid',
+  },
+  {
+    date: 'September 1, 2024',
+    description: 'Subscription Renewal',
+    amount: '$99.00',
+    status: 'Paid',
+  },
+];
+
+export default function BillingPage() {
   return (
-    <div className="relative flex size-full min-h-screen flex-col overflow-x-hidden bg-gray-900 text-gray-200">
-      <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-800 px-10 py-4">
-        <div className="flex items-center gap-4">
-          <ConnectrLogo className="size-8 text-primary" />
-          <h1 className="text-2xl font-bold text-white">Integrate</h1>
+    <>
+      <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#233648] px-10 py-3">
+        <div className="flex items-center gap-4 text-white">
+          <svg
+            className="h-8 w-8 text-[#1173d4]"
+            fill="none"
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clipPath="url(#clip0_6_535)">
+              <path
+                clipRule="evenodd"
+                d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
+                fill="currentColor"
+                fillRule="evenodd"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_6_535">
+                <rect fill="white" height="48" width="48"></rect>
+              </clipPath>
+            </defs>
+          </svg>
+          <h2 className="text-xl font-bold leading-tight tracking-[-0.015em] text-white">
+            SyncStream
+          </h2>
         </div>
-        <nav className="flex items-center gap-8">
-          <Link
-            className="text-sm font-medium text-gray-400 transition-colors hover:text-white"
-            href="#"
-          >
-            Dashboard
-          </Link>
-          <a className="text-sm font-medium text-white" href="#">
-            Integrations
-          </a>
-          <a
-            className="text-sm font-medium text-gray-400 transition-colors hover:text-white"
-            href="#"
-          >
-            Support
-          </a>
-        </nav>
-        <div className="flex items-center gap-4">
-          <button className="relative">
-            <Bell className="text-gray-400" />
-            <span className="absolute right-0 top-0 block h-2 w-2 rounded-full bg-primary"></span>
-          </button>
+        <div className="flex items-center gap-8">
+          <nav className="flex items-center gap-6">
+            <a
+              className="text-sm font-medium leading-normal text-gray-300 transition-colors hover:text-white"
+              href="#"
+            >
+              Home
+            </a>
+            <a
+              className="text-sm font-medium leading-normal text-gray-300 transition-colors hover:text-white"
+              href="#"
+            >
+              Integrations
+            </a>
+            <a
+              className="text-sm font-medium leading-normal text-gray-300 transition-colors hover:text-white"
+              href="#"
+            >
+              Connections
+            </a>
+            <a className="text-sm font-semibold leading-normal text-white" href="#">
+              Billing
+            </a>
+            <a
+              className="text-sm font-medium leading-normal text-gray-300 transition-colors hover:text-white"
+              href="#"
+            >
+              Docs
+            </a>
+            <a
+              className="text-sm font-medium leading-normal text-gray-300 transition-colors hover:text-white"
+              href="#"
+            >
+              Help
+            </a>
+          </nav>
           <div
             className="aspect-square size-10 rounded-full bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage:
-                'url("https://lh3.googleusercontent.com/aida-public/AB6AXuB74NcmuDCnnQbowsppz3gR3XrcUSeXpw1STY1SeHNWw9AW58vmKJ95bgGvJeYxSi8FnE9tu2_eG9vus0tcqjyzsPysuNnd8U51CpIRAYXqQ5jSk_wbm-ISVG0SgWDTFi1muVd3hlx5R222Vu7BaZdkBUfdwNxtXpCCe54oo-ggmm0--RFUDtfEj2czzKiD82J_6QE7y71wd3Lh0-V_B5JUirc6IJ0s2lRhZvsfChXP4hdYlSHYwlIHKB8tOgXZtHWCRB1x6jxVjRQ")',
+                'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBWY0E1-1TDas02KcxN2dW9MPfaCeQQtyx_wi1h6VdvrOxBnsiD7IyyJ9SCFMLCSVPfKDt-T6LKJJroH-hpbDFVYXkfYEkPGt0b83Z8EvpSHdvxQuoCQ4XcPRfpXDTvWKOD1QkRy53xLAguGZNWmm_MhXu9WvF6XQ-OFJK43WkUvynXDdrWzpn-CMDojHAN1y76vvwxVThB6822y7srdEXNwMqvrwcuA7QopiNnMn5DbJf3rCQTdXgVJ1C-f3AJKhaU9u6_OsGaqkpi")',
             }}
           ></div>
         </div>
       </header>
-      <main className="flex flex-1 items-center justify-center py-16">
-        <div className="w-full max-w-xl px-4">
-          <div className="mb-10 text-center">
-            <h2 className="text-4xl font-bold tracking-tight text-white">
-              Connect your Takealot and Xero accounts
-            </h2>
-            <p className="mt-4 text-lg text-gray-400">
-              Follow the steps below to securely link your accounts and
-              automate your sales data synchronization.
+      <main className="flex-1 px-16 py-10">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-10">
+            <h1 className="text-4xl font-bold tracking-tight text-white">
+              Billing
+            </h1>
+            <p className="mt-2 text-base text-[#92adc9]">
+              Manage your subscription, billing history, and payment methods.
             </p>
           </div>
-          <div className="rounded-2xl border border-gray-700/50 bg-gray-800/50 p-8 shadow-2xl shadow-black/20">
-            <ol className="mb-10 flex w-full items-center">
-              <li className="flex w-full items-center text-primary after:inline-block after:h-1 after:w-full after:rounded-full after:border-4 after:border-b after:border-primary/30 after:content-['']">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-gray-900 ring-4 ring-primary/20">
-                  <KeyRound className="size-6" />
-                </span>
-              </li>
-              <li className="flex w-full items-center after:inline-block after:h-1 after:w-full after:rounded-full after:border-4 after:border-b after:border-gray-700 after:content-['']">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-gray-700 bg-gray-800">
-                  <Key className="text-gray-500" />
-                </span>
-              </li>
-              <li className="flex items-center">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-gray-700 bg-gray-800">
-                  <CheckCircle className="text-gray-500" />
-                </span>
-              </li>
-            </ol>
-            <div className="mb-8 text-center">
-              <h3 className="text-xl font-semibold text-white">
-                Step 1: Authenticate with Takealot
-              </h3>
-              <p className="mt-1 text-gray-400">
-                Enter your Takealot Seller API Key to begin.
-              </p>
-            </div>
-            <form className="space-y-6">
-              <div>
-                <Label
-                  className="mb-2 block text-sm font-medium text-gray-400"
-                  htmlFor="takealot-key"
-                >
-                  Takealot API Key
-                </Label>
-                <div className="relative">
-                  <KeyRound className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
-                  <Input
-                    className="h-14 w-full rounded-lg border-2 border-gray-700 bg-gray-800 pl-12 pr-4 text-base text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-900"
-                    id="takealot-key"
-                    placeholder="Paste your API Key here"
-                    type="password"
-                  />
+          <div className="space-y-12">
+            <section>
+              <h2 className="mb-6 text-2xl font-bold leading-tight tracking-tight text-white">
+                Current Plan
+              </h2>
+              <div className="flex items-center justify-between rounded-lg bg-[#192633] p-6">
+                <div className="flex-1">
+                  <div className="flex items-center gap-4">
+                    <p className="text-xl font-semibold text-white">
+                      Pro Plan
+                    </p>
+                    <span className="inline-flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400">
+                      Active
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm text-[#92adc9]">
+                    Your plan renews on December 31, 2024.
+                  </p>
                 </div>
-                <p className="mt-2 text-xs text-gray-500">
-                  Find your API Key in your Takealot Seller Portal under
-                  Integrations.
-                </p>
+                <div className="flex items-center gap-4">
+                  <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-md bg-[#233648] px-4 text-sm font-medium text-white transition-colors hover:bg-[#324d67]">
+                    Change Plan
+                  </button>
+                  <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-md bg-[#1173d4] px-4 text-sm font-bold text-white transition-colors hover:bg-[#1b85f0]">
+                    Upgrade
+                  </button>
+                </div>
               </div>
-              <div className="pt-4">
-                <Button
-                  className="flex h-12 w-full items-center justify-center rounded-lg bg-primary px-6 text-base font-bold tracking-wide text-gray-900 transition-colors hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-900"
-                  type="submit"
-                  asChild
-                >
-                  <Link href="/dashboard">
-                    <span className="truncate">Connect to Takealot</span>
-                    <ArrowRight className="ml-2" />
-                  </Link>
-                </Button>
+            </section>
+            <section>
+              <h2 className="mb-6 text-2xl font-bold leading-tight tracking-tight text-white">
+                Billing History
+              </h2>
+              <div className="overflow-x-auto rounded-lg border border-[#324d67] bg-[#192633]">
+                <table className="w-full text-left">
+                  <thead className="border-b border-[#324d67] bg-[#192633]">
+                    <tr>
+                      <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-white">
+                        Date
+                      </th>
+                      <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-white">
+                        Description
+                      </th>
+                      <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-white">
+                        Amount
+                      </th>
+                      <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-white">
+                        Status
+                      </th>
+                      <th className="px-6 py-4 text-right text-xs font-medium uppercase tracking-wider text-white">
+                        Invoice
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#324d67]">
+                    {billingHistory.map((item, index) => (
+                      <tr key={index}>
+                        <td className="whitespace-nowrap px-6 py-4 text-sm text-[#92adc9]">
+                          {item.date}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 text-sm text-[#92adc9]">
+                          {item.description}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">
+                          {item.amount}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <span className="inline-flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400">
+                            {item.status}
+                          </span>
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 text-right">
+                          <a
+                            className="text-sm font-medium text-[#1173d4] hover:text-[#1b85f0]"
+                            href="#"
+                          >
+                            Download
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            </form>
-            <p className="mt-8 flex items-center justify-center text-center text-xs text-gray-500">
-              <Lock className="mr-1 inline-block size-3 align-middle" />
-              Your credentials are encrypted and stored securely.
-            </p>
+            </section>
+            <section>
+              <h2 className="mb-6 text-2xl font-bold leading-tight tracking-tight text-white">
+                Payment Methods
+              </h2>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between rounded-lg bg-[#192633] p-6">
+                  <div className="flex items-center gap-4">
+                    <div
+                      className="h-8 w-12 bg-contain bg-center bg-no-repeat"
+                      style={{
+                        backgroundImage:
+                          "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBEVRAFxXzgbj0YqJFPIvJiqqYlfVk6ruEEg8z5XU7NFYBftPgbYgQuJioKcxURjQQMvwzdhi903TS5yzfBsKQ6P5CKtRj8Z-AUBjlt3ZebOFmk0uHkG15VPN1KLpvIZISy2wNcXkAW5aubc-ogGk8kJM0iVSTCzIO87h3D0ctsUN1YYrtoxNFzJnEVS3H0DyE2fag_FLp_KsXHRJERywwLtDEvPEQCcuUabmCBlyKDGLx5ACIAxPuOJPo7DWPfqWAtMe67I8K7_hzJ')",
+                      }}
+                    ></div>
+                    <div>
+                      <p className="font-medium text-white">
+                        Visa ending in 4242
+                      </p>
+                      <p className="text-sm text-[#92adc9]">Expires 08/2026</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className="inline-flex items-center rounded bg-blue-500/20 px-2 py-0.5 text-xs font-medium text-blue-300">
+                      Primary
+                    </span>
+                    <button className="text-gray-400 transition-colors hover:text-white">
+                      <span className="material-symbols-outlined text-xl">
+                        edit
+                      </span>
+                    </button>
+                    <button className="text-gray-400 transition-colors hover:text-red-500">
+                      <span className="material-symbols-outlined text-xl">
+                        delete
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6">
+                <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-md bg-[#233648] px-4 text-sm font-medium text-white transition-colors hover:bg-[#324d67]">
+                  <span className="material-symbols-outlined mr-2 text-xl">
+                    add
+                  </span>
+                  Add Payment Method
+                </button>
+              </div>
+            </section>
           </div>
         </div>
       </main>
-    </div>
+    </>
   );
 }
