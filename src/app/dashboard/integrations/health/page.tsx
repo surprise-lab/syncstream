@@ -2,7 +2,8 @@
 'use client';
 
 import { Badge } from '@/components/ui/badge';
-import { ArrowUpward, ArrowDownward, SyncAlt, Error, Timer } from '@mui/icons-material';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { ArrowUpward, ArrowDownward, SyncAlt, Error, Timer, ExpandMore } from '@mui/icons-material';
 
 const integrations = [
   { name: 'Salesforce to HubSpot', status: 'Active', data: '50 GB', errors: 10, latency: '60 ms' },
@@ -34,27 +35,43 @@ const getStatusBadge = (status: string) => {
 
 export default function IntegrationsHealthPage() {
   return (
-    <main className="p-6 md:p-10 bg-gray-900 text-white">
+    <main className="p-6 md:p-10 bg-secondary">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-white text-3xl font-bold">Integrations Health</h1>
-          <p className="text-gray-400 mt-1">Monitor the health and performance of your active integrations.</p>
+          <h1 className="text-primary text-3xl font-bold">Integrations Health</h1>
+          <p className="text-secondary mt-1">Monitor the health and performance of your active integrations.</p>
         </div>
         <div className="mb-10">
-          <h2 className="text-white text-xl font-bold mb-4">Overall Performance</h2>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+            <h2 className="text-primary text-xl font-bold">Overall Performance</h2>
+            <div className="relative mt-4 sm:mt-0">
+               <Select>
+                <SelectTrigger className="w-full sm:w-auto bg-accent border border-border text-primary text-sm rounded-lg focus:ring-primary focus:border-primary block pl-3 pr-10 py-2.5 appearance-none">
+                  <SelectValue placeholder="Last 24 hours" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="24h">Last 24 hours</SelectItem>
+                  <SelectItem value="7d">Last 7 days</SelectItem>
+                  <SelectItem value="30d">Last 30 days</SelectItem>
+                  <SelectItem value="custom">Custom Range</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            <div className="flex flex-col gap-4 rounded-lg border border-gray-700 bg-gray-800 p-6">
+            <div className="flex flex-col gap-4 rounded-lg border border-border bg-secondary p-6">
               <div className="flex items-center justify-between">
-                <p className="text-white text-base font-medium">Data Transfer Rate</p>
-                <span className="material-symbols-outlined text-gray-400">sync_alt</span>
+                <p className="text-primary text-base font-medium">Data Transfer Rate</p>
+                <span className="material-symbols-outlined text-secondary">sync_alt</span>
               </div>
-              <p className="text-white text-4xl font-bold truncate">120 GB/hr</p>
+              <p className="text-primary text-4xl font-bold truncate">120 GB/hr</p>
               <div className="flex items-center gap-2 text-sm">
                 <span className="text-green-500 flex items-center gap-1">
                   <span className="material-symbols-outlined text-base">arrow_upward</span>
                   +15%
                 </span>
-                <p className="text-gray-400">vs last 24h</p>
+                <p className="text-secondary">vs last 24h</p>
               </div>
               <div className="h-40">
                 <svg fill="none" height="100%" preserveAspectRatio="none" viewBox="0 0 472 150" width="100%" xmlns="http://www.w3.org/2000/svg">
@@ -69,18 +86,18 @@ export default function IntegrationsHealthPage() {
                 </svg>
               </div>
             </div>
-            <div className="flex flex-col gap-4 rounded-lg border border-gray-700 bg-gray-800 p-6">
+            <div className="flex flex-col gap-4 rounded-lg border border-border bg-secondary p-6">
               <div className="flex items-center justify-between">
-                <p className="text-white text-base font-medium">Error Rate</p>
-                <span className="material-symbols-outlined text-gray-400">error</span>
+                <p className="text-primary text-base font-medium">Error Rate</p>
+                <span className="material-symbols-outlined text-secondary">error</span>
               </div>
-              <p className="text-white text-4xl font-bold truncate">2.5%</p>
+              <p className="text-primary text-4xl font-bold truncate">2.5%</p>
               <div className="flex items-center gap-2 text-sm">
                 <span className="text-red-500 flex items-center gap-1">
                   <span className="material-symbols-outlined text-base">arrow_downward</span>
                   -5%
                 </span>
-                <p className="text-gray-400">vs last 24h</p>
+                <p className="text-secondary">vs last 24h</p>
               </div>
               <div className="h-40 grid grid-flow-col gap-3 items-end">
                 <div className="bg-red-500/20 hover:bg-red-500/40 rounded-t-sm w-full transition-all" style={{ height: '20%' }}></div>
@@ -92,18 +109,18 @@ export default function IntegrationsHealthPage() {
                 <div className="bg-red-500/20 hover:bg-red-500/40 rounded-t-sm w-full transition-all" style={{ height: '30%' }}></div>
               </div>
             </div>
-            <div className="flex flex-col gap-4 rounded-lg border border-gray-700 bg-gray-800 p-6">
+            <div className="flex flex-col gap-4 rounded-lg border border-border bg-secondary p-6">
               <div className="flex items-center justify-between">
-                <p className="text-white text-base font-medium">Latency</p>
-                <span className="material-symbols-outlined text-gray-400">timer</span>
+                <p className="text-primary text-base font-medium">Latency</p>
+                <span className="material-symbols-outlined text-secondary">timer</span>
               </div>
-              <p className="text-white text-4xl font-bold truncate">50 ms</p>
+              <p className="text-primary text-4xl font-bold truncate">50 ms</p>
               <div className="flex items-center gap-2 text-sm">
                 <span className="text-green-500 flex items-center gap-1">
                   <span className="material-symbols-outlined text-base">arrow_upward</span>
                   +10%
                 </span>
-                <p className="text-gray-400">vs last 24h</p>
+                <p className="text-secondary">vs last 24h</p>
               </div>
               <div className="h-40 grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 items-center">
                 <div className="bg-sky-500/20 hover:bg-sky-500/40 rounded-e-sm h-4 transition-all" style={{ width: '20%' }}></div>
@@ -118,10 +135,10 @@ export default function IntegrationsHealthPage() {
           </div>
         </div>
         <div>
-          <h2 className="text-white text-xl font-bold mb-4">Integration Status</h2>
-          <div className="overflow-x-auto rounded-lg border border-gray-700 bg-gray-800">
+          <h2 className="text-primary text-xl font-bold mb-4">Integration Status</h2>
+          <div className="overflow-x-auto rounded-lg border border-border bg-secondary">
             <table className="w-full text-sm text-left">
-              <thead className="bg-gray-800 text-xs text-gray-400 uppercase">
+              <thead className="bg-gray-800 text-xs text-secondary uppercase">
                 <tr>
                   <th className="px-6 py-3" scope="col">Integration Name</th>
                   <th className="px-6 py-3" scope="col">Status</th>
@@ -132,12 +149,12 @@ export default function IntegrationsHealthPage() {
               </thead>
               <tbody>
                 {integrations.map((integration, index) => (
-                  <tr key={index} className="border-b border-gray-700 hover:bg-gray-800/50 transition-colors">
-                    <th className="px-6 py-4 font-medium text-white whitespace-nowrap" scope="row">{integration.name}</th>
+                  <tr key={index} className="border-b border-border hover:bg-gray-800/50 transition-colors">
+                    <th className="px-6 py-4 font-medium text-primary whitespace-nowrap" scope="row">{integration.name}</th>
                     <td className="px-6 py-4">{getStatusBadge(integration.status)}</td>
-                    <td className="px-6 py-4 text-gray-400">{integration.data}</td>
-                    <td className="px-6 py-4 text-gray-400">{integration.errors}</td>
-                    <td className="px-6 py-4 text-gray-400">{integration.latency}</td>
+                    <td className="px-6 py-4 text-secondary">{integration.data}</td>
+                    <td className="px-6 py-4 text-secondary">{integration.errors}</td>
+                    <td className="px-6 py-4 text-secondary">{integration.latency}</td>
                   </tr>
                 ))}
               </tbody>
@@ -148,3 +165,5 @@ export default function IntegrationsHealthPage() {
     </main>
   );
 }
+
+    
