@@ -4,7 +4,7 @@
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { ChevronRight, File, Download } from 'lucide-react';
+import { ChevronRight, File, Download, MessageSquare, MenuBook } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -111,6 +111,20 @@ export default function TicketDetailsPage() {
                     >
                       <File className="h-4 w-4" />
                       Attach File
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="flex items-center gap-2 rounded-md border border-gray-600 px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
+                    >
+                      <MessageSquare className="h-4 w-4" />
+                      Canned Response
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="flex items-center gap-2 rounded-md border border-gray-600 px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
+                    >
+                      <MenuBook className="h-4 w-4" />
+                      Knowledge Base
                     </Button>
                   </div>
                   <Button className="rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700">
