@@ -12,6 +12,8 @@ const featuredConnectors = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuAPJWVwpmdeHAolVnxy2JlNJTMv4rkibNuF9kKjj65y1gdbqAt_WMUHGqx1FlKe3enKMzCpc_saHQ-fbPJTzIqHemdZ7uJXcy32h9FQBg8J0sh6Pks3e-CiBH2KyaLSzq7Gs_vKmmDA_NKg-ou7l7Ly2htxTSKjfTAjEd3Bp9ZPI6FM1GRnWS2fw9QfNP6K8kAcVBM28ew7vXG0r7yU25Pu2z0Lix5zREqg3YpvtGe2VC4D3GULH8Fz8CFWeRDXUlkEqdEC7327zIw5',
     hint: 'marketing workflows',
+    rating: 4,
+    reviews: 1234,
   },
   {
     name: 'CRM Connector',
@@ -19,6 +21,8 @@ const featuredConnectors = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuAI6g1akvVfNNDfPR1m2KsUAXPqm03Zw1vTneU-STYtF9tlK_hP1InQiOv1UPwkm7-qTsWQOTwh29fi3l3xhPFiRU1lCU6KupgXt7tOfD4MCK5N10jxmWWCoMaT3uX6bKJ_yUtxkE6r4GtZlioQ_pq9-qXz8JmFaxdcaqcFohJu8CAQxFlcVAqN-MpElqlmtmOoCU-HzBluoDpXyBUdZ0zXYEGscpUr3TE_9LcAovrQ49oWkbzbAWHnizS0xRwb6m0dLGa9v6MSt2QC',
     hint: 'sales pipeline',
+    rating: 5,
+    reviews: 987,
   },
   {
     name: 'Customer Support',
@@ -26,6 +30,8 @@ const featuredConnectors = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCPyl-aidyjq8r7ZRsk1-D3pQMgTfIJpxo98QqqUAx7QszXNPUhXD_Uo7q8D5eJUOD6UqjPGo-yv7SCzITG0ApAn5fj0qrWlfV5nJNwVpKOkBhQYmaFRsoGsYUOceOQr86aoUh2pAT1FMvrUg2rtuMp46fHihAYVuGByH7_MWUtU6ZWgAWSQR-fY2W9TDlJzdyJcaVMp6XhBtgMttHp-gGABYXZwfTF2_PUrveTKAx7sfy2oG8bdB9NOtPjaQY3ie8D9sL-Yo-c653N',
     hint: 'support tickets',
+    rating: 4,
+    reviews: 543,
   },
 ];
 
@@ -36,6 +42,8 @@ const allConnectors = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCj3dIFRv68UgDdCCVf8JyVH5M_5eliNjyeUgL8j3kzouukqNA1Zk68obmF3lBhkVM_BpuWo3-surMGs54qqsP8W38kXHSTET-bXj8ZgTvNuecLnzyz9uir0ntMubLWtq6yebR11mVQeEnxKuv12TDlpmUtcKlv9bAOqUQ2Z3VxU7WIhMh5LF7nc6Uj211UqrN8PoT_lrGl8rL3Cz8276Ak0IAbOMdaDu4021fCZ4UA-6KRmqTj4kdBrA0hkaan7QZlWVJumubux8On',
     hint: 'marketing data',
+    rating: 4,
+    reviews: 1200,
   },
   {
     name: 'CRM Connector',
@@ -43,6 +51,8 @@ const allConnectors = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCnYcL7Nlp3-6yE_z1lCEOe243JsQ1XrNgx7G5RYivsATOPLEzkkNlxXaxkrTYeuW3tI164ZYJ0tMAYEgxHqIv1WkJ1bew2JihSDDMV2TF-xMIn7f8cTREqPZJ_si4t83gD-PcBRRBd3PsB4-r0i-dYBVrkcE-zAqfi9K_R3HhozAtFwfjxuhbk4lqkhPKUy2I7Tergtmsm2b2SXYoOXZNqp5hWIQSpYkJf-Le9LCl5fPmE-31vB7vHPGZ4lqZvUOpWHuou96O8S3E_',
     hint: 'sales team',
+    rating: 5,
+    reviews: 987,
   },
   {
     name: 'Customer Support',
@@ -50,6 +60,8 @@ const allConnectors = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCWXnezMkimoHesoWYXOfwvm4C_fXtByPxf7rK0OuTmogFSyEdnfZ3VBUQ8K4IxYIgiuE6eRAO0BFQjuU9xCdFsiiovz3GZlIqgOtcBpJFNV5S7wfFJ7XidQf86FR0Atx_jIYs0gnvIv6V0i2yuk2sYqPKzPpgpkNDioJVlDKkh2e8Q8O-omK-vO0KSQq1Ov6smLwyw9uJ4tK956ijA-9oq6gWMVo2s6-mjvjzFtFO7kAfeXh-FPLvR42obYeabx177Dip0d3Xy1PKZ',
     hint: 'helpdesk tickets',
+    rating: 4,
+    reviews: 543,
   },
   {
     name: 'Productivity Connector',
@@ -57,6 +69,8 @@ const allConnectors = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCPiELDWwRlfE2FbW6lM3TxQRPOdFNDNaXxK8BU1Q8cjYxCjh_6QFkGUGGrPNIdxidKc4f7GsknqFqhm3weHDVe8a0wohkgCMkgxrpuq_nw18udQ9o0AFbg8Rr662VYGYAvocNj6k-9v-8us11jBoeArjJKd-7QwxQB9AakCgdE7dlPSlMK8cf6nTLvMM3WiVyt7WbqfHUo8xLk9FD1mEhoQdjxCNapAWmksPd_CAkzIJ4JrJhzfFaZ2ZykCKL6LVsN94_-11QzOCaI',
     hint: 'team collaboration',
+    rating: 4,
+    reviews: 456,
   },
   {
     name: 'Finance Connector',
@@ -64,6 +78,8 @@ const allConnectors = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuAtpGFyL9fdSQxWGuW5jX19PakurE91X-u800rBEfG8Ts2xvdssb9yeERXKIywe5PulKyGRAh0GQ_ScdMT0aW8a8T-psO6Nds8bOw68mzhKYU2v9vrN8M_doNzMszmSS1PXFlk9aFLM8Uzrx0p_PbNxM2jRm1c7brGEzOsdZrY-kXEJ6XZVheEwNi3zuqKB9r3JS3JJgno8o-4_Jd96TYAec1RRReEeSzKMJlvPB_Y0FrZFWtn67fVr2uBsbNmftieH7nyMrT1V5N_9',
     hint: 'financial statements',
+    rating: 5,
+    reviews: 876,
   },
   {
     name: 'E-commerce Connector',
@@ -71,6 +87,8 @@ const allConnectors = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuDD5QBo4G-l1mMelpvM3-GlKJ4sHHlasuPgshCKz6yAZqc0UnL4OoNiAlNDkbAnMSF5qHHhzOl6Yai2yPSesouoetFE71iuOafiMnerGhdoZY6szxQQyYbgtU78kZI0KNsfpbUHDVApAwooJFuL3As4f7WQ-1oqUkiH4oW_t1jOH-oNYQXeKRGhWnJqocKhoytl8TFXq0fpW5ZLETWyQKPUNeBRB7_yoNeubFoMfH43RVH_EEHXMm6w6HMmF0FLklsFyd8XQ7XJPNcF',
     hint: 'online store',
+    rating: 4,
+    reviews: 321,
   },
   {
     name: 'Social Media Connector',
@@ -78,6 +96,8 @@ const allConnectors = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuBPZOleR-qNTI4SF7dP2vLadyCOtXXeKJAGXmcmYUHTiOdvFBvRkGSWGbQ8K63AOCj9FG9bx-YeItv-D0xRrbGz3K_QMBLH-bzC-MewJAp982i7YmZDbdJC3ObqLnc3xJxPnEB5ZA_uVNV9M3hop9WX9Sum2BUMyrZCBsfB-y8NZ7PW-hdpjsOlZ1yvTfEg4zd4tmI7uGdyQpA_Vkt3yfGWpUAQxlhWPXPPCCSeOp4vaKCNfQpV_-vva8LtfNkXv9LfRVXZm-t41YPT',
     hint: 'social feed',
+    rating: 3,
+    reviews: 234,
   },
   {
     name: 'Analytics Connector',
@@ -85,8 +105,25 @@ const allConnectors = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCtshvc4xTCZ3XmXGflfgkkLY4mv-oycgE4BDSa7-T6OzIUAmFP1u8LOIYiunashnskg2TFVd409vJCP8m-UJEB192OKxIXh_sOMoVHAZ1xiywR19Mx3DyFMjDFoM_WLzAk6Uy9HVyMjtRq5Uk9X8yLnTyGsz0Ef_S9evwmsvn5LdKVAUetYIYOGNlOx01B1vNJRrn8L6-o1WbUBdgqQovfnnfZr5dKJ_9pKmiVQVP48Em63DXOyL5EpOpG63jQHYiSB0NhkUxnZcgD',
     hint: 'data dashboard',
+    rating: 4,
+    reviews: 654,
   },
 ];
+
+const StarRating = ({ rating }: { rating: number }) => (
+  <div className="flex items-center">
+    {[...Array(5)].map((_, i) => (
+      <span
+        key={i}
+        className={`material-symbols-outlined text-base ${
+          i < rating ? 'text-yellow-400' : 'text-gray-500'
+        }`}
+      >
+        star
+      </span>
+    ))}
+  </div>
+);
 
 export default function ConnectionsPage() {
   return (
@@ -177,6 +214,49 @@ export default function ConnectionsPage() {
                 </a>
               </div>
             </div>
+            <div>
+              <h3 className="px-2 pb-3 text-base font-semibold leading-tight tracking-[-0.015em]">
+                Rating
+              </h3>
+              <div className="space-y-2 px-2">
+                <div className="flex items-center gap-2">
+                  <Checkbox
+                    id="5-star"
+                    className="form-checkbox h-5 w-5 rounded border-[#324d67] bg-transparent text-[#1173d4] focus:ring-0 focus:ring-offset-0"
+                  />
+                  <label
+                    htmlFor="5-star"
+                    className="flex items-center text-sm text-[#92adc9]"
+                  >
+                    <StarRating rating={5} />
+                  </label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Checkbox
+                    id="4-star"
+                    className="form-checkbox h-5 w-5 rounded border-[#324d67] bg-transparent text-[#1173d4] focus:ring-0 focus:ring-offset-0"
+                  />
+                  <label
+                    htmlFor="4-star"
+                    className="flex items-center text-sm text-[#92adc9]"
+                  >
+                    <StarRating rating={4} />
+                  </label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Checkbox
+                    id="3-star"
+                    className="form-checkbox h-5 w-5 rounded border-[#324d67] bg-transparent text-[#1173d4] focus:ring-0 focus:ring-offset-0"
+                  />
+                  <label
+                    htmlFor="3-star"
+                    className="flex items-center text-sm text-[#92adc9]"
+                  >
+                    <StarRating rating={3} />
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </aside>
@@ -214,6 +294,12 @@ export default function ConnectionsPage() {
                     <p className="mt-1 text-sm text-[#92adc9]">
                       {connector.description}
                     </p>
+                    <div className="mt-3 flex items-center">
+                      <StarRating rating={connector.rating} />
+                      <span className="ml-2 text-sm text-[#92adc9]">
+                        ({connector.reviews.toLocaleString()} reviews)
+                      </span>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -228,6 +314,7 @@ export default function ConnectionsPage() {
                 <span className="text-sm text-[#92adc9]">Sort by:</span>
                 <select className="form-select w-40 rounded-md border-none bg-[#233648] py-1.5 text-sm placeholder:text-[#92adc9] focus:outline-none focus:ring-2 focus:ring-[#1173d4]">
                   <option>Popularity</option>
+                  <option>Rating</option>
                   <option>Newest</option>
                   <option>Alphabetical</option>
                 </select>
@@ -254,6 +341,12 @@ export default function ConnectionsPage() {
                     <p className="mt-1 truncate text-sm text-[#92adc9]">
                       {connector.description}
                     </p>
+                    <div className="mt-2 flex items-center">
+                      <StarRating rating={connector.rating} />
+                      <span className="ml-1.5 text-xs text-[#92adc9]">
+                        ({connector.reviews.toLocaleString()})
+                      </span>
+                    </div>
                   </div>
                 </div>
               ))}
