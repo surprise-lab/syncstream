@@ -27,28 +27,28 @@ import React from 'react';
 const notifications = [
   {
     title: 'System Maintenance',
-    message: 'Scheduled downtime for server upgrades.',
+    audience: 'All Users',
     urgency: 'High',
     sentAt: '2024-01-15 10:00 AM',
     status: 'Sent',
   },
   {
-    title: 'New Feature Release',
-    message: 'Introducing the new data flow visualization tool.',
+    title: 'New API for Devs',
+    audience: 'Developers',
     urgency: 'Normal',
     sentAt: '2023-12-20 02:30 PM',
     status: 'Sent',
   },
   {
     title: 'Security Update',
-    message: 'Important security patch applied to all systems.',
+    audience: 'Administrators',
     urgency: 'High',
     sentAt: '2023-11-05 09:00 AM',
     status: 'Sent',
   },
   {
     title: 'Holiday Greetings',
-    message: 'Wishing everyone a happy holiday season!',
+    audience: 'All Users',
     urgency: 'Low',
     sentAt: '2023-12-24 12:00 PM',
     status: 'Scheduled',
@@ -114,16 +114,16 @@ export default function NotificationsPage() {
       <div className="mx-auto max-w-7xl">
         <header className="mb-8">
           <h1 className="text-3xl font-bold text-white">
-            Notifications
+            System Announcements
           </h1>
           <p className="mt-1 text-gray-400">
-            Manage and send system-wide announcements to all users.
+            Create and manage announcements for all users or specific roles.
           </p>
         </header>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="rounded-lg bg-[#1f2937] p-6 lg:col-span-1">
             <h2 className="mb-6 text-xl font-semibold text-white">
-              Compose New Notification
+              Compose Announcement
             </h2>
             <form className="flex flex-col gap-6">
               <div className="flex flex-col gap-2">
@@ -138,6 +138,28 @@ export default function NotificationsPage() {
                   id="title"
                   placeholder="Enter notification title"
                 />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label
+                  className="text-sm font-medium text-white"
+                  htmlFor="target-audience"
+                >
+                  Target Audience
+                </Label>
+                <Select>
+                  <SelectTrigger
+                    id="target-audience"
+                    className="h-12 w-full rounded-md border border-[#374151] bg-[#374151] px-4 text-sm font-normal text-white focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+                  >
+                    <SelectValue placeholder="All Users" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Users</SelectItem>
+                    <SelectItem value="admins">Administrators</SelectItem>
+                    <SelectItem value="developers">Developers</SelectItem>
+                    <SelectItem value="users">Standard Users</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div className="flex flex-col gap-2">
                 <Label
@@ -181,7 +203,7 @@ export default function NotificationsPage() {
                 >
                   Urgency
                 </Label>
-                <Select>
+                <Select defaultValue="high">
                   <SelectTrigger
                     id="urgency"
                     className="h-12 w-full rounded-md border border-[#374151] bg-[#374151] px-4 text-sm font-normal text-white focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
@@ -210,16 +232,16 @@ export default function NotificationsPage() {
                 />
               </div>
               <Button
-                className="flex h-12 w-full items-center justify-center rounded-md bg-[#3b82f6] px-6 text-sm font-bold tracking-wide text-white transition-colors hover:bg-blue-600"
+                className="flex h-12 w-full items-center justify-center rounded-md bg-primary px-6 text-sm font-bold tracking-wide text-white transition-colors hover:bg-blue-600"
                 type="submit"
               >
-                <span>Send Notification</span>
+                <span>Send Announcement</span>
               </Button>
             </form>
           </div>
           <div className="lg:col-span-2">
             <h2 className="mb-6 text-xl font-semibold text-white">
-              Past Notifications
+              Past Announcements
             </h2>
             <div className="overflow-hidden rounded-lg border border-[#374151] bg-[#1f2937]">
               <div className="overflow-x-auto">
@@ -230,7 +252,7 @@ export default function NotificationsPage() {
                         Title
                       </TableHead>
                       <TableHead className="px-6 py-4 text-left text-xs font-medium uppercase tracking-wider text-gray-400">
-                        Message
+                        Audience
                       </TableHead>
                       <TableHead className="px-6 py-4 text-left text-xs font-medium uppercase tracking-wider text-gray-400">
                         Urgency
@@ -250,7 +272,7 @@ export default function NotificationsPage() {
                           {notification.title}
                         </TableCell>
                         <TableCell className="whitespace-nowrap px-6 py-4 text-sm text-gray-400">
-                          {notification.message}
+                          {notification.audience}
                         </TableCell>
                         <TableCell className="whitespace-nowrap px-6 py-4">
                           {getUrgencyBadge(notification.urgency)}
@@ -273,3 +295,5 @@ export default function NotificationsPage() {
     </main>
   );
 }
+
+    
