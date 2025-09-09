@@ -134,11 +134,11 @@ export default function EditIntegrationPage() {
       <div className="mt-12 flex max-w-2xl justify-end gap-4">
         <Button
           variant="secondary"
-          className="px-6 py-2 text-sm font-semibold text-white transition-colors"
+          className="px-8 py-3 rounded-lg text-base font-semibold text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500 transition-colors"
         >
           Cancel
         </Button>
-        <Button className="bg-blue-600 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700">
+        <Button className="px-8 py-3 rounded-lg text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-blue-500 transition-colors">
           Save Changes
         </Button>
       </div>
