@@ -12,29 +12,6 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 
-const kpiData = {
-  successRate: {
-    value: '98.2%',
-    change: '+2.5%',
-    changeType: 'increase',
-  },
-  latency: {
-    value: '250ms',
-    change: '-10ms',
-    changeType: 'decrease',
-  },
-};
-
-const latencyChartData = [
-  { height: '10%' },
-  { height: '30%' },
-  { height: '90%' },
-  { height: '80%' },
-  { height: '50%' },
-  { height: '60%' },
-  { height: '80%' },
-];
-
 const integrations = [
     {
         name: 'System A ↔ System B',
@@ -129,56 +106,33 @@ export default function IntegrationsPage() {
             </div>
           </div>
         </section>
-        <section className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">Key Performance Indicators</h3>
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <div className="flex flex-col gap-4 rounded-lg border border-gray-800 bg-gray-900 p-6">
-              <div className="flex items-start justify-between">
-                <div>
-                  <p className="text-base font-medium text-gray-300">Data Sync Success Rate</p>
-                  <p className="text-3xl font-bold text-white">{kpiData.successRate.value}</p>
-                </div>
-                <div className="flex items-center gap-1 text-sm font-medium text-green-400">
-                  <span className="material-symbols-outlined text-base"> trending_up </span>
-                  <span>{kpiData.successRate.change}</span>
-                </div>
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-semibold">Integration Details</h3>
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"> search </span>
+                <input className="w-64 rounded-md border-gray-700 bg-gray-800 py-2 pl-10 pr-4 text-sm text-white placeholder-gray-500 focus:border-primary-500 focus:ring-primary-500" placeholder="Search integrations..." type="text"/>
               </div>
-              <div className="h-48">
-                <svg fill="none" height="100%" preserveAspectRatio="none" viewBox="0 0 472 150" width="100%" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V150H0V109Z" fill="url(#paint0_linear_1)"></path>
-                  <path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="var(--primary-400)" strokeLinecap="round" strokeWidth="2"></path>
-                  <defs>
-                    <linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_1" x1="236" x2="236" y1="1" y2="149">
-                      <stop stopColor="var(--primary-500)" stopOpacity="0.4"></stop>
-                      <stop offset="1" stopColor="#0d1117" stopOpacity="0"></stop>
-                    </linearGradient>
-                  </defs>
-                </svg>
+              <div className="flex items-center gap-2">
+                <select className="rounded-md border-gray-700 bg-gray-800 py-2 pl-3 pr-8 text-sm text-white focus:border-primary-500 focus:ring-primary-500">
+                  <option>Status: All</option>
+                  <option>Active</option>
+                  <option>Inactive</option>
+                </select>
+                <select className="rounded-md border-gray-700 bg-gray-800 py-2 pl-3 pr-8 text-sm text-white focus:border-primary-500 focus:ring-primary-500">
+                  <option>Type: All</option>
+                  <option>API</option>
+                  <option>Webhook</option>
+                  <option>Database</option>
+                </select>
+                <button className="flex items-center gap-2 rounded-md border border-gray-700 bg-gray-800 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700">
+                  <span className="material-symbols-outlined text-base"> filter_list </span>
+                    Filter
+                </button>
               </div>
-              <p className="text-center text-xs text-gray-500">Last 30 Days</p>
-            </div>
-            <div className="flex flex-col gap-4 rounded-lg border border-gray-800 bg-gray-900 p-6">
-              <div className="flex items-start justify-between">
-                <div>
-                  <p className="text-base font-medium text-gray-300">Average Latency</p>
-                  <p className="text-3xl font-bold text-white">{kpiData.latency.value}</p>
-                </div>
-                <div className="flex items-center gap-1 text-sm font-medium text-yellow-400">
-                  <span className="material-symbols-outlined text-base"> trending_flat </span>
-                  <span>{kpiData.latency.change}</span>
-                </div>
-              </div>
-              <div className="flex h-48 items-end justify-between gap-2 px-2">
-                {latencyChartData.map((bar, index) => (
-                  <div key={index} className="w-full rounded-t-sm bg-primary-800" style={{ height: bar.height, backgroundColor: `hsl(var(--primary-700-hsl) / ${parseInt(bar.height) / 100})` }}></div>
-                ))}
-              </div>
-              <p className="text-center text-xs text-gray-500">Latency by Integration</p>
             </div>
           </div>
-        </section>
-        <section>
-          <h3 className="text-xl font-semibold mb-4">Integration Details</h3>
           <div className="overflow-x-auto rounded-lg border border-gray-800">
             <Table className="min-w-full divide-y divide-gray-800">
               <TableHeader className="bg-gray-800/50">
