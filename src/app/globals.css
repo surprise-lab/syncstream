@@ -133,6 +133,21 @@
 }
 
 @layer utilities {
+  #login-tab:checked~div #login-form,
+  #register-tab:checked~div #register-form {
+    display: block;
+  }
+  #login-tab:checked~div #register-form,
+  #register-tab:checked~div #login-form {
+    display: none;
+  }
+  #login-tab:checked~nav label[for="login-tab"],
+  #register-tab:checked~nav label[for="register-tab"] {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    border-bottom-width: 2px;
+    border-color: var(--primary-color);
+  }
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
@@ -198,6 +213,7 @@
         @apply bg-blue-500/20 text-blue-300;
       }
 }
+
 
 
 
