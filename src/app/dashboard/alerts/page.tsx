@@ -85,24 +85,52 @@ export default function AlertsPage() {
             notifications, and updates.
           </p>
         </div>
-        <div className="mb-8 p-4 bg-[#18232F] rounded-lg border border-[#233648]">
-          <h3 className="text-white text-lg font-semibold mb-4">Filters</h3>
-          <div className="flex flex-wrap gap-3">
-            <button onClick={() => setFilter('All')} className={`flex h-9 items-center justify-center gap-x-2 rounded-md px-4 text-sm font-medium transition-colors ${filter === 'All' ? 'bg-primary text-white' : 'bg-[#233648] hover:bg-[#2B4055] text-white'}`}>
-              All
-            </button>
-            <button onClick={() => setFilter('Urgent')} className={`flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md px-4 text-sm font-medium text-white transition-colors ${filter === 'Urgent' ? 'bg-primary text-white' : 'bg-[#233648] hover:bg-[#2B4055]'}`}>
-              Urgent
-            </button>
-            <button onClick={() => setFilter('Maintenance')} className={`flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md px-4 text-sm font-medium text-white transition-colors ${filter === 'Maintenance' ? 'bg-primary text-white' : 'bg-[#233648] hover:bg-[#2B4055]'}`}>
-              Maintenance
-            </button>
-            <button onClick={() => setFilter('New Feature')} className={`flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md px-4 text-sm font-medium text-white transition-colors ${filter === 'New Feature' ? 'bg-primary text-white' : 'bg-[#233648] hover:bg-[#2B4055]'}`}>
-              New Features
-            </button>
-            <button onClick={() => setFilter('Update')} className={`flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md px-4 text-sm font-medium text-white transition-colors ${filter === 'Update' ? 'bg-primary text-white' : 'bg-[#233648] hover:bg-[#2B4055]'}`}>
-              Updates
-            </button>
+        <div className="grid grid-cols-1 @[640px]:grid-cols-2 gap-8 mb-8">
+          <div className="p-6 bg-[#18232F] rounded-lg border border-[#233648]">
+            <h3 className="text-white text-lg font-semibold mb-4">Filters</h3>
+            <div className="flex flex-wrap gap-3">
+              <button onClick={() => setFilter('All')} className={`flex h-9 items-center justify-center gap-x-2 rounded-md px-4 text-sm font-medium transition-colors ${filter === 'All' ? 'bg-primary text-white' : 'bg-[#233648] hover:bg-[#2B4055] text-white'}`}>
+                All
+              </button>
+              <button onClick={() => setFilter('Urgent')} className={`flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md px-4 text-sm font-medium text-white transition-colors ${filter === 'Urgent' ? 'bg-primary text-white' : 'bg-[#233648] hover:bg-[#2B4055]'}`}>
+                Urgent
+              </button>
+              <button onClick={() => setFilter('Maintenance')} className={`flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md px-4 text-sm font-medium text-white transition-colors ${filter === 'Maintenance' ? 'bg-primary text-white' : 'bg-[#233648] hover:bg-[#2B4055]'}`}>
+                Maintenance
+              </button>
+              <button onClick={() => setFilter('New Feature')} className={`flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md px-4 text-sm font-medium text-white transition-colors ${filter === 'New Feature' ? 'bg-primary text-white' : 'bg-[#233648] hover:bg-[#2B4055]'}`}>
+                New Features
+              </button>
+              <button onClick={() => setFilter('Update')} className={`flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md px-4 text-sm font-medium text-white transition-colors ${filter === 'Update' ? 'bg-primary text-white' : 'bg-[#233648] hover:bg-[#2B4055]'}`}>
+                Updates
+              </button>
+            </div>
+          </div>
+          <div className="p-6 bg-[#18232F] rounded-lg border border-[#233648]">
+            <h3 className="text-white text-lg font-semibold mb-4">Notification Subscriptions</h3>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <label className="text-sm text-white" htmlFor="system-updates">System Updates</label>
+                <label className="switch">
+                  <input defaultChecked id="system-updates" type="checkbox"/>
+                  <span className="slider"></span>
+                </label>
+              </div>
+              <div className="flex items-center justify-between">
+                <label className="text-sm text-white" htmlFor="feature-releases">Feature Releases</label>
+                <label className="switch">
+                  <input defaultChecked id="feature-releases" type="checkbox"/>
+                  <span className="slider"></span>
+                </label>
+              </div>
+              <div className="flex items-center justify-between">
+                <label className="text-sm text-white" htmlFor="security-advisories">Security Advisories</label>
+                <label className="switch">
+                  <input id="security-advisories" type="checkbox"/>
+                  <span className="slider"></span>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
         <div className="space-y-4">
@@ -139,6 +167,47 @@ export default function AlertsPage() {
           ))}
         </div>
       </div>
+       <style jsx>{`
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 38px;
+          height: 22px;
+        }
+        .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #384C60;
+          transition: .4s;
+          border-radius: 34px;
+        }
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 16px;
+          width: 16px;
+          left: 3px;
+          bottom: 3px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+        }
+        input:checked + .slider {
+          background-color: var(--primary-color);
+        }
+        input:checked + .slider:before {
+          transform: translateX(16px);
+        }
+    `}</style>
     </main>
   );
 }
