@@ -71,54 +71,13 @@ export default function ForgotPasswordPage() {
                 lock_reset
               </span>
             </div>
-            <h2 className="mb-4 text-3xl font-bold text-[var(--text-primary)]">
-              Reset your password
+            <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-2">
+              Forgot Password?
             </h2>
-            <div className="w-full space-y-6 text-left text-[var(--text-secondary)]">
-              <div className="flex items-start gap-4">
-                <div className="flex size-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--primary-color)] text-sm font-bold text-white">
-                  1
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[var(--text-primary)]">
-                    Enter Your Email
-                  </h3>
-                  <p className="text-sm">
-                    Enter the email address associated with your SyncStream
-                    account. We'll send a verification code to this email.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="flex size-8 flex-shrink-0 items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--background-color)] text-sm font-bold text-[var(--text-secondary)]">
-                  2
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[var(--text-primary)]">
-                    Verify Your Identity
-                  </h3>
-                  <p className="text-sm">
-                    Check your inbox for an email from us. Enter the
-                    verification code from the email to proceed.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="flex size-8 flex-shrink-0 items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--background-color)] text-sm font-bold text-[var(--text-secondary)]">
-                  3
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[var(--text-primary)]">
-                    Set a New Password
-                  </h3>
-                  <p className="text-sm">
-                    Create a new, strong password for your account. Make sure
-                    it's something you can remember.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <form className="mt-8 flex w-full flex-col gap-6">
+            <p className="text-[var(--text-secondary)] mb-8">
+              No worries, we'll help you get back in.
+            </p>
+            <form className="flex w-full flex-col gap-6">
               <div className="relative">
                 <span className="material-symbols-outlined pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]">
                   email
@@ -134,9 +93,45 @@ export default function ForgotPasswordPage() {
                 className="flex h-12 w-full items-center justify-center rounded-md bg-[var(--primary-color)] px-6 text-base font-bold text-white shadow-none transition-opacity hover:bg-opacity-90"
                 type="submit"
               >
-                Send Reset Link
+                Send Password Reset Email
               </Button>
             </form>
+            <div className="relative my-6 flex w-full items-center justify-center">
+              <div className="absolute inset-x-0 h-px bg-[var(--border-color)]"></div>
+              <span className="relative bg-[var(--secondary-color)] px-4 text-sm text-[var(--text-secondary)]">
+                OR
+              </span>
+            </div>
+            <div className="w-full space-y-4 text-left">
+              <button className="flex w-full items-center gap-4 rounded-lg border border-[var(--border-color)] p-4 text-left transition-colors hover:bg-[#2e4359]">
+                <span className="material-symbols-outlined text-2xl text-[var(--primary-color)]">
+                  quiz
+                </span>
+                <div>
+                  <h3 className="font-semibold text-[var(--text-primary)]">
+                    Answer Security Questions
+                  </h3>
+                  <p className="text-sm text-[var(--text-secondary)]">
+                    Verify your identity by answering your preset security
+                    questions.
+                  </p>
+                </div>
+              </button>
+              <button className="flex w-full items-center gap-4 rounded-lg border border-[var(--border-color)] p-4 text-left transition-colors hover:bg-[#2e4359]">
+                <span className="material-symbols-outlined text-2xl text-[var(--primary-color)]">
+                  smartphone
+                </span>
+                <div>
+                  <h3 className="font-semibold text-[var(--text-primary)]">
+                    Verify by Phone
+                  </h3>
+                  <p className="text-sm text-[var(--text-secondary)]">
+                    Receive a verification code via SMS to your registered phone
+                    number.
+                  </p>
+                </div>
+              </button>
+            </div>
           </div>
           <div className="mt-6 text-center">
             <Link
