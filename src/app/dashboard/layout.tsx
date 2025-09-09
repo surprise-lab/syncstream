@@ -201,7 +201,7 @@ export default function DashboardLayout({
             Integrations
           </Link>
           <Link href="/dashboard/reports" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/reports') ? 'text-white' : '')}>
-            Reports
+            Data & Reports
           </Link>
           <Link href="/dashboard/settings" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/settings') ? 'text-white' : '')}>
             Settings
