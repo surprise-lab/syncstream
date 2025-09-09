@@ -59,7 +59,7 @@ export function UserManagement() {
         <h2 className="text-xl font-bold text-white mb-4">
           Send New Invitation
         </h2>
-        <form className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+        <form className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
           <div className="col-span-1">
             <label
               className="block text-sm font-medium text-slate-300 mb-1"
@@ -93,6 +93,25 @@ export function UserManagement() {
             </Select>
           </div>
           <div className="col-span-1">
+            <label
+              className="block text-sm font-medium text-slate-300 mb-1"
+              htmlFor="expiration"
+            >
+              Expiration Date
+            </label>
+            <Select>
+                <SelectTrigger id="expiration" className="form-select w-full rounded-md border-slate-700 bg-[#233648] text-white focus:border-[#1172d4] focus:ring-[#1172d4]">
+                    <SelectValue placeholder="Never" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="never">Never</SelectItem>
+                    <SelectItem value="1-day">1 Day</SelectItem>
+                    <SelectItem value="7-days">7 Days</SelectItem>
+                    <SelectItem value="30-days">30 Days</SelectItem>
+                </SelectContent>
+            </Select>
+          </div>
+          <div className="col-span-1">
             <Button
               className="w-full flex items-center justify-center gap-2 rounded-md bg-[#1172d4] px-4 py-2 text-sm font-bold text-white hover:bg-blue-600 transition-colors"
               type="submit"
@@ -118,6 +137,9 @@ export function UserManagement() {
                   Role
                 </th>
                 <th className="px-6 py-3" scope="col">
+                  Expires In
+                </th>
+                <th className="px-6 py-3" scope="col">
                   Status
                 </th>
                 <th className="px-6 py-3" scope="col">
@@ -131,6 +153,7 @@ export function UserManagement() {
                   alice.smith@example.com
                 </td>
                 <td className="px-6 py-4">Admin</td>
+                <td className="px-6 py-4">29 days</td>
                 <td className="px-6 py-4">
                   <span className="inline-flex items-center rounded-full bg-yellow-900 px-2.5 py-0.5 text-xs font-medium text-yellow-300">
                     Pending
@@ -152,6 +175,7 @@ export function UserManagement() {
                   bob.johnson@example.com
                 </td>
                 <td className="px-6 py-4">Member</td>
+                <td className="px-6 py-4">6 days</td>
                 <td className="px-6 py-4">
                   <span className="inline-flex items-center rounded-full bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-300">
                     Sent
@@ -173,9 +197,10 @@ export function UserManagement() {
                   carol.williams@example.com
                 </td>
                 <td className="px-6 py-4">Member</td>
+                <td className="px-6 py-4 text-red-400">Expired</td>
                 <td className="px-6 py-4">
-                  <span className="inline-flex items-center rounded-full bg-yellow-900 px-2.5 py-0.5 text-xs font-medium text-yellow-300">
-                    Pending
+                  <span className="inline-flex items-center rounded-full bg-red-900 px-2.5 py-0.5 text-xs font-medium text-red-300">
+                    Revoked
                   </span>
                 </td>
                 <td className="px-6 py-4 text-right">
@@ -183,7 +208,7 @@ export function UserManagement() {
                     <button className="font-medium text-[#1172d4] hover:underline">
                       Resend
                     </button>
-                    <button className="font-medium text-red-500 hover:underline">
+                    <button className="font-medium text-red-500 hover:underline" disabled>
                       Revoke
                     </button>
                   </div>
