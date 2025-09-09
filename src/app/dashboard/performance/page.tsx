@@ -113,8 +113,8 @@ export default function PerformancePage() {
         </div>
         <div className="flex flex-col gap-4 rounded-md border border-gray-800 bg-gray-900 p-4">
           <div className="flex items-center justify-between gap-4">
-            <div className="flex-1">
-              <label className="relative">
+            <div className="flex flex-1 items-center gap-2">
+              <label className="relative flex-1">
                 <span className="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
                   search
                 </span>
@@ -124,8 +124,6 @@ export default function PerformancePage() {
                   type="text"
                 />
               </label>
-            </div>
-            <div className="flex items-center gap-2">
               <Button
                 variant="outline"
                 className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-gray-800/50 px-4 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white"
@@ -163,6 +161,15 @@ export default function PerformancePage() {
                 </span>
               </Button>
             </div>
+            <Button
+              variant="outline"
+              className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-gray-800/50 px-4 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white"
+            >
+              <span className="material-symbols-outlined text-base">
+                download
+              </span>
+              <span>Export</span>
+            </Button>
           </div>
           <div className="overflow-x-auto rounded-md border border-gray-800">
             <Table>
