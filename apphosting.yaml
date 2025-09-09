@@ -5,7 +5,7 @@ runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
   maxInstances: 10
-  minInstances: 1
+  minInstances: 0
 
 # Automatically build and deploy your app on 'git push'.
 # The 'main' branch is built & deployed to your live channel.
