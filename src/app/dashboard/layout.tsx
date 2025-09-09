@@ -38,7 +38,7 @@ export default function DashboardLayout({
               href={link.href}
               className={cn(
                 'flex items-center gap-3 px-4 py-2 rounded-md font-medium',
-                pathname === link.href
+                pathname === link.href || (pathname === '/dashboard' && link.href === '/dashboard/health')
                   ? 'bg-[var(--primary)] text-white font-semibold'
                   : 'text-[var(--text-secondary)] hover:bg-[var(--secondary)] hover:text-white'
               )}
