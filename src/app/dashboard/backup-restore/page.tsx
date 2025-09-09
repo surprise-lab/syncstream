@@ -112,7 +112,7 @@ export default function BackupRestorePage() {
             <p className="text-[#92adc9] text-sm font-normal leading-normal">
               View the history of automated backups created by SyncStream. These
               backups are generated periodically to ensure data integrity and
-              availability.
+              availability. Download backups to store them externally.
             </p>
           </div>
           <div className="overflow-x-auto">
@@ -163,12 +163,20 @@ export default function BackupRestorePage() {
                       </span>
                     </td>
                     <td className="px-4 py-4 whitespace-nowrap text-sm">
-                      <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
-                        <span className="material-symbols-outlined text-base">
-                          restore
-                        </span>
-                        Restore
-                      </button>
+                      <div className="flex items-center gap-4">
+                        <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
+                          <span className="material-symbols-outlined text-base">
+                            restore
+                          </span>
+                          Restore
+                        </button>
+                        <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
+                          <span className="material-symbols-outlined text-base">
+                            download
+                          </span>
+                          Download
+                        </button>
+                      </div>
                     </td>
                   </tr>
                   <tr>
@@ -187,12 +195,20 @@ export default function BackupRestorePage() {
                       </span>
                     </td>
                     <td className="px-4 py-4 whitespace-nowrap text-sm">
-                      <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
-                        <span className="material-symbols-outlined text-base">
-                          restore
-                        </span>
-                        Restore
-                      </button>
+                      <div className="flex items-center gap-4">
+                        <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
+                          <span className="material-symbols-outlined text-base">
+                            restore
+                          </span>
+                          Restore
+                        </button>
+                        <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
+                          <span className="material-symbols-outlined text-base">
+                            download
+                          </span>
+                          Download
+                        </button>
+                      </div>
                     </td>
                   </tr>
                   <tr>
@@ -211,12 +227,20 @@ export default function BackupRestorePage() {
                       </span>
                     </td>
                     <td className="px-4 py-4 whitespace-nowrap text-sm">
-                      <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
-                        <span className="material-symbols-outlined text-base">
-                          restore
-                        </span>
-                        Restore
-                      </button>
+                      <div className="flex items-center gap-4">
+                        <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
+                          <span className="material-symbols-outlined text-base">
+                            restore
+                          </span>
+                          Restore
+                        </button>
+                        <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
+                          <span className="material-symbols-outlined text-base">
+                            download
+                          </span>
+                          Download
+                        </button>
+                      </div>
                     </td>
                   </tr>
                   <tr>
@@ -235,12 +259,20 @@ export default function BackupRestorePage() {
                       </span>
                     </td>
                     <td className="px-4 py-4 whitespace-nowrap text-sm">
-                      <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
-                        <span className="material-symbols-outlined text-base">
-                          restore
-                        </span>
-                        Restore
-                      </button>
+                      <div className="flex items-center gap-4">
+                        <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
+                          <span className="material-symbols-outlined text-base">
+                            restore
+                          </span>
+                          Restore
+                        </button>
+                        <button className="flex items-center gap-2 text-[#1172d4] hover:text-[#1172d4]/90 text-sm font-medium">
+                          <span className="material-symbols-outlined text-base">
+                            download
+                          </span>
+                          Download
+                        </button>
+                      </div>
                     </td>
                   </tr>
                   <tr>
@@ -259,12 +291,20 @@ export default function BackupRestorePage() {
                       </span>
                     </td>
                     <td className="px-4 py-4 whitespace-nowrap text-sm">
-                      <button className="flex items-center gap-2 text-gray-500 text-sm font-medium cursor-not-allowed">
-                        <span className="material-symbols-outlined text-base">
-                          restore
-                        </span>
-                        Restore
-                      </button>
+                      <div className="flex items-center gap-4">
+                        <button className="flex items-center gap-2 text-gray-500 text-sm font-medium cursor-not-allowed">
+                          <span className="material-symbols-outlined text-base">
+                            restore
+                          </span>
+                          Restore
+                        </button>
+                        <button className="flex items-center gap-2 text-gray-500 text-sm font-medium cursor-not-allowed">
+                          <span className="material-symbols-outlined text-base">
+                            download
+                          </span>
+                          Download
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
