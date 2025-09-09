@@ -42,6 +42,37 @@ const stagingVariables = [
     },
 ];
 
+const auditLogs = [
+  {
+    user: 'Alice Johnson',
+    action: 'Created',
+    variable: 'SECRET_TOKEN',
+    environment: 'Production',
+    timestamp: '2024-03-10 14:30 UTC',
+  },
+  {
+    user: 'Bob Williams',
+    action: 'Viewed',
+    variable: 'API_KEY',
+    environment: 'Production',
+    timestamp: '2024-03-09 11:05 UTC',
+  },
+  {
+    user: 'Charlie Brown',
+    action: 'Updated',
+    variable: 'DATABASE_URL',
+    environment: 'Staging',
+    timestamp: '2024-02-15 09:00 UTC',
+  },
+  {
+    user: 'Alice Johnson',
+    action: 'Deleted',
+    variable: 'OLD_API_KEY',
+    environment: 'Staging',
+    timestamp: '2024-02-14 17:45 UTC',
+  },
+];
+
 export default function EnvironmentsPage() {
   return (
     <main className="flex-1 p-8">
@@ -182,6 +213,43 @@ export default function EnvironmentsPage() {
                 ))}
               </TableBody>
             </Table>
+          </div>
+        </section>
+        <section>
+          <div className="mb-4 flex items-center justify-between">
+            <h3 className="text-xl font-semibold text-white">Audit Log</h3>
+            <p className="text-sm text-neutral-400">Track changes to your environment variables and secrets.</p>
+          </div>
+          <div className="overflow-hidden rounded-lg border border-neutral-800 bg-neutral-950">
+            <table className="min-w-full divide-y divide-neutral-800">
+              <thead className="bg-neutral-900">
+                <tr>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-400">User</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-400">Action</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-400">Variable</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-400">Environment</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-400">Timestamp</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-neutral-800">
+                {auditLogs.map((log, index) => (
+                  <tr key={index}>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">{log.user}</td>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm text-neutral-400">
+                      <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                        log.action === 'Created' ? 'bg-green-900 text-green-300' :
+                        log.action === 'Viewed' ? 'bg-blue-900 text-blue-300' :
+                        log.action === 'Updated' ? 'bg-yellow-900 text-yellow-300' :
+                        'bg-red-900 text-red-300'
+                      }`}>{log.action}</span>
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">{log.variable}</td>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm text-neutral-400">{log.environment}</td>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm text-neutral-400">{log.timestamp}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
       </div>
