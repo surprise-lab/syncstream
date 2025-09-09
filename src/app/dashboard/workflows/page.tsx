@@ -31,9 +31,7 @@ export default function WorkflowsPage() {
         </Button>
       </div>
       <div className="bg-[#18232f] p-6 rounded-lg mb-8">
-        <h2 className="text-white text-2xl font-bold mb-6">
-          Start with a Template
-        </h2>
+        <h2 className="text-white text-2xl font-bold mb-6">Start with a Template</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="flex flex-col bg-[#111a22] p-4 rounded-lg hover:ring-2 hover:ring-blue-500 transition-all cursor-pointer">
             <div className="flex items-center gap-3 mb-3">
@@ -121,7 +119,7 @@ export default function WorkflowsPage() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         <div className="lg:col-span-2 bg-[#18232f] p-6 rounded-lg">
           <h2 className="text-white text-2xl font-bold mb-6">
             Or Build From Scratch
@@ -225,10 +223,8 @@ export default function WorkflowsPage() {
           </div>
         </div>
       </div>
-      <div className="mt-10 bg-[#18232f] p-6 rounded-lg">
-        <h2 className="text-white text-2xl font-bold mb-6">
-          Active Workflows
-        </h2>
+      <div className="bg-[#18232f] p-6 rounded-lg">
+        <h2 className="text-white text-2xl font-bold mb-6">Active Workflows</h2>
         <div className="overflow-x-auto">
           <Table className="w-full text-left">
             <TableHeader>
@@ -335,7 +331,6 @@ export default function WorkflowsPage() {
         </div>
       </div>
     </main>
+  </div>
 </div>
-</div>
-
 </body></html>
