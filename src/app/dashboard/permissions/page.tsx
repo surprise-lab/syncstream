@@ -23,7 +23,7 @@ export default function PermissionsPage() {
     <main className="flex-1 p-8">
       <header className="flex items-center justify-between mb-8">
         <h1 className="text-white text-4xl font-bold leading-tight tracking-tight">
-          Permissions
+          Permissions &amp; Roles
         </h1>
         <div className="flex items-center gap-4">
           <Button className="flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 h-10 text-white text-sm font-bold hover:bg-blue-700 transition-colors">
@@ -34,9 +34,35 @@ export default function PermissionsPage() {
       </header>
       <div className="space-y-12">
         <section>
-          <h2 className="text-white text-2xl font-bold leading-tight tracking-tight mb-4">
-            Roles
-          </h2>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-white text-2xl font-bold leading-tight tracking-tight">
+              Roles
+            </h2>
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  {' '}
+                  search{' '}
+                </span>
+                <input
+                  className="w-64 bg-[#192633] border border-[#324d67] text-white text-sm rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Search roles..."
+                  type="text"
+                />
+              </div>
+              <div className="relative">
+                <select className="w-48 appearance-none bg-[#192633] border border-[#324d67] text-white text-sm rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <option selected>All Permissions</option>
+                  <option>Can edit workflows</option>
+                  <option>Can view workflows</option>
+                </select>
+                <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                  {' '}
+                  expand_more{' '}
+                </span>
+              </div>
+            </div>
+          </div>
           <div className="overflow-hidden rounded-lg border border-[#324d67] bg-[#192633]">
             <table className="min-w-full">
               <thead className="bg-[#192633]">
