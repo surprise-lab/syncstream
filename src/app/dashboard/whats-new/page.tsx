@@ -88,8 +88,16 @@ export default function WhatsNewPage() {
         <main className="flex-1 px-10 py-8">
             <div className="mx-auto max-w-4xl">
                 <header className="mb-8">
-                    <h1 className="text-white text-4xl font-bold tracking-tight">What's New in SyncStream</h1>
-                    <p className="text-slate-400 mt-2 text-lg">Our latest features, improvements, and bug fixes.</p>
+                    <div className="flex justify-between items-start">
+                        <div>
+                            <h1 className="text-white text-4xl font-bold tracking-tight">What's New in SyncStream</h1>
+                            <p className="text-slate-400 mt-2 text-lg">Our latest features, improvements, and bug fixes.</p>
+                        </div>
+                        <button className="flex items-center gap-2 rounded-md bg-slate-800 px-4 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700">
+                            <span className="material-symbols-outlined text-base"> done_all </span>
+                            <span>Mark all as read</span>
+                        </button>
+                    </div>
                 </header>
                 <div className="mb-8 flex items-center justify-between">
                     <p className="text-slate-300 font-medium">Filter by:</p>
@@ -126,3 +134,5 @@ export default function WhatsNewPage() {
         </main>
     )
 }
+
+    
