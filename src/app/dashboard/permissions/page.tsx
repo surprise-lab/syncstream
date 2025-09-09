@@ -2,23 +2,55 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import React, { useState } from 'react';
 
-const roles = [
-  { name: 'Administrator', permissions: 'All permissions', users: '2 users' },
-  { name: 'Editor', permissions: 'Can edit workflows', users: '5 users' },
-  { name: 'Viewer', permissions: 'Can view workflows', users: '10 users' },
-];
+const initialRoles = {
+  administrator: {
+    name: 'Administrator',
+    users: '2 users',
+    permissions: [
+      'Create Workflows',
+      'Edit Workflows',
+      'Delete Workflows',
+      'View Workflows',
+      'Manage Connections',
+      'View Logs',
+      'Manage Users',
+      'Manage Settings',
+    ],
+  },
+  editor: {
+    name: 'Editor',
+    users: '5 users',
+    permissions: ['Create Workflows', 'Edit Workflows', 'Delete Workflows'],
+  },
+  viewer: {
+    name: 'Viewer',
+    users: '10 users',
+    permissions: ['View Workflows', 'View Logs'],
+  },
+};
 
-const userRoles = [
-  { name: 'Sophia Clark', role: 'Administrator' },
-  { name: 'Ethan Carter', role: 'Editor' },
-  { name: 'Olivia Bennett', role: 'Viewer' },
-  { name: 'Liam Harper', role: 'Editor' },
-  { name: 'Ava Foster', role: 'Viewer' },
+const allPermissions = [
+  'Create Workflows',
+  'Edit Workflows',
+  'Delete Workflows',
+  'View Workflows',
+  'Manage Connections',
+  'View Logs',
+  'Manage Users',
+  'Manage Settings',
 ];
 
 export default function PermissionsPage() {
+  const [selectedRole, setSelectedRole] = useState('editor');
+  const [roles, setRoles] = useState(initialRoles);
+
+  const selectedRoleData = roles[selectedRole];
+  const availablePermissions = allPermissions.filter(
+    (p) => !selectedRoleData.permissions.includes(p)
+  );
+
   return (
     <main className="flex-1 p-8">
       <header className="flex items-center justify-between mb-8">
@@ -32,136 +64,85 @@ export default function PermissionsPage() {
           </Button>
         </div>
       </header>
-      <div className="space-y-12">
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-white text-2xl font-bold leading-tight tracking-tight">
-              Roles
-            </h2>
-            <div className="flex items-center gap-4">
-              <div className="relative">
-                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                  {' '}
-                  search{' '}
-                </span>
-                <input
-                  className="w-64 bg-[#192633] border border-[#324d67] text-white text-sm rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Search roles..."
-                  type="text"
-                />
+      <div className="grid grid-cols-3 gap-8">
+        <section className="col-span-1">
+          <h2 className="text-white text-2xl font-bold leading-tight tracking-tight mb-4">
+            Roles
+          </h2>
+          <div className="space-y-4">
+            {Object.keys(roles).map((roleKey) => (
+              <div
+                key={roleKey}
+                onClick={() => setSelectedRole(roleKey)}
+                className={`rounded-lg p-4 cursor-pointer transition-colors ${
+                  selectedRole === roleKey
+                    ? 'border border-blue-500 ring-2 ring-blue-500 bg-[#192633]'
+                    : 'bg-[#192633] border border-[#324d67] hover:border-blue-500'
+                }`}
+              >
+                <h3 className="font-bold text-white">{roles[roleKey].name}</h3>
+                <p className="text-sm text-[#92adc9]">{roles[roleKey].users}</p>
               </div>
-              <div className="relative">
-                <select className="w-48 appearance-none bg-[#192633] border border-[#324d67] text-white text-sm rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                  <option selected>All Permissions</option>
-                  <option>Can edit workflows</option>
-                  <option>Can view workflows</option>
-                </select>
-                <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-                  {' '}
-                  expand_more{' '}
-                </span>
-              </div>
+            ))}
+
+            <div className="bg-transparent rounded-lg p-4 border-2 border-dashed border-[#324d67] text-center text-[#92adc9] hover:border-blue-500 hover:text-white transition-colors cursor-pointer">
+              <p className="font-medium">Create New Role</p>
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-[#324d67] bg-[#192633]">
-            <table className="min-w-full">
-              <thead className="bg-[#192633]">
-                <tr>
-                  <th
-                    className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400"
-                    scope="col"
-                  >
-                    Role
-                  </th>
-                  <th
-                    className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400"
-                    scope="col"
-                  >
-                    Permissions
-                  </th>
-                  <th
-                    className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400"
-                    scope="col"
-                  >
-                    Users
-                  </th>
-                  <th className="relative px-6 py-3" scope="col">
-                    <span className="sr-only">Edit</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#324d67] bg-[#111a22]">
-                {roles.map((role) => (
-                  <tr key={role.name}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
-                      {role.name}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-[#92adc9]">
-                      {role.permissions}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-[#92adc9]">
-                      {role.users}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <Link
-                        className="text-blue-500 hover:text-blue-400"
-                        href="#"
-                      >
-                        Edit
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
         </section>
-        <section>
-          <h2 className="text-white text-2xl font-bold leading-tight tracking-tight mb-4">
-            User-Role Matrix
-          </h2>
-          <div className="overflow-hidden rounded-lg border border-[#324d67] bg-[#192633]">
-            <table className="min-w-full">
-              <thead className="bg-[#192633]">
-                <tr>
-                  <th
-                    className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400"
-                    scope="col"
+        <section className="col-span-2">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-white text-2xl font-bold leading-tight tracking-tight">
+              Permissions for {selectedRoleData.name}
+            </h2>
+            <Button className="flex items-center justify-center gap-2 rounded-lg bg-gray-600 px-4 h-10 text-white text-sm font-bold hover:bg-gray-700 transition-colors">
+              <span className="material-symbols-outlined"> save </span>
+              <span>Save Changes</span>
+            </Button>
+          </div>
+          <div className="grid grid-cols-2 gap-6">
+            <div className="bg-[#192633] rounded-lg p-4 border border-[#324d67]">
+              <h3 className="text-white font-bold mb-4">
+                Assigned Permissions
+              </h3>
+              <div className="space-y-3 min-h-[200px] bg-[#111A22] p-2 rounded-md">
+                {selectedRoleData.permissions.map((permission) => (
+                  <div
+                    key={permission}
+                    className="flex items-center justify-between bg-[#233648] p-3 rounded-md cursor-grab"
                   >
-                    User
-                  </th>
-                  <th
-                    className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400"
-                    scope="col"
-                  >
-                    Role
-                  </th>
-                  <th className="relative px-6 py-3" scope="col">
-                    <span className="sr-only">Edit</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#324d67] bg-[#111a22]">
-                {userRoles.map((user) => (
-                  <tr key={user.name}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
-                      {user.name}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-[#92adc9]">
-                      {user.role}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <Link
-                        className="text-blue-500 hover:text-blue-400"
-                        href="#"
-                      >
-                        Edit
-                      </Link>
-                    </td>
-                  </tr>
+                    <span className="text-white font-medium text-sm">
+                      {permission}
+                    </span>
+                    <span className="material-symbols-outlined text-gray-400">
+                      {' '}
+                      drag_indicator{' '}
+                    </span>
+                  </div>
                 ))}
-              </tbody>
-            </table>
+              </div>
+            </div>
+            <div className="bg-[#192633] rounded-lg p-4 border border-[#324d67]">
+              <h3 className="text-white font-bold mb-4">
+                Available Permissions
+              </h3>
+              <div className="space-y-3 min-h-[200px] bg-[#111A22] p-2 rounded-md">
+                {availablePermissions.map((permission) => (
+                  <div
+                    key={permission}
+                    className="flex items-center justify-between bg-[#233648] p-3 rounded-md cursor-grab"
+                  >
+                    <span className="text-white font-medium text-sm">
+                      {permission}
+                    </span>
+                    <span className="material-symbols-outlined text-gray-400">
+                      {' '}
+                      drag_indicator{' '}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       </div>
