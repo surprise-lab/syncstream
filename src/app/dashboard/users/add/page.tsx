@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -11,8 +12,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
+import { cn } from '@/lib/utils';
 
 export default function AddUserPage() {
+  const [inviteViaEmail, setInviteViaEmail] = useState(false);
+
   return (
       <main className="flex-1 bg-[#111827] p-12">
         <div className="mx-auto max-w-lg">
@@ -60,7 +65,28 @@ export default function AddUserPage() {
                 />
               </div>
             </div>
-            <div>
+            
+            <div className="relative flex items-start">
+                <div className="flex h-6 items-center">
+                    <Checkbox
+                        id="invite"
+                        name="invite"
+                        className="h-4 w-4 rounded border-gray-600 bg-gray-700 text-primary focus:ring-primary"
+                        checked={inviteViaEmail}
+                        onCheckedChange={(checked) => setInviteViaEmail(checked as boolean)}
+                    />
+                </div>
+                <div className="ml-3 text-sm leading-6">
+                    <Label htmlFor="invite" className="font-medium text-gray-300 cursor-pointer">
+                    Invite user via email
+                    </Label>
+                    <p className="text-gray-400">
+                    An invitation link will be sent to the user's email to set up their password.
+                    </p>
+                </div>
+            </div>
+
+            <div className={cn(inviteViaEmail && 'hidden')}>
               <Label
                 className="block text-sm font-medium text-gray-300"
                 htmlFor="password"
