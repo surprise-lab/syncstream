@@ -24,14 +24,15 @@ export default function StoriesPage() {
               <a className="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Pricing</a>
               <a className="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Support</a>
             </nav>
-            <Button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]">
+            <Button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-[#1172d4] hover:bg-[#1172d4]/90 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]">
               <span className="truncate">Get Started</span>
             </Button>
+            <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAS1MIXkZph3PMdeglCMXKswwIAMb8LDPRL2ak2lxJh3FbHL3DkiidcR_9OCmUbx3K0JTygAIt0T5ML0QxP84YttiKGfpp6CmhsndkEYe1zz7TVpCmzs8oILx5cDnd_1vtKFLZjfl_w-oaiDZnPRp3gUC1c4Lp-BlGhFXo1QhHbAeZT2xQCLtGopGSVHlOGVJD-iUUJVb-qkWXA2KBrgT4BIbrcWezBdt20H1HXDGLmz4YIjGTqJup2mcgHJ08l6EGhT2oimqb-lg0G")'}}></div>
           </div>
         </header>
         <main className="px-40 flex flex-1 justify-center py-16">
           <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div className="flex flex-col gap-4 text-center mb-8">
+            <div className="flex flex-col gap-4 text-center mb-12">
               <h1 className="text-white tracking-tight text-5xl font-bold leading-tight">Customer Stories</h1>
               <p className="text-[#92adc9] text-lg font-normal leading-normal max-w-2xl mx-auto">See how businesses are using SyncStream to streamline their workflows and achieve their goals.</p>
             </div>
@@ -75,7 +76,7 @@ export default function StoriesPage() {
               </div>
               <div className="p-4 @container">
                 <div className="flex flex-col items-stretch justify-start rounded-xl overflow-hidden @xl:flex-row-reverse @xl:items-center bg-[#182330]">
-                  <div className="w-full @xl:w-1/2 bg-center bg-no-repeat aspect-video bg-cover" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBlh7tAtSflypFvm12R10zTzQcpFlyKmVp_jFw-M2hELHjPH5tCp79qabiGmD-3sbfTo7MKt-ldGXxgo2ikIm2CKX-h8VcIsf26l3pzp5ig31CQILf4d4p9nP2MMwaKsp94W8uoJqJ5osyfqCbqvJD-Igsrty3ZXGugor2HTzWndN3l9ZkReVP5rbHUz2Hdei0jF-TD8a09ekS9GDoAY-eHIn7--8yAN4nY1EAtUjAcojd_MG-AP3oYvKHq39gmA4iZpiigWX4cbbg")'}}></div>
+                  <div className="w-full @xl:w-1/2 bg-center bg-no-repeat aspect-video bg-cover" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBlh7tAtSflypFvm12R10zTzQcpFlyKmVp_jFw-M2hELHjPH5tCp79qabiGmD-3sbfTo7MKt-ldGXxgo2ikIm2CKX-h8VcIsf26l3pzp5ig31CQILf4d4p9nP2MMwaKsp94W8uoJqJ5osyfqCbqvJD-Igsrty3ZXGugor2HTzWndN3l9ZkReVP5rbHUz2Hdei0jF-TD8a09ekS9GDoAY-eHIn7--8yAN4nY1EAtUjAcojd_MG-AP3oYvKHq39gmA4iZpiigWX4cbbg");'></div>
                   <div className="flex w-full @xl:w-1/2 min-w-72 grow flex-col items-start justify-center gap-4 p-8">
                     <h3 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Automating Customer Support for a Tech Startup</h3>
                     <p className="text-[#92adc9] text-base font-normal leading-relaxed">
@@ -89,7 +90,7 @@ export default function StoriesPage() {
               </div>
               <div className="p-4 @container">
                 <div className="flex flex-col items-stretch justify-start rounded-xl overflow-hidden @xl:flex-row @xl:items-center bg-[#182330]">
-                  <div className="w-full @xl:w-1/2 bg-center bg-no-repeat aspect-video bg-cover" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBDU9-BVSCbNMqf0n5kRt0R_MiRrtVCbjdRpiAO_Cq4mRlzkPaEdT3ZfqKf2luvrFkolxRu4i-Fpk2AOFZK9f7dcJ5LKq1ney8PI030Wf9aA9GCKijLn5GQm-5iXJiwfXUiMBjrDpyA1uwwrtDRDEpBh_jzVxnYvI8YXyYL9hnsDJMz3YTnFUhIgCNGBa0wEs7QmTXzSGR85PDMAQUzwxLAv6grBIPZPqa15kDOCdZe14ovjT_8HTQQzNSLZ26d8XkZVFtwsU4YCjWF")'}}></div>
+                  <div className="w-full @xl:w-1/2 bg-center bg-no-repeat aspect-video bg-cover" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBDU9-BVSCbNMqf0n5kRt0R_MiRrtVCbjdRpiAO_Cq4mRlzkPaEdT3ZfqKf2luvrFkolxRu4i-Fpk2AOFZK9f7dcJ5LKq1ney8PI030Wf9aA9GCKijLn5GQm-5iXJiwfXUiMBjrDpyA1uwwrtDRDEpBh_jzVxnYvI8YXyYL9hnsDJMz3YTnFUhIgCNGBa0wEs7QmTXzSGR85PDMAQUzwxLAv6grBIPZPqa15kDOCdZe14ovjT_8HTQQzNSLZ26d8XkZVFtwsU4YCjWF");'></div>
                   <div className="flex w-full @xl:w-1/2 min-w-72 grow flex-col items-start justify-center gap-4 p-8">
                     <h3 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Enhancing Marketing Efficiency for a Digital Agency</h3>
                     <p className="text-[#92adc9] text-base font-normal leading-relaxed">
@@ -178,5 +179,4 @@ export default function StoriesPage() {
         </footer>
       </div>
     </div>
-
 </body></html>
