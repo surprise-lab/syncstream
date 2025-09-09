@@ -70,6 +70,7 @@ const getCategoryStyles = (category: string) => {
 
 export default function AlertsPage() {
     const [filter, setFilter] = useState('All');
+    const [activeTab, setActiveTab] = useState('Active');
     const filteredAlerts = filter === 'All' ? alertsData : alertsData.filter(alert => alert.category === filter || (filter === 'Updates' && alert.category === 'Update'));
 
 
@@ -133,8 +134,12 @@ export default function AlertsPage() {
             </div>
           </div>
         </div>
+        <div className="flex border-b border-[#233648] mb-6">
+            <button onClick={() => setActiveTab('Active')} className={`px-4 py-2 text-sm font-medium ${activeTab === 'Active' ? 'text-white border-b-2 border-primary' : 'text-[#92adc9] hover:text-white hover:border-b-2 hover:border-[#92adc9] transition-colors'}`}>Active</button>
+            <button onClick={() => setActiveTab('Archive')} className={`px-4 py-2 text-sm font-medium ${activeTab === 'Archive' ? 'text-white border-b-2 border-primary' : 'text-[#92adc9] hover:text-white hover:border-b-2 hover:border-[#92adc9] transition-colors'}`}>Archive</button>
+        </div>
         <div className="space-y-4">
-          {filteredAlerts.map((alert, index) => (
+          {activeTab === 'Active' && filteredAlerts.map((alert, index) => (
             <div key={index} className="flex items-start gap-4 rounded-lg border border-[#233648] bg-[#18232F] p-4 transition-shadow hover:shadow-lg hover:border-primary/50">
               <div className={`flex items-center justify-center rounded-full bg-[#233648] shrink-0 size-12 ${alert.iconColor}`}>
                 <span className="material-symbols-outlined text-2xl">
