@@ -84,9 +84,11 @@ export default function OrdersPage() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-8 flex items-center justify-between">
           <h2 className="text-3xl font-bold text-white">Integrations</h2>
-          <Button className="flex items-center gap-2 rounded-md bg-primary-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700">
-            <Plus className="text-base" />
-            <span>New Integration</span>
+          <Button asChild className="flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700">
+            <Link href="/dashboard/integrations/add">
+              <Plus className="text-base" />
+              <span>New Integration</span>
+            </Link>
           </Button>
         </div>
         <div className="space-y-12">
@@ -126,7 +128,7 @@ export default function OrdersPage() {
                       </TableCell>
                       <TableCell className="whitespace-nowrap text-right text-sm font-medium">
                         <Link
-                          className="text-primary-500 hover:text-primary-600"
+                          className="text-primary hover:text-primary/80"
                           href="#"
                         >
                           Edit
@@ -181,7 +183,7 @@ export default function OrdersPage() {
                       </TableCell>
                       <TableCell className="whitespace-nowrap text-right text-sm font-medium">
                         <Link
-                          className="text-primary-500 hover:text-primary-600"
+                          className="text-primary hover:text-primary/80"
                           href="#"
                         >
                           Edit

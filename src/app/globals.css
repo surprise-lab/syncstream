@@ -14,8 +14,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217.2 91.2% 59.8%; /* blue-500 */
-    --primary-foreground: 222.2 47.4% 11.2%; /* slate-900 */
+    --primary: 209 88% 45%; /* blue-600 */
+    --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%; /* slate-800 */
     --secondary-foreground: 210 40% 98%;
@@ -54,8 +54,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217.2 91.2% 59.8%; /* blue-500 */
-    --primary-foreground: 222.2 47.4% 11.2%; /* slate-900 */
+    --primary: 209 88% 45%; /* blue-600 */
+    --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%; /* slate-800 */
     --secondary-foreground: 210 40% 98%;
