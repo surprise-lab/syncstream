@@ -20,6 +20,7 @@ const navLinks = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/dashboard/integrations', label: 'Integrations', icon: FolderSync },
   { href: '/dashboard/users', label: 'Users', icon: Users },
+  { href: '/dashboard/audit-log', label: 'Audit Log', icon: Book },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
 ];
 
