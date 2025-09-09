@@ -16,7 +16,7 @@ export default function DashboardLayout({
             SyncStream
           </h1>
         </div>
-        <nav className="flex flex-col gap-2">
+        <nav className="flex flex-col gap-2 overflow-y-auto custom-scrollbar">
           <Link
             className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
             href="/dashboard"
@@ -31,7 +31,7 @@ export default function DashboardLayout({
             <span className="material-symbols-outlined">extension</span>
             <p className="text-sm font-medium leading-normal">Integrations</p>
           </Link>
-           <Link
+          <Link
             className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
             href="/dashboard/jobs"
           >
@@ -45,6 +45,13 @@ export default function DashboardLayout({
             <span className="material-symbols-outlined">power</span>
             <p className="text-sm font-medium leading-normal">Connections</p>
           </Link>
+           <Link
+            className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
+            href="/dashboard/mapping"
+          >
+            <span className="material-symbols-outlined">mediation</span>
+            <p className="text-sm font-medium leading-normal">Mapping</p>
+          </Link>
           <Link
             className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
             href="/dashboard/monitoring"
@@ -52,7 +59,7 @@ export default function DashboardLayout({
             <span className="material-symbols-outlined">monitoring</span>
             <p className="text-sm font-medium leading-normal">Monitoring</p>
           </Link>
-           <Link
+          <Link
             className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
             href="/dashboard/environments"
           >
@@ -94,7 +101,7 @@ export default function DashboardLayout({
             <span className="material-symbols-outlined">security</span>
             <p className="text-sm font-medium leading-normal">Permissions</p>
           </Link>
-           <Link
+          <Link
             className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
             href="/dashboard/resources"
           >
@@ -102,7 +109,14 @@ export default function DashboardLayout({
             <p className="text-sm font-medium leading-normal">Resources</p>
           </Link>
           <Link
-            className="flex items-center gap-3 px-3 py-2 rounded-md bg-[#233648] text-white"
+            className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
+            href="/dashboard/docs"
+          >
+            <span className="material-symbols-outlined">description</span>
+            <p className="text-sm font-medium leading-normal">Docs</p>
+          </Link>
+          <Link
+            className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
             href="/dashboard/settings"
           >
             <span className="material-symbols-outlined">settings</span>

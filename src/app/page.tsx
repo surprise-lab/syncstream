@@ -1,6 +1,6 @@
 
-import { Dashboard } from '@/components/dashboard/dashboard';
+import LoginPage from './login/page';
 
 export default function HomePage() {
-  return <Dashboard />;
+  return <LoginPage />;
 }
