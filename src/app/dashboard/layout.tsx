@@ -1,5 +1,6 @@
 
 import Link from 'next/link';
+import { SyncStreamLogo } from '@/components/syncstream-logo';
 
 export default function DashboardLayout({
   children,
@@ -7,102 +8,99 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen text-white bg-[#111A22]">
-      <aside className="flex w-64 flex-col gap-y-6 border-r border-slate-800 bg-[#0d151c] p-6">
-        <div className="flex items-center gap-3">
-          <div className="h-8 w-8 rounded-full bg-[#1173d4]"></div>
-          <h1 className="text-xl font-bold text-white">SyncStream</h1>
+    <div className="flex h-screen overflow-hidden">
+      <aside className="w-64 flex-shrink-0 bg-[var(--background-secondary)] p-6 flex flex-col justify-between">
+        <div className="flex flex-col gap-8">
+          <div className="flex items-center gap-3">
+            <SyncStreamLogo className="text-[var(--primary-color)] h-6 w-6" />
+            <h1 className="text-white text-xl font-bold">SyncStream</h1>
+          </div>
+          <nav className="flex flex-col gap-2">
+            <Link
+              className="flex items-center gap-3 px-4 py-2.5 rounded-md bg-[var(--background-tertiary)] text-white font-medium"
+              href="/dashboard"
+            >
+              <span className="material-symbols-outlined">dashboard</span>
+              <span>Dashboard</span>
+            </Link>
+            <Link
+              className="flex items-center gap-3 px-4 py-2.5 rounded-md text-[var(--text-secondary)] hover:bg-[var(--background-tertiary)] hover:text-white transition-colors duration-200"
+              href="/dashboard/integrations"
+            >
+              <span className="material-symbols-outlined">extension</span>
+              <span>Integrations</span>
+            </Link>
+            <Link
+              className="flex items-center gap-3 px-4 py-2.5 rounded-md text-[var(--text-secondary)] hover:bg-[var(--background-tertiary)] hover:text-white transition-colors duration-200"
+              href="/dashboard/connections"
+            >
+              <span className="material-symbols-outlined">power</span>
+              <span>Connections</span>
+            </Link>
+            <Link
+              className="flex items-center gap-3 px-4 py-2.5 rounded-md text-[var(--text-secondary)] hover:bg-[var(--background-tertiary)] hover:text-white transition-colors duration-200"
+              href="/dashboard/logs"
+            >
+              <span className="material-symbols-outlined">description</span>
+              <span>Logs</span>
+            </Link>
+            <Link
+              className="flex items-center gap-3 px-4 py-2.5 rounded-md text-[var(--text-secondary)] hover:bg-[var(--background-tertiary)] hover:text-white transition-colors duration-200"
+              href="/dashboard/settings"
+            >
+              <span className="material-symbols-outlined">settings</span>
+              <span>Settings</span>
+            </Link>
+          </nav>
         </div>
-        <nav className="mt-10 flex flex-col gap-4">
-          <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard"
+        <div className="flex flex-col gap-2">
+          <a
+            className="flex items-center gap-3 px-4 py-2.5 rounded-md text-[var(--text-secondary)] hover:bg-[var(--background-tertiary)] hover:text-white transition-colors duration-200"
+            href="#"
           >
-            <span className="material-symbols-outlined">home</span>
-            <span className="text-sm font-medium">Home</span>
-          </Link>
-          <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/integrations"
+            <span className="material-symbols-outlined">help</span>
+            <span>Help</span>
+          </a>
+          <a
+            className="flex items-center gap-3 px-4 py-2.5 rounded-md text-[var(--text-secondary)] hover:bg-[var(--background-tertiary)] hover:text-white transition-colors duration-200"
+            href="#"
           >
-            <span className="material-symbols-outlined">extension</span>
-            <span className="text-sm font-medium">Integrations</span>
-          </Link>
-          <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/api-keys"
-          >
-            <span className="material-symbols-outlined">key</span>
-            <span className="text-sm font-medium">API Keys</span>
-          </Link>
-          <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/oauth-clients"
-          >
-            <span className="material-symbols-outlined">vpn_key</span>
-            <span className="text-sm font-medium">OAuth Clients</span>
-          </Link>
-          <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/workflows"
-          >
-            <span className="material-symbols-outlined">lan</span>
-            <span className="text-sm font-medium">Workflows</span>
-          </Link>
-          <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/webhooks"
-          >
-            <span className="material-symbols-outlined">webhook</span>
-            <span className="text-sm font-medium">Webhooks</span>
-          </Link>
-           <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/export-import"
-          >
-            <span className="material-symbols-outlined">import_export</span>
-            <span className="text-sm font-medium">Export & Import</span>
-          </Link>
-           <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/backup-restore"
-          >
-            <span className="material-symbols-outlined">settings_backup_restore</span>
-            <span className="text-sm font-medium">Backup & Restore</span>
-          </Link>
-          <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/notifications"
-          >
-            <span className="material-symbols-outlined">notifications</span>
-            <span className="text-sm font-medium">Notifications</span>
-          </Link>
-          <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/users"
-          >
-            <span className="material-symbols-outlined">group</span>
-            <span className="text-sm font-medium">Users</span>
-          </Link>
-           <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/whats-new"
-          >
-            <span className="material-symbols-outlined">new_releases</span>
-            <span className="text-sm font-medium">What's New</span>
-          </Link>
-           <Link
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
-            href="/dashboard/settings"
-          >
-            <span className="material-symbols-outlined">settings</span>
-            <span className="text-sm font-medium">Settings</span>
-          </Link>
-        </nav>
+            <span className="material-symbols-outlined">group_add</span>
+            <span>Invite team</span>
+          </a>
+        </div>
       </aside>
-      <div className="flex-1 flex flex-col">
+      <main className="flex-1 overflow-y-auto">
+        <header className="flex items-center justify-between whitespace-nowrap border-b border-[var(--border-color)] px-10 py-4">
+          <div className="flex items-center gap-4">
+            <h2 className="text-white text-2xl font-bold">Dashboard</h2>
+          </div>
+          <div className="flex items-center gap-6">
+            <button className="text-[var(--text-secondary)] hover:text-white transition-colors duration-200">
+              <span className="material-symbols-outlined text-2xl relative">
+                notifications
+                <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-[var(--primary-color)]"></span>
+              </span>
+            </button>
+            <div className="flex items-center gap-3">
+              <div
+                className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                style={{
+                  backgroundImage:
+                    'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAcZ8OzvpXf93NrpdaGY89WrEz7MrvUO1QoK3QQV1wQcz5vhPkM2ERgIsNNZJblc1tgEhMaDMrqJEE35h58i3jzlwk-DcguaNBsIbjUSlov69cvQXUmt0XJYXvvw0hQhk2Rj6J765V9b9411e3oLvAXDcu2MeXHZsAu7sUYXKruccQ3CXCmN0ff8lLISXO2IHDmWOOPY_mdPB0gNbEE6ANgMLjlnxd5BWSKUEMCnZANnrzLq-FaSW0rszrKhAFvctQEQtXSg9coGnb")',
+                }}
+              ></div>
+              <div>
+                <p className="text-white font-semibold">Alex Hartman</p>
+                <p className="text-sm text-[var(--text-secondary)]">
+                  alex@syncstream.io
+                </p>
+              </div>
+            </div>
+          </div>
+        </header>
         {children}
-      </div>
+      </main>
     </div>
   );
 }

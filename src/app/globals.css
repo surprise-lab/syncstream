@@ -84,11 +84,21 @@
     --primary-700-hsl: 218 92% 47%;
 
     --primary-color: #1173d4;
-    --background-color: #0f172a;
+    --background-primary: #111a22;
+    --background-secondary: #192633;
+    --background-tertiary: #233648;
+    --border-color: #324d67;
+    --text-primary: #ffffff;
+    --text-secondary: #92adc9;
+    --text-tertiary: #6789b0;
+    --success-color: #22c55e;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --info-color: #3b82f6;
+
     --card-background-color: #1e293b;
     --text-primary-color: #f8fafc;
     --text-secondary-color: #94a3b8;
-    --border-color: #334155;
   }
  
   .dark {
@@ -234,6 +244,7 @@
         @apply bg-blue-500/20 text-blue-300;
       }
 }
+
 
 
 

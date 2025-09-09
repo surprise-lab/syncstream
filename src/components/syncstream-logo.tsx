@@ -5,23 +5,33 @@ export function SyncStreamLogo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 48 48"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
       fill="none"
       {...props}
     >
-      <g clipPath="url(#clip0_6_535_syncstream)">
-        <path
-          d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
-          fill="currentColor"
-          fillRule="evenodd"
-          clipRule="evenodd"
-        ></path>
-      </g>
-      <defs>
-        <clipPath id="clip0_6_535_syncstream">
-          <rect width="48" height="48" fill="white"></rect>
-        </clipPath>
-      </defs>
+      <path
+        d="M12 2L2 7L12 12L22 7L12 2Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
+      <path
+        d="M2 17L12 22L22 17"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
+      <path
+        d="M2 12L12 17L22 12"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
     </svg>
   );
 }
