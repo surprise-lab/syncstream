@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import {
   Table,
@@ -146,9 +147,17 @@ export default function BillingPage() {
               </div>
             </section>
             <section>
-              <h2 className="mb-6 text-2xl font-bold leading-tight tracking-tight text-white">
-                Billing History
-              </h2>
+              <div className="mb-6 flex items-center justify-between">
+                <h2 className="text-2xl font-bold leading-tight tracking-tight text-white">
+                  Billing History
+                </h2>
+                <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-md bg-[#233648] px-4 text-sm font-medium text-white transition-colors hover:bg-[#324d67]">
+                  <span className="material-symbols-outlined mr-2 text-xl">
+                    download
+                  </span>
+                  Download Invoices
+                </button>
+              </div>
               <div className="overflow-x-auto rounded-lg border border-[#324d67] bg-[#192633]">
                 <table className="w-full text-left">
                   <thead className="border-b border-[#324d67] bg-[#192633]">
@@ -254,3 +263,5 @@ export default function BillingPage() {
     </>
   );
 }
+
+    
