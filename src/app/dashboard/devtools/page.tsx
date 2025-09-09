@@ -24,9 +24,25 @@ export default function DeveloperToolsPage() {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div className="flex flex-col gap-6 lg:col-span-2">
           <section className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold tracking-tight text-[var(--text-color)]">
-              API Request Builder
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold tracking-tight text-[var(--text-color)]">
+                API Request Builder
+              </h2>
+              <div className="flex items-center gap-2">
+                <button className="flex h-9 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-md border border-[var(--border-color)] bg-[var(--secondary-color)] px-3 text-sm text-[var(--text-muted-color)] hover:bg-[var(--border-color)]">
+                  <span className="material-symbols-outlined text-base">
+                    save
+                  </span>
+                  <span>Save Config</span>
+                </button>
+                <button className="flex h-9 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-md border border-[var(--border-color)] bg-[var(--secondary-color)] px-3 text-sm text-[var(--text-muted-color)] hover:bg-[var(--border-color)]">
+                  <span className="material-symbols-outlined text-base">
+                    folder_open
+                  </span>
+                  <span>Load Config</span>
+                </button>
+              </div>
+            </div>
             <div className="flex flex-col gap-4">
               <div className="flex gap-4">
                 <Select>
