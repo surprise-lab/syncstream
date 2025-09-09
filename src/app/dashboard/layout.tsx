@@ -144,7 +144,7 @@ export default function DashboardLayout({
           </div>
         </div>
       </aside>
-      <main className="flex-1 overflow-y-auto">{children}</main>
+      <main className="flex-1 overflow-y-auto bg-background p-8">{children}</main>
     </div>
   );
 }

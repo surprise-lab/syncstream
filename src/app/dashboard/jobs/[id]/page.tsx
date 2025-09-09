@@ -31,8 +31,7 @@ const logs = `[2024-01-19 09:00:01] INFO: Starting nightly backup for user data.
 export default function JobDetailsPage({ params }: { params: { id: string } }) {
 
   return (
-     <main className="flex-1 p-8">
-        <div className="flex flex-col gap-8">
+     <div className="flex flex-col gap-8">
             <div className="flex flex-wrap justify-between items-center gap-4">
                 <div>
                     <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)] mb-2">
@@ -75,6 +74,5 @@ export default function JobDetailsPage({ params }: { params: { id: string } }) {
                 </div>
             </div>
         </div>
-    </main>
   );
 }

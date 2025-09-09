@@ -99,8 +99,7 @@ const getActionBadge = (action: string) => {
 
 export default function AuditLogPage() {
   return (
-    <main className="flex-1 px-10 py-8">
-      <div className="mx-auto max-w-7xl">
+    <div className="mx-auto max-w-7xl">
         <div className="mb-8">
           <h1 className="text-white text-3xl font-bold leading-tight tracking-tight">
             Audit Log
@@ -221,6 +220,5 @@ export default function AuditLogPage() {
           </div>
         </div>
       </div>
-    </main>
   );
 }
