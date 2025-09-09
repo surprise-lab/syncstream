@@ -55,6 +55,22 @@ export default function EnvironmentsPage() {
       </header>
       <div className="space-y-12">
         <section>
+          <div className="mb-6 rounded-lg border border-neutral-800 bg-neutral-950 p-6">
+            <h3 className="text-xl font-semibold text-white">External Secrets Management</h3>
+            <p className="mt-2 text-neutral-400">Integrate with your preferred secrets manager to securely sync your credentials.</p>
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row">
+              <button className="flex w-full items-center justify-center gap-3 rounded-md border border-neutral-700 bg-neutral-800 px-4 py-3 text-sm font-medium text-white hover:bg-neutral-700 sm:w-auto">
+                <img alt="HashiCorp Vault Logo" className="h-6 w-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxBpUh7XE3wxxyWM8ZMvFIbaxcPu6WmMTt_ztIIM53teJ2Z5yc-U0FVsrwtfPgmJMKxu9pDvwcEfYN-KYmzjlnMnEprXa487AvptjqF8TfP-ZPER7TQJMfIOZDFU1YTDr2cxNKpKET-qbFrMfVa3F32d-UQw38Nu-s1hiEiHj3ntkmF-HfZdRLEmImK9399aaj_akj_18tzJU1L3aAeed9oWrsaFhFCC56VPuIMFk5T5KNFLD8ZKflhaPzZHgYhJFOCREH0YbFsbNw" />
+                <span>Connect with HashiCorp Vault</span>
+              </button>
+              <button className="flex w-full items-center justify-center gap-3 rounded-md border border-neutral-700 bg-neutral-800 px-4 py-3 text-sm font-medium text-white hover:bg-neutral-700 sm:w-auto">
+                <img alt="AWS Secrets Manager Logo" className="h-6 w-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy3aj3V08FM-xoIkB8y9qgVjqxzJNceBk73_GDhuRjf9FLV_ODrc1i05KTWWnbUEC8o66d07z868NedGFT__qbeM1q65g2o0ZbGV6JhZLZcERQsYgfu3hXIRTKiBDfpUDpoKCSaoOkTaC-43eaDi-lyrzIhC11jSu2Glq7ZL_CmTcL73paRNJemJWlKZBw_7u301rOzdvjWKBapVMdCX3kDUOoD8FmVEhH6GzsH6-nDBxc6x6g1mOIJSo-5s1Y55AmKDdjzxN_yZze" />
+                <span>Connect with AWS Secrets Manager</span>
+              </button>
+            </div>
+          </div>
+        </section>
+        <section>
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-xl font-semibold text-white">Production</h3>
             <Button className="flex items-center gap-2 rounded-md bg-primary-500 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-900">
