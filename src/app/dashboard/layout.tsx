@@ -7,11 +7,11 @@ import { cn } from '@/lib/utils';
 import { SyncStreamLogo } from '@/components/syncstream-logo';
 
 const navLinks = [
-  { href: '/dashboard', label: 'Home', icon: 'home' },
-  { href: '/dashboard/integrations', label: 'Integrations', icon: 'sync_alt' },
-  { href: '/dashboard/logs', label: 'Logs', icon: 'description' },
-  { href: '/dashboard/audit-log', label: 'Audit Log', icon: 'receipt_long' },
-  { href: '/dashboard/settings', label: 'Settings', icon: 'settings' },
+  { href: '/dashboard', label: 'Home'},
+  { href: '/dashboard/integrations', label: 'Integrations'},
+  { href: '#', label: 'Connections' },
+  { href: '/dashboard/logs', label: 'Logs'},
+  { href: '/dashboard/settings', label: 'Settings'},
 ];
 
 export default function DashboardLayout({
@@ -22,48 +22,52 @@ export default function DashboardLayout({
   const pathname = usePathname();
 
   return (
-    <div className="flex h-screen bg-[#0D151C] text-white">
-      <aside className="sticky top-0 flex h-screen w-64 flex-col bg-[#111A22] p-4">
-        <div className="flex items-center gap-2 px-3 py-2">
-            <SyncStreamLogo className="h-8 w-8 text-primary" />
-            <h1 className="text-xl font-bold leading-normal">SyncStream</h1>
-        </div>
-        <nav className="mt-8 flex flex-col gap-2">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href || (pathname.startsWith(link.href) && link.href !== '/dashboard');
-            if (link.href === '/dashboard' && pathname !== '/dashboard') {
-              // special case for home
-            } else if (pathname.startsWith(link.href) && link.href !== '/dashboard') {
-            }
-
-
-            return (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                'flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1A2530]',
-                (pathname === link.href || (pathname === '/dashboard/health' && link.href === '/dashboard'))
-                  ? 'bg-[#1A2530] text-white'
-                  : 'text-gray-300 hover:bg-[#1A2530]',
-                (pathname.startsWith(link.href) && link.href !== '/dashboard' || link.href === '/dashboard/settings' && pathname.startsWith('/dashboard/settings')) ? 'bg-primary-800/20 text-primary-400' : ''
-              )}
-            >
-              <span className="material-symbols-outlined">{link.icon}</span>
-              <span className="text-sm font-medium">{link.label}</span>
-            </Link>
-          )})}
-        </nav>
-        <div className="mt-auto">
-            <div className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1A2530]">
-                <span className="material-symbols-outlined">logout</span>
-                <span className="text-sm font-medium">Logout</span>
+    <div className="relative flex size-full min-h-screen flex-col bg-[#0d1117] text-white">
+        <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-800 px-10 py-4">
+            <div className="flex items-center gap-4">
+                <SyncStreamLogo className="h-8 w-8 text-primary-400" />
+                <h1 className="text-xl font-bold">SyncStream</h1>
             </div>
-        </div>
-      </aside>
+            <nav className="flex items-center gap-8 text-sm text-gray-400">
+                {navLinks.map((link) => {
+                    const isActive = pathname.startsWith(link.href);
+                    return (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className={cn('transition-colors hover:text-primary-400', isActive ? 'active-nav font-medium text-white' : '')}
+                        >
+                            {link.label}
+                        </Link>
+                    );
+                })}
+            </nav>
+            <div className="flex items-center gap-4">
+                <button className="relative rounded-full p-2 hover:bg-gray-800">
+                    <span className="material-symbols-outlined text-gray-400"> notifications </span>
+                    <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
+                </button>
+                <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-gray-700" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-bRtiEYuU-PWxfYFNel_OsyCl9K0LgcPZg_RcIyPKgULGZLMmMz8Ss92Ui6JysZQsrCmaIC74OtOrIlpWXqGJJIsVJeOvbljiLVaFMmGBrOXPeBOmZ9y1MRkP9hyh9NgRwNst_fm--3bMCy1VCruBari8P4g-McW6Zmmz1bSuMYgro9Wxe-uWSEzyrg3TusoUxlCQ-ReuXEn5b7ijMP-XJtgSfN7hW0aiMbARIrAz9mbLnLrcZrvGzGr9i1vPn01KsxJr1INQmZjC")'}}></div>
+            </div>
+      </header>
       <div className="flex-1 flex flex-col overflow-hidden">
         {children}
       </div>
+      <style jsx>{`
+        .active-nav {
+          color: var(--primary-400);
+          position: relative;
+        }
+        .active-nav::after {
+          content: '';
+          position: absolute;
+          bottom: -26px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: var(--primary-400);
+        }
+      `}</style>
     </div>
   );
 }
