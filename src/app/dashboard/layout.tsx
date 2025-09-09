@@ -40,10 +40,10 @@ export default function DashboardLayout({
           </Link>
           <Link
             className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
-            href="/dashboard/logs"
+            href="/dashboard/audit-log"
           >
             <span className="material-symbols-outlined">list_alt</span>
-            <p className="text-sm font-medium leading-normal">Activity Log</p>
+            <p className="text-sm font-medium leading-normal">Audit Log</p>
           </Link>
           <Link
             className="flex items-center gap-3 px-3 py-2 text-gray-400 hover:bg-[#233648] hover:text-white rounded-md"
