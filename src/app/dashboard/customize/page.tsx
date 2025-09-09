@@ -57,6 +57,31 @@ export default function CustomizeDashboardPage() {
                         </div>
                     ))}
                 </div>
+                <div className="mt-6 border-t border-[var(--border-color)] pt-6">
+                    <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Share Layout</h2>
+                    <div className="space-y-4">
+                        <div>
+                            <label className="text-sm font-medium text-[var(--text-secondary)]" htmlFor="share-user">Share with User</label>
+                            <div className="relative mt-1">
+                                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-lg text-[var(--text-secondary)]"> person_add </span>
+                                <input className="form-input w-full rounded-md border-none bg-[var(--secondary-color)] py-2 pl-10 pr-4 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="share-user" placeholder="Enter username or email" type="text"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label className="text-sm font-medium text-[var(--text-secondary)]" htmlFor="share-team">Share with Team</label>
+                            <select className="form-select mt-1 block w-full rounded-md border-none bg-[var(--secondary-color)] py-2 pl-3 pr-10 text-sm text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="share-team">
+                                <option>Select a team</option>
+                                <option>Engineering Team</option>
+                                <option>Product Team</option>
+                                <option>Support Team</option>
+                            </select>
+                        </div>
+                        <button className="flex w-full items-center justify-center gap-2 rounded-md border border-[var(--border-color)] bg-[var(--secondary-color)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--border-color)] transition-colors">
+                            <span className="material-symbols-outlined text-base">share</span>
+                            Share Layout
+                        </button>
+                    </div>
+                </div>
             </aside>
             <div className="flex flex-1 flex-col p-8">
                 <div className="mb-6 flex items-start justify-between">
