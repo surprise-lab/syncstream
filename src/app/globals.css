@@ -50,6 +50,23 @@
     --text-secondary: #a0b3c6;
     --border-color: #2e4760;
 
+    --brand-hue: 207;
+    --brand-saturation: 84%;
+    --brand-lightness: 51%;
+    --brand-primary: hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
+    --brand-secondary: hsl(var(--brand-hue) 30% 90%);
+    --brand-tertiary: hsl(var(--brand-hue) 30% 96%);
+    --surface-1: hsl(var(--brand-hue) 20% 12%);
+    --surface-2: hsl(var(--brand-hue) 20% 17%);
+    --surface-3: hsl(var(--brand-hue) 20% 22%);
+    --surface-4: hsl(var(--brand-hue) 20% 27%);
+    --text-1: hsl(var(--brand-hue) 15% 85%);
+    --text-2: hsl(var(--brand-hue) 10% 65%);
+    --text-3: hsl(var(--brand-hue) 10% 50%);
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+
   }
  
   .dark {

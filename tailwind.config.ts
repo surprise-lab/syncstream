@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -66,6 +67,25 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
+        brand: {
+            primary: 'hsl(var(--brand-primary))',
+            secondary: 'hsl(var(--brand-secondary))',
+            tertiary: 'hsl(var(--brand-tertiary))',
+        },
+        surface: {
+            '1': 'hsl(var(--surface-1))',
+            '2': 'hsl(var(--surface-2))',
+            '3': 'hsl(var(--surface-3))',
+            '4': 'hsl(var(--surface-4))',
+        },
+        'text': {
+            '1': 'hsl(var(--text-1))',
+            '2': 'hsl(var(--text-2))',
+            '3': 'hsl(var(--text-3))',
+        },
+        success: 'var(--success)',
+        warning: 'var(--warning)',
+        danger: 'var(--danger)',
       },
       borderRadius: {
         lg: 'var(--radius)',
