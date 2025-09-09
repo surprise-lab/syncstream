@@ -7,18 +7,11 @@ import { cn } from '@/lib/utils';
 import { SyncStreamLogo } from '@/components/syncstream-logo';
 
 const navLinks = [
-  { href: '/dashboard', label: 'Dashboard', icon: 'home' },
-  { href: '/dashboard/integrations', label: 'Integrations', icon: 'cable' },
-  {
-    href: '/dashboard/connections',
-    label: 'Connections',
-    icon: 'sync_alt',
-  },
-  { href: '/dashboard/audit-log', label: 'Audit Log', icon: 'receipt_long' },
-  { href: '/dashboard/reports', label: 'Reports', icon: 'assessment' },
-  { href: '/dashboard/devtools', label: 'Developer Tools', icon: 'code' },
-  { href: '/dashboard/docs', label: 'Docs', icon: 'code' },
-  { href: '/dashboard/settings', label: 'Settings', icon: 'settings' },
+    { href: '/dashboard', label: 'Home', icon: 'home' },
+    { href: '/dashboard/connections', label: 'Connections', icon: 'power' },
+    { href: '/dashboard/history', label: 'Syncs', icon: 'sync_alt' },
+    { href: '/dashboard/rules', label: 'Rules', icon: 'rule' },
+    { href: '/dashboard/audit-log', label: 'Logs', icon: 'receipt_long' },
 ];
 
 export default function DashboardLayout({
@@ -183,47 +176,33 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="relative flex size-full min-h-screen flex-col bg-[#0d1117] text-white">
-      <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#233648] px-10 py-3">
-        <div className="flex items-center gap-4 text-white">
-          <div className="size-8 text-primary">
-            <SyncStreamLogo />
-          </div>
-          <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">
-            SyncStream
-          </h2>
-        </div>
-        <nav className="flex items-center gap-8 text-sm font-medium text-slate-300">
-          <Link href="/dashboard" className={cn("transition-colors hover:text-white", pathname === '/dashboard' ? 'text-white' : '')}>
-            Home
-          </Link>
-          <Link href="/dashboard/integrations" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/integrations') ? 'text-white' : '')}>
-            Integrations
-          </Link>
-          <Link href="/dashboard/audit-log" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/audit-log') ? 'text-white' : '')}>
-            Audit Log
-          </Link>
-          <Link href="/dashboard/reports" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/reports') ? 'text-white' : '')}>
-            Data & Reports
-          </Link>
-          <Link href="/dashboard/settings" className={cn("transition-colors hover:text-white", pathname.startsWith('/dashboard/settings') ? 'text-white' : '')}>
-            Settings
-          </Link>
-        </nav>
-        <div className="flex items-center gap-4">
-          <button className="flex h-10 w-10 items-center justify-center rounded-full text-gray-300 hover:bg-[#233648] hover:text-white transition-colors">
-            <span className="material-symbols-outlined text-xl">help</span>
-          </button>
-          <div
-            className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-            style={{
-              backgroundImage:
-                'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMV2VDjep1hUedSjD1oNHZ-l8Jlqc8tlCS6UHw6AYrn7h7CNWBBAaX6UpamQtzLdi1VeOK1KSNvf9uHpUNtkn8nHPGbPZWI_tgwbvI3yBKilLKk6lRj-nX12OqKrtunSgjkYzNisJlER7AeOm8lG5s4k6MJdG-3fipVsIMUUMmHHPsw072NWwl2aGDcKFA0lwU8Ri1knvNDsWBQLtNlWV0iIhridK8sVc9-isD49Ii_JITaa3rxn83cO4oBtBcbsIddMRppn56S3_I")',
-            }}
-          ></div>
-        </div>
-      </header>
-      <div className="flex-1 flex flex-col overflow-hidden">{children}</div>
+    <div className="flex flex-1">
+        <aside className="flex h-screen min-h-[700px] flex-col justify-between bg-[#18232F] p-4 w-64 sticky top-0">
+            <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-2 px-2">
+                    <span className="material-symbols-outlined text-white text-2xl">all_inclusive</span>
+                    <h1 className="text-white text-lg font-bold leading-normal">SyncStream</h1>
+                </div>
+                <nav className="flex flex-col gap-2">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className={cn(
+                                'flex items-center gap-3 px-3 py-2 rounded-md transition-colors',
+                                pathname.startsWith(link.href) && link.href !== '/dashboard' || pathname === link.href
+                                ? 'bg-[#233648] text-white'
+                                : 'text-gray-300 hover:bg-[#233648] hover:text-white'
+                            )}
+                        >
+                            <span className="material-symbols-outlined">{link.icon}</span>
+                            <span className="text-sm font-medium">{link.label}</span>
+                        </Link>
+                    ))}
+                </nav>
+            </div>
+        </aside>
+        <div className="flex-1 flex flex-col overflow-hidden">{children}</div>
     </div>
   );
 }
