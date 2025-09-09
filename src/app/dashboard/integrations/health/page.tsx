@@ -3,7 +3,7 @@
 
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowUp, ArrowDown, Sync, AlertTriangle, Timer, X, ChevronDown, BarChartHorizontal, LineChart, AlertCircle } from 'lucide-react';
+import { ArrowUp, ArrowDown, FolderSync, AlertTriangle, Timer, X, ChevronDown, BarChartHorizontal, LineChart, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -102,7 +102,7 @@ export default function IntegrationsHealthPage() {
             <div className="flex flex-col gap-4 rounded-lg border border-[var(--border-color)] bg-[var(--secondary-color)] p-6">
               <div className="flex items-center justify-between">
                 <p className="text-[var(--text-primary)] text-base font-medium">Data Transfer Rate</p>
-                <Sync className="text-[var(--text-secondary)]"/>
+                <FolderSync className="text-[var(--text-secondary)]"/>
               </div>
               <p className="text-[var(--text-primary)] text-4xl font-bold truncate">120 GB/hr</p>
               <div className="flex items-center gap-2 text-sm">

@@ -31,7 +31,6 @@ import {
   Cable,
   Network,
   Search,
-  Sync,
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -42,7 +41,7 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/dashboard/integrations', label: 'Integrations', icon: Sync },
+  { href: '/dashboard/integrations', label: 'Integrations', icon: FolderSync },
   { href: '/dashboard/users', label: 'Users', icon: Users },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
 ];

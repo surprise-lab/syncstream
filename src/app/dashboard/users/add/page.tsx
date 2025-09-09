@@ -77,6 +77,15 @@ export default function AddUserPage() {
                   type="password"
                 />
               </div>
+              <div className="mt-2 space-y-2">
+                <div className="grid grid-cols-4 gap-x-2">
+                  <div className="h-1.5 rounded-full bg-gray-600"></div>
+                  <div className="h-1.5 rounded-full bg-gray-600"></div>
+                  <div className="h-1.5 rounded-full bg-gray-600"></div>
+                  <div className="h-1.5 rounded-full bg-gray-600"></div>
+                </div>
+                <p className="text-xs text-gray-400">Password strength: <span className="font-medium text-gray-300">Weak</span></p>
+              </div>
             </div>
             <div>
               <Label
