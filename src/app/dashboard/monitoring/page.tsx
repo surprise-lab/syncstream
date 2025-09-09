@@ -35,27 +35,43 @@ export default function MonitoringPage() {
       </header>
       <main className="flex-1 overflow-y-auto p-8">
         <div className="max-w-7xl mx-auto">
-          <div className="border-b border-[var(--border-color)] mb-6">
-            <nav aria-label="Tabs" className="-mb-px flex space-x-8">
-              <a
-                className="whitespace-nowrap py-4 px-1 border-b-2 border-[var(--primary-color)] font-semibold text-[var(--primary-color)] text-sm"
-                href="#"
-              >
-                Overview
-              </a>
-              <a
-                className="whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-white hover:border-gray-300 font-medium text-sm"
-                href="#"
-              >
-                Transactions
-              </a>
-              <a
-                className="whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-white hover:border-gray-300 font-medium text-sm"
-                href="#"
-              >
-                Infrastructure
-              </a>
-            </nav>
+          <div className="flex justify-between items-center mb-6">
+            <div className="border-b border-[var(--border-color)]">
+              <nav aria-label="Tabs" className="-mb-px flex space-x-8">
+                <a
+                  className="whitespace-nowrap py-4 px-1 border-b-2 border-[var(--primary-color)] font-semibold text-[var(--primary-color)] text-sm"
+                  href="#"
+                >
+                  Default Dashboard
+                </a>
+                <a
+                  className="whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-white hover:border-gray-300 font-medium text-sm"
+                  href="#"
+                >
+                  API Service Health
+                </a>
+                <a
+                  className="whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-white hover:border-gray-300 font-medium text-sm"
+                  href="#"
+                >
+                  Database Performance
+                </a>
+              </nav>
+            </div>
+            <div className="flex items-center gap-2">
+              <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md bg-[var(--secondary-color)] text-white hover:bg-[var(--accent-color)]">
+                <span className="material-symbols-outlined text-base">
+                  add
+                </span>
+                New Dashboard
+              </button>
+              <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md bg-[var(--primary-color)] text-white hover:bg-blue-600">
+                <span className="material-symbols-outlined text-base">
+                  save
+                </span>
+                Save View
+              </button>
+            </div>
           </div>
           <section className="mb-8">
             <h3 className="text-xl font-semibold mb-4">Key Metrics</h3>
@@ -65,9 +81,9 @@ export default function MonitoringPage() {
                   Average Response Time
                 </p>
                 <p className="text-3xl font-bold">250 ms</p>
-                <div className="flex items-center text-sm font-medium text-red-400">
+                <div className="flex items-center text-sm font-medium text-green-400">
                   <span className="material-symbols-outlined text-base">
-                    arrow_downward
+                    arrow_upward
                   </span>
                   <span>5%</span>
                 </div>
@@ -77,9 +93,9 @@ export default function MonitoringPage() {
                   Error Rate
                 </p>
                 <p className="text-3xl font-bold">0.5%</p>
-                <div className="flex items-center text-sm font-medium text-green-400">
+                <div className="flex items-center text-sm font-medium text-red-400">
                   <span className="material-symbols-outlined text-base">
-                    arrow_upward
+                    arrow_downward
                   </span>
                   <span>0.1%</span>
                 </div>
@@ -94,6 +110,105 @@ export default function MonitoringPage() {
                     arrow_upward
                   </span>
                   <span>10%</span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">Active Alerts</h3>
+            <div className="bg-[var(--accent-color)] rounded-lg">
+              <div className="divide-y divide-[var(--border-color)]">
+                <div className="p-6 grid grid-cols-5 gap-4 items-center">
+                  <div className="flex items-center gap-3 col-span-2">
+                    <span className="material-symbols-outlined text-red-500">
+                      error
+                    </span>
+                    <div className="flex flex-col">
+                      <p className="font-medium">
+                        High Error Rate Detected
+                      </p>
+                      <p className="text-sm text-[var(--text-secondary)]">
+                        The error rate for 'Payment Gateway' integration has
+                        exceeded the 5% threshold.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-sm text-[var(--text-secondary)]">
+                    <p>
+                      Severity:{' '}
+                      <span className="font-medium text-red-500">
+                        Critical
+                      </span>
+                    </p>
+                  </div>
+                  <div className="text-sm text-[var(--text-secondary)]">
+                    <p>Timestamp: 2 min ago</p>
+                  </div>
+                  <div className="flex justify-end">
+                    <button className="px-3 py-1.5 text-sm font-medium rounded-md bg-[var(--secondary-color)] text-white hover:bg-[var(--accent-color)] border border-[var(--border-color)]">
+                      View Details
+                    </button>
+                  </div>
+                </div>
+                <div className="p-6 grid grid-cols-5 gap-4 items-center">
+                  <div className="flex items-center gap-3 col-span-2">
+                    <span className="material-symbols-outlined text-yellow-500">
+                      warning
+                    </span>
+                    <div className="flex flex-col">
+                      <p className="font-medium">Increased Response Time</p>
+                      <p className="text-sm text-[var(--text-secondary)]">
+                        'Product Catalog Sync' is experiencing higher than
+                        normal response times.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-sm text-[var(--text-secondary)]">
+                    <p>
+                      Severity:{' '}
+                      <span className="font-medium text-yellow-500">
+                        High
+                      </span>
+                    </p>
+                  </div>
+                  <div className="text-sm text-[var(--text-secondary)]">
+                    <p>Timestamp: 15 min ago</p>
+                  </div>
+                  <div className="flex justify-end">
+                    <button className="px-3 py-1.5 text-sm font-medium rounded-md bg-[var(--secondary-color)] text-white hover:bg-[var(--accent-color)] border border-[var(--border-color)]">
+                      View Details
+                    </button>
+                  </div>
+                </div>
+                <div className="p-6 grid grid-cols-5 gap-4 items-center">
+                  <div className="flex items-center gap-3 col-span-2">
+                    <span className="material-symbols-outlined text-blue-400">
+                      info
+                    </span>
+                    <div className="flex flex-col">
+                      <p className="font-medium">Throughput Anomaly</p>
+                      <p className="text-sm text-[var(--text-secondary)]">
+                        'Inventory Update' throughput is lower than the
+                        seasonal average.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-sm text-[var(--text-secondary)]">
+                    <p>
+                      Severity:{' '}
+                      <span className="font-medium text-blue-400">
+                        Medium
+                      </span>
+                    </p>
+                  </div>
+                  <div className="text-sm text-[var(--text-secondary)]">
+                    <p>Timestamp: 45 min ago</p>
+                  </div>
+                  <div className="flex justify-end">
+                    <button className="px-3 py-1.5 text-sm font-medium rounded-md bg-[var(--secondary-color)] text-white hover:bg-[var(--accent-color)] border border-[var(--border-color)]">
+                      View Details
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -176,12 +291,12 @@ export default function MonitoringPage() {
                     stroke="var(--primary-color)"
                     strokeLinecap="round"
                     strokeWidth="2"
-                    vectorEffect="non-scaling-stroke"
+                    vector-effect="non-scaling-stroke"
                   ></path>
                   <path
                     d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V150H0V109Z"
                     fill="url(#paint0_linear_error)"
-                    vectorEffect="non-scaling-stroke"
+                    vector-effect="non-scaling-stroke"
                   ></path>
                   <defs>
                     <linearGradient
@@ -193,13 +308,13 @@ export default function MonitoringPage() {
                       y2="150"
                     >
                       <stop
-                        stopColor="var(--primary-color)"
-                        stopOpacity="0.2"
+                        stop-color="var(--primary-color)"
+                        stop-opacity="0.2"
                       ></stop>
                       <stop
                         offset="1"
-                        stopColor="var(--primary-color)"
-                        stopOpacity="0"
+                        stop-color="var(--primary-color)"
+                        stop-opacity="0"
                       ></stop>
                     </linearGradient>
                   </defs>
@@ -235,12 +350,12 @@ export default function MonitoringPage() {
                     stroke="#34d399"
                     strokeLinecap="round"
                     strokeWidth="2"
-                    vectorEffect="non-scaling-stroke"
+                    vector-effect="non-scaling-stroke"
                   ></path>
                   <path
                     d="M0 41C18.1538 41 18.1538 129 36.3077 129C54.4615 129 54.4615 109 72.6154 109C90.7692 109 90.7692 57 108.923 57C127.077 57 127.077 117 145.231 117C163.385 117 163.385 49 181.538 49C199.692 49 199.692 89 217.846 89C236 89 236 105 254.154 105C272.308 105 272.308 29 290.462 29C308.615 29 308.615 1 326.769 1C344.923 1 344.923 149 363.077 149C381.231 149 381.231 69 399.385 69C417.538 69 417.538 21 435.692 21C453.846 21 453.846 125 472 125V150H0V41Z"
                     fill="url(#paint0_linear_throughput)"
-                    vectorEffect="non-scaling-stroke"
+                    vector-effect="non-scaling-stroke"
                   ></path>
                   <defs>
                     <linearGradient
@@ -251,11 +366,11 @@ export default function MonitoringPage() {
                       y1="1"
                       y2="150"
                     >
-                      <stop stopColor="#34d399" stopOpacity="0.2"></stop>
+                      <stop stop-color="#34d399" stop-opacity="0.2"></stop>
                       <stop
                         offset="1"
-                        stopColor="#34d399"
-                        stopOpacity="0"
+                        stop-color="#34d399"
+                        stop-opacity="0"
                       ></stop>
                     </linearGradient>
                   </defs>
@@ -276,4 +391,5 @@ export default function MonitoringPage() {
       </main>
     </div>
   </div>
-</body></html>
+</body>
+</html>
