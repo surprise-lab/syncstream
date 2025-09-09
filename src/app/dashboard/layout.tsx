@@ -63,6 +63,13 @@ export default function DashboardLayout({
             <span className="material-symbols-outlined">import_export</span>
             <span className="text-sm font-medium">Export & Import</span>
           </Link>
+           <Link
+            className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
+            href="/dashboard/backup-restore"
+          >
+            <span className="material-symbols-outlined">settings_backup_restore</span>
+            <span className="text-sm font-medium">Backup & Restore</span>
+          </Link>
           <Link
             className="flex items-center gap-3 rounded-md px-3 py-2 text-gray-300 hover:bg-[#1173d4]/20 hover:text-white"
             href="/dashboard/notifications"
