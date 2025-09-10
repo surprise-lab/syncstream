@@ -1,0 +1,32 @@
+
+name: Deploy to Firebase App Hosting on Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Deploy to Firebase
+        uses: firebase/firebase-hosting-action@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SURPRISE_LAB }}'
+          channelId: live
+          projectId: surprise-lab
