@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "debug-kds",
+      "request": "launch",
+      "name": "Launch KDS",
+      "url": "http://localhost:8081",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
       "name": ".NET Stalker (Full)",
       "type": "stalker",
       "request": "launch",
@@ -90,7 +97,7 @@
     },
     {
       "name": "Next.js: debug client-side",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
       "url": "http://localhost:3000"
     },
