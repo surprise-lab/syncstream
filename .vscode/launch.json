@@ -2,27 +2,104 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Next.js: debug server-side",
-      "type": "node-terminal",
+      "name": ".NET Stalker (Full)",
+      "type": "stalker",
       "request": "launch",
-      "command": "npm run dev"
+      "vars": {
+        "framework": "net9.0",
+        "projectDir": "${workspaceFolder}/src/${var:projectName}",
+        "projectName": "CHANGE_ME"
+      },
+      "project": "${var:projectDir}/${var:projectName}.csproj",
+      "process": "${var:projectDir}/bin/Debug/${var:framework}/${var:projectName}",
+      "cwd": "${var:projectDir}",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "NODE_ENV": "development"
+      },
+      "url": "http://localhost:5001",
+      "webRoot": "${var:projectDir}/wwwroot",
+      "buildOptions": {
+        "preBuildTasks": [
+          {
+            "name": "ESLint",
+            "commandLine": "npx eslint --color ./scripts"
+          },
+          {
+            "name": "Webpack",
+            "commandLine": "npx webpack --watch --node-env ${env:NODE_ENV} --mode ${env:NODE_ENV} --devtool source-map --color",
+            "isBackground": true,
+            "waitFor": false,
+            "problemMatcher": "$stalker-webpack-watch",
+            "source": "webpack"
+          }
+        ]
+      },
+      "attachOptions": {
+        "action": "debugWithChrome"
+      }
+    },
+    {
+      "name": ".NET Stalker (Debug w/ Google Chrome)",
+      "type": "stalker",
+      "request": "launch",
+      "vars": {
+        "framework": "net9.0",
+        "projectDir": "${workspaceFolder}/src/${var:projectName}",
+        "projectName": "CHANGE_ME"
+      },
+      "project": "${var:projectDir}/${var:projectName}.csproj",
+      "process": "${var:projectDir}/bin/Debug/${var:framework}/${var:projectName}",
+      "cwd": "${var:projectDir}",
+      "url": "http://localhost:5001",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "webRoot": "${var:projectDir}/wwwroot",
+      "attachOptions": {
+        "action": "debugWithChrome"
+      }
+    },
+    {
+      "name": ".NET Stalker (Debug w/ Google Chrome)",
+      "type": "stalker",
+      "request": "launch",
+      "vars": {
+        "framework": "net9.0",
+        "projectDir": "${workspaceFolder}/src/${var:projectName}",
+        "projectName": "CHANGE_ME"
+      },
+      "project": "${var:projectDir}/${var:projectName}.csproj",
+      "process": "${var:projectDir}/bin/Debug/${var:framework}/${var:projectName}",
+      "cwd": "${var:projectDir}",
+      "url": "http://localhost:5001",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "webRoot": "${var:projectDir}/wwwroot",
+      "attachOptions": {
+        "action": "debugWithChrome"
+      }
+    },
+    {
+      "name": "Next.js: debug server-side",
+      "type": "pwa-node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
+      "args": ["dev"]
     },
     {
       "name": "Next.js: debug client-side",
-      "type": "chrome",
+      "type": "pwa-chrome",
       "request": "launch",
       "url": "http://localhost:3000"
     },
     {
       "name": "Next.js: debug full stack",
-      "type": "node-terminal",
+      "type": "pwa-node",
       "request": "launch",
-      "command": "npm run dev",
-      "serverReadyAction": {
-        "pattern": "started server on .+, url: (https?://.+)",
-        "uriFormat": "%s",
-        "action": "debugWithChrome"
-      }
+      "runtimeExecutable": "npm",
+      "args": ["run", "dev"]
     }
   ]
 }
